@@ -189,6 +189,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Support Section */}
+      <section className="px-4 py-16 bg-[#1F1F1F]">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-3xl font-bold mb-4"
+          >
+            <h2>Support Me</h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg text-zinc-400 mb-8"
+          >
+            <p>
+              If you enjoy my work or find it helpful, consider supporting me through a donation.
+              Your support helps me continue creating new projects and developing my skills.
+            </p>
+          </motion.div>
+
+          {/* Donation Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <a
+              href="https://buymeacoffee.com/hasirciogli" // PayPal link or donation link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 bg-orange-600 text-white rounded-full text-xl font-semibold hover:bg-orange-700 transition-colors"
+            >
+              Donate with Buy Me a Coffee
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* Footer */}
       <footer className="px-4 py-8 border-t border-zinc-800">
