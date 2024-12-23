@@ -7,6 +7,7 @@ import SkillBadge from "@/components/SkillBadge";
 import SocialLink from "@/components/SocialLink";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 
 
@@ -15,11 +16,11 @@ export default function Home() {
     <main className="min-h-screen bg-[#0A0A0A] text-white">
       {/* Hero Section */}
       <section className="px-4 pt-24 pb-16 md:pt-32 md:pb-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight"
+            className="text-4xl md:text-6xl font-bold tracking-tight z-10"
           >
             <h1>
               Mustafa Hasırcıoğlu
@@ -29,7 +30,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-xl text-zinc-400"
+            className="mt-4 text-xl text-zinc-400 z-10"
           >
             <p>
               Software Developer & Designer
@@ -39,7 +40,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 max-w-2xl text-zinc-400"
+            className="mt-6 max-w-2xl text-zinc-400 z-40"
           >
             <p>
               I create and manage innovative projects to learn, apply, and grow as a professional,
@@ -50,12 +51,25 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 flex gap-4"
+            className="mt-8 flex gap-4 z-10 flex-wrap"
           >
             <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
             <SocialLink href="mailto:mhasirciogl@gmail.com" icon={<Mail />} label="Email" />
             <SocialLink href="https://instagram.com/m.hasirciogli" icon={<Instagram />} label="Instagram" />
             <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Phone" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="overflow-hidden text-4xl md:text-6xl font-bold tracking-tight absolute top-0 right-0 z-0"
+          >
+            <Image alt="Mustafa Hasırcıoğlu" src={"/my-image.png"} width={1080} height={1080}
+              style={{
+                WebkitMaskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
+                maskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
+              }}
+              className="aspect-square h-24 w-24 lg:h-60 lg:w-60 duration-300" />
           </motion.div>
         </div>
       </section>
@@ -103,20 +117,78 @@ export default function Home() {
       <section className="px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">Skills & Technologies</h2>
-          <div className="flex flex-wrap gap-3">
-            <SkillBadge>Node.js</SkillBadge>
-            <SkillBadge>TypeScript</SkillBadge>
-            <SkillBadge>C++</SkillBadge>
-            <SkillBadge>C#</SkillBadge>
-            <SkillBadge>PHP</SkillBadge>
-            <SkillBadge>Laravel</SkillBadge>
-            <SkillBadge>Next.js</SkillBadge>
-            <SkillBadge>React</SkillBadge>
-            <SkillBadge>Docker</SkillBadge>
-            <SkillBadge>Kubernetes</SkillBadge>
+
+          <div className="grid grid-cols-8 flex-wrap gap-3 flex-1">
+
+            {/* Web Development */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Web Development</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Node.js</SkillBadge>
+                <SkillBadge>Next.js</SkillBadge>
+                <SkillBadge>React</SkillBadge>
+                <SkillBadge>TypeScript</SkillBadge>
+                <SkillBadge>PHP</SkillBadge>
+                <SkillBadge>Laravel</SkillBadge>
+              </div>
+            </div>
+
+            {/* DevOps & Containerization */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">DevOps & Containerization</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Docker</SkillBadge>
+                <SkillBadge>Kubernetes</SkillBadge>
+                <SkillBadge>CI/CD</SkillBadge>
+                <SkillBadge>Terraform</SkillBadge>
+              </div>
+            </div>
+
+            {/* Backend Development */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Backend Development</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>C++</SkillBadge>
+                <SkillBadge>C#</SkillBadge>
+                <SkillBadge>Java</SkillBadge>
+                <SkillBadge>Go</SkillBadge>
+              </div>
+            </div>
+
+            {/* Databases */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Databases</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>MySQL</SkillBadge>
+                <SkillBadge>MongoDB</SkillBadge>
+                <SkillBadge>PostgreSQL</SkillBadge>
+                <SkillBadge>Redis</SkillBadge>
+              </div>
+            </div>
+
+            {/* Cloud Services */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Cloud Services</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>AWS</SkillBadge>
+                <SkillBadge>Google Cloud</SkillBadge>
+              </div>
+            </div>
+
+            {/* Tools & Others */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Tools & Others</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Git</SkillBadge>
+                <SkillBadge>Docker Compose</SkillBadge>
+                <SkillBadge>Jenkins</SkillBadge>
+                <SkillBadge>Redux</SkillBadge>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="px-4 py-8 border-t border-zinc-800">
