@@ -150,7 +150,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>C++</SkillBadge>
                 <SkillBadge>C#</SkillBadge>
-                <SkillBadge>Java</SkillBadge>
+                {/* <SkillBadge>Java</SkillBadge> */}
                 <SkillBadge>Go</SkillBadge>
               </div>
             </div>
