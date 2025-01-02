@@ -133,24 +133,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* DevOps & Containerization */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">DevOps & Containerization</h3>
-              <div className="flex flex-wrap gap-3">
-                <SkillBadge>Docker</SkillBadge>
-                <SkillBadge>Kubernetes</SkillBadge>
-                <SkillBadge>CI/CD</SkillBadge>
-                <SkillBadge>Terraform</SkillBadge>
-              </div>
-            </div>
-
             {/* Backend Development */}
             <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
               <h3 className="font-semibold mb-2">Backend Development</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>C++</SkillBadge>
                 <SkillBadge>C#</SkillBadge>
-                {/* <SkillBadge>Java</SkillBadge> */}
                 <SkillBadge>Go</SkillBadge>
               </div>
             </div>
@@ -163,7 +151,6 @@ export default function Home() {
                 <SkillBadge>MongoDB</SkillBadge>
                 <SkillBadge>PostgreSQL</SkillBadge>
                 <SkillBadge>Redis</SkillBadge>
-                <SkillBadge>Redis Insight&apos;s</SkillBadge>
               </div>
             </div>
 
@@ -176,9 +163,40 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Tools & Others */}
+            {/* DevOps & Containerization */}
             <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Tools & Others</h3>
+              <h3 className="font-semibold mb-2">DevOps & Containerization</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Docker</SkillBadge>
+                <SkillBadge>Kubernetes</SkillBadge>
+                <SkillBadge>CI/CD</SkillBadge>
+                <SkillBadge>Terraform</SkillBadge>
+              </div>
+            </div>
+
+            {/* Authentication & Authorization */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Authentication & Authorization</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Auth0</SkillBadge>
+                <SkillBadge>JWT</SkillBadge>
+                <SkillBadge>Clerk</SkillBadge>
+              </div>
+            </div>
+
+            {/* Payment Systems */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Payment Systems</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Stripe</SkillBadge>
+                <SkillBadge>PayPal</SkillBadge>
+                <SkillBadge>Payoneer</SkillBadge>
+              </div>
+            </div>
+
+            {/* Tools & Utilities */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Tools & Utilities</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>Git</SkillBadge>
                 <SkillBadge>Docker Compose</SkillBadge>
@@ -186,9 +204,21 @@ export default function Home() {
                 <SkillBadge>Redux</SkillBadge>
               </div>
             </div>
+
+            {/* Knowledge & Concepts */}
+            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
+              <h3 className="font-semibold mb-2">Knowledge & Concepts</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Algorithms</SkillBadge>
+                <SkillBadge>Data Structures</SkillBadge>
+                <SkillBadge>Design Patterns</SkillBadge>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* Support Section */}
       <section className="px-4 py-16 bg-[#1F1F1F]">
