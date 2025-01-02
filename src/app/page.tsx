@@ -163,6 +163,7 @@ export default function Home() {
                 <SkillBadge>MongoDB</SkillBadge>
                 <SkillBadge>PostgreSQL</SkillBadge>
                 <SkillBadge>Redis</SkillBadge>
+                <SkillBadge>Redis Insight&apos;s</SkillBadge>
               </div>
             </div>
 
