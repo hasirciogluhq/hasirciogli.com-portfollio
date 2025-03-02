@@ -160,6 +160,9 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>AWS</SkillBadge>
                 <SkillBadge>Google Cloud</SkillBadge>
+                <SkillBadge>Hetzner</SkillBadge>
+                <SkillBadge>Linode</SkillBadge>
+                <SkillBadge>OVH</SkillBadge>
               </div>
             </div>
 
@@ -183,6 +186,7 @@ export default function Home() {
                 <SkillBadge>Auth0</SkillBadge>
                 <SkillBadge>JWT</SkillBadge>
                 <SkillBadge>Clerk</SkillBadge>
+                <SkillBadge>Kinde</SkillBadge>
               </div>
             </div>
 
@@ -191,6 +195,7 @@ export default function Home() {
               <h3 className="font-semibold mb-2">Payment Systems</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>Stripe</SkillBadge>
+                <SkillBadge>Square</SkillBadge>
                 <SkillBadge>PayPal</SkillBadge>
                 <SkillBadge>Payoneer</SkillBadge>
               </div>
