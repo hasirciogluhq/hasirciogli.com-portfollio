@@ -171,6 +171,8 @@ export default function Home() {
                 <SkillBadge>Kubernetes</SkillBadge>
                 <SkillBadge>CI/CD</SkillBadge>
                 <SkillBadge>Terraform</SkillBadge>
+                <SkillBadge>Kafka</SkillBadge>
+                <SkillBadge>Kafka-UI</SkillBadge>
               </div>
             </div>
 
