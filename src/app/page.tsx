@@ -47,6 +47,35 @@ export default function Home() {
               aiming to build and manage a large-scale company in the future.
             </p>
           </motion.div>
+
+          {/* New biography links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mt-4 flex gap-4 text-sm z-40"
+          >
+            <Link
+              href="/mustafa-hasircioglu-kimdir"
+              className="text-zinc-400 hover:text-white transition-colors flex items-center"
+            >
+              <span className="border-b border-dotted border-zinc-600">
+                Mustafa Hasırcıoğlu Kimdir?
+              </span>
+              <span className="ml-1 text-zinc-500">🇹🇷</span>
+            </Link>
+            <span className="text-zinc-600">•</span>
+            <Link
+              href="/who-is-mustafa-hasircioglu"
+              className="text-zinc-400 hover:text-white transition-colors flex items-center"
+            >
+              <span className="border-b border-dotted border-zinc-600">
+                Who is Mustafa Hasırcıoğlu?
+              </span>
+              <span className="ml-1 text-zinc-500">🇺🇸</span>
+            </Link>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,12 +93,12 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="overflow-hidden text-4xl md:text-6xl font-bold tracking-tight absolute top-0 right-0 z-0"
           >
-            <Image alt="Mustafa Hasırcıoğlu" src={"/my-image.png"} width={1080} height={1080}
+            <Image alt="Mustafa Hasırcıoğlu" src={"/my-photo-3-minified.png"} width={1080} height={1080}
               style={{
                 WebkitMaskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
                 maskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
               }}
-              className="aspect-square h-24 w-24 lg:h-60 lg:w-60 duration-300" />
+              className="aspect-square h-24 w-24 lg:h-60 lg:w-60 duration-300 rounded-full overflow-hidden" />
           </motion.div>
         </div>
       </section>
@@ -269,7 +298,7 @@ export default function Home() {
       </section>
 
 
-      {/* Footer */}
+      {/* Updated Footer */}
       <footer className="px-4 py-8 border-t border-zinc-800">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="text-zinc-400 text-sm">
@@ -279,6 +308,22 @@ export default function Home() {
             <Link href="mailto:mhasirciogli@gmail.com" className="text-zinc-400 hover:text-white transition-colors">
               mhasirciogli@gmail.com
             </Link>
+            <nav className="flex gap-4 text-sm">
+              <Link
+                href="/mustafa-hasircioglu-kimdir"
+                className="text-zinc-400 hover:text-white transition-colors"
+                hrefLang="tr"
+              >
+                Türkçe
+              </Link>
+              <Link
+                href="/who-is-mustafa-hasircioglu"
+                className="text-zinc-400 hover:text-white transition-colors"
+                hrefLang="en"
+              >
+                English
+              </Link>
+            </nav>
           </div>
         </div>
       </footer>
