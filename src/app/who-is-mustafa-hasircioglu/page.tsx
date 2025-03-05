@@ -50,13 +50,13 @@ export default function ProfilePage() {
                 <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - A financial services platform providing easy access to financial tools.</li>
               </ul>
             </div>
-            <p>
-              Additionally, I&apos;m interested in music, and my songs like &quot;Bla Bla Bla&quot; and &quot;Kayıp Yürekler&quot; are available on Apple Music, Spotify, and many other platforms.
+            <div className="flex flex-col">
+              <p>Additionally, I&apos;m interested in music, and my songs like &quot;Bla Bla Bla&quot; and &quot;Kayıp Yürekler&quot; are available on Apple Music, Spotify, and many other platforms.</p>
               <a href="https://music.apple.com/us/artist/mustafa-has%C4%B1rc%C4%B1o%C4%9Flu/1776362009" className="text-blue-500 hover:underline">My Apple Music Profile</a>
               <a href="https://open.spotify.com/artist/2ULQn4aI8EULqHDRUB59qE?si=f7PJeHG-T-23yLYmK2zopg" className="text-blue-500 hover:underline">My Spotify Profile</a>
               <a href="https://www.youtube.com/@hasirciogli" className="text-blue-500 hover:underline">My Youtube Account - Turkey 🇹🇷</a>
               <a href="https://www.youtube.com/@noxydev" className="text-blue-500 hover:underline">My Youtube Account - United States 🇺🇸❤️</a>
-            </p>
+            </div>
           </motion.div>
 
           <motion.div
