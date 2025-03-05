@@ -45,9 +45,9 @@ export default function KimlikSayfasi() {
                                 <li><a href="https://deweloper.cloud" className="text-blue-500 hover:underline">Deweloper.cloud</a> - Verimli uygulama geliştirme ve dağıtımı için bir bulut platformu.</li>
                                 <li><a href="https://hsrcpay.com" className="text-blue-500 hover:underline">HsrcPay</a> - Sorunsuz işlemler için tasarlanmış bir ödeme işleme çözümü.</li>
                                 <li><a href="https://anonimsor.com" className="text-blue-500 hover:underline">AnonimSor</a> - Açık tartışmalar için anonim bir Soru-Cevap platformu.</li>
-                                <li><a href="https://fightland.vercel.app">Fightland</a> - Oyuncuları dünya çapında birleştiren bir oyun platformu.</li>
-                                <li><a href="https://ficksa.com">Ficksa</a> - Gelişmiş özelliklere sahip bir e-ticaret çözümü.</li>
-                                <li><a href="https://trinkmoney.com">TrinkMoney</a> - Finansal araçlara kolay erişim sağlayan bir finansal hizmetler platformu.</li>
+                                <li><a href="https://fightland.vercel.app" className="text-blue-500 hover:underline">Fightland</a> - Oyuncuları dünya çapında birleştiren bir oyun platformu.</li>
+                                <li><a href="https://ficksa.com" className="text-blue-500 hover:underline">Ficksa</a> - Gelişmiş özelliklere sahip bir e-ticaret çözümü.</li>
+                                <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - Finansal araçlara kolay erişim sağlayan bir finansal hizmetler platformu.</li>
                             </ul>
                         </div>
                         <p>

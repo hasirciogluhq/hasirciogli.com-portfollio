@@ -45,9 +45,9 @@ export default function ProfilePage() {
                 <li><a href="https://deweloper.cloud" className="text-blue-500 hover:underline">Deweloper.cloud</a> - A cloud platform for efficient application development and deployment.</li>
                 <li><a href="https://hsrcpay.com" className="text-blue-500 hover:underline">HsrcPay</a> - A payment processing solution designed for seamless transactions.</li>
                 <li><a href="https://anonimsor.com" className="text-blue-500 hover:underline">AnonimSor</a> - An anonymous Q&A platform for open discussions.</li>
-                <li><a href="https://fightland.vercel.app">Fightland</a> - A gaming platform that connects players worldwide.</li>
-                <li><a href="https://ficksa.com">Ficksa</a> - An advanced e-commerce solution with powerful features.</li>
-                <li><a href="https://trinkmoney.com">TrinkMoney</a> - A financial services platform providing easy access to financial tools.</li>
+                <li><a href="https://fightland.vercel.app" className="text-blue-500 hover:underline">Fightland</a> - A gaming platform that connects players worldwide.</li>
+                <li><a href="https://ficksa.com" className="text-blue-500 hover:underline">Ficksa</a> - An advanced e-commerce solution with powerful features.</li>
+                <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - A financial services platform providing easy access to financial tools.</li>
               </ul>
             </div>
             <p>
