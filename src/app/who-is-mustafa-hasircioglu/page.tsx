@@ -30,13 +30,15 @@ export default function ProfilePage() {
             </p>
             <div>
               <strong>Technologies and Skills:</strong>
-              <ul className="list-disc list-inside">
-                <li>Frontend Development: React, Next.js, TypeScript, PHP, Laravel</li>
-                <li>Backend Development: Node.js, C++, C#, Go</li>
-                <li>DevOps and Containerization: Docker, Kubernetes, CI/CD, Terraform</li>
-                <li>Databases: MySQL, MongoDB, PostgreSQL, Redis</li>
-                <li>Cloud Services: AWS, Google Cloud</li>
-                <li>Tools: Git, Docker Compose, Jenkins, Redux</li>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Programming Languages:</strong> C++, C#, Go, TypeScript, JavaScript, PHP</li>
+                <li><strong>Frontend Development:</strong> Next.js, React, Redux, HTML, CSS</li>
+                <li><strong>Backend Development:</strong> Node.js, Laravel</li>
+                <li><strong>Databases:</strong> MySQL, MongoDB, PostgreSQL, Redis</li>
+                <li><strong>DevOps & Containerization:</strong> Docker, Kubernetes, CI/CD, Jenkins, Terraform, Vault</li>
+                <li><strong>Messaging & Queues:</strong> RabbitMQ, MQTT, Kafka</li>
+                <li><strong>Cloud Services:</strong> AWS, Google Cloud, Hetzner, Linode, OVH</li>
+                <li><strong>Tools & Concepts:</strong> Git, Docker Compose, Algorithms, Data Structures, Design Patterns</li>
               </ul>
             </div>
             <div>

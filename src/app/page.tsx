@@ -147,34 +147,45 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">Skills & Technologies</h2>
 
-          <div className="grid grid-cols-8 flex-wrap gap-3 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
 
-            {/* Web Development */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Web Development</h3>
-              <div className="flex flex-wrap gap-3">
-                <SkillBadge>Node.js</SkillBadge>
-                <SkillBadge>Next.js</SkillBadge>
-                <SkillBadge>React</SkillBadge>
-                <SkillBadge>TypeScript</SkillBadge>
-                <SkillBadge>PHP</SkillBadge>
-                <SkillBadge>Laravel</SkillBadge>
-              </div>
-            </div>
-
-            {/* Backend Development */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Backend Development</h3>
+            {/* Programming Languages */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Programming Languages</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>C++</SkillBadge>
                 <SkillBadge>C#</SkillBadge>
                 <SkillBadge>Go</SkillBadge>
+                <SkillBadge>TypeScript</SkillBadge>
+                <SkillBadge>JavaScript</SkillBadge>
+                <SkillBadge>PHP</SkillBadge>
+              </div>
+            </div>
+
+            {/* Frontend Development */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Frontend Development</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Next.js</SkillBadge>
+                <SkillBadge>React</SkillBadge>
+                <SkillBadge>Redux</SkillBadge>
+                <SkillBadge>HTML</SkillBadge>
+                <SkillBadge>CSS</SkillBadge>
+              </div>
+            </div>
+
+            {/* Backend Development */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Backend Development</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Node.js</SkillBadge>
+                <SkillBadge>Laravel</SkillBadge>
               </div>
             </div>
 
             {/* Databases */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Databases</h3>
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Databases</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>MySQL</SkillBadge>
                 <SkillBadge>MongoDB</SkillBadge>
@@ -183,9 +194,32 @@ export default function Home() {
               </div>
             </div>
 
+            {/* DevOps & Containerization */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">DevOps & Containerization</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>Docker</SkillBadge>
+                <SkillBadge>Kubernetes</SkillBadge>
+                <SkillBadge>CI/CD</SkillBadge>
+                <SkillBadge>Jenkins</SkillBadge>
+                <SkillBadge>Terraform</SkillBadge>
+                <SkillBadge>Vault</SkillBadge>
+              </div>
+            </div>
+
+            {/* Messaging & Queues */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Messaging & Queues</h3>
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>RabbitMQ</SkillBadge>
+                <SkillBadge>MQTT</SkillBadge>
+                <SkillBadge>Kafka</SkillBadge>
+              </div>
+            </div>
+
             {/* Cloud Services */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Cloud Services</h3>
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Cloud Services</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>AWS</SkillBadge>
                 <SkillBadge>Google Cloud</SkillBadge>
@@ -195,22 +229,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* DevOps & Containerization */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">DevOps & Containerization</h3>
-              <div className="flex flex-wrap gap-3">
-                <SkillBadge>Docker</SkillBadge>
-                <SkillBadge>Kubernetes</SkillBadge>
-                <SkillBadge>CI/CD</SkillBadge>
-                <SkillBadge>Terraform</SkillBadge>
-                <SkillBadge>Kafka</SkillBadge>
-                <SkillBadge>Kafka-UI</SkillBadge>
-              </div>
-            </div>
-
             {/* Authentication & Authorization */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Authentication & Authorization</h3>
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Authentication & Authorization</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>Auth0</SkillBadge>
                 <SkillBadge>JWT</SkillBadge>
@@ -220,8 +241,8 @@ export default function Home() {
             </div>
 
             {/* Payment Systems */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Payment Systems</h3>
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Payment Systems</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>Stripe</SkillBadge>
                 <SkillBadge>Square</SkillBadge>
@@ -230,21 +251,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Tools & Utilities */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Tools & Utilities</h3>
+            {/* Tools & Concepts */}
+            <div className="flex flex-col">
+              <h3 className="font-semibold mb-3 text-lg">Tools & Concepts</h3>
               <div className="flex flex-wrap gap-3">
                 <SkillBadge>Git</SkillBadge>
                 <SkillBadge>Docker Compose</SkillBadge>
-                <SkillBadge>Jenkins</SkillBadge>
-                <SkillBadge>Redux</SkillBadge>
-              </div>
-            </div>
-
-            {/* Knowledge & Concepts */}
-            <div className="flex flex-col w-full col-span-8 md:col-span-4 mb-6">
-              <h3 className="font-semibold mb-2">Knowledge & Concepts</h3>
-              <div className="flex flex-wrap gap-3">
                 <SkillBadge>Algorithms</SkillBadge>
                 <SkillBadge>Data Structures</SkillBadge>
                 <SkillBadge>Design Patterns</SkillBadge>

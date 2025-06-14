@@ -30,13 +30,15 @@ export default function KimlikSayfasi() {
                         </p>
                         <div>
                             <strong>Teknolojiler ve Beceriler:</strong>
-                            <ul className="list-disc list-inside">
-                                <li>Frontend Geliştirme: React, Next.js, TypeScript, PHP, Laravel</li>
-                                <li>Backend Geliştirme: Node.js, C++, C#, Go</li>
-                                <li>DevOps ve Konteynerleştirme: Docker, Kubernetes, CI/CD, Terraform</li>
-                                <li>Veritabanları: MySQL, MongoDB, PostgreSQL, Redis</li>
-                                <li>Bulut Hizmetleri: AWS, Google Cloud</li>
-                                <li>Araçlar: Git, Docker Compose, Jenkins, Redux</li>
+                            <ul className="list-disc list-inside space-y-1">
+                                <li><strong>Programlama Dilleri:</strong> C++, C#, Go, TypeScript, JavaScript, PHP</li>
+                                <li><strong>Frontend Geliştirme:</strong> Next.js, React, Redux, HTML, CSS</li>
+                                <li><strong>Backend Geliştirme:</strong> Node.js, Laravel</li>
+                                <li><strong>Veritabanları:</strong> MySQL, MongoDB, PostgreSQL, Redis</li>
+                                <li><strong>DevOps & Konteynerleştirme:</strong> Docker, Kubernetes, CI/CD, Jenkins, Terraform, Vault</li>
+                                <li><strong>Mesajlaşma & Kuyruk Sistemleri:</strong> RabbitMQ, MQTT, Kafka</li>
+                                <li><strong>Bulut Servisleri:</strong> AWS, Google Cloud, Hetzner, Linode, OVH</li>
+                                <li><strong>Araçlar & Kavramlar:</strong> Git, Docker Compose, Algoritmalar, Veri Yapıları, Tasarım Desenleri</li>
                             </ul>
                         </div>
                         <div>
