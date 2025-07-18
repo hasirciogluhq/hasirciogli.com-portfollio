@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Instagram, Mail, PhoneForwardedIcon } from "lucide-react";
+import { Github, Instagram, LinkedinIcon, Mail, PhoneForwardedIcon } from "lucide-react";
 import Link from "next/link";
 import SocialLink from "@/components/SocialLink";
 import { motion } from "framer-motion";
@@ -69,6 +69,7 @@ export default function KimlikSayfasi() {
                         transition={{ delay: 0.3 }}
                         className="mt-8 flex gap-4 z-10 flex-wrap"
                     >
+                        <SocialLink href="https://www.linkedin.com/in/hasircioglu/" icon={<LinkedinIcon />} label="LinkedIn" />
                         <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
                         <SocialLink href="mailto:mhasirciogl@gmail.com" icon={<Mail />} label="Email" />
                         <SocialLink href="https://instagram.com/m.hasirciogli" icon={<Instagram />} label="Instagram" />
