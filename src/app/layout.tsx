@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: 'https://www.hasirciogli.com',
     images: [
       {
-        url: '/my-photo-3-minified.png', // Görsel yolunu buraya ekleyin
+        url: '/mustafa-hasircioglu.webp', // Görsel yolunu buraya ekleyin
         width: 800,
         height: 600,
         alt: 'Mustafa Hasırcıoğlu Portfolio',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     creator: '@hasirciogli',
     title: 'Mustafa Hasırcıoğlu - Software Developer & Designer',
     description: 'Explore the portfolio of Mustafa Hasırcıoğlu, showcasing various projects, skills, and goals in the field of software development and design.',
-    images: ['/my-photo-3-minified.png'], // Görsel yolunu buraya ekleyin
+    images: ['/mustafa-hasircioglu.webp'], // Görsel yolunu buraya ekleyin
   },
 };
 

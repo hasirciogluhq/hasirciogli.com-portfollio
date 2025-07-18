@@ -49,7 +49,6 @@ export default function ProfilePage() {
                 <li><a href="https://anonimsor.com" className="text-blue-500 hover:underline">AnonimSor</a> - An anonymous Q&A platform for open discussions.</li>
                 <li><a href="https://fightland.vercel.app" className="text-blue-500 hover:underline">Fightland</a> - A gaming platform that connects players worldwide.</li>
                 <li><a href="https://ficksa.com" className="text-blue-500 hover:underline">Ficksa</a> - An advanced e-commerce solution with powerful features.</li>
-                <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - A financial services platform providing easy access to financial tools.</li>
               </ul>
             </div>
             <div className="flex flex-col">
@@ -69,8 +68,8 @@ export default function ProfilePage() {
           >
             <SocialLink href="https://www.linkedin.com/in/hasircioglu/" icon={<LinkedinIcon />} label="LinkedIn" />
             <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
-            <SocialLink href="mailto:mhasirciogl@gmail.com" icon={<Mail />} label="Email" />
-            <SocialLink href="https://instagram.com/m.hasirciogli" icon={<Instagram />} label="Instagram" />
+            <SocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail />} label="Email" />
+            <SocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram />} label="Instagram" />
             <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Phone" />
           </motion.div>
 
@@ -81,7 +80,7 @@ export default function ProfilePage() {
           >
             <Image
               alt="Mustafa Hasırcıoğlu"
-              src="/my-photo-3-minified.png"
+              src="/mustafa-hasircioglu.webp"
               width={1080}
               height={1080}
               style={{

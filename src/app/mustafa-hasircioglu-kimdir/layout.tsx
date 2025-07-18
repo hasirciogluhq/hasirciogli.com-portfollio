@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         siteName: 'Mustafa Hasırcıoğlu',
         images: [
             {
-                url: '/my-photo-3-minified.png',
+                url: '/mustafa-hasircioglu.webp',
                 width: 1080,
                 height: 1080,
             },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Mustafa Hasırcıoğlu | Yazılım Geliştirici, Tasarımcı ve Müzisyen',
         description: 'Yazılım geliştirme, tasarım ve müzik alanlarında faaliyet gösteren yenilikçi bir profesyonel.',
-        images: ['/my-photo-3-minified.png'],
+        images: ['/mustafa-hasircioglu.webp'],
     },
 }
 

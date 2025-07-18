@@ -84,8 +84,8 @@ export default function Home() {
           >
             <SocialLink href="https://www.linkedin.com/in/hasircioglu/" icon={<LinkedinIcon />} label="LinkedIn" />
             <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
-            <SocialLink href="mailto:mhasirciogl@gmail.com" icon={<Mail />} label="Email" />
-            <SocialLink href="https://instagram.com/m.hasirciogli" icon={<Instagram />} label="Instagram" />
+            <SocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail />} label="Email" />
+            <SocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram />} label="Instagram" />
             <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Phone" />
           </motion.div>
 
@@ -94,7 +94,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="overflow-hidden text-4xl md:text-6xl font-bold tracking-tight absolute top-0 right-0 z-0"
           >
-            <Image alt="Mustafa Hasırcıoğlu" src={"/my-photo-3-minified.png"} width={1080} height={1080}
+            <Image alt="Mustafa Hasırcıoğlu" src={"/mustafa-hasircioglu.webp"} width={1080} height={1080}
               style={{
                 WebkitMaskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
                 maskImage: 'linear-gradient(to left, red 50%, transparent 100%)',
@@ -134,11 +134,11 @@ export default function Home() {
               description="E-commerce solution"
               link="https://ficksa.com"
             />
-            <ProjectCard
+            {/* <ProjectCard
               title="trinkmoney.com"
               description="Financial services platform"
               link="https://trinkmoney.com"
-            />
+            /> */}
           </div>
         </div>
       </section>

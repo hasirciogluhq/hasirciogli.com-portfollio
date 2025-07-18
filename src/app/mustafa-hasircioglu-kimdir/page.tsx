@@ -49,7 +49,7 @@ export default function KimlikSayfasi() {
                                 <li><a href="https://anonimsor.com" className="text-blue-500 hover:underline">AnonimSor</a> - Açık tartışmalar için anonim bir Soru-Cevap platformu.</li>
                                 <li><a href="https://fightland.vercel.app" className="text-blue-500 hover:underline">Fightland</a> - Oyuncuları dünya çapında birleştiren bir oyun platformu.</li>
                                 <li><a href="https://ficksa.com" className="text-blue-500 hover:underline">Ficksa</a> - Gelişmiş özelliklere sahip bir e-ticaret çözümü.</li>
-                                <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - Finansal araçlara kolay erişim sağlayan bir finansal hizmetler platformu.</li>
+                                {/* <li><a href="https://trinkmoney.com" className="text-blue-500 hover:underline">TrinkMoney</a> - Finansal araçlara kolay erişim sağlayan bir finansal hizmetler platformu.</li> */}
                             </ul>
                         </div>
                         <div className="flex flex-col">
@@ -71,8 +71,8 @@ export default function KimlikSayfasi() {
                     >
                         <SocialLink href="https://www.linkedin.com/in/hasircioglu/" icon={<LinkedinIcon />} label="LinkedIn" />
                         <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
-                        <SocialLink href="mailto:mhasirciogl@gmail.com" icon={<Mail />} label="Email" />
-                        <SocialLink href="https://instagram.com/m.hasirciogli" icon={<Instagram />} label="Instagram" />
+                        <SocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail />} label="Email" />
+                        <SocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram />} label="Instagram" />
                         <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Telefon" />
                     </motion.div>
 
@@ -83,7 +83,7 @@ export default function KimlikSayfasi() {
                     >
                         <Image
                             alt="Mustafa Hasırcıoğlu"
-                            src="/my-photo-3-minified.png"
+                            src="/mustafa-hasircioglu.webp"
                             width={1080}
                             height={1080}
                             style={{
