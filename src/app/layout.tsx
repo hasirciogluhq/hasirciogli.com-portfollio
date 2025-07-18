@@ -50,6 +50,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <head>
+          <meta name="apple-mobile-web-app-title" content="Mustafa Hasırcıoğlu" />
+        </head>
         {children}
         <Analytics />
       </body>
