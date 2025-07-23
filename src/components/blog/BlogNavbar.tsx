@@ -50,8 +50,8 @@ export default function BlogNavbar() {
            }}>
       </div>
       
-              <div className={`relative max-w-6xl mx-auto px-6 transition-all duration-500 ${
-          scrolled ? 'py-3' : 'py-4'
+              <div className={`relative max-w-6xl mx-auto px-4 md:px-0 transition-all duration-500 ${
+          scrolled ? 'py-2' : 'py-3'
         }`}>
         <div className="flex items-center justify-between">
           <motion.div
@@ -79,7 +79,7 @@ export default function BlogNavbar() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="hidden md:flex items-center space-x-1"
+            className="hidden md:flex items-center space-x-0.5"
           >
             <NavLink
               href="/"
@@ -117,7 +117,7 @@ function NavLink({ href, icon, label }: { href: string; icon: React.ReactNode; l
   return (
     <Link
       href={href}
-      className="group relative flex items-center space-x-2 px-4 py-2.5 rounded-full
+      className="group relative flex items-center space-x-2 px-3 py-2 rounded-full
                  bg-white/[0.04] hover:bg-white/[0.12] 
                  border border-white/[0.08] hover:border-white/[0.2]
                  backdrop-blur-sm transition-all duration-400

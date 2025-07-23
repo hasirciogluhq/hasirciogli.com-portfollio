@@ -31,7 +31,7 @@ export default function BlogFooter() {
            }}>
       </div>
       
-      <div className="relative max-w-6xl mx-auto px-6 py-12">
+              <div className="relative max-w-6xl mx-auto px-6 md:px-0 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

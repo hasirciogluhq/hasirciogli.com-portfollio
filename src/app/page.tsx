@@ -21,7 +21,7 @@ export default function Home() {
       <main className="min-h-screen bg-[#0A0A0A] text-white pt-20">
       {/* Hero Section */}
       <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-6xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Home() {
 
       {/* Projects Section */}
       <section className="px-4 py-16 bg-[#0F0F0F]">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectCard
@@ -160,7 +160,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <section className="px-4 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">Skills & Technologies</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
@@ -286,7 +286,7 @@ export default function Home() {
 
       {/* Support Section */}
       <section className="px-4 py-16 bg-[#1F1F1F]">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
