@@ -327,7 +327,9 @@ export default function Home() {
 
 
       </main>
-      <BlogFooter />
+      <div className="mt-0">
+        <BlogFooter />
+      </div>
     </>
   );
 }

@@ -149,7 +149,9 @@ export default function DeveloperPhilosophyEN() {
                 </div>
             </section>
             </main>
-            <BlogFooter />
+            <div className="mt-0">
+              <BlogFooter />
+            </div>
         </>
     );
 } 

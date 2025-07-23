@@ -96,7 +96,9 @@ export default function ProfilePage() {
         </div>
       </section>
       </main>
-      <BlogFooter />
+      <div className="mt-0">
+        <BlogFooter />
+      </div>
     </>
   );
 }

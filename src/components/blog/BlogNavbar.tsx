@@ -6,24 +6,42 @@ import { Home, User, BookOpen, Menu } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 export default function BlogNavbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className="fixed top-0 left-0 right-0 z-50"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-black/40 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.6)]' : 'bg-black/15 backdrop-blur-2xl'
+      }`}
     >
-      {/* Enhanced Apple-style glass morphism background */}
-      <div className="absolute inset-0 bg-black/25 backdrop-blur-2xl border-b border-white/[0.12] 
-                      shadow-[0_1px_0_0_rgba(255,255,255,0.08),0_0_20px_rgba(0,0,0,0.3)] 
-                      before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/[0.12] before:via-white/[0.04] before:to-transparent before:pointer-events-none">
-        {/* Inner glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-400/[0.02] to-transparent pointer-events-none"></div>
+      {/* Dynamic glass morphism background */}
+      <div className={`absolute inset-0 border-b border-white/[0.12] transition-all duration-500
+                      before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/[0.12] before:via-white/[0.04] before:to-transparent before:pointer-events-none
+                      ${scrolled ? 'bg-black/25 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(255,255,255,0.12),0_0_30px_rgba(0,0,0,0.5)]' : 'bg-black/10 backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.08),0_0_20px_rgba(0,0,0,0.3)]'}`}>
+        {/* Dynamic inner glow */}
+        <div className={`absolute inset-0 transition-all duration-500 pointer-events-none ${
+          scrolled ? 'bg-gradient-to-b from-zinc-400/[0.04] to-transparent' : 'bg-gradient-to-b from-zinc-400/[0.02] to-transparent'
+        }`}></div>
       </div>
       
-      {/* Enhanced metallic shine effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent 
-                      transform -skew-x-12 animate-pulse duration-4000 opacity-70"></div>
+      {/* Dynamic metallic shine effect */}
+      <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent 
+                      transform -skew-x-12 animate-pulse duration-4000 transition-all duration-500 ${
+                        scrolled ? 'opacity-60' : 'opacity-80'
+                      }`}></div>
       
       {/* Subtle noise texture */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
@@ -32,24 +50,29 @@ export default function BlogNavbar() {
            }}>
       </div>
       
-      <div className="relative max-w-6xl mx-auto px-6 py-4">
+              <div className={`relative max-w-6xl mx-auto px-6 transition-all duration-500 ${
+          scrolled ? 'py-3' : 'py-4'
+        }`}>
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <Link
-              href="/"
-              className="group relative text-xl font-semibold bg-gradient-to-r from-white via-zinc-100 to-zinc-200 
-                         bg-clip-text text-transparent hover:from-zinc-50 hover:to-white 
-                         transition-all duration-500 tracking-tight"
-            >
-              <span className="relative z-10">Mustafa Hasırcıoğlu</span>
-              {/* Subtle glow on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 
-                              opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 -z-10"></div>
-            </Link>
+            <div className="flex flex-col">
+              <Link
+                href="/"
+                className="group relative text-xl font-bold text-white hover:text-zinc-100 
+                           transition-all duration-500 tracking-tight"
+              >
+                <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] filter drop-shadow-[0_1px_3px_rgba(255,255,255,0.5)]">Mustafa Hasırcıoğlu</span>
+                {/* Strong white glow */}
+                <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 -z-10"></div>
+                {/* Text stroke effect */}
+                <div className="absolute inset-0 text-black opacity-20 group-hover:opacity-30 transition-all duration-500 -z-20" style={{ WebkitTextStroke: '1px white' }}>Mustafa Hasırcıoğlu</div>
+              </Link>
+              <span className="text-xs text-zinc-200 mt-1 tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] font-medium">Portfolyo & Geliştirici</span>
+            </div>
           </motion.div>
 
           <motion.div

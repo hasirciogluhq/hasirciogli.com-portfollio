@@ -99,7 +99,9 @@ export default function KimlikSayfasi() {
                 </div>
             </section>
             </main>
-            <BlogFooter />
+            <div className="mt-0">
+              <BlogFooter />
+            </div>
         </>
     );
 }

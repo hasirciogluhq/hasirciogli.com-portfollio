@@ -11,10 +11,10 @@ export default function BlogFooter() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className="relative mt-16 overflow-hidden"
+      className="relative mt-0 overflow-hidden"
     >
       {/* Enhanced Apple-style glass morphism background */}
-      <div className="absolute inset-0 bg-black/35 backdrop-blur-2xl border-t border-white/[0.15] 
+      <div className="absolute inset-0 bg-black/90 backdrop-blur-2xl border-t border-white/[0.15] 
                       shadow-[0_-1px_0_0_rgba(255,255,255,0.08),0_0_40px_rgba(0,0,0,0.4)]
                       before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/[0.08] before:via-white/[0.03] before:to-transparent before:pointer-events-none">
         {/* Enhanced inner glow */}
@@ -72,20 +72,16 @@ export default function BlogFooter() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
-        >
-          <div className="text-zinc-400 text-sm">
-            © 2025 Mustafa Hasırcıoğlu. Tüm hakları saklıdır.
-          </div>
-          <div className="flex gap-2 mt-4 md:mt-0">
-            <LanguageLink href="/blogs/developer-philosophy/tr" label="Türkçe" flag="" />
-            <LanguageLink href="/blogs/developer-philosophy/en" label="English" flag="" />
-          </div>
-        </motion.div>
+                            <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.8 }}
+                      className="mt-12 pt-8 border-t border-white/10 flex justify-center items-center"
+                    >
+                      <div className="text-zinc-400 text-sm">
+                        © 2025 Mustafa Hasırcıoğlu. Tüm hakları saklıdır.
+                      </div>
+                    </motion.div>
       </div>
     </motion.footer>
   );
@@ -136,32 +132,4 @@ function MetallicSocialLink({ href, icon, label }: { href: string; icon: React.R
   );
 }
 
-function LanguageLink({ href, label, flag }: { href: string; label: string; flag: string }) {
-  return (
-    <Link
-      href={href}
-      className="group relative flex items-center space-x-2 px-4 py-2 rounded-full
-                 bg-white/[0.04] hover:bg-white/[0.12] 
-                 border border-white/[0.08] hover:border-white/[0.2]
-                 backdrop-blur-sm transition-all duration-400
-                 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_1px_3px_rgba(0,0,0,0.1)]
-                 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_4px_12px_rgba(0,0,0,0.3)]
-                 hover:scale-105 active:scale-95 transform-gpu"
-    >
-      <span className="text-sm drop-shadow-sm">{flag}</span>
-      <span className="text-sm font-medium text-zinc-400 group-hover:text-white transition-all duration-400 
-                       group-hover:drop-shadow-sm tracking-wide">
-        {label}
-      </span>
-      
-      {/* Enhanced shine effect */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent
-                      opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none
-                      group-hover:animate-pulse"></div>
-                      
-      {/* Premium rim */}
-      <div className="absolute inset-0 rounded-full border border-white/[0.03] group-hover:border-white/[0.1]
-                      transition-all duration-400 pointer-events-none"></div>
-    </Link>
-  );
-} 
+ 

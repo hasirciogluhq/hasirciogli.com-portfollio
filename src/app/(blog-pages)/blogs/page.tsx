@@ -22,8 +22,10 @@ export default function BlogsIndex() {
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
                     <p className="text-zinc-400">Blog sayfasına yönlendiriliyor... / Redirecting to blog...</p>
                 </div>
-            </main>
-            <BlogFooter />
-        </>
+                    </main>
+        <div className="mt-0">
+          <BlogFooter />
+        </div>
+      </>
     );
 } 
