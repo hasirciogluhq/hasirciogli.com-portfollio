@@ -1,15 +1,19 @@
 "use client";
 
-import { Github, Instagram, LinkedinIcon, Mail, PhoneForwardedIcon } from "lucide-react";
+import { Github, Instagram, LinkedinIcon, Mail } from "lucide-react";
 import Link from "next/link";
 import SocialLink from "@/components/SocialLink";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import BlogNavbar from "@/components/blog/BlogNavbar";
+import BlogFooter from "@/components/blog/BlogFooter";
 
 export default function KimlikSayfasi() {
     return (
-        <main className="min-h-screen bg-[#0A0A0A] text-white">
-            <section className="px-4 pt-24 pb-16 md:pt-32 md:pb-24">
+        <>
+            <BlogNavbar />
+            <main className="min-h-screen bg-[#0A0A0A] text-white pt-20">
+            <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
                 <div className="max-w-4xl mx-auto relative">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -58,8 +62,8 @@ export default function KimlikSayfasi() {
                             </p>
                             <a href="https://music.apple.com/us/artist/mustafa-has%C4%B1rc%C4%B1o%C4%9Flu/1776362009" className="text-blue-500 hover:underline">Apple Music Profilim</a>
                             <a href="https://open.spotify.com/artist/2ULQn4aI8EULqHDRUB59qE?si=f7PJeHG-T-23yLYmK2zopg" className="text-blue-500 hover:underline">Spotify Profilim</a>
-                            <a href="https://www.youtube.com/@hasirciogli" className="text-blue-500 hover:underline">Youtube Hesabım - Turkey 🇹🇷</a>
-                            <a href="https://www.youtube.com/@noxydev" className="text-blue-500 hover:underline">Youtube Hesabım - United States 🇺🇸❤️</a>
+                            <a href="https://www.youtube.com/@hasirciogli" className="text-blue-500 hover:underline">Youtube Hesabım - Turkey</a>
+                            <a href="https://www.youtube.com/@noxydev" className="text-blue-500 hover:underline">Youtube Hesabım - United States</a>
                         </div>
                     </motion.div>
 
@@ -73,7 +77,6 @@ export default function KimlikSayfasi() {
                         <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
                         <SocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail />} label="Email" />
                         <SocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram />} label="Instagram" />
-                        <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Telefon" />
                     </motion.div>
 
                     <motion.div
@@ -95,19 +98,8 @@ export default function KimlikSayfasi() {
                     </motion.div>
                 </div>
             </section>
-
-            <footer className="px-4 py-8 border-t border-zinc-800">
-                <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
-                    <div className="text-zinc-400 text-sm">
-                        © 2025 Mustafa Hasırcıoğlu. Tüm hakları saklıdır.
-                    </div>
-                    <div className="flex gap-6 mt-4 md:mt-0">
-                        <Link href="/who-is-mustafa-hasircioglu" className="text-zinc-400 hover:text-white transition-colors">
-                            English Version
-                        </Link>
-                    </div>
-                </div>
-            </footer>
-        </main>
+            </main>
+            <BlogFooter />
+        </>
     );
 }

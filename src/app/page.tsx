@@ -1,10 +1,13 @@
 "use client"
 
-import { Github, Instagram, LinkedinIcon, Mail, PhoneForwardedIcon } from "lucide-react";
+import { Github, Instagram, LinkedinIcon, Mail } from "lucide-react";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import SkillBadge from "@/components/SkillBadge";
 import SocialLink from "@/components/SocialLink";
+import { setLanguagePreference } from "@/lib/language-utils";
+import BlogNavbar from "@/components/blog/BlogNavbar";
+import BlogFooter from "@/components/blog/BlogFooter";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -13,9 +16,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-white">
+    <>
+      <BlogNavbar />
+      <main className="min-h-screen bg-[#0A0A0A] text-white pt-20">
       {/* Hero Section */}
-      <section className="px-4 pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="max-w-4xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +58,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="mt-4 flex gap-4 text-sm z-40"
+            className="mt-4 flex gap-4 text-sm z-40 flex-wrap"
           >
             <Link
               href="/mustafa-hasircioglu-kimdir"
@@ -62,7 +67,7 @@ export default function Home() {
               <span className="border-b border-dotted border-zinc-600">
                 Mustafa Hasırcıoğlu Kimdir?
               </span>
-              <span className="ml-1 text-zinc-500">🇹🇷</span>
+              <span className="ml-1 text-zinc-500"></span>
             </Link>
             <span className="text-zinc-600">•</span>
             <Link
@@ -72,7 +77,18 @@ export default function Home() {
               <span className="border-b border-dotted border-zinc-600">
                 Who is Mustafa Hasırcıoğlu?
               </span>
-              <span className="ml-1 text-zinc-500">🇺🇸</span>
+              <span className="ml-1 text-zinc-500"></span>
+            </Link>
+            <span className="text-zinc-600">•</span>
+            <Link
+              href="/blogs/developer-philosophy/tr"
+              onClick={() => setLanguagePreference('tr')}
+              className="text-zinc-400 hover:text-white transition-colors flex items-center"
+            >
+              <span className="border-b border-dotted border-zinc-600">
+                Geliştirici Felsefem
+              </span>
+              <span className="ml-1 text-zinc-500">💭</span>
             </Link>
           </motion.div>
 
@@ -86,7 +102,6 @@ export default function Home() {
             <SocialLink href="https://github.com/hasirciogli" icon={<Github />} label="GitHub" />
             <SocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail />} label="Email" />
             <SocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram />} label="Instagram" />
-            <SocialLink href="tel:+905558909899" icon={<PhoneForwardedIcon size={20} />} label="Phone" />
           </motion.div>
 
           <motion.div
@@ -311,35 +326,8 @@ export default function Home() {
       </section>
 
 
-      {/* Updated Footer */}
-      <footer className="px-4 py-8 border-t border-zinc-800">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="text-zinc-400 text-sm">
-            © 2024 Mustafa Hasırcıoğlu. All rights reserved.
-          </div>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="mailto:mhasirciogli@gmail.com" className="text-zinc-400 hover:text-white transition-colors">
-              mhasirciogli@gmail.com
-            </Link>
-            <nav className="flex gap-4 text-sm">
-              <Link
-                href="/mustafa-hasircioglu-kimdir"
-                className="text-zinc-400 hover:text-white transition-colors"
-                hrefLang="tr"
-              >
-                Türkçe
-              </Link>
-              <Link
-                href="/who-is-mustafa-hasircioglu"
-                className="text-zinc-400 hover:text-white transition-colors"
-                hrefLang="en"
-              >
-                English
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </footer>
-    </main>
+      </main>
+      <BlogFooter />
+    </>
   );
 }
