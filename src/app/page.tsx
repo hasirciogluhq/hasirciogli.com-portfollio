@@ -11,13 +11,14 @@ import BlogFooter from "@/components/blog/BlogFooter";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { NavbarComponent } from "@/components/navbar";
 
 
 
 export default function Home() {
   return (
     <>
-      <BlogNavbar />
+      <NavbarComponent />
       <main className="min-h-screen bg-[#0A0A0A] text-white pt-20">
       {/* Hero Section */}
       <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
