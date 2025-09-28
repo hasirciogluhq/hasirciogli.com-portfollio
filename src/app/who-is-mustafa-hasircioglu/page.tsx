@@ -20,7 +20,7 @@ export default function ProfilePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-bold tracking-tight z-10"
           >
-            <h1>Hello, I&apos;m Mustafa Hasırcıoğlu</h1>
+            <h1>Hello, I'm Mustafa Hasırcıoğlu</h1>
           </motion.div>
 
           <motion.div
@@ -56,7 +56,7 @@ export default function ProfilePage() {
               </ul>
             </div>
             <div className="flex flex-col">
-              <p>Additionally, I&apos;m interested in music, and my songs like &quot;Bla Bla Bla&quot; and &quot;Kayıp Yürekler&quot; are available on Apple Music, Spotify, and many other platforms.</p>
+              <p>Additionally, I'm interested in music, and my songs like "Bla Bla Bla" and "Kayıp Yürekler" are available on Apple Music, Spotify, and many other platforms.</p>
               <a href="https://music.apple.com/us/artist/mustafa-has%C4%B1rc%C4%B1o%C4%9Flu/1776362009" className="text-blue-500 hover:underline">My Apple Music Profile</a>
               <a href="https://open.spotify.com/artist/2ULQn4aI8EULqHDRUB59qE?si=f7PJeHG-T-23yLYmK2zopg" className="text-blue-500 hover:underline">My Spotify Profile</a>
               <a href="https://www.youtube.com/@hasirciogli" className="text-blue-500 hover:underline">My Youtube Account - Turkey</a>

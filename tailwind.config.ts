@@ -9,7 +9,13 @@ export default {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			'sans': ['var(--font-inter)', 'sans-serif'], // SF Pro'ya en yakın alternatif
+  			'serif': ['var(--font-playfair)', 'serif'],
+  			'mono': ['var(--font-jetbrains-mono)', 'monospace'],
+  		},
   		colors: {
+        'apple-blue': '#007AFF',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

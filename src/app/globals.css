@@ -7,6 +7,16 @@ body {
 }
 
 @layer base {
+  body {
+    @apply font-sans antialiased;
+    font-size: 17px; /* Apple HIG standard for body text */
+    font-weight: 400; /* Medium yerine normal okunabilirlik için */
+    letter-spacing: -0.41px; /* SF Pro'da kullanılan tipik bir değer */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;

@@ -58,7 +58,7 @@ export default function KimlikSayfasi() {
                         </div>
                         <div className="flex flex-col">
                             <p>
-                                Ayrıca, müzikle de ilgileniyorum ve Apple Music, spotify ve birçok platform da &quot;Bla Bla Bla&quot; ve &quot;Kayıp Yürekler&quot; gibi şarkılarım mevcut.
+                                Ayrıca, müzikle de ilgileniyorum ve Apple Music, spotify ve birçok platform da "Bla Bla Bla" ve "Kayıp Yürekler" gibi şarkılarım mevcut.
                             </p>
                             <a href="https://music.apple.com/us/artist/mustafa-has%C4%B1rc%C4%B1o%C4%9Flu/1776362009" className="text-blue-500 hover:underline">Apple Music Profilim</a>
                             <a href="https://open.spotify.com/artist/2ULQn4aI8EULqHDRUB59qE?si=f7PJeHG-T-23yLYmK2zopg" className="text-blue-500 hover:underline">Spotify Profilim</a>

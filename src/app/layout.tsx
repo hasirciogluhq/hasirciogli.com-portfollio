@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,6 +26,9 @@ export const metadata: Metadata = {
   description: 'Portfolio of Mustafa Hasırcıoğlu, a software developer and designer. Showcasing innovative projects and technical expertise.',
   authors: [{ name: 'Mustafa Hasırcıoğlu' }],
   keywords: ['software developer', 'designer', 'portfolio', 'web development', 'AI', 'projects'],
+  appleWebApp: {
+    title: 'Mustafa Hasırcıoğlu',
+  },
   openGraph: {
     title: 'Mustafa Hasırcıoğlu - Software Developer & Designer',
     description: 'Explore the portfolio of Mustafa Hasırcıoğlu, showcasing various projects, skills, and goals in the field of software development and design.',
@@ -48,11 +59,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <head>
-          <meta name="apple-mobile-web-app-title" content="Mustafa Hasırcıoğlu" />
-        </head>
         {children}
         <Analytics />
       </body>
