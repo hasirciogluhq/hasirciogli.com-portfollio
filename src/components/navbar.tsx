@@ -17,7 +17,7 @@ export const NavbarComponent = () => {
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-[#1A1A1A]/80 backdrop-blur-md transition-all duration-300 border-b border-transparent ${isScrolled ? ' border-white/10' : ''
             }`}>
-            <div className="max-w-6xl mx-auto px-4 md:px-0 py-3">
+            <div className="max-w-6xl mx-auto px-4 lg:px-0 py-3">
                 <div className="flex items-center justify-between">
 
                     {/* İsim Logo */}

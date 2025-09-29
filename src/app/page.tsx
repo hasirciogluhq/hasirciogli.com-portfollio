@@ -1,6 +1,5 @@
 "use client"
 
-import { NavbarComponent } from "@/components/navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutHero } from "@/components/AboutHero";
 import { ProblemsSection } from "@/components/ProblemsSection";
@@ -8,6 +7,7 @@ import { BenefitsSection } from "@/components/BenefitsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { NavbarComponent } from "@/components/NavBar";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <NavbarComponent />
       <main className="min-h-screen bg-[#1A1A1A] text-white pt-20">
 
-      {/* Hero Section */}
+        {/* Hero Section */}
         <HeroSection />
 
         {/* About Hero Section */}
@@ -34,7 +34,7 @@ export default function Home() {
         <CTASection />
 
       </main>
-      
+
       {/* Footer */}
       <Footer />
     </>

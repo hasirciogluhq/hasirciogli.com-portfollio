@@ -1,18 +1,19 @@
+import { ArrowDownIcon } from "lucide-react"
 import { LiquidGlass } from "./liquid-glass"
 
 export const HeroSection = () => {
   return (
-    <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+    <section className="flex flex-col items-center justify-center px-4 md:px-0 pt-8 pb-16 md:pt-16 md:pb-24 relative">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="flex flex-col lg:flex-row w-full gap-12 items-center">
 
           {/* Sol Kolon - İçerik */}
           <div className="flex-1">
             {/* Metin Grubu */}
             <div className="flex flex-col items-start">
               {/* Kategori Badge */}
-              <LiquidGlass className="rounded-lg px-2.5 py-1 !bg-white/5 mb-4">
-                <span className="text-xs font-medium text-zinc-300 uppercase tracking-wider">
+              <LiquidGlass className="rounded-lg px-2 py-0 !bg-white/5 mb-4 cursor-default">
+                <span className="text-xs font-normal text-zinc-400 uppercase tracking-wider">
                   Craft Developer
                 </span>
               </LiquidGlass>
@@ -25,29 +26,29 @@ export const HeroSection = () => {
               {/* Alt Başlık ve Açıklama */}
               <div className="max-w-xl space-y-4 mb-8">
                 <p className="text-base text-zinc-400 leading-relaxed">
-                  For me, coding is not a profession, it’s a craft. I reject the "just make it work" mentality, building elegant, efficient, and future-oriented systems.
+                  For me, coding is not a profession, it&apos;s a craft. I reject the &quot;just make it work&quot; mentality, building elegant, efficient, and future-oriented systems.
                 </p>
                 <p className="text-zinc-300 italic font-serif text-lg leading-relaxed">
-                  "I write code thinking not just about today, but about what a system will look like five years from now."
+                  &quot;I write code thinking not just about today, but about what a system will look like five years from now.&quot;
                 </p>
               </div>
 
               {/* CTA Butonu */}
               <a
                 href="/mustafa-hasircioglu-kimdir"
-                className="group relative text-zinc-300 hover:text-white text-xs font-medium transition-all duration-300 flex items-center"
+                className="group relative text-zinc-300 hover:text-white text-xs font-medium transition-all duration-300 flex items-center cursor-pointer hover:cursor-pointer"
               >
-                <LiquidGlass className="pl-4 pr-2.5 py-2 rounded-xl flex items-center gap-2 !bg-zinc-800/60 !border-zinc-700/50 group-hover:!bg-zinc-700/60 transition-colors">
+                <LiquidGlass className="pl-4 pr-2 py-2 rounded-xl flex items-center gap-2 !bg-zinc-800/60 !border-zinc-700/50 group-hover:!bg-zinc-700/60 transition-colors">
                   <span className="tracking-wide">Discover My Philosophy</span>
                   <div className="relative">
-                    <LiquidGlass className="w-5 h-5 rounded-lg flex items-center justify-center !bg-zinc-700/40">
-                       <svg className="w-2.5 h-2.5 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                    <LiquidGlass className="w-6 h-6 p-0 rounded-lg flex items-center justify-center !bg-zinc-700/40">
+                      <svg className="w-2 h-2 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </LiquidGlass>
                   </div>
                 </LiquidGlass>
-                </a>
+              </a>
             </div>
           </div>
 
@@ -100,6 +101,19 @@ export const HeroSection = () => {
               <div className="absolute top-1/2 -left-6 w-2 h-2 bg-pink-500 rounded-full opacity-50"></div>
             </div>
           </div>
+        </div>
+      </div>
+
+
+
+      {/* Bottom Predicter Triangle */}
+      <div className="absolute bottom-6 w-full h-auto items-center justify-center flex flex-row">
+        <div className="animate-bounce">
+          <LiquidGlass className="w-6 h-6 rounded-full flex items-center justify-center">
+            <div>
+              <ArrowDownIcon className="w-5 h-5 text-gray-300" />
+            </div>
+          </LiquidGlass>
         </div>
       </div>
     </section>
