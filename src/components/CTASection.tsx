@@ -4,15 +4,15 @@ export const CTASection = () => {
   return (
     <section className="px-4 py-16 bg-white">
       <div className="max-w-4xl mx-auto">
-        
+
         {/* CTA Card */}
         <LiquidGlass className="p-8 rounded-2xl !bg-zinc-800 text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Write Your Own Success Story?
           </h2>
-          
+
           <p className="text-lg text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of professionals who&apos;ve transformed their careers through expert coaching. 
+            Join hundreds of professionals who&apos;ve transformed their careers through expert coaching.
             Whether you&apos;re switching fields or leveling up, your breakthrough starts here.
           </p>
 
@@ -25,7 +25,7 @@ export const CTASection = () => {
               <span className="tracking-wide">Book Your Free Strategy Call</span>
               <div className="relative">
                 <LiquidGlass className="w-6 h-6 rounded-full flex items-center justify-center !bg-zinc-600">
-                   <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </LiquidGlass>
@@ -39,10 +39,10 @@ export const CTASection = () => {
           <h3 className="text-2xl font-bold text-zinc-900 mb-4">
             Let&apos;s Work Together
           </h3>
-          
-          <div className="text-4xl md:text-5xl font-bold text-zinc-900">
-            <span className="text-zinc-600">mhasirciogli</span>
-            <span className="text-zinc-900">@gmail.com</span>
+
+          <div className="text-4xl md:text-5xl font-bold bg-clip-text py-1 bg-gradient-to-r from-zinc-200 text-shadow-lg to-zinc-950 text-transparent">
+            <span className="">mhasirciogli</span>
+            <span className="">@gmail.com</span>
           </div>
         </div>
       </div>
