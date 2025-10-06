@@ -23,7 +23,7 @@ export const BlogHighlights = () => {
       excerpt: "Why I reject the 'just make it work' mentality and how building elegant systems pays off in the long run. Code is not disposable.",
       date: "2024-10-01",
       readTime: "8 min",
-      slug: "/blogs/developer-philosophy",
+      slug: "/blog/developer-philosophy",
       category: "Philosophy",
       featured: true
     },
@@ -33,7 +33,7 @@ export const BlogHighlights = () => {
       excerpt: "From cluster meltdowns to zero-downtime deployments. Here's what no tutorial teaches you about K8s at scale.",
       date: "2024-09-15",
       readTime: "12 min",
-      slug: "/blogs/kubernetes-production",
+      slug: "/blog/kubernetes-production",
       category: "DevOps"
     },
     {
@@ -42,7 +42,7 @@ export const BlogHighlights = () => {
       excerpt: "How we handle 50K+ transactions/month with sub-200ms response times and PCI compliance.",
       date: "2024-09-01",
       readTime: "10 min",
-      slug: "/blogs/payment-systems",
+      slug: "/blog/payment-systems",
       category: "Backend"
     }
   ]
@@ -59,10 +59,15 @@ export const BlogHighlights = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg mb-4">
-            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-              Blog
-            </span>
+          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg mb-6">
+            <div className="flex items-center gap-2">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+              <span className="text-xs font-medium text-white uppercase tracking-wider">
+                Blog
+              </span>
+            </div>
           </LiquidGlass>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -164,7 +169,7 @@ export const BlogHighlights = () => {
         {/* View All CTA */}
         <div className="text-center mt-10">
           <a
-            href="/blogs"
+            href="/blog"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-colors shadow-lg hover:shadow-xl"
           >
             View All Articles

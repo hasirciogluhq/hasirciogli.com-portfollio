@@ -32,7 +32,7 @@ export const CTASection = () => {
 
           {/* Primary CTA */}
           <a
-            href="#contact"
+            href="/contact"
             onClick={() => handleCTAClick('primary_strategy_call')}
             className="group inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-xl font-semibold hover:bg-zinc-800 transition-all shadow-lg hover:shadow-xl hover:scale-105 mb-4"
           >
@@ -76,7 +76,7 @@ export const CTASection = () => {
 
           {/* Case Study Request */}
           <a
-            href="#contact"
+            href="/contact"
             onClick={() => handleCTAClick('case_study_request')}
             className="group"
           >
@@ -102,7 +102,7 @@ export const CTASection = () => {
 
           {/* Calendar Booking */}
           <a
-            href="https://calendly.com/mustafa-hasircioglu"
+            href="https://calendly.com/hasircioglu"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => handleCTAClick('calendar_booking')}
@@ -132,9 +132,9 @@ export const CTASection = () => {
         {/* Social Proof Line */}
         <div className="text-center">
           <p className="text-sm text-zinc-600">
-            Trusted by <span className="text-zinc-900 font-semibold">15+ startups and teams</span> · 
+            Trusted by <span className="text-zinc-900 font-semibold">10+ startups and teams</span> · 
             <span className="text-zinc-900 font-semibold"> 99.9% uptime</span> on production systems · 
-            <span className="text-zinc-900 font-semibold"> 5+ years</span> building at scale
+            <span className="text-zinc-900 font-semibold"> 7+ years</span> building at scale
           </p>
         </div>
       </div>

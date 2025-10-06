@@ -72,10 +72,15 @@ export const TestimonialsSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg border border-zinc-200 mb-4">
-            <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-              Testimonials
-            </span>
+          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white border border-zinc-200 mb-6">
+            <div className="flex items-center justify-center gap-2">
+              <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span className="text-xs font-medium text-zinc-900 uppercase tracking-wider">
+                Testimonials
+              </span>
+            </div>
           </LiquidGlass>
 
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
@@ -176,7 +181,7 @@ export const TestimonialsSection = () => {
         {/* Trust Metrics */}
         <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
           <div className="text-center">
-            <div className="text-3xl font-bold text-zinc-900 mb-1">15+</div>
+            <div className="text-3xl font-bold text-zinc-900 mb-1">10+</div>
             <div className="text-sm text-zinc-600">Projects Shipped</div>
           </div>
           <div className="text-center border-x border-zinc-300">

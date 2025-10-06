@@ -1,10 +1,34 @@
+"use client"
+
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { LiquidGlass } from "./liquid-glass";
 
 export const NavbarComponent = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activePath, setActivePath] = useState("/");
+    
+    // Get current pathname with fallback to state
+    let pathname = "/";
+    try {
+        pathname = usePathname();
+    } catch {
+        // Fallback to state if usePathname fails
+        pathname = activePath;
+    }
+    
+    // Update active path state
+    useEffect(() => {
+        setActivePath(pathname);
+    }, [pathname]);
+    
+    // Helper function to check if link is active
+    const isActive = (path: string) => {
+        if (path === "/") return pathname === "/";
+        return pathname.startsWith(path);
+    };
 
     // Throttled scroll handler for better performance
     const handleScroll = useCallback(() => {
@@ -69,29 +93,49 @@ export const NavbarComponent = () => {
                         <div className="hidden md:flex items-center space-x-8">
                             <Link
                                 href="/about"
-                                className="text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                                className={`transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1 ${
+                                    isActive("/about") 
+                                        ? "text-white font-semibold" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 aria-label="About page"
+                                aria-current={isActive("/about") ? "page" : undefined}
                             >
                                 About
                             </Link>
                             <Link
                                 href="/projects"
-                                className="text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                                className={`transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1 ${
+                                    isActive("/projects") 
+                                        ? "text-white font-semibold" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 aria-label="Projects page"
+                                aria-current={isActive("/projects") ? "page" : undefined}
                             >
                                 Projects
                             </Link>
                             <Link
                                 href="/blog"
-                                className="text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                                className={`transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1 ${
+                                    isActive("/blog") 
+                                        ? "text-white font-semibold" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 aria-label="Blog page"
+                                aria-current={isActive("/blog") ? "page" : undefined}
                             >
                                 Blog
                             </Link>
                             <Link
                                 href="/contact"
-                                className="text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                                className={`transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1 ${
+                                    isActive("/contact") 
+                                        ? "text-white font-semibold" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 aria-label="Contact page"
+                                aria-current={isActive("/contact") ? "page" : undefined}
                             >
                                 Contact
                             </Link>
@@ -144,29 +188,49 @@ export const NavbarComponent = () => {
                         <div className="px-4 py-6 space-y-4">
                             <Link
                                 href="/about"
-                                className="block text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2"
+                                className={`block transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 ${
+                                    isActive("/about") 
+                                        ? "text-white font-semibold bg-white/10" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
+                                aria-current={isActive("/about") ? "page" : undefined}
                             >
                                 About
                             </Link>
                             <Link
                                 href="/projects"
-                                className="block text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2"
+                                className={`block transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 ${
+                                    isActive("/projects") 
+                                        ? "text-white font-semibold bg-white/10" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
+                                aria-current={isActive("/projects") ? "page" : undefined}
                             >
                                 Projects
                             </Link>
                             <Link
                                 href="/blog"
-                                className="block text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2"
+                                className={`block transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 ${
+                                    isActive("/blog") 
+                                        ? "text-white font-semibold bg-white/10" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
+                                aria-current={isActive("/blog") ? "page" : undefined}
                             >
                                 Blog
                             </Link>
                             <Link
                                 href="/contact"
-                                className="block text-zinc-400 hover:text-white transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2"
+                                className={`block transition-colors duration-300 font-medium text-base py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 ${
+                                    isActive("/contact") 
+                                        ? "text-white font-semibold bg-white/10" 
+                                        : "text-zinc-400 hover:text-white"
+                                }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
+                                aria-current={isActive("/contact") ? "page" : undefined}
                             >
                                 Contact
                             </Link>
@@ -276,29 +340,11 @@ export const NavbarComponentByClaude = () => {
             if (e.key === 'Escape' && isMobileMenuOpen) {
                 setIsMobileMenuOpen(false);
             }
-
-            // Arrow key navigation for desktop
-            if (!isMobileMenuOpen && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                e.preventDefault();
-                const navItems = ['home', 'about', 'projects', 'blog', 'contact'];
-                const currentIndex = navItems.indexOf(activeSection);
-                let newIndex;
-
-                if (e.key === 'ArrowLeft') {
-                    newIndex = currentIndex > 0 ? currentIndex - 1 : navItems.length - 1;
-                } else {
-                    newIndex = currentIndex < navItems.length - 1 ? currentIndex + 1 : 0;
-                }
-
-                const newSection = navItems[newIndex];
-                setActiveSection(newSection);
-                document.getElementById(newSection)?.scrollIntoView({ behavior: 'smooth' });
-            }
         };
 
         document.addEventListener('keydown', handleKeyDown);
         return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [isMobileMenuOpen, activeSection]);
+    }, [isMobileMenuOpen]);
 
     // Body scroll lock with improved handling
     useEffect(() => {
@@ -553,7 +599,7 @@ const NAV_CONFIG = {
         { href: '#about', label: 'About' },
         { href: '#projects', label: 'Projects' },
         { href: '#blog', label: 'Blog' },
-        { href: '#contact', label: 'Contact' },
+        { href: '/contact', label: 'Contact' },
     ],
     scrollThreshold: 30,
 };
@@ -1046,10 +1092,30 @@ export const NavbarComponentByClaudeSonnet = () => {
 export const NavbarComponentByClaude2 = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('home');
+    const [activePath, setActivePath] = useState("/");
     const [isMenuAnimating, setIsMenuAnimating] = useState(false);
 
-    // Enhanced scroll handler with section detection
+    // Get current pathname with fallback to state
+    let pathname = "/";
+    try {
+        pathname = usePathname();
+    } catch {
+        // Fallback to state if usePathname fails
+        pathname = activePath;
+    }
+    
+    // Update active path state
+    useEffect(() => {
+        setActivePath(pathname);
+    }, [pathname]);
+    
+    // Helper function to check if link is active
+    const isActive = (path: string) => {
+        if (path === "/") return pathname === "/";
+        return pathname.startsWith(path);
+    };
+
+    // Enhanced scroll handler
     const handleScroll = useCallback(() => {
         const scrollY = window.scrollY;
         const newIsScrolled = scrollY > 50;
@@ -1057,22 +1123,7 @@ export const NavbarComponentByClaude2 = () => {
         if (newIsScrolled !== isScrolled) {
             setIsScrolled(newIsScrolled);
         }
-
-        // Section detection for active nav highlighting
-        const sections = ['home', 'about', 'projects', 'blog', 'contact'];
-        const currentSection = sections.find(section => {
-            const element = document.getElementById(section);
-            if (element) {
-                const rect = element.getBoundingClientRect();
-                return rect.top <= 100 && rect.bottom >= 100;
-            }
-            return false;
-        });
-
-        if (currentSection && currentSection !== activeSection) {
-            setActiveSection(currentSection);
-        }
-    }, [isScrolled, activeSection]);
+    }, [isScrolled]);
 
     // Debounced scroll handler for better performance
     useEffect(() => {
@@ -1107,29 +1158,11 @@ export const NavbarComponentByClaude2 = () => {
             if (e.key === 'Escape' && isMobileMenuOpen) {
                 setIsMobileMenuOpen(false);
             }
-
-            // Arrow key navigation for desktop
-            if (!isMobileMenuOpen && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                e.preventDefault();
-                const navItems = ['home', 'about', 'projects', 'blog', 'contact'];
-                const currentIndex = navItems.indexOf(activeSection);
-                let newIndex;
-
-                if (e.key === 'ArrowLeft') {
-                    newIndex = currentIndex > 0 ? currentIndex - 1 : navItems.length - 1;
-                } else {
-                    newIndex = currentIndex < navItems.length - 1 ? currentIndex + 1 : 0;
-                }
-
-                const newSection = navItems[newIndex];
-                setActiveSection(newSection);
-                document.getElementById(newSection)?.scrollIntoView({ behavior: 'smooth' });
-            }
         };
 
         document.addEventListener('keydown', handleKeyDown);
         return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [isMobileMenuOpen, activeSection]);
+    }, [isMobileMenuOpen]);
 
     // Body scroll lock with improved handling
     useEffect(() => {
@@ -1168,7 +1201,7 @@ export const NavbarComponentByClaude2 = () => {
                         <Link
                             href="/"
                             className="group relative focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-lg p-1 -m-1"
-                            onClick={() => setActiveSection('home')}
+                            onClick={() => setActivePath('home')}
                         >
                             <div className="relative">
                                 <h1 className={`font-playfair font-bold tracking-tight text-white transition-all duration-500 ${isScrolled ? 'text-lg scale-95' : 'text-xl scale-100'
@@ -1186,18 +1219,18 @@ export const NavbarComponentByClaude2 = () => {
                                 <Link
                                     key={item.id}
                                     href={item.href}
-                                    className={`relative px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${activeSection === item.id
-                                            ? 'text-white bg-white/10'
+                                    className={`relative px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${isActive(item.href)
+                                            ? 'text-white bg-white/10 font-semibold'
                                             : 'text-zinc-400 hover:text-white hover:bg-white/5'
                                         }`}
-                                    onClick={() => setActiveSection(item.id)}
+                                    aria-current={isActive(item.href) ? "page" : undefined}
                                     style={{
                                         animationDelay: `${index * 50}ms`
                                     }}
                                 >
                                     {item.label}
                                     {/* Active indicator */}
-                                    {activeSection === item.id && (
+                                    {isActive(item.href) && (
                                         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full animate-pulse" />
                                     )}
                                 </Link>
@@ -1255,49 +1288,47 @@ export const NavbarComponentByClaude2 = () => {
                         aria-hidden="true"
                     />
 
-                    {/* Menu Content with slide animation */}
-                    <div className="relative z-50 bg-[#1A1A1A]/98 backdrop-blur-xl border-b border-white/10 animate-in slide-in-from-top duration-300">
-                        <div className="px-6 py-8 space-y-2">
-                            {navItems.map((item, index) => (
-                                <Link
-                                    key={item.id}
-                                    href={item.href}
-                                    className={`block px-4 py-3 rounded-xl transition-all duration-300 font-medium text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${activeSection === item.id
-                                            ? 'text-white bg-white/10 border border-white/20'
-                                            : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                                        }`}
-                                    onClick={() => {
-                                        setActiveSection(item.id);
-                                        setIsMobileMenuOpen(false);
-                                    }}
-                                    style={{
-                                        animationDelay: `${index * 100}ms`,
-                                        animation: 'fadeInUp 0.3s ease-out forwards'
-                                    }}
-                                >
-                                    <div className="flex items-center justify-between">
-                                        <span>{item.label}</span>
-                                        {activeSection === item.id && (
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                                        )}
-                                    </div>
-                                </Link>
-                            ))}
+                        {/* Menu Content with slide animation */}
+                        <div className="relative z-50 bg-[#1A1A1A]/98 backdrop-blur-xl border-b border-white/10 animate-in slide-in-from-top duration-300">
+                            <div className="px-6 py-8 space-y-2">
+                                {navItems.map((item, index) => (
+                                    <Link
+                                        key={item.id}
+                                        href={item.href}
+                                        className={`block px-4 py-3 rounded-xl transition-all duration-300 font-medium text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${isActive(item.href)
+                                                ? 'text-white bg-white/10 border border-white/20 font-semibold'
+                                                : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                                            }`}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        aria-current={isActive(item.href) ? "page" : undefined}
+                                        style={{
+                                            animationDelay: `${index * 100}ms`,
+                                            animation: 'fadeInUp 0.3s ease-out forwards'
+                                        }}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <span>{item.label}</span>
+                                            {isActive(item.href) && (
+                                                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                                            )}
+                                        </div>
+                                    </Link>
+                                ))}
 
-                            {/* Mobile CTA with enhanced styling */}
-                            <div className="pt-6 border-t border-white/10">
-                                <Link
-                                    href="mailto:mhasirciogli@gmail.com"
-                                    className="block"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    <LiquidGlass className="px-6 py-4 rounded-xl text-center font-medium transition-all duration-300 hover:scale-105">
-                                        <span className="text-zinc-300">Let&apos;s Talk</span>
-                                    </LiquidGlass>
-                                </Link>
+                                {/* Mobile CTA with enhanced styling */}
+                                <div className="pt-6 border-t border-white/10">
+                                    <Link
+                                        href="mailto:mhasirciogli@gmail.com"
+                                        className="block"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        <LiquidGlass className="px-6 py-4 rounded-xl text-center font-medium transition-all duration-300 hover:scale-105">
+                                            <span className="text-zinc-300">Let&apos;s Talk</span>
+                                        </LiquidGlass>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             )}
 

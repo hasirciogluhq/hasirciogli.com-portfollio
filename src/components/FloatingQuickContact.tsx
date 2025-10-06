@@ -128,7 +128,7 @@ export const FloatingQuickContact = () => {
                                 </a>
                                 
                                 <a
-                                    href="https://calendly.com/mustafa-hasircioglu"
+                                    href="https://calendly.com/hasircioglu"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center gap-2 p-3 bg-zinc-800/40 rounded-lg hover:bg-zinc-700/50 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-zinc-600 group"

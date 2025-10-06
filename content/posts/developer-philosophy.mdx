@@ -1,0 +1,229 @@
+---
+title: "Developer Philosophy: Craft Over Speed"
+excerpt: "Why I reject the 'just make it work' mentality and how building elegant systems pays off in the long run. Code is not disposable."
+coverImage: "/blog/ship-fast-vs-ship-right-1.jpg"
+publishedAt: "2024-10-01"
+status: "published"
+featured: false
+tags:
+  - philosophy
+  - clean-code
+  - architecture
+  - craftsmanship
+  - software-engineering
+seoTitle: "Developer Philosophy: Craft Over Speed | Mustafa Hasırcıoğlu"
+seoDescription: "Why I reject the 'just make it work' mentality and how building elegant, efficient, and future-oriented systems creates lasting value."
+enableToc: true
+enableComments: true
+---
+
+## I'm Not a Standard Developer
+
+For me, coding is not a profession, it's a **craft**.
+
+I reject the "just make it work" mentality that most developers have. For me, it's not enough for code to just work; it also needs to be **elegant, efficient, and future-oriented**. I am an architect who builds performant and scalable systems in the digital world, thought through to the finest detail.
+
+## The Perfectionist Obsession
+
+I obsess over code — and I'm proud of it.
+
+I don't just solve the problem. I don't sleep until I find the **most optimized, most performant, and most secure** version of that solution. Even a millisecond delay is a defeat for me. This perfectionist obsession is actually a reflection of my respect for the user.
+
+```go
+// Bad: Just making it work
+func GetUser(id int) User {
+    // Direct database query in handler
+    // No caching, no error handling
+    return db.Query("SELECT * FROM users WHERE id = ?", id)
+}
+
+// Good: Obsessing over the details
+func GetUser(ctx context.Context, id int) (*User, error) {
+    // Check cache first
+    if cached := cache.Get(ctx, userCacheKey(id)); cached != nil {
+        return cached, nil
+    }
+
+    // Query with timeout and proper error handling
+    user, err := userRepo.FindByID(ctx, id)
+    if err != nil {
+        return nil, fmt.Errorf("failed to fetch user: %w", err)
+    }
+
+    // Cache for future requests
+    cache.Set(ctx, userCacheKey(id), user, 5*time.Minute)
+
+    return user, nil
+}
+```
+
+Every line matters. Every function signature is a contract. Every error path is considered.
+
+## Building Earthquake-Resistant Skyscrapers
+
+I don't just stack bricks on top of each other; I lay the foundation of **earthquake-resistant skyscrapers** that will stand for years.
+
+**Clean Architecture**, **SOLID principles** — these aren't just buzzwords for me, they're my life philosophy. Under every line of code I write lies not just logic, but a vision.
+
+### The Foundation Matters
+
+Most developers rush to build features. I start by asking:
+
+- How will this scale to 100,000 users?
+- What happens when this service goes down?
+- Can a junior developer understand this code in 6 months?
+- Will this architecture still make sense in 5 years?
+
+```
+┌─────────────────────────────────────┐
+│         Presentation Layer          │  ← Clean, simple interfaces
+├─────────────────────────────────────┤
+│         Application Layer           │  ← Business logic
+├─────────────────────────────────────┤
+│           Domain Layer              │  ← Core entities
+├─────────────────────────────────────┤
+│       Infrastructure Layer          │  ← Database, APIs, etc.
+└─────────────────────────────────────┘
+```
+
+Each layer has a purpose. Each boundary is protected. Each dependency points inward.
+
+## Conscious Technology Choices
+
+I tried popular paths like TypeScript/Next.js, but **consciously abandoned them** because I couldn't foresee the future.
+
+My choice of **Go** isn't just a language preference; it's because it represents the philosophy of **performance, simplicity, and scalability**. Instead of chasing trends, I invest in technologies that will still be relevant ten years from now.
+
+### Why Go?
+
+1. **Performance**: Compiled, statically-typed, concurrent by design
+2. **Simplicity**: No classes, no inheritance, no magic
+3. **Scalability**: Built for distributed systems from day one
+4. **Longevity**: Backed by Google, stable API, backward compatible
+
+```go
+// This is all you need for a concurrent, production-ready HTTP server
+func main() {
+    mux := http.NewServeMux()
+    mux.HandleFunc("/health", healthCheck)
+
+    server := &http.Server{
+        Addr:         ":8080",
+        Handler:      mux,
+        ReadTimeout:  10 * time.Second,
+        WriteTimeout: 10 * time.Second,
+        IdleTimeout:  120 * time.Second,
+    }
+
+    log.Fatal(server.ListenAndServe())
+}
+```
+
+No frameworks. No abstractions. Just code that works and will continue to work.
+
+## User-Centric Perfectionism
+
+All this "obsessing" has one purpose: **To provide users with a fast, reliable, and seamless experience**.
+
+My perfectionism is actually my customer satisfaction obsession. Because coding is an art form for me, and like every work of art, the systems I create must add value to users' lives.
+
+### What This Means in Practice
+
+- **Performance**: Sub-200ms API response times, not "good enough"
+- **Reliability**: 99.9% uptime with graceful degradation, not "it usually works"
+- **Security**: Defense in depth, not "we haven't been hacked yet"
+- **Monitoring**: Observability from day one, not "let's add logs later"
+
+Every millisecond matters. Every edge case is considered. Every failure mode is handled.
+
+## The Five-Year Principle
+
+> "I write code thinking not just about today, but about what a system will look like five years from now. Every line of code is a step taken to prevent a future problem or create an opportunity."
+
+This is my guiding principle. When I write code, I ask:
+
+1. **Will this scale?** Not to 1000 users, but to 1 million
+2. **Can this be maintained?** Not by me, but by someone who joins next year
+3. **Is this testable?** Not just unit tests, but integration and load tests
+4. **Is this observable?** Can I debug this at 3 AM when production is down?
+5. **Is this secure?** Not against script kiddies, but against sophisticated attacks
+
+### Real Example: Database Design
+
+```sql
+-- Bad: Quick and dirty
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
+
+-- Good: Thinking five years ahead
+CREATE TABLE users (
+    id BIGSERIAL PRIMARY KEY,
+    uuid UUID NOT NULL UNIQUE DEFAULT gen_random_uuid(),
+    email VARCHAR(320) NOT NULL UNIQUE,
+    email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    deleted_at TIMESTAMPTZ,
+    CONSTRAINT email_format CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$')
+);
+
+CREATE INDEX idx_users_email ON users(email) WHERE deleted_at IS NULL;
+CREATE INDEX idx_users_created_at ON users(created_at DESC);
+
+-- Trigger for updated_at
+CREATE TRIGGER update_users_updated_at
+    BEFORE UPDATE ON users
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+```
+
+The second approach:
+
+- Scales to billions of rows (BIGSERIAL)
+- Supports distributed systems (UUID)
+- Handles soft deletes (deleted_at)
+- Validates data at database level
+- Optimized for common queries
+- Tracks changes automatically
+
+## The Cost of Craft
+
+Yes, building this way takes more time upfront. But the payoff is exponential:
+
+- **Fewer bugs** in production
+- **Faster feature development** after the foundation is solid
+- **Lower maintenance costs** over time
+- **Easier onboarding** for new developers
+- **Better sleep** knowing the system won't randomly crash
+
+I've seen too many "quick and dirty" solutions become million-dollar technical debt nightmares.
+
+## My Commitment
+
+When you work with me, you get:
+
+1. **Production-ready code** from day one
+2. **Architecture** that scales
+3. **Tests** that give confidence
+4. **Documentation** that makes sense
+5. **Monitoring** that catches issues before users do
+
+Not because I'm trying to be perfect. But because this is the **only way I know how to build**.
+
+---
+
+## The Bottom Line
+
+Coding is a craft. Systems are art. Users deserve excellence.
+
+I don't build software to just check boxes. I build systems that **last, scale, and delight**.
+
+That's not standard developer work. That's **craftsmanship**.
+
+---
+
+_If this philosophy resonates with you, [let's work together](/contact). If you think it's overkill, that's fine — there are plenty of developers who will build you a "quick solution." Just don't call me when it breaks in production._

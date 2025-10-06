@@ -20,18 +20,18 @@ export default function BlogFooter() {
         {/* Enhanced inner glow */}
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-400/[0.03] via-zinc-500/[0.01] to-transparent pointer-events-none"></div>
       </div>
-      
+
       {/* Premium metallic gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-zinc-800/30 pointer-events-none"></div>
-      
+
       {/* Subtle texture noise */}
       <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-           }}>
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}>
       </div>
-      
-              <div className="relative max-w-6xl mx-auto px-6 md:px-0 py-12">
+
+      <div className="relative max-w-6xl mx-auto px-6 md:px-0 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,9 +54,9 @@ export default function BlogFooter() {
             <h4 className="text-lg font-medium text-zinc-200">Sayfalar</h4>
             <div className="space-y-3">
               <FooterLink href="/" label="Ana Sayfa" />
-              <FooterLink href="/mustafa-hasircioglu-kimdir" label="Mustafa Hasırcıoğlu Kimdir?" />
-              <FooterLink href="/who-is-mustafa-hasircioglu" label="Who is Mustafa Hasırcıoğlu?" />
-              <FooterLink href="/blogs/developer-philosophy" label="Geliştirici Felsefem" />
+              <FooterLink href="/about" label="Mustafa Hasırcıoğlu Kimdir?" />
+              <FooterLink href="/about" label="Who is Mustafa Hasırcıoğlu?" />
+              <FooterLink href="/blog/developer-philosophy" label="Geliştirici Felsefem" />
             </div>
           </div>
 
@@ -72,16 +72,16 @@ export default function BlogFooter() {
           </div>
         </motion.div>
 
-                            <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.8 }}
-                      className="mt-12 pt-8 border-t border-white/10 flex justify-center items-center"
-                    >
-                      <div className="text-zinc-400 text-sm">
-                        © 2025 Mustafa Hasırcıoğlu. Tüm hakları saklıdır.
-                      </div>
-                    </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-12 pt-8 border-t border-white/10 flex justify-center items-center"
+        >
+          <div className="text-zinc-400 text-sm">
+            © 2025 Mustafa Hasırcıoğlu. Tüm hakları saklıdır.
+          </div>
+        </motion.div>
       </div>
     </motion.footer>
   );
@@ -119,12 +119,12 @@ function MetallicSocialLink({ href, icon, label }: { href: string; icon: React.R
       <span className="text-zinc-400 group-hover:text-white transition-all duration-400 group-hover:drop-shadow-sm">
         {icon}
       </span>
-      
+
       {/* Enhanced metallic shine on hover */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/[0.15] via-white/[0.05] to-transparent
                       opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none
                       group-hover:animate-pulse"></div>
-                      
+
       {/* Premium rim light */}
       <div className="absolute inset-0 rounded-full border border-white/[0.05] group-hover:border-white/[0.15]
                       transition-all duration-400 pointer-events-none"></div>
@@ -132,4 +132,3 @@ function MetallicSocialLink({ href, icon, label }: { href: string; icon: React.R
   );
 }
 
- 

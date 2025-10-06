@@ -17,7 +17,7 @@ import { FloatingQuickContact } from "@/components/FloatingQuickContact";
 export default function Home() {
   return (
     <>
-      <NavbarComponentByClaude2 />
+      {/* <NavbarComponentByClaude2 /> */}
       <main className="min-h-screen bg-[#1A1A1A] text-white pt-20">
 
         {/* Hero Section */}
@@ -51,12 +51,6 @@ export default function Home() {
         <CTASection />
 
       </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Floating Quick Contact */}
-      <FloatingQuickContact />
     </>
   );
 }

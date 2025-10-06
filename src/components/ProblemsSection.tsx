@@ -140,10 +140,15 @@ export const ProblemsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg border border-zinc-200 mb-4">
-            <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-              Who I Help
-            </span>
+          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white border border-zinc-200 mb-6">
+            <div className="flex items-center justify-center gap-2">
+              <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <span className="text-xs font-medium text-zinc-900 uppercase tracking-wider">
+                Who I Help
+              </span>
+            </div>
           </LiquidGlass>
           
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
@@ -204,7 +209,7 @@ export const ProblemsSection = () => {
               {currentPersona.outcome}
             </p>
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 text-white rounded-lg text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-lg"
             >
               {currentPersona.cta}

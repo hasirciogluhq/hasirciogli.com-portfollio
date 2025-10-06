@@ -1,0 +1,148 @@
+---
+title: "5 Kubernetes Lessons I Learned the Hard Way"
+excerpt: "Production incidents taught me more than any tutorial. Here are the critical Kubernetes lessons that will save you from midnight debugging sessions."
+coverImage: "/k8s-1.png"
+publishedAt: "2025-01-10"
+tags:
+  - infrastructure
+  - technology
+featured: false
+status: published
+---
+
+# 5 Kubernetes Lessons I Learned the Hard Way
+
+After managing Kubernetes clusters in production for several years, I've accumulated some battle scars. Here are the lessons that cost me sleep but saved future headaches.
+
+## 1. Resource Limits Are Not Optional
+
+**The Mistake**: I deployed a service without memory limits. During a traffic spike, it consumed all available memory, taking down the entire node.
+
+```yaml
+# DON'T DO THIS
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+```
+
+**The Fix**: Always set resource requests and limits.
+
+```yaml
+# DO THIS
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+```
+
+## 2. Readiness vs Liveness Probes
+
+**The Mistake**: Using the same endpoint for both probes caused cascading failures during deployment.
+
+**The Solution**:
+- **Liveness**: Is the container alive? (restart if fails)
+- **Readiness**: Can it handle traffic? (remove from service if fails)
+
+These should be **different checks** with different failure tolerances.
+
+## 3. PodDisruptionBudgets Save Lives
+
+During cluster upgrades, all replicas went down simultaneously. PDBs ensure minimum availability:
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: my-app-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: my-app
+```
+
+## 4. Network Policies Are Your Friend
+
+**The Wake-Up Call**: A compromised service accessed our database directly. Network policies would have prevented this.
+
+Default deny, then explicitly allow:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-to-db
+spec:
+  podSelector:
+    matchLabels:
+      app: database
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: api
+```
+
+## 5. Horizontal Pod Autoscaling Needs Metrics
+
+HPA without proper metrics is useless. We learned this during Black Friday when manual scaling was too slow.
+
+**Required**:
+- Install metrics-server
+- Define meaningful metrics (not just CPU)
+- Test autoscaling before you need it
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+```
+
+## Bonus: Logging and Monitoring
+
+You can't debug what you can't see. Set up proper logging and monitoring **before** you need it:
+
+- Centralized logging (ELK/Loki)
+- Metrics (Prometheus)
+- Tracing (Jaeger)
+- Alerting (AlertManager)
+
+## Conclusion
+
+Production is the best teacher, but it doesn't have to be painful. Learn from my mistakes:
+
+1. Set resource limits
+2. Understand your probes
+3. Protect with PDBs
+4. Secure with network policies
+5. Scale with HPA
+
+Have your own K8s war stories? Let me know in the comments or reach out!
+
+---
+
+*Want more infrastructure deep-dives? Follow for upcoming posts on service mesh, observability, and cost optimization.*
+

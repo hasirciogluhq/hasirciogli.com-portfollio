@@ -27,7 +27,7 @@ interface Project {
 
 export const FeaturedProjects = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
-  
+
   const featuredProjects = projectsData.projects.filter((p: Project) => p.featured)
 
   const handleProjectClick = (projectSlug: string) => {
@@ -48,12 +48,17 @@ export const FeaturedProjects = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg mb-4">
-            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-              Portfolio
-            </span>
+          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg mb-6">
+            <div className="flex items-center gap-2">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              <span className="text-xs font-medium text-white uppercase tracking-wider">
+                Portfolio
+              </span>
+            </div>
           </LiquidGlass>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Selected Work
           </h2>
@@ -71,12 +76,11 @@ export const FeaturedProjects = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <LiquidGlass 
-                className={`h-full p-0 rounded-2xl overflow-hidden !bg-zinc-900/40 border border-zinc-800/50 transition-all duration-300 ${
-                  hoveredProject === project.id 
-                    ? 'scale-105 !border-zinc-700 shadow-2xl' 
+              <LiquidGlass
+                className={`h-full p-0 rounded-2xl overflow-hidden !bg-zinc-900/40 border border-zinc-800/50 transition-all duration-300 ${hoveredProject === project.id
+                    ? 'scale-105 !border-zinc-700 shadow-2xl'
                     : 'scale-100'
-                }`}
+                  }`}
               >
                 {/* Project Image */}
                 <div className="relative h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 overflow-hidden">
@@ -85,7 +89,7 @@ export const FeaturedProjects = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-5xl opacity-20">🚀</span>
                   </div>
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
                     <span className="px-2 py-1 text-xs font-medium bg-black/60 backdrop-blur-sm text-white rounded-md">
@@ -120,9 +124,8 @@ export const FeaturedProjects = () => {
                   </p>
 
                   {/* Tech Pills */}
-                  <div className={`flex flex-wrap gap-1.5 mb-4 transition-all duration-300 ${
-                    hoveredProject === project.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                  }`}>
+                  <div className={`flex flex-wrap gap-1.5 mb-4 transition-all duration-300 ${hoveredProject === project.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                    }`}>
                     {project.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
@@ -146,7 +149,7 @@ export const FeaturedProjects = () => {
                       <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                     </a>
 
-                    <button 
+                    <button
                       className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                       onClick={() => handleProjectClick(`${project.slug}_case_study`)}
                     >

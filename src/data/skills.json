@@ -43,6 +43,12 @@
       "projects": ["anonimsor"]
     },
     {
+      "name": "Bun",
+      "category": "Backend",
+      "proficiency": 5,
+      "projects": ["anonimsor", "deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
       "name": "PostgreSQL",
       "category": "Backend",
       "proficiency": 5,
@@ -88,7 +94,13 @@
       "name": "Git",
       "category": "Tools",
       "proficiency": 5,
-      "projects": ["deweloper-cloud", "hsrcpay", "anonimsor", "fightland", "ficksa"]
+      "projects": [
+        "deweloper-cloud",
+        "hsrcpay",
+        "anonimsor",
+        "fightland",
+        "ficksa"
+      ]
     },
     {
       "name": "CI/CD",
@@ -122,4 +134,3 @@
     }
   ]
 }
-

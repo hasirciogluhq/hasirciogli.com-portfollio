@@ -23,35 +23,31 @@ export default function BlogNavbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-black/40 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.6)]' : 'bg-black/15 backdrop-blur-2xl'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-black/40 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.6)]' : 'bg-black/15 backdrop-blur-2xl'
+        }`}
     >
       {/* Dynamic glass morphism background */}
       <div className={`absolute inset-0 border-b border-white/[0.12] transition-all duration-500
                       before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/[0.12] before:via-white/[0.04] before:to-transparent before:pointer-events-none
                       ${scrolled ? 'bg-black/25 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(255,255,255,0.12),0_0_30px_rgba(0,0,0,0.5)]' : 'bg-black/10 backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.08),0_0_20px_rgba(0,0,0,0.3)]'}`}>
         {/* Dynamic inner glow */}
-        <div className={`absolute inset-0 transition-all duration-500 pointer-events-none ${
-          scrolled ? 'bg-gradient-to-b from-zinc-400/[0.04] to-transparent' : 'bg-gradient-to-b from-zinc-400/[0.02] to-transparent'
-        }`}></div>
+        <div className={`absolute inset-0 transition-all duration-500 pointer-events-none ${scrolled ? 'bg-gradient-to-b from-zinc-400/[0.04] to-transparent' : 'bg-gradient-to-b from-zinc-400/[0.02] to-transparent'
+          }`}></div>
       </div>
-      
+
       {/* Dynamic metallic shine effect */}
       <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent 
-                      transform -skew-x-12 animate-pulse duration-4000 transition-all duration-500 ${
-                        scrolled ? 'opacity-60' : 'opacity-80'
-                      }`}></div>
-      
+                      transform -skew-x-12 animate-pulse duration-4000 transition-all duration-500 ${scrolled ? 'opacity-60' : 'opacity-80'
+        }`}></div>
+
       {/* Subtle noise texture */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-           }}>
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}>
       </div>
-      
-              <div className={`relative max-w-6xl mx-auto px-4 md:px-0 transition-all duration-500 ${
-          scrolled ? 'py-2' : 'py-3'
+
+      <div className={`relative max-w-6xl mx-auto px-4 md:px-0 transition-all duration-500 ${scrolled ? 'py-2' : 'py-3'
         }`}>
         <div className="flex items-center justify-between">
           <motion.div
@@ -87,12 +83,12 @@ export default function BlogNavbar() {
               label="Ana Sayfa"
             />
             <NavLink
-              href="/mustafa-hasircioglu-kimdir"
+              href="/about"
               icon={<User size={16} />}
               label="Hakkımda"
             />
             <NavLink
-              href="/blogs/developer-philosophy"
+              href="/blog/developer-philosophy"
               icon={<BookOpen size={16} />}
               label="Blog"
             />
@@ -132,12 +128,12 @@ function NavLink({ href, icon, label }: { href: string; icon: React.ReactNode; l
                        group-hover:drop-shadow-sm tracking-wide">
         {label}
       </span>
-      
+
       {/* Enhanced metallic shine on hover */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/[0.08] to-transparent
                       opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none transform
                       group-hover:animate-pulse"></div>
-                      
+
       {/* Premium rim light */}
       <div className="absolute inset-0 rounded-full border border-white/[0.02] group-hover:border-white/[0.08]
                                              transition-all duration-400 pointer-events-none"></div>
@@ -191,8 +187,8 @@ function MobileNavButton() {
         >
           <div className="p-2 space-y-1">
             <MobileNavLink href="/" icon={<Home size={16} />} label="Ana Sayfa" onClick={() => setIsOpen(false)} />
-            <MobileNavLink href="/mustafa-hasircioglu-kimdir" icon={<User size={16} />} label="Hakkımda" onClick={() => setIsOpen(false)} />
-            <MobileNavLink href="/blogs/developer-philosophy" icon={<BookOpen size={16} />} label="Blog" onClick={() => setIsOpen(false)} />
+            <MobileNavLink href="/about" icon={<User size={16} />} label="Hakkımda" onClick={() => setIsOpen(false)} />
+            <MobileNavLink href="/blog/developer-philosophy" icon={<BookOpen size={16} />} label="Blog" onClick={() => setIsOpen(false)} />
           </div>
         </motion.div>
       )}

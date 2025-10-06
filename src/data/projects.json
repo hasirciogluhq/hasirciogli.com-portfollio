@@ -7,7 +7,7 @@
       "description": "Cloud-native development platform with Kubernetes orchestration",
       "longDescription": "A comprehensive cloud infrastructure platform designed for modern development teams. Features automated deployments, scalable infrastructure, and advanced monitoring.",
       "role": "Founder & Lead Engineer",
-      "category": "SaaS",
+      "category": "PaaS",
       "tags": ["Kubernetes", "Go", "Docker", "Cloud Infrastructure"],
       "technologies": ["Go", "Kubernetes", "Docker", "PostgreSQL", "Redis"],
       "liveUrl": "https://deweloper.cloud",
@@ -48,25 +48,25 @@
       "technologies": ["Next.js", "TypeScript", "PostgreSQL", "WebSocket"],
       "liveUrl": "https://anonimsor.com",
       "featured": true,
-      "imageUrl": "/projects/anonimsor.jpg",
-      "metrics": {
-        "label": "Active users",
-        "value": "1K+"
-      }
+      "imageUrl": "/projects/anonimsor.jpg"
     },
     {
       "id": "fightland",
-      "title": "Fightland",
+      "title": "FIGHTLAND",
       "slug": "fightland",
-      "description": "Combat sports community and event management platform",
-      "longDescription": "Comprehensive platform for combat sports enthusiasts, gyms, and event organizers with scheduling and community features.",
-      "role": "Technical Lead",
-      "category": "Community",
-      "tags": ["TypeScript", "Next.js", "Community Platform"],
-      "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-      "liveUrl": "https://fightland.com",
-      "featured": false,
-      "imageUrl": "/projects/fightland.jpg"
+      "description": "Custom Rust game server with premium store and full economy management system",
+      "longDescription": "Custom Rust game server featuring comprehensive premium store with privilege packages, game currency system, and server utilities. Built with modern web technologies for seamless player experience and automated payment processing.",
+      "role": "Founder & Full-Stack Developer",
+      "category": "Gaming",
+      "tags": ["Rust Server", "Game Server", "Premium Store", "Payment System"],
+      "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Discord API", "Rust"],
+      "liveUrl": "https://fightland.vercel.app",
+      "featured": true,
+      "imageUrl": "/projects/fightland.jpg",
+      "metrics": {
+        "label": "Premium items",
+        "value": "9+"
+      }
     },
     {
       "id": "ficksa",

@@ -21,7 +21,7 @@ export const Footer = () => {
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/mustafa-hasircioglu",
+      href: "https://linkedin.com/in/hasircioglu",
       icon: <Linkedin className="w-5 h-5" />,
       username: "Mustafa Hasırcıoğlu"
     },
@@ -43,12 +43,12 @@ export const Footer = () => {
     product: [
       { name: "Projects", href: "/projects" },
       { name: "Case Studies", href: "/case-studies" },
-      { name: "Blog", href: "/blogs" }
+      { name: "Blog", href: "/blog" }
     ],
     company: [
-      { name: "About", href: "/mustafa-hasircioglu-kimdir" },
-      { name: "Philosophy", href: "/blogs/developer-philosophy" },
-      { name: "Contact", href: "#contact" }
+      { name: "About", href: "/about" },
+      { name: "Philosophy", href: "/blog/developer-philosophy" },
+      { name: "Contact", href: "/contact" }
     ],
     legal: [
       { name: "Privacy Policy", href: "/privacy" },
@@ -57,9 +57,9 @@ export const Footer = () => {
   }
 
   const recentPosts = [
-    { title: "Developer Philosophy", slug: "/blogs/developer-philosophy" },
-    { title: "Kubernetes in Production", slug: "/blogs/kubernetes-production" },
-    { title: "Building Payment Systems", slug: "/blogs/payment-systems" }
+    { title: "Developer Philosophy: Craft Over Speed", slug: "/blog/developer-philosophy" },
+    { title: "Kubernetes Production Lessons", slug: "/blog/kubernetes-production-lessons" },
+    { title: "Building a Payment Gateway", slug: "/blog/building-payment-gateway" }
   ]
 
   return (
@@ -77,7 +77,7 @@ export const Footer = () => {
             "description": "Full-stack developer specializing in Go, Kubernetes, and distributed systems. Building scalable products from 0 to 1.",
             "sameAs": [
               "https://github.com/hasirciogli",
-              "https://linkedin.com/in/mustafa-hasircioglu",
+              "https://linkedin.com/in/hasircioglu",
               "https://twitter.com/hasirciogli"
             ],
             "email": "mhasirciogli@gmail.com"
