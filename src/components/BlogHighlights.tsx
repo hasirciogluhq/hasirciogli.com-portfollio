@@ -59,12 +59,12 @@ export const BlogHighlights = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg mb-4">
             <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
               Blog
             </span>
           </LiquidGlass>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Thoughts & Technical Deep Dives
           </h2>

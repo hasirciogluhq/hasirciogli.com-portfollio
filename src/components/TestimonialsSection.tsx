@@ -72,12 +72,12 @@ export const TestimonialsSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-black/5 mb-4">
-            <span className="text-xs font-medium text-zinc-700 uppercase tracking-wider">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg border border-zinc-200 mb-4">
+            <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
               Testimonials
             </span>
           </LiquidGlass>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
             Trusted by Founders & Teams
           </h2>
@@ -153,11 +153,10 @@ export const TestimonialsSection = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex
+                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
                         ? 'bg-zinc-900 w-6'
                         : 'bg-zinc-300 hover:bg-zinc-400'
-                    }`}
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}

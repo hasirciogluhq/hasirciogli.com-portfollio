@@ -18,7 +18,7 @@ const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
       // Daha derin ve dinamik bir etki için RGBA değerlerini kullanın
       // baseColor'ın RGB değerlerini manuel olarak ayarlamanız gerekebilir
       // veya bir renk dönüştürücü kullanabilirsiniz.
-      backgroundColor: `rgba(var(--${baseColor}-rgb, 255, 255, 255), 0.08)`, // Hafif, temel renk
+      backgroundColor: `rgba(var(--${baseColor}-rgb, 255, 255, 255), .03)`, // Hafif, temel renk
       // Alternatif olarak, bir gradient overlay ile daha zengin bir görünüm:
       // backgroundImage: `linear-gradient(135deg, rgba(var(--${baseColor}-rgb, 255,255,255),0.1) 0%, rgba(var(--${baseColor}-rgb, 255,255,255),0) 100%)`
     };
@@ -43,7 +43,7 @@ const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
           // Eğer baseColor'ı dinamik olarak Tailwind sınıfı olarak geçirecekseniz
           // bu kısmı kullanabilirsiniz. Ancak RGBA ile daha kontrollü olur.
           // `bg-${baseColor}-50/[0.08]`,
-          
+
           // Hover efektleri için hafif bir renk değişimi
           "transition-all duration-300 ease-out",
           "hover:border-white/[0.18]",

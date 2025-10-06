@@ -51,7 +51,7 @@
       "imageUrl": "/projects/anonimsor.jpg",
       "metrics": {
         "label": "Active users",
-        "value": "10K+"
+        "value": "1K+"
       }
     },
     {
@@ -83,9 +83,8 @@
       "imageUrl": "/projects/ficksa.jpg",
       "metrics": {
         "label": "Orders/month",
-        "value": "5K+"
+        "value": "1K+"
       }
     }
   ]
 }
-

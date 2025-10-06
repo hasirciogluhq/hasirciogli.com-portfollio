@@ -140,8 +140,8 @@ export const ProblemsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-zinc-900/80 mb-4">
-            <span className="text-xs font-medium text-white uppercase tracking-wider">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg border border-zinc-200 mb-4">
+            <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
               Who I Help
             </span>
           </LiquidGlass>

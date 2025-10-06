@@ -58,12 +58,12 @@ export const ProcessSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg mb-4">
             <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
               Process
             </span>
           </LiquidGlass>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             How I Work
           </h2>
@@ -80,16 +80,14 @@ export const ProcessSection = () => {
               <div key={step.id} className="flex items-center">
                 <button
                   onClick={() => setActiveStep(step.id)}
-                  className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${
-                    activeStep === step.id
-                      ? 'bg-white text-zinc-900 scale-110 shadow-xl'
-                      : 'bg-zinc-900/40 text-zinc-300 hover:bg-zinc-900/60 border border-zinc-800/50'
-                  }`}
+                  className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${activeStep === step.id
+                    ? 'bg-white text-zinc-900 scale-110 shadow-xl'
+                    : 'bg-zinc-900/40 text-zinc-300 hover:bg-zinc-900/60 border border-zinc-800/50'
+                    }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${
-                      activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
-                    }`}>
+                    <div className={`p-2 rounded-lg ${activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
+                      }`}>
                       <div className={activeStep === step.id ? 'text-zinc-900' : 'text-zinc-300'}>
                         {step.icon}
                       </div>
@@ -103,9 +101,8 @@ export const ProcessSection = () => {
 
                 {/* Connector Line */}
                 {index < steps.length - 1 && (
-                  <div className={`w-12 h-0.5 mx-2 transition-colors ${
-                    activeStep > step.id ? 'bg-white' : 'bg-zinc-700'
-                  }`} />
+                  <div className={`w-12 h-0.5 mx-2 transition-colors ${activeStep > step.id ? 'bg-white' : 'bg-zinc-700'
+                    }`} />
                 )}
               </div>
             ))}
@@ -121,7 +118,7 @@ export const ProcessSection = () => {
                 <p className="text-base text-zinc-300 mb-6">
                   {currentStep.description}
                 </p>
-                
+
                 <div className="bg-blue-500/10 border-l-4 border-blue-500 p-4 rounded-r-lg mb-6">
                   <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">
                     What You Get
@@ -167,41 +164,36 @@ export const ProcessSection = () => {
           {steps.map((step) => (
             <LiquidGlass
               key={step.id}
-              className={`p-5 rounded-xl transition-all ${
-                activeStep === step.id
-                  ? '!bg-white text-zinc-900 scale-105'
-                  : '!bg-zinc-900/40 text-zinc-300 border border-zinc-800/50'
-              }`}
+              className={`p-5 rounded-xl transition-all ${activeStep === step.id
+                ? '!bg-white text-zinc-900 scale-105'
+                : '!bg-zinc-900/40 text-zinc-300 border border-zinc-800/50'
+                }`}
               onClick={() => setActiveStep(step.id)}
             >
               <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-lg flex-shrink-0 ${
-                  activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
-                }`}>
+                <div className={`p-3 rounded-lg flex-shrink-0 ${activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
+                  }`}>
                   <div className={activeStep === step.id ? 'text-zinc-900' : 'text-zinc-300'}>
                     {step.icon}
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-xs font-semibold ${
-                      activeStep === step.id ? 'text-zinc-600' : 'text-zinc-500'
-                    }`}>
+                    <span className={`text-xs font-semibold ${activeStep === step.id ? 'text-zinc-600' : 'text-zinc-500'
+                      }`}>
                       Step {step.id}
                     </span>
                     <span className="font-bold text-lg">{step.title}</span>
                   </div>
-                  <p className={`text-sm mb-3 ${
-                    activeStep === step.id ? 'text-zinc-700' : 'text-zinc-400'
-                  }`}>
+                  <p className={`text-sm mb-3 ${activeStep === step.id ? 'text-zinc-700' : 'text-zinc-400'
+                    }`}>
                     {step.description}
                   </p>
-                  
+
                   {activeStep === step.id && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                      <div className={`p-3 rounded-lg ${
-                        activeStep === step.id ? 'bg-blue-50' : 'bg-white/10'
-                      }`}>
+                      <div className={`p-3 rounded-lg ${activeStep === step.id ? 'bg-blue-50' : 'bg-white/10'
+                        }`}>
                         <p className="text-sm leading-relaxed text-blue-900">
                           {step.outcome}
                         </p>
@@ -210,11 +202,10 @@ export const ProcessSection = () => {
                         {step.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className={`px-2 py-1 rounded-md text-xs font-medium ${
-                              activeStep === step.id
-                                ? 'bg-zinc-100 text-zinc-700'
-                                : 'bg-zinc-800/60 text-zinc-300'
-                            }`}
+                            className={`px-2 py-1 rounded-md text-xs font-medium ${activeStep === step.id
+                              ? 'bg-zinc-100 text-zinc-700'
+                              : 'bg-zinc-800/60 text-zinc-300'
+                              }`}
                           >
                             {tech}
                           </span>
@@ -237,7 +228,7 @@ export const ProcessSection = () => {
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-colors shadow-lg hover:shadow-xl"
           >
-            Let's Talk
+            Let&apos;s Talk
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
