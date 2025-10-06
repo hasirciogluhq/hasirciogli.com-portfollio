@@ -28,22 +28,22 @@ export const BlogHighlights = () => {
       featured: true
     },
     {
-      id: "kubernetes-production",
-      title: "Running Kubernetes in Production: Lessons from 5 Years",
-      excerpt: "From cluster meltdowns to zero-downtime deployments. Here's what no tutorial teaches you about K8s at scale.",
-      date: "2024-09-15",
-      readTime: "12 min",
-      slug: "/blog/kubernetes-production",
-      category: "DevOps"
+      id: "kubernetes-production-lessons",
+      title: "5 Kubernetes Lessons I Learned the Hard Way",
+      excerpt: "Production incidents taught me more than any tutorial. Here are the critical Kubernetes lessons that will save you from midnight debugging sessions.",
+      date: "2025-01-10",
+      readTime: "5 min",
+      slug: "/blog/kubernetes-production-lessons",
+      category: "Infrastructure"
     },
     {
-      id: "payment-systems",
-      title: "Building a Payment System: Security & Performance",
-      excerpt: "How we handle 50K+ transactions/month with sub-200ms response times and PCI compliance.",
-      date: "2024-09-01",
-      readTime: "10 min",
-      slug: "/blog/payment-systems",
-      category: "Backend"
+      id: "building-payment-gateway",
+      title: "Building a Payment Gateway: Technical Deep Dive",
+      excerpt: "How we built a secure, scalable payment processing system handling thousands of transactions daily. Architecture, security, and lessons learned.",
+      date: "2025-01-05",
+      readTime: "8 min",
+      slug: "/blog/building-payment-gateway",
+      category: "Technology"
     }
   ]
 

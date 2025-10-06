@@ -3,8 +3,11 @@
 import { LiquidGlass } from "@/components/liquid-glass"
 import { Code, Database, Server, GitBranch, Award, Target, Heart, Zap, Users, TrendingUp } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
+import Image from "next/image"
+import { useState } from "react"
 
 export default function AboutPage() {
+  const [imageError, setImageError] = useState(false)
   const techStack = [
     { name: "Go", icon: <Code className="w-4 h-4" />, color: "from-blue-500 to-cyan-500", years: "5+" },
     { name: "Kubernetes", icon: <Server className="w-4 h-4" />, color: "from-blue-500 to-indigo-500", years: "4+" },
@@ -165,8 +168,21 @@ export default function AboutPage() {
                 <LiquidGlass className="p-8 rounded-2xl !bg-zinc-900/60 border-zinc-800/50 shadow-2xl">
                   {/* Profile Header */}
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
-                      MH
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg">
+                      {!imageError ? (
+                        <Image 
+                          src="/mustafa-hasircioglu.webp"
+                          alt="Mustafa Hasırcıoğlu"
+                          width={80}
+                          height={80}
+                          className="object-cover w-full h-full"
+                          onError={() => setImageError(true)}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-3xl font-bold text-white">
+                          MH
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Mustafa Hasırcıoğlu</h3>

@@ -4,9 +4,11 @@ import { ArrowDownIcon } from "lucide-react"
 import { LiquidGlass } from "./liquid-glass"
 import { useEffect, useRef, useState } from "react"
 import { sendGAEvent } from '@next/third-parties/google'
+import Image from "next/image"
 
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [imageError, setImageError] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -98,10 +100,24 @@ export const HeroSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-50" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
 
-                  {/* Profile Avatar with Gradient */}
+                  {/* Profile Avatar with Photo */}
                   <div className="relative z-10 mb-6">
-                    <div className="w-40 h-40 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-2xl ring-4 ring-zinc-800/50 group-hover:scale-105 transition-transform duration-500">
-                      <span className="text-6xl font-bold text-white tracking-tight">MH</span>
+                    <div className="w-40 h-40 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-zinc-800/50 group-hover:scale-105 transition-transform duration-500">
+                      {!imageError ? (
+                        <Image 
+                          src="/mustafa-hasircioglu.webp"
+                          alt="Mustafa Hasırcıoğlu"
+                          width={160}
+                          height={160}
+                          className="object-cover w-full h-full"
+                          priority
+                          onError={() => setImageError(true)}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
+                          <span className="text-6xl font-bold text-white tracking-tight">MH</span>
+                        </div>
+                      )}
                     </div>
                     {/* Active Indicator */}
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-zinc-900 flex items-center justify-center">
