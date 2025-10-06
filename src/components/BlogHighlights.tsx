@@ -1,0 +1,178 @@
+"use client"
+
+import { LiquidGlass } from "./liquid-glass"
+import { Calendar, ArrowRight, Clock } from "lucide-react"
+import { sendGAEvent } from '@next/third-parties/google'
+
+interface BlogPost {
+  id: string
+  title: string
+  excerpt: string
+  date: string
+  readTime: string
+  slug: string
+  category: string
+  featured?: boolean
+}
+
+export const BlogHighlights = () => {
+  const posts: BlogPost[] = [
+    {
+      id: "developer-philosophy",
+      title: "Developer Philosophy: Craft Over Speed",
+      excerpt: "Why I reject the 'just make it work' mentality and how building elegant systems pays off in the long run. Code is not disposable.",
+      date: "2024-10-01",
+      readTime: "8 min",
+      slug: "/blogs/developer-philosophy",
+      category: "Philosophy",
+      featured: true
+    },
+    {
+      id: "kubernetes-production",
+      title: "Running Kubernetes in Production: Lessons from 5 Years",
+      excerpt: "From cluster meltdowns to zero-downtime deployments. Here's what no tutorial teaches you about K8s at scale.",
+      date: "2024-09-15",
+      readTime: "12 min",
+      slug: "/blogs/kubernetes-production",
+      category: "DevOps"
+    },
+    {
+      id: "payment-systems",
+      title: "Building a Payment System: Security & Performance",
+      excerpt: "How we handle 50K+ transactions/month with sub-200ms response times and PCI compliance.",
+      date: "2024-09-01",
+      readTime: "10 min",
+      slug: "/blogs/payment-systems",
+      category: "Backend"
+    }
+  ]
+
+  const handlePostClick = (slug: string) => {
+    sendGAEvent('event', 'blog_post_click', {
+      category: 'engagement',
+      label: slug
+    })
+  }
+
+  return (
+    <section className="px-4 py-16 md:py-24 bg-zinc-50">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-black/5 mb-4">
+            <span className="text-xs font-medium text-zinc-700 uppercase tracking-wider">
+              Blog
+            </span>
+          </LiquidGlass>
+          
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+            Thoughts & Technical Deep Dives
+          </h2>
+          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
+            I write about systems design, production lessons, and the craft of software engineering.
+          </p>
+        </div>
+
+        {/* Featured Post + Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Featured Post (Large) */}
+          <div className="lg:col-span-2">
+            <a
+              href={posts[0].slug}
+              onClick={() => handlePostClick(posts[0].slug)}
+              className="group block h-full"
+            >
+              <LiquidGlass className="h-full p-8 rounded-2xl !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-xl transition-all duration-300">
+                {/* Category Badge */}
+                <div className="inline-block px-3 py-1 bg-zinc-900 text-white text-xs font-medium rounded-md mb-4">
+                  Featured
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-zinc-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                  {posts[0].title}
+                </h3>
+
+                {/* Excerpt */}
+                <p className="text-base text-zinc-600 leading-relaxed mb-6">
+                  {posts[0].excerpt}
+                </p>
+
+                {/* Meta */}
+                <div className="flex items-center gap-4 text-sm text-zinc-500 mb-6">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4" />
+                    <span>{new Date(posts[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" />
+                    <span>{posts[0].readTime} read</span>
+                  </div>
+                </div>
+
+                {/* Read More */}
+                <div className="flex items-center gap-2 text-zinc-900 font-semibold group-hover:gap-3 transition-all">
+                  <span>Read Full Article</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </LiquidGlass>
+            </a>
+          </div>
+
+          {/* Other Posts (Smaller) */}
+          <div className="flex flex-col gap-6">
+            {posts.slice(1).map((post) => (
+              <a
+                key={post.id}
+                href={post.slug}
+                onClick={() => handlePostClick(post.slug)}
+                className="group block"
+              >
+                <LiquidGlass className="p-6 rounded-xl !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-lg transition-all duration-300 h-full">
+                  {/* Category */}
+                  <div className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-700 text-xs font-medium rounded mb-3">
+                    {post.category}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-base font-semibold text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
+                    {post.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-sm text-zinc-600 leading-relaxed mb-4 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Meta */}
+                  <div className="flex items-center gap-3 text-xs text-zinc-500">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                </LiquidGlass>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* View All CTA */}
+        <div className="text-center mt-10">
+          <a
+            href="/blogs"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white rounded-xl font-semibold hover:bg-zinc-800 transition-colors shadow-lg hover:shadow-xl"
+          >
+            View All Articles
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+

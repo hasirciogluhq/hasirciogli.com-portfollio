@@ -1,0 +1,125 @@
+{
+  "skills": [
+    {
+      "name": "Go",
+      "category": "Languages",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
+      "name": "TypeScript",
+      "category": "Languages",
+      "proficiency": 5,
+      "projects": ["anonimsor", "fightland", "ficksa"]
+    },
+    {
+      "name": "JavaScript",
+      "category": "Languages",
+      "proficiency": 5,
+      "projects": ["anonimsor", "fightland"]
+    },
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "proficiency": 5,
+      "projects": ["anonimsor", "fightland", "ficksa"]
+    },
+    {
+      "name": "React",
+      "category": "Frontend",
+      "proficiency": 5,
+      "projects": ["anonimsor", "fightland", "ficksa"]
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "proficiency": 5,
+      "projects": ["anonimsor", "fightland", "ficksa"]
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend",
+      "proficiency": 4,
+      "projects": ["anonimsor"]
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Backend",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "anonimsor", "ficksa"]
+    },
+    {
+      "name": "Redis",
+      "category": "Backend",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
+      "name": "Kubernetes",
+      "category": "DevOps",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
+      "name": "Docker",
+      "category": "DevOps",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
+      "name": "AWS",
+      "category": "Cloud",
+      "proficiency": 4,
+      "projects": ["deweloper-cloud", "hsrcpay"]
+    },
+    {
+      "name": "GCP",
+      "category": "Cloud",
+      "proficiency": 4,
+      "projects": ["deweloper-cloud"]
+    },
+    {
+      "name": "Terraform",
+      "category": "DevOps",
+      "proficiency": 4,
+      "projects": ["deweloper-cloud"]
+    },
+    {
+      "name": "Git",
+      "category": "Tools",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "anonimsor", "fightland", "ficksa"]
+    },
+    {
+      "name": "CI/CD",
+      "category": "DevOps",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "ficksa"]
+    },
+    {
+      "name": "Microservices",
+      "category": "Architecture",
+      "proficiency": 5,
+      "projects": ["hsrcpay", "ficksa"]
+    },
+    {
+      "name": "REST APIs",
+      "category": "Backend",
+      "proficiency": 5,
+      "projects": ["deweloper-cloud", "hsrcpay", "anonimsor", "ficksa"]
+    },
+    {
+      "name": "GraphQL",
+      "category": "Backend",
+      "proficiency": 4,
+      "projects": ["anonimsor"]
+    },
+    {
+      "name": "WebSocket",
+      "category": "Backend",
+      "proficiency": 4,
+      "projects": ["anonimsor"]
+    }
+  ]
+}
+

@@ -1,0 +1,91 @@
+{
+  "projects": [
+    {
+      "id": "deweloper-cloud",
+      "title": "Deweloper Cloud",
+      "slug": "deweloper-cloud",
+      "description": "Cloud-native development platform with Kubernetes orchestration",
+      "longDescription": "A comprehensive cloud infrastructure platform designed for modern development teams. Features automated deployments, scalable infrastructure, and advanced monitoring.",
+      "role": "Founder & Lead Engineer",
+      "category": "SaaS",
+      "tags": ["Kubernetes", "Go", "Docker", "Cloud Infrastructure"],
+      "technologies": ["Go", "Kubernetes", "Docker", "PostgreSQL", "Redis"],
+      "liveUrl": "https://deweloper.cloud",
+      "featured": true,
+      "imageUrl": "/projects/deweloper-cloud.jpg",
+      "metrics": {
+        "label": "Active clusters",
+        "value": "100+"
+      }
+    },
+    {
+      "id": "hsrcpay",
+      "title": "HsrcPay",
+      "slug": "hsrcpay",
+      "description": "Payment platform for Turkish merchants with instant settlement",
+      "longDescription": "A modern payment gateway solution built specifically for the Turkish market. Handles high-volume transactions with real-time processing and comprehensive fraud detection.",
+      "role": "Founder & Backend Lead",
+      "category": "Fintech",
+      "tags": ["Payments", "Go", "High Availability", "Security"],
+      "technologies": ["Go", "PostgreSQL", "Redis", "Docker", "Kubernetes"],
+      "liveUrl": "https://hsrcpay.com",
+      "featured": true,
+      "imageUrl": "/projects/hsrcpay.jpg",
+      "metrics": {
+        "label": "Transactions/month",
+        "value": "50K+"
+      }
+    },
+    {
+      "id": "anonimsor",
+      "title": "AnonimSor",
+      "slug": "anonimsor",
+      "description": "Anonymous Q&A platform with real-time messaging",
+      "longDescription": "A social platform enabling anonymous questions and answers with built-in moderation and real-time notifications.",
+      "role": "Founder & Full-Stack Developer",
+      "category": "Social",
+      "tags": ["Next.js", "Real-time", "Social Platform"],
+      "technologies": ["Next.js", "TypeScript", "PostgreSQL", "WebSocket"],
+      "liveUrl": "https://anonimsor.com",
+      "featured": true,
+      "imageUrl": "/projects/anonimsor.jpg",
+      "metrics": {
+        "label": "Active users",
+        "value": "10K+"
+      }
+    },
+    {
+      "id": "fightland",
+      "title": "Fightland",
+      "slug": "fightland",
+      "description": "Combat sports community and event management platform",
+      "longDescription": "Comprehensive platform for combat sports enthusiasts, gyms, and event organizers with scheduling and community features.",
+      "role": "Technical Lead",
+      "category": "Community",
+      "tags": ["TypeScript", "Next.js", "Community Platform"],
+      "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+      "liveUrl": "https://fightland.com",
+      "featured": false,
+      "imageUrl": "/projects/fightland.jpg"
+    },
+    {
+      "id": "ficksa",
+      "title": "Ficksa",
+      "slug": "ficksa",
+      "description": "E-commerce platform with advanced inventory management",
+      "longDescription": "Modern e-commerce solution with real-time inventory tracking, automated order processing, and comprehensive analytics.",
+      "role": "Founder & Backend Developer",
+      "category": "E-commerce",
+      "tags": ["E-commerce", "Go", "Microservices"],
+      "technologies": ["Go", "PostgreSQL", "Redis", "Docker", "Next.js"],
+      "liveUrl": "https://ficksa.com",
+      "featured": true,
+      "imageUrl": "/projects/ficksa.jpg",
+      "metrics": {
+        "label": "Orders/month",
+        "value": "5K+"
+      }
+    }
+  ]
+}
+

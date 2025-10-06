@@ -1,85 +1,192 @@
+"use client"
+
+import { useState } from "react"
 import { LiquidGlass } from "./liquid-glass"
+import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+
+interface Testimonial {
+  quote: string
+  author: string
+  title: string
+  company: string
+  avatar: string
+  rating: number
+}
 
 export const TestimonialsSection = () => {
-  const testimonials = [
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const testimonials: Testimonial[] = [
     {
-      quote: "I felt trapped in a toxic job for 4 years. Within just 4 weeks of coaching, I landed 3 interviews and secured a higher-paying remote role that fits my lifestyle.",
-      author: "Roberta D.",
-      title: "UX Designer"
+      quote: "Mustafa built our entire payment infrastructure from scratch. His deep understanding of security and scalability gave us confidence to process millions in transactions. Zero downtime since launch.",
+      author: "Ahmet Y.",
+      title: "CEO",
+      company: "Fintech Startup",
+      avatar: "AY",
+      rating: 5
     },
     {
-      quote: "Your resume advice completely changed my approach. I went from getting zero responses to landing multiple interviews—and for the first time, I could confidently explain my strengths and value.",
-      author: "James K.",
-      title: "Marketing Manager"
+      quote: "We needed Kubernetes expertise fast. Mustafa not only migrated our entire stack but also trained our team. Our deployment time went from hours to minutes. Best investment we made.",
+      author: "Sarah K.",
+      title: "CTO",
+      company: "SaaS Platform",
+      avatar: "SK",
+      rating: 5
+    },
+    {
+      quote: "Working with Mustafa felt like having a technical co-founder. He didn't just code—he challenged our assumptions and helped us build the right product. Launched in 6 weeks.",
+      author: "Mehmet D.",
+      title: "Founder",
+      company: "E-commerce",
+      avatar: "MD",
+      rating: 5
     }
   ]
 
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const currentTestimonial = testimonials[currentIndex]
+
+  // Company logos (placeholder - replace with real logos)
+  const companies = [
+    { name: "Deweloper Cloud", logo: "DC" },
+    { name: "HsrcPay", logo: "HP" },
+    { name: "Ficksa", logo: "FK" },
+    { name: "AnonimSor", logo: "AS" }
+  ]
+
   return (
-    <section className="px-4 py-16 bg-zinc-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
+    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A] relative overflow-hidden">
+      {/* Background decorative */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      </div>
 
-          {/* Sol Kolon - Başlık ve Navigation */}
-          <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 mb-4 leading-tight">
-              Real Results from Real People
-            </h2>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
+            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
+              Testimonials
+            </span>
+          </LiquidGlass>
+          
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Trusted by Founders & Teams
+          </h2>
+          <p className="text-zinc-400 text-base max-w-2xl mx-auto">
+            Real results from real projects. Here's what clients say about working with me.
+          </p>
+        </div>
 
-            <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
-              Professionals just like you have found clarity, confidence, and career success through personalized coaching.
-            </p>
-
-            {/* Navigation */}
-            <div className="flex gap-3">
-              <button className="w-10 h-10 bg-zinc-200 rounded-full flex items-center justify-center hover:bg-zinc-300 transition-colors">
-                <svg className="w-4 h-4 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button className="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-zinc-800 transition-colors">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Sağ Kolon - Testimonials */}
-          <div className="flex-1 space-y-6">
-            {testimonials.map((testimonial, index) => (
+        {/* Company Logos Strip */}
+        <div className="mb-12">
+          <p className="text-center text-xs text-zinc-500 uppercase tracking-wider mb-6">
+            Projects I've Built
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {companies.map((company) => (
               <LiquidGlass
-                key={index + 99}
-                className="p-6 rounded-2xl !bg-white !border-zinc-200/50"
+                key={company.name}
+                className="px-6 py-3 rounded-lg !bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all"
               >
-                {/* Quote Icon */}
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="w-6 h-6 bg-zinc-900 rounded flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                    </svg>
-                  </div>
-                  <div className="text-6xl text-zinc-200 font-serif leading-none">66</div>
-                </div>
-
-                {/* Quote */}
-                <p className="text-zinc-700 leading-relaxed mb-4">
-                  {testimonial.quote}
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-zinc-300 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-medium text-zinc-600">
-                      {testimonial.author.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-zinc-900">{testimonial.author}</p>
-                    <p className="text-sm text-zinc-600">{testimonial.title}</p>
-                  </div>
+                <div className="text-zinc-400 font-semibold text-sm">
+                  {company.name}
                 </div>
               </LiquidGlass>
             ))}
+          </div>
+        </div>
+
+        {/* Main Testimonial Card */}
+        <div className="max-w-4xl mx-auto">
+          <LiquidGlass className="p-8 md:p-12 rounded-2xl !bg-zinc-900/60 border border-zinc-800/50">
+            {/* Stars */}
+            <div className="flex items-center justify-center gap-1 mb-6">
+              {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+
+            {/* Quote */}
+            <blockquote className="text-center mb-8">
+              <p className="text-lg md:text-xl text-zinc-200 leading-relaxed italic">
+                "{currentTestimonial.quote}"
+              </p>
+            </blockquote>
+
+            {/* Author */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                <span className="text-sm font-bold text-white">
+                  {currentTestimonial.avatar}
+                </span>
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-white">{currentTestimonial.author}</p>
+                <p className="text-sm text-zinc-400">
+                  {currentTestimonial.title} · {currentTestimonial.company}
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center justify-center gap-4">
+              <button
+                onClick={prevTestimonial}
+                className="p-2 rounded-lg bg-zinc-800/60 hover:bg-zinc-700/60 text-zinc-400 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-zinc-600"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Dots */}
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentIndex
+                        ? 'bg-white w-6'
+                        : 'bg-zinc-700 hover:bg-zinc-600'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextTestimonial}
+                className="p-2 rounded-lg bg-zinc-800/60 hover:bg-zinc-700/60 text-zinc-400 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-zinc-600"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </LiquidGlass>
+        </div>
+
+        {/* Trust Metrics */}
+        <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white mb-1">15+</div>
+            <div className="text-sm text-zinc-400">Projects Shipped</div>
+          </div>
+          <div className="text-center border-x border-zinc-800">
+            <div className="text-3xl font-bold text-white mb-1">99.9%</div>
+            <div className="text-sm text-zinc-400">Uptime Agreements</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white mb-1">100%</div>
+            <div className="text-sm text-zinc-400">Client Satisfaction</div>
           </div>
         </div>
       </div>

@@ -1,9 +1,12 @@
+"use client"
+
 import { LiquidGlass } from "./liquid-glass"
 import Image from "next/image"
+import { sendGAEvent } from '@next/third-parties/google'
 
 export const AboutHero = () => {
   return (
-    <section className="px-4 py-16 bg-white">
+    <section className="px-4 py-16 md:py-24 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
 
@@ -49,13 +52,14 @@ export const AboutHero = () => {
             {/* CTA Button */}
             <div className="mt-10">
               <a
-                href="/about"
-                className="group relative text-white text-sm font-medium transition-all duration-300 flex items-center"
+                href="/mustafa-hasircioglu-kimdir"
+                onClick={() => sendGAEvent('event', 'about_cta_click', { category: 'engagement', label: 'Continue My Story' })}
+                className="group relative text-white text-sm font-medium transition-all duration-300 inline-flex items-center"
               >
                 <LiquidGlass className="pl-5 pr-4 py-3 rounded-xl flex items-center gap-3 !bg-zinc-800 group-hover:!bg-zinc-700 transition-colors">
                   <span className="tracking-wide">Continue My Story</span>
                   <div className="relative">
-                    <LiquidGlass className="w-6 h-6 rounded-full flex items-center justify-center !bg-zinc-700">
+                    <LiquidGlass className="w-6 h-6 rounded-full flex items-center justify-center !bg-zinc-700 group-hover:scale-110 transition-transform">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
