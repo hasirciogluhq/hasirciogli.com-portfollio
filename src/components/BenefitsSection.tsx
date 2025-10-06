@@ -36,25 +36,25 @@ export const BenefitsSection = () => {
   ]
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-zinc-50">
+    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A]">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           
           {/* Sol Kolon - İçerik */}
           <div className="flex-1">
             {/* Badge */}
-            <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-black/5 mb-4">
-              <span className="text-xs font-medium text-zinc-700 uppercase tracking-wider">
+            <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
+              <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
                 What You Gain
               </span>
             </LiquidGlass>
 
             {/* Başlık */}
-            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
               Focus on your business,<br />not firefighting bugs
             </h2>
             
-            <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
+            <p className="text-lg text-zinc-300 mb-8 leading-relaxed">
               Working with me means you get more than code. You get systems that work, 
               scale, and let you sleep at night.
             </p>
@@ -64,32 +64,32 @@ export const BenefitsSection = () => {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="group p-5 rounded-xl bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  className="group p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
                   {/* Icon */}
-                  <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <div className="text-white">
                       {benefit.icon}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-bold text-zinc-900 mb-1">
+                  <h3 className="text-base font-bold text-white mb-1">
                     {benefit.title}
                   </h3>
 
                   {/* Outcome */}
-                  <p className="text-sm font-semibold text-blue-600 mb-2">
+                  <p className="text-sm font-semibold text-blue-400 mb-2">
                     → {benefit.outcome}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm text-zinc-600 mb-3 leading-relaxed">
+                  <p className="text-sm text-zinc-400 mb-3 leading-relaxed">
                     {benefit.description}
                   </p>
 
                   {/* Metric Badge */}
-                  <div className="inline-block px-2 py-1 bg-zinc-100 rounded text-xs font-medium text-zinc-700">
+                  <div className="inline-block px-2 py-1 bg-zinc-800/60 rounded text-xs font-medium text-zinc-300">
                     {benefit.metric}
                   </div>
                 </div>

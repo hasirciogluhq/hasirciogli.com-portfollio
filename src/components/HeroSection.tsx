@@ -83,57 +83,81 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Sağ Kolon - Fotoğraf ve Liquid Glass Modaller */}
+          {/* Sağ Kolon - Professional Card */}
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative w-80 h-80 group">
 
-              {/* Ana Fotoğraf - Masked + Blurred */}
-              <div className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-zinc-700/30 shadow-2xl">
-                <div className="w-full h-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex items-center justify-center relative">
-                  {/* Vignette overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-700/20 via-transparent to-black/40" />
+              {/* Main Professional Card */}
+              <LiquidGlass className="absolute inset-0 rounded-3xl overflow-hidden !bg-zinc-900/60 border border-zinc-800/50 shadow-2xl">
+                <div className="w-full h-full flex flex-col items-center justify-center p-8 relative">
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-50" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
                   
-                  <div className="text-zinc-400 text-center relative z-10">
-                    <div className="w-32 h-32 bg-gradient-to-br from-zinc-700 to-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center shadow-inner ring-1 ring-zinc-600/50">
-                      <span className="text-5xl filter drop-shadow-lg">👤</span>
+                  {/* Profile Avatar with Gradient */}
+                  <div className="relative z-10 mb-6">
+                    <div className="w-40 h-40 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-2xl ring-4 ring-zinc-800/50 group-hover:scale-105 transition-transform duration-500">
+                      <span className="text-6xl font-bold text-white tracking-tight">MH</span>
                     </div>
-                    <p className="text-sm font-medium text-zinc-300">Portrait Photo</p>
-                    <p className="text-xs text-zinc-500 mt-1">High Contrast + Vignette</p>
+                    {/* Active Indicator */}
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-zinc-900 flex items-center justify-center">
+                      <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+
+                  {/* Name & Title */}
+                  <div className="text-center relative z-10 mb-4">
+                    <h3 className="text-xl font-bold text-white mb-1">Mustafa Hasırcıoğlu</h3>
+                    <p className="text-sm text-zinc-400">Software Engineer & Founder</p>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-3 w-full relative z-10">
+                    <div className="text-center p-3 rounded-xl bg-zinc-800/40 backdrop-blur-sm">
+                      <div className="text-lg font-bold text-white">Go</div>
+                      <div className="text-xs text-zinc-500">Primary</div>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-zinc-800/40 backdrop-blur-sm">
+                      <div className="text-lg font-bold text-white">K8s</div>
+                      <div className="text-xs text-zinc-500">Expert</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Glass Efektli Modaller - Apple Tasarımı */}
-              <LiquidGlass className="absolute -top-4 -right-4 w-24 h-16 rounded-2xl p-3 group-hover:translate-x-2 group-hover:translate-y-1 group-hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                <div className="text-white/90 text-xs font-medium">5+ Years</div>
-                <div className="text-white/70 text-xs">Experience</div>
               </LiquidGlass>
 
-              <LiquidGlass className="absolute top-8 -left-8 w-20 h-12 rounded-2xl p-2 group-hover:-translate-x-2 group-hover:translate-y-1 group-hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                <div className="text-white/90 text-xs font-medium">15+</div>
-                <div className="text-white/70 text-xs">Projects</div>
+              {/* Floating Tech Badges */}
+              <LiquidGlass className="absolute -top-4 -right-4 rounded-xl p-3 !bg-blue-500/10 border border-blue-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+                <div className="text-blue-400 text-xs font-bold">5+ Years</div>
+                <div className="text-blue-300/70 text-[10px]">Experience</div>
               </LiquidGlass>
 
-              <LiquidGlass className="absolute -bottom-6 -left-4 w-28 h-16 rounded-2xl p-3 group-hover:-translate-x-1 group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                <div className="text-white/90 text-xs font-medium">Innovation</div>
-                <div className="text-white/70 text-xs">Passion</div>
+              <LiquidGlass className="absolute top-8 -left-8 rounded-xl p-2 !bg-purple-500/10 border border-purple-500/20 group-hover:-translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+                <div className="text-purple-400 text-xs font-bold">15+</div>
+                <div className="text-purple-300/70 text-[10px]">Projects</div>
               </LiquidGlass>
 
-              <LiquidGlass className="absolute bottom-4 -right-6 w-24 h-14 rounded-2xl p-2 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                <div className="text-white/90 text-xs font-medium">Coffee</div>
-                <div className="text-white/70 text-xs">Powered</div>
+              <LiquidGlass className="absolute -bottom-6 -left-4 rounded-xl p-3 !bg-green-500/10 border border-green-500/20 group-hover:-translate-x-1 group-hover:-translate-y-2 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-green-400 text-xs font-bold">Available</span>
+                </div>
+                <div className="text-green-300/70 text-[10px]">for Projects</div>
               </LiquidGlass>
 
-              <LiquidGlass className="absolute top-1/2 -right-12 w-20 h-12 rounded-2xl p-2 group-hover:translate-x-2 group-hover:translate-y-1 group-hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                <div className="text-white/90 text-xs font-medium">Code</div>
-                <div className="text-white/70 text-xs">Lover</div>
+              <LiquidGlass className="absolute bottom-4 -right-6 rounded-xl p-2 !bg-pink-500/10 border border-pink-500/20 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+                <div className="text-pink-400 text-xs font-bold">99.9%</div>
+                <div className="text-pink-300/70 text-[10px]">Uptime</div>
               </LiquidGlass>
 
-              {/* Dekoratif Elementler */}
-              <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-500 rounded-full opacity-60 animate-pulse"></div>
-              <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-pulse delay-150"></div>
-              <div className="absolute top-1/2 -left-6 w-2 h-2 bg-pink-500 rounded-full opacity-50 animate-pulse delay-300"></div>
+              <LiquidGlass className="absolute top-1/2 -right-12 rounded-xl p-2 !bg-cyan-500/10 border border-cyan-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+                <div className="text-cyan-400 text-xs font-bold">Cloud</div>
+                <div className="text-cyan-300/70 text-[10px]">Native</div>
+              </LiquidGlass>
+
+              {/* Animated Dots */}
+              <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-500 rounded-full opacity-60 animate-pulse shadow-lg shadow-blue-500/50"></div>
+              <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-pulse delay-150 shadow-lg shadow-purple-500/50"></div>
+              <div className="absolute top-1/2 -left-6 w-2 h-2 bg-pink-500 rounded-full opacity-50 animate-pulse delay-300 shadow-lg shadow-pink-500/50"></div>
             </div>
           </div>
         </div>

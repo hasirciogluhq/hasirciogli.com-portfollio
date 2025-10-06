@@ -136,20 +136,20 @@ export const ProblemsSection = () => {
   const currentPersona = personas.find(p => p.id === activePersona)!
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A]">
+    <section className="px-4 py-16 md:py-24 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
-            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-zinc-900/80 mb-4">
+            <span className="text-xs font-medium text-white uppercase tracking-wider">
               Who I Help
             </span>
           </LiquidGlass>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
             Are you one of these?
           </h2>
-          <p className="text-zinc-400 text-base max-w-2xl mx-auto">
+          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
             I work with different types of builders. Choose your profile to see how I can help.
           </p>
         </div>
@@ -162,8 +162,8 @@ export const ProblemsSection = () => {
               onClick={() => setActivePersona(persona.id)}
               className={`group px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activePersona === persona.id
-                  ? 'bg-white text-zinc-900'
-                  : 'bg-zinc-800/40 text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-200'
+                  ? 'bg-zinc-900 text-white shadow-lg'
+                  : 'bg-white text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200'
               }`}
             >
               <span className="flex items-center gap-2">
@@ -179,17 +179,17 @@ export const ProblemsSection = () => {
           {currentPersona.problems.map((problem, index) => (
             <LiquidGlass
               key={index}
-              className="p-6 rounded-xl !bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 hover:scale-105"
+              className="p-6 rounded-xl !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center flex-shrink-0 text-zinc-400">
+                <div className="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center flex-shrink-0 text-zinc-700">
                   {problem.icon}
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-white mb-2 leading-tight">
+                  <h3 className="text-base font-semibold text-zinc-900 mb-2 leading-tight">
                     {problem.title}
                   </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{problem.description}</p>
+                  <p className="text-sm text-zinc-600 leading-relaxed">{problem.description}</p>
                 </div>
               </div>
             </LiquidGlass>
@@ -198,14 +198,14 @@ export const ProblemsSection = () => {
 
         {/* Outcome & CTA */}
         <div className="text-center">
-          <LiquidGlass className="inline-block p-6 rounded-2xl !bg-zinc-900/60 border border-zinc-800 max-w-2xl">
-            <p className="text-base text-zinc-300 leading-relaxed mb-4">
-              <span className="text-white font-semibold">The Outcome: </span>
+          <LiquidGlass className="inline-block p-6 rounded-2xl !bg-white border border-zinc-200 shadow-xl max-w-2xl">
+            <p className="text-base text-zinc-700 leading-relaxed mb-4">
+              <span className="text-zinc-900 font-semibold">The Outcome: </span>
               {currentPersona.outcome}
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-zinc-900 rounded-lg text-sm font-semibold hover:bg-zinc-100 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 text-white rounded-lg text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-lg"
             >
               {currentPersona.cta}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

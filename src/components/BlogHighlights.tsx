@@ -55,20 +55,20 @@ export const BlogHighlights = () => {
   }
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-zinc-50">
+    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A]">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-black/5 mb-4">
-            <span className="text-xs font-medium text-zinc-700 uppercase tracking-wider">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
+            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
               Blog
             </span>
           </LiquidGlass>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Thoughts & Technical Deep Dives
           </h2>
-          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
+          <p className="text-zinc-400 text-base max-w-2xl mx-auto">
             I write about systems design, production lessons, and the craft of software engineering.
           </p>
         </div>
@@ -82,19 +82,19 @@ export const BlogHighlights = () => {
               onClick={() => handlePostClick(posts[0].slug)}
               className="group block h-full"
             >
-              <LiquidGlass className="h-full p-8 rounded-2xl !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-xl transition-all duration-300">
+              <LiquidGlass className="h-full p-8 rounded-2xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-xl transition-all duration-300">
                 {/* Category Badge */}
-                <div className="inline-block px-3 py-1 bg-zinc-900 text-white text-xs font-medium rounded-md mb-4">
+                <div className="inline-block px-3 py-1 bg-white text-zinc-900 text-xs font-medium rounded-md mb-4">
                   Featured
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-zinc-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors leading-tight">
                   {posts[0].title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-base text-zinc-600 leading-relaxed mb-6">
+                <p className="text-base text-zinc-300 leading-relaxed mb-6">
                   {posts[0].excerpt}
                 </p>
 
@@ -111,7 +111,7 @@ export const BlogHighlights = () => {
                 </div>
 
                 {/* Read More */}
-                <div className="flex items-center gap-2 text-zinc-900 font-semibold group-hover:gap-3 transition-all">
+                <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
                   <span>Read Full Article</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -128,19 +128,19 @@ export const BlogHighlights = () => {
                 onClick={() => handlePostClick(post.slug)}
                 className="group block"
               >
-                <LiquidGlass className="p-6 rounded-xl !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-lg transition-all duration-300 h-full">
+                <LiquidGlass className="p-6 rounded-xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-lg transition-all duration-300 h-full">
                   {/* Category */}
-                  <div className="inline-block px-2 py-0.5 bg-zinc-100 text-zinc-700 text-xs font-medium rounded mb-3">
+                  <div className="inline-block px-2 py-0.5 bg-zinc-800/60 text-zinc-300 text-xs font-medium rounded mb-3">
                     {post.category}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-semibold text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
+                  <h3 className="text-base font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors leading-tight">
                     {post.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-zinc-600 leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
 
@@ -165,7 +165,7 @@ export const BlogHighlights = () => {
         <div className="text-center mt-10">
           <a
             href="/blogs"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white rounded-xl font-semibold hover:bg-zinc-800 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-colors shadow-lg hover:shadow-xl"
           >
             View All Articles
             <ArrowRight className="w-4 h-4" />

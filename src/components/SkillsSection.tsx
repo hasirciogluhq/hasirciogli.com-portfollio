@@ -44,7 +44,7 @@ export const SkillsSection = () => {
   }
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A] relative overflow-hidden">
+    <section className="px-4 py-16 md:py-24 bg-zinc-50 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -54,16 +54,16 @@ export const SkillsSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-white/5 mb-4">
-            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
+          <LiquidGlass className="inline-block px-3 py-1 rounded-lg !bg-zinc-900/80 mb-4">
+            <span className="text-xs font-medium text-white uppercase tracking-wider">
               Tech Stack
             </span>
           </LiquidGlass>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
             Skills & Technologies
           </h2>
-          <p className="text-zinc-400 text-base max-w-2xl mx-auto">
+          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
             Specialties: Go, Kubernetes, Distributed Storage, Payments. Click any skill to see which projects use it.
           </p>
         </div>
@@ -76,8 +76,8 @@ export const SkillsSection = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
                 activeCategory === category
-                  ? 'bg-white text-zinc-900 shadow-lg scale-105'
-                  : 'bg-zinc-800/40 text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-200'
+                  ? 'bg-zinc-900 text-white shadow-lg scale-105'
+                  : 'bg-white text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200'
               }`}
             >
               {category === "all" ? "All" : category}
@@ -122,15 +122,15 @@ export const SkillsSection = () => {
                 {/* Tooltip */}
                 {isHovered && projectNames.length > 0 && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200">
-                    <LiquidGlass className="px-3 py-2 !bg-zinc-900/95 backdrop-blur-xl border border-zinc-700 shadow-2xl whitespace-nowrap">
-                      <div className="text-xs text-zinc-300">
+                    <LiquidGlass className="px-3 py-2 !bg-white border border-zinc-200 shadow-2xl whitespace-nowrap">
+                      <div className="text-xs text-zinc-700">
                         <div className="font-semibold mb-1">Used in:</div>
                         {projectNames.map((name, i) => (
-                          <div key={i} className="text-zinc-400">• {name}</div>
+                          <div key={i} className="text-zinc-600">• {name}</div>
                         ))}
                       </div>
                     </LiquidGlass>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900/95 rotate-45 border-r border-b border-zinc-700" />
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 border-r border-b border-zinc-200" />
                   </div>
                 )}
               </div>
@@ -140,12 +140,12 @@ export const SkillsSection = () => {
 
         {/* Proficiency Legend */}
         <div className="text-center">
-          <LiquidGlass className="inline-block px-6 py-3 rounded-xl !bg-zinc-900/40 border border-zinc-800/50">
-            <div className="flex items-center gap-6 text-xs text-zinc-400">
+          <LiquidGlass className="inline-block px-6 py-3 rounded-xl !bg-white border border-zinc-200 shadow-lg">
+            <div className="flex items-center gap-6 text-xs text-zinc-700">
               <div className="flex items-center gap-2">
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
+                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
                   ))}
                 </div>
                 <span>Expert</span>
@@ -156,7 +156,7 @@ export const SkillsSection = () => {
                     <div
                       key={i}
                       className={`w-1.5 h-1.5 rounded-full ${
-                        i < 3 ? 'bg-zinc-400' : 'bg-zinc-400 opacity-20'
+                        i < 3 ? 'bg-zinc-700' : 'bg-zinc-700 opacity-20'
                       }`}
                     />
                   ))}
