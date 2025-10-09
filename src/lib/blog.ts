@@ -73,7 +73,7 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 const defaultAuthor: AuthorData = {
   title: "Mustafa Hasırcıoğlu",
   slug: "mustafa-hasircioglu",
-  avatar: "/mustafa-hasircioglu.jpeg",
+  avatar: "/star-logo.jpg",
   role: "Software Engineer & Founder",
   bio: "Full-stack developer specializing in cloud infrastructure, payment systems, and scalable architectures.",
   website: "https://hasirciogli.com",
