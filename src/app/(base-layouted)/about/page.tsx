@@ -44,25 +44,19 @@ export default function AboutPage() {
 
   const journey = [
     {
-      year: "2013",
+      year: "2018",
       title: "The Beginning",
-      description: "My first line of code. Started with Pascal, then moved to C# and web technologies.",
+      description: "My first line of code. Started with PHP and web technologies.",
       icon: "🎯"
     },
     {
-      year: "2016",
-      title: "Professional Life",
-      description: "First professional projects. Started working in e-commerce and fintech.",
+      year: "2023",
+      title: "Professional Life & Cloud",
+      description: "First professional projects. Started working in e-commerce and fintech. Focused on Kubernetes and distributed systems.",
       icon: "💼"
     },
     {
-      year: "2019",
-      title: "Cloud & Infrastructure",
-      description: "Focused on Kubernetes and distributed systems. Started managing production systems.",
-      icon: "☁️"
-    },
-    {
-      year: "2021",
+      year: "2024",
       title: "Founder Journey",
       description: "Started building my own products. HsrcPay and other projects came to life.",
       icon: "🚀"
@@ -117,7 +111,7 @@ export default function AboutPage() {
               <div className="space-y-4 mb-8">
                 <p className="text-lg text-zinc-300 leading-relaxed">
                   I&apos;m Mustafa. Software engineer, founder, and production systems enthusiast. 
-                  I&apos;ve been building software for 12+ years, and creating my own products for the past 5 years.
+                  I&apos;ve been building software for 7+ years, and creating my own products for the past 4 years.
                 </p>
 
                 <p className="text-base text-zinc-400 leading-relaxed">
@@ -308,7 +302,7 @@ export default function AboutPage() {
               My Journey
             </h2>
             <p className="text-zinc-400">
-              From first line of code to today, a 12-year adventure.
+              From first line of code to today, a 7-year adventure.
             </p>
           </div>
 
