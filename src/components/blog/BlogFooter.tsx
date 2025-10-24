@@ -65,8 +65,8 @@ export default function BlogFooter() {
             <h4 className="text-lg font-medium text-zinc-200">İletişim</h4>
             <div className="flex flex-wrap gap-3">
               <MetallicSocialLink href="https://www.linkedin.com/in/hasircioglu/" icon={<LinkedinIcon size={16} />} label="LinkedIn" />
-              <MetallicSocialLink href="https://github.com/hasirciogli" icon={<Github size={16} />} label="GitHub" />
-              <MetallicSocialLink href="mailto:mhasirciogli@gmail.com" icon={<Mail size={16} />} label="Email" />
+              <MetallicSocialLink href="https://github.com/hasirciogluhq" icon={<Github size={16} />} label="GitHub" />
+              <MetallicSocialLink href="mailto:mustafa@hasirciogluhq.com" icon={<Mail size={16} />} label="Email" />
               <MetallicSocialLink href="https://instagram.com/mr.hasircioglu" icon={<Instagram size={16} />} label="Instagram" />
             </div>
           </div>

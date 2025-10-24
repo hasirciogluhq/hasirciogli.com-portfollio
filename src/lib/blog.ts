@@ -77,9 +77,9 @@ const defaultAuthor: AuthorData = {
   role: "Software Engineer & Founder",
   bio: "Full-stack developer specializing in cloud infrastructure, payment systems, and scalable architectures.",
   website: "https://hasirciogli.com",
-  github: "hasirciogli",
-  linkedin: "hasirciogli",
-  twitter: "hasirciogli",
+  github: "hasirciogluhq",
+  linkedin: "hasircioglu",
+  twitter: "hasirciogluhq",
   featured: true,
   postCount: 0,
 };

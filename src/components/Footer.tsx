@@ -15,9 +15,9 @@ export const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com/hasirciogli",
+      href: "https://github.com/hasirciogluhq",
       icon: <Github className="w-5 h-5" />,
-      username: "@hasirciogli"
+      username: "@hasirciogluhq"
     },
     {
       name: "LinkedIn",
@@ -27,15 +27,15 @@ export const Footer = () => {
     },
     {
       name: "Twitter",
-      href: "https://twitter.com/hasirciogli",
+      href: "https://twitter.com/hasirciogluhq",
       icon: <Twitter className="w-5 h-5" />,
-      username: "@hasirciogli"
+      username: "@hasirciogluhq"
     },
     {
       name: "Email",
-      href: "mailto:mhasirciogli@gmail.com",
+      href: "mailto:mustafa@hasirciogluhq.com",
       icon: <Mail className="w-5 h-5" />,
-      username: "mhasirciogli@gmail.com"
+      username: "mustafa@hasirciogluhq.com"
     }
   ]
 
@@ -76,11 +76,11 @@ export const Footer = () => {
             "jobTitle": "Software Engineer & Technical Founder",
             "description": "Full-stack developer specializing in Go, Kubernetes, and distributed systems. Building scalable products from 0 to 1.",
             "sameAs": [
-              "https://github.com/hasirciogli",
+              "https://github.com/hasirciogluhq",
               "https://linkedin.com/in/hasircioglu",
-              "https://twitter.com/hasirciogli"
+              "https://twitter.com/hasirciogluhq"
             ],
-            "email": "mhasirciogli@gmail.com"
+            "email": "mustafa@hasirciogluhq.com"
           })
         }}
       />

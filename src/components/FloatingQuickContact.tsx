@@ -114,7 +114,7 @@ export const FloatingQuickContact = () => {
                             {/* Quick Actions */}
                             <div className="grid grid-cols-2 gap-2">
                                 <a
-                                    href="mailto:mhasirciogli@gmail.com"
+                                    href="mailto:mustafa@hasirciogluhq.com"
                                     className="flex flex-col items-center gap-2 p-3 bg-zinc-800/40 rounded-lg hover:bg-zinc-700/50 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-zinc-600 group"
                                     onClick={() => {
                                         sendGAEvent('event', 'quick_contact_email', {

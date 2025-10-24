@@ -50,7 +50,7 @@ export const CTASection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           {/* Email CTA */}
           <a
-            href="mailto:mhasirciogli@gmail.com"
+            href="mailto:mustafa@hasirciogluhq.com"
             onClick={() => handleCTAClick('email_direct')}
             className="group"
           >
@@ -67,7 +67,7 @@ export const CTASection = () => {
                     Quick questions? Drop me a line.
                   </p>
                   <p className="text-xs text-blue-600 mt-2 font-medium">
-                    mhasirciogli@gmail.com →
+                    mustafa@hasirciogluhq.com →
                   </p>
                 </div>
               </div>

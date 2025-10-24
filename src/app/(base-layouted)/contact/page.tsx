@@ -51,8 +51,8 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "mhasirciogli@gmail.com",
-      href: "mailto:mhasirciogli@gmail.com",
+      value: "mustafa@hasirciogluhq.com",
+      href: "mailto:mustafa@hasirciogluhq.com",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -75,8 +75,8 @@ export default function ContactPage() {
     {
       name: "GitHub",
       icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/hasirciogli",
-      username: "@hasirciogli"
+      href: "https://github.com/hasirciogluhq",
+      username: "@hasirciogluhq"
     },
     {
       name: "LinkedIn",
@@ -87,8 +87,8 @@ export default function ContactPage() {
     {
       name: "Twitter",
       icon: <Twitter className="w-5 h-5" />,
-      href: "https://twitter.com/hasirciogli",
-      username: "@hasirciogli"
+      href: "https://twitter.com/hasirciogluhq",
+      username: "@hasirciogluhq"
     }
   ]
 

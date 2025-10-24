@@ -142,7 +142,7 @@ export const NavbarComponent = () => {
 
                             {/* CTA Button - Apple Tasarımı */}
                             <Link
-                                href="mailto:mhasirciogli@gmail.com"
+                                href="mailto:mustafa@hasirciogluhq.com"
                                 className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                                 aria-label="Send email to Mustafa"
                             >
@@ -238,7 +238,7 @@ export const NavbarComponent = () => {
                             {/* Mobile CTA */}
                             <div className="pt-4">
                                 <Link
-                                    href="mailto:mhasirciogli@gmail.com"
+                                    href="mailto:mustafa@hasirciogluhq.com"
                                     className="block"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
@@ -451,7 +451,7 @@ export const NavbarComponentByClaude = () => {
                         {/* CTA Button with enhanced interaction and effects */}
                         <div className="hidden lg:flex items-center space-x-4">
                             <Link
-                                href="mailto:mhasirciogli@gmail.com"
+                                href="mailto:mustafa@hasirciogluhq.com"
                                 className="group relative focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-xl"
                                 aria-label="Send email to Mustafa"
                             >
@@ -549,7 +549,7 @@ export const NavbarComponentByClaude = () => {
                             {/* Mobile CTA with enhanced styling */}
                             <div className="pt-6 border-t border-white/10">
                                 <Link
-                                    href="mailto:mhasirciogli@gmail.com"
+                                    href="mailto:mustafa@hasirciogluhq.com"
                                     className="block"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
@@ -700,7 +700,7 @@ export const NavbarComponentByGemini = () => {
 
                         {/* CTA Button */}
                         <div className="hidden md:block">
-                            <Link href="mailto:mhasirciogli@gmail.com">
+                            <Link href="mailto:mustafa@hasirciogluhq.com">
                                 <LiquidGlass className="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105">
                                     <span className="text-zinc-300">Let&apos;s Talk</span>
                                 </LiquidGlass>
@@ -737,7 +737,7 @@ export const NavbarComponentByGemini = () => {
                             <NavItem key={item.label} item={item} />
                         ))}
                         <div className="pt-4 w-full">
-                            <Link href="mailto:mhasirciogli@gmail.com" className="block w-full">
+                            <Link href="mailto:mustafa@hasirciogluhq.com" className="block w-full">
                                 <LiquidGlass className="w-full py-3 rounded-full text-center">
                                     <span className="text-zinc-300 font-medium">Let&apos;s Talk</span>
                                 </LiquidGlass>
@@ -946,7 +946,7 @@ export const NavbarComponentByClaudeSonnet = () => {
                             {/* CTA Button with magnetic effect */}
                             <div className="hidden lg:block">
                                 <Link
-                                    href="mailto:mhasirciogli@gmail.com"
+                                    href="mailto:mustafa@hasirciogluhq.com"
                                     className="group relative"
                                     onMouseEnter={() => setHoveredItem('cta')}
                                     onMouseLeave={() => setHoveredItem(null)}
@@ -1042,7 +1042,7 @@ export const NavbarComponentByClaudeSonnet = () => {
                             {/* Mobile CTA */}
                             <div className="pt-6" style={{ animation: 'slideInFromRight 0.4s ease-out 0.5s both' }}>
                                 <Link
-                                    href="mailto:mhasirciogli@gmail.com"
+                                    href="mailto:mustafa@hasirciogluhq.com"
                                     className="block"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
@@ -1240,7 +1240,7 @@ export const NavbarComponentByClaude2 = () => {
                         {/* CTA Button with enhanced interaction */}
                         <div className="hidden lg:flex items-center space-x-4">
                             <Link
-                                href="mailto:mhasirciogli@gmail.com"
+                                href="mailto:mustafa@hasirciogluhq.com"
                                 className="group relative focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-xl"
                                 aria-label="Send email to Mustafa"
                             >
@@ -1318,7 +1318,7 @@ export const NavbarComponentByClaude2 = () => {
                                 {/* Mobile CTA with enhanced styling */}
                                 <div className="pt-6 border-t border-white/10">
                                     <Link
-                                        href="mailto:mhasirciogli@gmail.com"
+                                        href="mailto:mustafa@hasirciogluhq.com"
                                         className="block"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
