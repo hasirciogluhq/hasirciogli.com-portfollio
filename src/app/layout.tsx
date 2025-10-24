@@ -64,8 +64,8 @@ export default function RootLayout({
       >
         {children}
         <Analytics />
-        <GoogleAnalytics gaId="G-FMWC1WCR12" />
-        <GoogleTagManager gtmId="G-FMWC1WCR12" />
+        <GoogleAnalytics gaId="G-LSSWDGXJ9V" />
+        <GoogleTagManager gtmId="G-LSSWDGXJ9V" />
       </body>
     </html>
   );
