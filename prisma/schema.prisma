@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+model contact_form_submissions {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  company      String?
+  message      String   @db.Text
+  project_type String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  ip_address   String?
+  user_agent   String?
+
+  @@index([created_at])
+  @@index([email])
+  @@map("contact_form_submissions")
+}
+
+model newsletter_subscriptions {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  status        String   @default("active") // active, unsubscribed, bounced
+  source        String?  // blog, tag_page, footer
+  referrer_url  String?
+  ip_address    String?
+  user_agent    String?
+  subscribed_at DateTime @default(now())
+  unsubscribed_at DateTime?
+  
+  @@index([email])
+  @@index([status])
+  @@index([subscribed_at])
+  @@map("newsletter_subscriptions")
+}
+

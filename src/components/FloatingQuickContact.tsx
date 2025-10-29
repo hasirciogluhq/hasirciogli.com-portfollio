@@ -37,18 +37,42 @@ export const FloatingQuickContact = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
         // Analytics event
         sendGAEvent('event', 'quick_contact_submit', {
             category: 'engagement',
             label: 'floating_contact'
         });
-        
-        // Here you would typically send the form data to your API
-        console.log('Quick contact form submitted:', formData);
-        
-        // Reset form and close
-        setFormData({ name: "", email: "", message: "" });
-        setIsOpen(false);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    projectType: 'other',
+                    company: ''
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                alert(data.message || 'Your message has been received successfully!');
+                // Reset form and close
+                setFormData({ name: "", email: "", message: "" });
+                setIsOpen(false);
+            } else {
+                alert(data.error || 'An error occurred. Please try again.');
+            }
+        } catch (error) {
+            console.error('Quick contact form submission error:', error);
+            alert('An error occurred. Please try again later or send an email directly.');
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

@@ -5,6 +5,7 @@ import { getAllPosts, getTagBySlug, getAllTags } from "@/lib/blog"
 import { LiquidGlass } from "@/components/liquid-glass"
 import { BlogCard } from "@/components/blog/BlogCard"
 import { TagPill } from "@/components/blog/TagPill"
+import { NewsletterForm } from "@/components/NewsletterForm"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -209,19 +210,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
             <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
               Subscribe to get notified when I publish new articles about {tag.title.toLowerCase()} and other topics.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-zinc-800/60 border border-zinc-700 rounded-lg text-white placeholder:text-zinc-600 outline-none focus:border-zinc-600"
-              />
-              <button className="px-6 py-3 bg-white text-zinc-900 rounded-lg font-semibold hover:bg-zinc-100 transition-colors">
-                Subscribe
-              </button>
-            </div>
-            <p className="text-xs text-zinc-600 mt-4">
-              No spam. Unsubscribe anytime.
-            </p>
+            <NewsletterForm source={`tag_${tag.slug}`} />
           </LiquidGlass>
         </div>
       </section>

@@ -24,20 +24,35 @@ export default function ContactPage() {
       label: formData.projectType
     })
 
-    // Form submission logic here
-    console.log('Form submitted:', formData)
-    
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert('Your message has been received! I will get back to you soon.')
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        message: "",
-        projectType: "consulting"
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
       })
-    }, 1000)
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        alert(data.message || 'Your message has been received successfully! I will get back to you soon.')
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          message: "",
+          projectType: "consulting"
+        })
+      } else {
+        alert(data.error || 'An error occurred. Please try again later.')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert('An error occurred. Please try again later or send an email directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
