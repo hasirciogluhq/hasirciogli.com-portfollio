@@ -1,0 +1,607 @@
+---
+title: "Five Years Later, I'm Still Building the Same Thing"
+excerpt: "I built HSRCPay in 2020. I'm rebuilding it in 2025. Same vision, completely different execution. Here's what five years of never giving up looks like."
+coverImage: "/blog/hsrcpay-at-2025.png"
+publishedAt: "2025-11-05"
+tags:
+  - hsrcpay
+  - journey
+  - persistence
+  - payment-systems
+  - architecture
+  - philosophy
+featured: false
+status: published
+seoTitle: "Five Years Later: Still Building the Same Thing | Mustafa Hasırcıoğlu"
+seoDescription: "The real story of building HSRCPay twice - once in 2020 with PHP, again in 2025 with TypeScript. Same vision, five years of persistence, zero giving up."
+enableToc: true
+enableComments: true
+---
+
+# Five Years Later, I'm Still Building the Same Thing
+
+Let me be honest with you.
+
+I built HSRCPay in 2020. I'm rebuilding it in 2025. 
+
+Same vision. Same mission. Completely different execution.
+
+**Five years.** Same project. Still not "done."
+
+Some people would call that failure. I call it **delusional persistence**. And I'm proud of it.
+
+---
+
+## The Quote That Defines Me
+
+On my website, I wrote this:
+
+> "I failed 20 times. I will fail the 21st. But on the 22nd try, I will succeed. And when that happens... start running. I won't chase you. You'll come back around... to where I am."
+
+That's not motivational bullshit. That's my reality.
+
+I'm 21. I've been building payment systems for 5 years. I've pivoted, failed, rebuilt, and learned. But I **never stopped**.
+
+**Non-stop forward.** That's the only way I know how to operate.
+
+---
+
+## 2020: The First Version
+
+Let me show you what I built in 2020. It was... functional. It worked. It processed real payments. But looking at it now, it's like comparing a bicycle to a Formula 1 car.
+
+### The Old Code
+
+Here's how I handled payment gates in 2020:
+
+```php
+class GatesController extends FFDatabase
+{
+    public function getGate($gate_id){
+        $res = FFDatabase::cfun()
+            ->select("payment_gates")
+            ->where("gate_id", $gate_id)
+            ->run()
+            ->get();
+        
+        if ($res == "no-result"){
+            return false;
+        }else if($res == false)
+            return false;
+        else
+            return $res;
+    }
+}
+```
+
+It worked. It processed payments. But it was:
+- Hardcoded database queries
+- No type safety
+- No error handling strategy
+- No provider abstraction
+- Just... make it work
+
+### The Payment Flow
+
+Here's how I handled 3DS payments back then:
+
+```php
+class DENIZBankPayment
+{
+    public function create_pay($order_id, $price, $currency_unit, 
+                              $ccname, $ccnumber, $ccyear, $ccmonth, $cccvv)
+    {
+        $shopCode = $result["test_mode"] ? "3123" : $result2->shop_code;
+        $purchaseAmount = $price;
+        $orderId = $order_id;
+        
+        // Build hash manually
+        $hashstr = $shopCode . $orderId . $purchaseAmount . 
+                   $okUrl . $failUrl . $txnType . $installmentCount . 
+                   $rnd . $merchantPass;
+        $hash = base64_encode(pack('H*',sha1($hashstr)));
+        
+        // Render HTML form and auto-submit
+        ?>
+        <form method="post" action="<?php echo $result["test_mode"] 
+            ? "https://test.inter-vpos.com.tr/mpi/Default.aspx" 
+            : "https://inter-vpos.com.tr/mpi/Default.aspx"; ?>">
+            <input type="text" name="Pan" value="<?php echo $ccnumber; ?>">
+            <!-- ... more fields ... -->
+        </form>
+        <script>document.getElementById("submit_button").click();</script>
+        <?php
+    }
+}
+```
+
+**It worked.** Real payments went through. Real money was processed.
+
+But every bank integration was:
+- Hardcoded
+- Manual
+- No abstraction
+- Copy-paste for each provider
+- No error mapping
+- No retry logic
+
+I was 16. I didn't know better. I just made it work.
+
+And you know what? That old version is still running today. In production. Processing millions in real financial volume each year across multiple merchants who self-host the system.
+
+I don't have full telemetry (they run it independently), but I see enough to know this:
+
+**Something I built at 16 still moves real money, reliably.**
+
+The fact that code I wrote with all its limitations is still handling real transactions 5 years later? That's wild. But it also shows why I'm rebuilding it. Those merchants deserve better. They deserve the architecture I know how to build now.
+
+---
+
+## 2025: The Rebuild
+
+Now look at what I'm building today.
+
+### The New Architecture
+
+```typescript
+export class BasePaymentProviderAdapter
+  implements IGatewayPaymentProviderAdapter
+{
+  private configParser: ConfigurationParser;
+  private mappingUtils: MappingUtilities;
+  private authManager: AuthManager;
+  private currencyConverter: CurrencyConverter;
+  private requestHandler: RequestHandler;
+
+  constructor(configContentsAsString: string) {
+    const config = parseConfig(configContentsAsString) as TProviderConfig;
+    this.providerConfig = config;
+    
+    // Modular, composable components
+    this.configParser = new ConfigurationParser();
+    this.mappingUtils = new MappingUtilities(config);
+    this.authManager = new AuthManager(this.mappingUtils);
+    this.currencyConverter = new CurrencyConverter(config);
+    this.requestHandler = new RequestHandler(
+      this.mappingUtils,
+      this.authManager,
+      this.currencyConverter,
+      config
+    );
+  }
+}
+```
+
+**Every provider is configured via configuration files.** No hardcoding. No copy-paste.
+
+### The Flow Engine
+
+```typescript
+async pay(params: TPaymentProviderPayParams): Promise<TPaymentProviderPayResponse> {
+  if (params.threeDS === true || params.threeDS === undefined) {
+    return await this.payWith3DS(params, dryRun);
+  } else {
+    return await this.payNonSecure(params, dryRun);
+  }
+}
+
+private async payWith3DS(params: TPaymentProviderPayParams): Promise<TPaymentProviderPayResponse> {
+  const endpointConfig = this.providerConfig.endpoints[endpointName];
+  
+  const flowResult = await this.requestHandler.makeEndpointRequest(
+    endpointConfig,
+    rootData,
+    dryRun
+  );
+  
+  // Intelligent error classification
+  const errorInfo = this._classifyFlowError(failedStep.response, failedStep.step);
+  
+  // Automatic retry logic
+  // Multi-provider failover
+  // Flow condition evaluation
+}
+```
+
+**Type-safe.** **Modular.** **Testable.** **Scalable.**
+
+Same functionality. Different universe of quality.
+
+### Configuration-Driven Architecture
+
+Instead of hardcoding each bank, I define everything in configuration:
+
+```example-config-definition (temsili)
+provider:
+  id: "qnb_finansbank"
+  name: "QNB Finansbank"
+  type: "bank"
+
+actionMapping:
+  payNonSecure: "payNonSecure"
+  capture: "capture"
+
+endpoints:
+  payNonSecure:
+    - id: "payNonSecure"
+      path: "{{variables.baseUrl}}/api/v1/authorize"
+      method: "POST"
+      authentication:
+        type: "token"
+        tokenAlgorithm: "hmac-sha1"
+        tokenFields:
+          - "credentials.username"
+          - "orderId"
+          - "amount"
+      
+      flowConditions:
+        success:
+          - field: "payNonSecure.mapped.response.errCode"
+            operator: "not_exists"
+        failed:
+          - field: "payNonSecure.mapped.response.errCode"
+            operator: "in"
+            values: ["E01", "D01"]
+```
+
+**Add a new bank?** Write a configuration file. **No code changes.** No deployment. Just configuration.
+
+---
+
+## What Changed in Five Years
+
+### 1. From Hardcoded to Configurable
+
+**2020:** Every bank integration was a separate PHP file with hardcoded logic.
+
+**2025:** Every bank is a configuration file. The engine handles them all uniformly.
+
+### 2. From "Make It Work" to "Make It Right"
+
+**2020:** 
+```php
+if ($res == "no-result"){
+    return false;
+}else if($res == false)
+    return false;
+else
+    return $res;
+```
+
+**2025:**
+```typescript
+async pay(params: TPaymentProviderPayParams): Promise<TPaymentProviderPayResponse> {
+  // Type-safe params
+  // Comprehensive error handling
+  // Retry logic with exponential backoff
+  // Multi-provider failover
+  // Flow condition evaluation
+  // Intelligent error classification
+}
+```
+
+### 3. From Manual to Orchestrated
+
+**2020:** Each payment step was manual. If 3DS failed, you manually handled it.
+
+**2025:** Multi-step orchestration with automatic retries, failover, and error classification.
+
+### 4. From "It Works" to "It Scales"
+
+**2020:** Handled ~100 requests/second. That was enough.
+
+**2025:** Built for thousands of requests per second, with proper queuing, caching, and horizontal scaling.
+
+---
+
+## The Hard Truth About Learning
+
+Here's the thing nobody tells you: **learning takes time.**
+
+I spent **3 months** trying to understand Kubernetes PVC and PV.
+
+Three. Months.
+
+I kept asking: "Why do we need both? If PV is the real object, why does PVC exist?"
+
+I read documentation. I watched videos. I tried examples. **Nothing clicked.**
+
+Then one day, it did.
+
+**PVC is the virtual object. PV is the real storage. PVC binds to PV.**
+
+Like a band-aid. Simple once you get it. But it took me 3 months to understand.
+
+**And that's okay.**
+
+Because once I understood it, I didn't just use Kubernetes. I **designed** multi-datacenter architectures with it. I built overlay networks. I set up Rook + CephFS for distributed storage.
+
+**Deep learning takes time. But it lasts forever.**
+
+---
+
+## Why I'm Still Building the Same Thing
+
+People ask: "Why are you rebuilding something you already built?"
+
+**Because I learned.**
+
+I learned:
+- How to build systems that scale
+- How to abstract complexity
+- How to handle errors intelligently
+- How to make systems maintainable
+- How to think about architecture
+
+The 2020 version worked. But it was a **dead end**.
+
+The 2025 version is a **foundation**. It's built to grow. It's built to last.
+
+---
+
+## The Reality of Being 21
+
+I'm 21. I see stories everywhere:
+
+"16-year-old builds app, buys Ferrari."
+
+"19-year-old raises $10M."
+
+"20-year-old exits for $50M."
+
+Meanwhile, I'm here:
+- Building the same payment gateway for 5 years
+- Still not profitable (with the new version)
+- Still learning Kubernetes basics
+- Still figuring out how to make my first 100K₺
+
+But here's the thing: the old version? It's processing millions in real financial volume per year. Multiple production merchants are running it on their own infrastructure. They're self-hosted, so I don't see everything, but I see enough to know it's working.
+
+**I grew up late.** I didn't see the world. I didn't have mentors. I didn't have connections.
+
+I just had code. And persistence.
+
+And that code is still running, processing real money, 5 years later.
+
+**And that's enough.**
+
+---
+
+## The Big Vision vs Small Steps
+
+I think **too big**. That's my problem.
+
+I want to build:
+- A data center
+- An AI compute environment
+- A global payment infrastructure
+- Multi-datacenter orchestration
+
+But I'm missing the small wins:
+- Small SaaS tools that make money
+- Quick launches that generate revenue
+- Simple products that pay the bills
+
+**I need to light the fuse.** One small success. One first payment. One first customer.
+
+Then I can build the infrastructure. Then I can build the AI engine. Then I can build the data center.
+
+But first: **make money.**
+
+I'm turning 22 soon. By 22-23, I'll have my first 100K₺. That's the plan.
+
+Then the real work begins.
+
+---
+
+## What Five Years Taught Me
+
+### 1. Never Give Up (But Know When to Pivot)
+
+I didn't give up on HSRCPay. But I **pivoted** how I build it.
+
+Same vision. Different execution. That's the difference.
+
+### 2. Deep Learning > Fast Learning
+
+I learn slowly. But when I learn, I **understand**.
+
+That Kubernetes knowledge? It let me design systems I couldn't have imagined before.
+
+### 3. Code Quality Matters
+
+The 2020 version worked. But I can't extend it. I can't scale it. I can't maintain it.
+
+The 2025 version? **I can build anything on top of it.**
+
+### 4. Persistence > Talent
+
+I'm not the smartest engineer. I'm not the fastest learner.
+
+But I **don't stop**. And that's my advantage.
+
+---
+
+## The Code Evolution
+
+Let me show you the difference:
+
+### 2020: Payment Request Creation
+
+```php
+$result = FFDatabase::cfun()->insert("payment_requests", [
+    ["price", $_POST["price"]],
+    ["currency_unit", $_POST["currency_unit"]],
+    ["ip_address", $_SERVER["REMOTE_ADDR"]],
+    ["payment_type", "bank"],
+    ["bank_id", $_POST["gate_bank_id"]],
+    ["owner_user_id", AuthController::getUserID()]
+])->run();
+
+Router::Route($return_callback);
+```
+
+Direct database insert. No validation. No error handling. Just... make it work.
+
+### 2025: Payment Processing
+
+```typescript
+async pay(params: TPaymentProviderPayParams): Promise<TPaymentProviderPayResponse> {
+  // Validate input with Zod schemas
+  // Check idempotency
+  // Route to correct provider based on configuration
+  // Execute multi-step flow
+  // Handle errors intelligently
+  // Retry with exponential backoff
+  // Failover to backup provider
+  // Return type-safe response
+}
+```
+
+**Every edge case handled.** **Every error classified.** **Every failure mode considered.**
+
+---
+
+## The Orchestration Engine
+
+The new version doesn't just make API calls. It **orchestrates**:
+
+```yaml
+endpoints:
+  payNonSecure:
+    - id: "payNonSecure"
+      # Step 1: Authorize
+    - id: "payNonSecureCapture"
+      # Step 2: Capture (if step 1 succeeds)
+      
+flowConditions:
+  success:
+    - field: "payNonSecure.mapped.response.errCode"
+      operator: "not_exists"
+  failed:
+    - field: "payNonSecure.mapped.response.errCode"
+      operator: "in"
+      values: ["E01", "D01"]
+```
+
+**Multi-step flows.** **Conditional execution.** **Error mapping.** **Automatic retries.**
+
+This is what 5 years of learning looks like.
+
+---
+
+## The Error Classification System
+
+The old version: if it fails, it fails.
+
+The new version: **intelligent error classification**:
+
+```typescript
+private _classifyFlowError(response: any, step: number): {
+  errorCode: string;
+  isRetryable: boolean;
+  shouldDecline: boolean;
+} {
+  // HTTP status based
+  if (response.status >= 500) {
+    return { errorCode: "service_unavailable", isRetryable: true, shouldDecline: false };
+  }
+  
+  // Content based
+  if (combinedMessage.includes("timeout")) {
+    return { errorCode: "timeout", isRetryable: true, shouldDecline: false };
+  }
+  
+  // Business logic
+  if (combinedMessage.includes("insufficient")) {
+    return { errorCode: "declined", isRetryable: false, shouldDecline: true };
+  }
+}
+```
+
+**Know when to retry.** **Know when to failover.** **Know when to decline.**
+
+This is what 5 years of debugging production systems teaches you.
+
+---
+
+## Why I'm Not Done Yet
+
+I'm **close**. But I'm not done.
+
+The architecture is solid. The code is clean. The system is extensible.
+
+But I need:
+- More provider integrations
+- More test coverage
+- More documentation
+- More customers
+
+**But I'm not stopping.**
+
+I've been building this for 5 years. What's another 5?
+
+---
+
+## The Mindset
+
+> "I failed 20 times. I will fail the 21st. But on the 22nd try, I will succeed."
+
+That's not just a quote. That's my reality.
+
+I've failed. I've pivoted. I've rebuilt.
+
+**But I never stopped.**
+
+And now? I'm closer than ever.
+
+The code is better. The architecture is cleaner. The vision is clearer.
+
+**I'm ready.**
+
+---
+
+## What's Next
+
+I'm turning 22. By 23, I'll have:
+- First 100K₺ in revenue
+- First paying customers
+- First real success
+
+Then I'll build:
+- The data center
+- The AI engine
+- The global infrastructure
+
+**But first:** make it work. Make it sell. Make it profitable.
+
+**Then:** make it legendary.
+
+---
+
+## The Bottom Line
+
+Five years ago, I built a payment gateway.
+
+Today, I'm building it again.
+
+**Same vision. Better execution.**
+
+**Same persistence. More experience.**
+
+**Same delusion. Closer to reality.**
+
+I'm 21. I've been building this for 5 years. I'm not done yet.
+
+**But I'm close.**
+
+And when I'm done? **Start running.**
+
+Because I won't chase you. You'll come back around... to where I am.
+
+---
+
+*Want to see the code? Check out [HSRCPay](https://hsrcpay.com) and [FFramework](https://github.com/hasirciogluhq/fframework).*
+
+*Questions about building systems that last? [Let's talk](/contact).*
+

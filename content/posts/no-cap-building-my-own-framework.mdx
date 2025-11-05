@@ -1,0 +1,337 @@
+---
+title: "No Cap: Why I Built My Own Framework at 16"
+excerpt: "The real story behind FFramework - why a 16-year-old decided to write his own PHP framework instead of using Laravel, and what that taught me about building systems that last."
+coverImage: "/star-logo.jpg"
+publishedAt: "2025-11-01"
+tags:
+  - framework
+  - php
+  - architecture
+  - philosophy
+  - backend
+  - craftsmanship
+  - learning
+featured: false
+status: published
+seoTitle: "Why I Built My Own Framework at 16 | Mustafa Hasırcıoğlu"
+seoDescription: "The honest story behind building FFramework - a custom PHP framework that taught me everything about system architecture, scalability, and why understanding the fundamentals matters more than using the latest tools."
+enableToc: true
+enableComments: true
+---
+
+# Why I Built My Own Framework at 16
+
+Let me get this straight: I'm not here to flex or tell you some romanticized story about how I was a prodigy who built a framework that changed the world.
+
+**No cap.**
+
+I built FFramework because I was 16, broke, and Laravel felt like too much magic for what I needed to understand.
+
+This is the real story.
+
+---
+
+## The Real Problem I Was Trying to Solve
+
+In 2020, I was building a payment gateway. Not some toy project. An actual payment gateway that had to process real money, handle 3DS, manage refunds, and not break when someone's internet connection dropped mid-transaction.
+
+I tried Laravel first. I really did.
+
+But here's what happened: every time I hit a wall, I'd dig into the framework's internals, and I'd realize I had no idea what was actually happening under the hood.
+
+**Routing?** Magic.
+
+**Dependency injection?** Magic.
+
+**ORM?** Magic.
+
+And when you're dealing with financial transactions, magic is the last thing you want.
+
+So I did what any slightly obsessive 16-year-old would do: I started reading Laravel's source code. Then Symfony's. Then CodeIgniter's. And I thought: *"I can build this. But I'll build it so I understand every single line."*
+
+---
+
+## What FFramework Actually Is
+
+FFramework is a PHP framework. That's it. No revolutionary architecture. No groundbreaking patterns.
+
+But here's what it taught me:
+
+### 1. Routing Isn't Magic
+
+```php
+// FFramework router - dead simple
+class Router {
+    private $routes = [];
+    
+    public function get($path, $handler) {
+        $this->routes['GET'][$path] = $handler;
+    }
+    
+    public function dispatch($method, $uri) {
+        if (isset($this->routes[$method][$uri])) {
+            return $this->routes[$method][$uri];
+        }
+        throw new NotFoundException();
+    }
+}
+```
+
+When you write your own router, you understand:
+- Why route caching matters
+- How regex patterns work in routing
+- What happens when two routes conflict
+- How to optimize for performance
+
+**No abstraction layer between you and the HTTP request.** You see it raw.
+
+### 2. Dependency Injection Is Just... Passing Arguments
+
+```php
+// FFramework container - minimal
+class Container {
+    private $bindings = [];
+    
+    public function bind($abstract, $concrete) {
+        $this->bindings[$abstract] = $concrete;
+    }
+    
+    public function make($abstract) {
+        if (isset($this->bindings[$abstract])) {
+            return new $this->bindings[$abstract]();
+        }
+        return new $abstract();
+    }
+}
+```
+
+I didn't call it "dependency injection" back then. I just called it "not hardcoding dependencies."
+
+When you write your own container, you understand:
+- Why singletons can be dangerous
+- How circular dependencies happen
+- When to use factories vs direct instantiation
+- The performance cost of reflection
+
+### 3. Database Abstraction Forces You to Think
+
+```php
+// FFramework query builder - no ORM magic
+class QueryBuilder {
+    private $table;
+    private $wheres = [];
+    
+    public function where($column, $operator, $value) {
+        $this->wheres[] = [$column, $operator, $value];
+        return $this;
+    }
+    
+    public function get() {
+        $sql = "SELECT * FROM {$this->table}";
+        // Build WHERE clause...
+        return $this->db->query($sql);
+    }
+}
+```
+
+No Active Record. No Eloquent magic. Just you, SQL, and the responsibility to write it correctly.
+
+This taught me:
+- How prepared statements actually work
+- Why N+1 queries happen
+- How to optimize database queries
+- When to use transactions vs when to avoid them
+
+---
+
+## The Uncomfortable Truth
+
+Building FFramework took me **6 months** of nights and weekends.
+
+In that same time, I could have:
+- Learned Laravel deeply
+- Built 3 different projects
+- Contributed to open source
+- Actually shipped something that made money
+
+**So why did I do it?**
+
+Because I was building a payment gateway, and I needed to know (not hope, not assume, but **know**) that every line of code was doing exactly what I thought it was doing.
+
+When you're processing someone's money, "it probably works" isn't good enough.
+
+---
+
+## What This Actually Taught Me
+
+### 1. Frameworks Are Solutions to Problems You Haven't Had Yet
+
+Laravel is incredible. But when you're 16 and building your first serious system, you haven't encountered:
+- The need for 50 different middleware layers
+- Complex authentication schemes
+- Multi-tenant architectures
+- Event broadcasting
+
+FFramework was simple because my problems were simple. I needed:
+- Routing
+- Database access
+- Request/response handling
+- Basic security
+
+**That's it.** Everything else was premature optimization.
+
+### 2. Understanding > Using
+
+I can use Laravel now. I can use Symfony, Express, Django, whatever.
+
+But here's the difference: when something breaks, I don't just restart the server and hope it works. I know where to look. I understand the stack trace. I can debug framework-level issues.
+
+**That confidence came from building FFramework.**
+
+### 3. Your First System Doesn't Need to Scale to a Million Users
+
+FFramework handled maybe 100 requests per second at peak. That's nothing by today's standards.
+
+But it handled those 100 requests **correctly**. It didn't leak memory. It didn't have SQL injection vulnerabilities. It didn't crash under load.
+
+**That's the real win.**
+
+---
+
+## The Real Cost of Building Your Own
+
+Let's be honest about what this cost me:
+
+**Time:** 6 months I could have spent building features
+
+**Opportunity:** Could have learned React, Docker, Kubernetes earlier
+
+**Isolation:** Didn't contribute to open source community
+
+**Maintenance:** Had to fix bugs myself, no community support
+
+**But here's what I gained:**
+
+**Deep understanding** of how web frameworks actually work
+
+**Confidence** to debug any PHP application
+
+**Foundation** that made learning other frameworks trivial
+
+**Portfolio piece** that showed I could build systems from scratch
+
+---
+
+## Why I'm Sharing This Now
+
+I'm not saying you should build your own framework. **You probably shouldn't.**
+
+But I am saying: **if you're building something critical, understand your tools.**
+
+If you're using Laravel, read the source code. If you're using React, understand the virtual DOM. If you're using Kubernetes, understand how etcd works.
+
+**Don't just use tools. Understand them.**
+
+---
+
+## The Framework Today
+
+FFramework is still on GitHub: [github.com/hasirciogluhq/fframework](https://github.com/hasirciogluhq/fframework)
+
+It's not maintained. It's not production-ready for new projects. It's a time capsule of what I knew at 16.
+
+But it works. It processed real payments. It handled real traffic. It taught me everything I needed to know to build what I'm building now.
+
+---
+
+## What I'm Building Now
+
+Fast forward to 2025. I'm building [HSRCPay](https://hsrcpay.com), a payment gateway that's:
+
+- **Provider-agnostic** (config-driven architecture)
+- **Type-safe** (TypeScript + Zod schemas)
+- **Orchestrated** (multi-step payment flows)
+- **Observable** (every transaction logged and traced)
+
+I'm not using FFramework anymore. I'm using modern tools.
+
+But every architectural decision I make now is informed by those 6 months I spent building FFramework.
+
+**I understand why I'm choosing each tool.**
+
+**I understand the tradeoffs.**
+
+**I understand what happens when things break.**
+
+---
+
+## The Connection to Payment Systems
+
+Here's the thing: FFramework wasn't just a learning exercise. It was the **foundation** for my first payment gateway.
+
+That payment gateway, built in 2020 with FFramework, processed real money. It handled 3DS flows. It managed refunds. It worked.
+
+And it's still working today. In production. Processing millions in real financial volume each year across multiple merchants who self-host the system independently.
+
+Yeah, I built that.
+
+But it had limits:
+- Hardcoded provider integrations
+- No abstraction layer
+- Manual error handling
+- Limited scalability
+
+**That's why I'm rebuilding it now.**
+
+The new HSRCPay uses everything I learned from FFramework, but applied to a modern architecture:
+- Config-driven provider system
+- Type-safe TypeScript
+- Modular, composable components
+- Intelligent error classification
+- Multi-step orchestration engine
+
+**Same vision. Better foundation.**
+
+---
+
+## The Bottom Line
+
+Building FFramework wasn't the smart move. It was the **necessary move** for me at that time.
+
+I needed to understand how systems work from the ground up. I needed to see the code that handles HTTP requests, manages database connections, and processes business logic.
+
+**No abstraction layers. No magic. Just code.**
+
+And that foundation (that deep understanding of how web applications actually work) is what lets me build complex systems now with confidence.
+
+---
+
+## What This Means for You
+
+You don't need to build your own framework. But you should:
+
+1. **Read the source code** of the frameworks you use
+2. **Understand the fundamentals** before you reach for abstractions
+3. **Build simple versions** of complex systems to understand them
+4. **Question the magic** when something breaks
+
+The goal isn't to build everything from scratch.
+
+**The goal is to understand what you're building on top of.**
+
+---
+
+## Final Thought
+
+I'm 21 now. I've been building systems for 5 years.
+
+And I still think about those 6 months I spent building FFramework. Not because it was the best framework ever built, but because it was the moment I stopped being a user of tools and started being a builder of systems.
+
+**That shift changes everything.**
+
+---
+
+*Want to see the code? Check out [FFramework on GitHub](https://github.com/hasirciogluhq/fframework). It's not pretty, but it's honest.*
+
+*Questions about building systems from scratch? [Let's talk](/contact).*
+
