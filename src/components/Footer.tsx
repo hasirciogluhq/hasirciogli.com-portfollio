@@ -201,11 +201,6 @@ export const Footer = () => {
                   </a>
                 ))}
               </div>
-
-              {/* Built with */}
-              <div className="text-xs text-zinc-600">
-                Built with <span className="text-zinc-400">Next.js</span> · Deployed on <span className="text-zinc-400">Vercel</span>
-              </div>
             </div>
           </div>
         </div>
