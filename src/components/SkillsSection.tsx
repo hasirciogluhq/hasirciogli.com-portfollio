@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "./liquid-glass"
 import skillsData from "@/data/skills.json"
 import projectsData from "@/data/projects.json"
+import { Code2, Sparkles } from "lucide-react"
 
 interface Skill {
   name: string
@@ -26,72 +26,61 @@ export const SkillsSection = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      Languages: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-      Frontend: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-      Backend: "bg-green-500/10 text-green-400 border-green-500/20",
-      DevOps: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-      Cloud: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-      Tools: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-      Architecture: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20"
+      Languages: "bg-brand-primary/10 text-brand-primary border-brand-primary/20",
+      Frontend: "bg-brand-secondary/10 text-brand-secondary border-brand-secondary/20",
+      Backend: "bg-brand-success/10 text-brand-success border-brand-success/20",
+      DevOps: "bg-brand-warning/10 text-brand-warning border-brand-warning/20",
+      Cloud: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
+      Tools: "bg-brand-error/10 text-brand-error border-brand-error/20",
+      Architecture: "bg-brand-primary/10 text-brand-primary border-brand-primary/20"
     }
-    return colors[category] || "bg-zinc-800/40 text-zinc-400 border-zinc-700/50"
+    return colors[category] || "bg-muted text-muted-foreground border-border"
   }
 
   const getProjectNames = (projectSlugs: string[]) => {
     return projectSlugs
-      .map(slug => projectsData.projects.find((p: { slug: string }) => p.slug === slug)?.title)
+      .map(slug => projectsData.projects.find((p: { slug: string; _disabled?: boolean }) => p.slug === slug && !p._disabled)?.title)
       .filter(Boolean)
   }
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-zinc-50 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white border border-zinc-200 mb-6">
-            <div className="flex items-center justify-center gap-2">
-              <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-              </svg>
-              <span className="text-xs font-medium text-zinc-900 uppercase tracking-wider">
-                Tech Stack
-              </span>
-            </div>
-          </LiquidGlass>
+    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
+      <div className="max-w-5xl mx-auto">
+        {/* Minimalist Header */}
+        <div className="mb-16 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-semibold uppercase tracking-wider">
+            <Code2 className="w-3 h-3" />
+            Tech Stack
+          </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
-            Skills & Technologies
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
+            Technologies & Expertise
           </h2>
-          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
-            Specialties: Go, Kubernetes, Distributed Storage, Payments. Click any skill to see which projects use it.
+          
+          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            Specializing in Go, Kubernetes, distributed systems, and payment infrastructure.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {/* Minimal Category Pills */}
+        <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category
-                  ? 'bg-zinc-900 text-white shadow-lg scale-105'
-                  : 'bg-white text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200'
+                  ? 'bg-foreground text-background'
+                  : 'bg-card text-muted-foreground hover:bg-accent hover:text-accent-foreground border border-border'
               }`}
             >
-              {category === "all" ? "All" : category}
+              {category === "all" ? "All Skills" : category}
             </button>
           ))}
         </div>
 
-        {/* Skills Tag Cloud */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Clean Tag Cloud */}
+        <div className="flex flex-wrap gap-3">
           {filteredSkills.map((skill: Skill) => {
             const projectNames = getProjectNames(skill.projects)
             const isHovered = hoveredSkill === skill.name
@@ -104,38 +93,30 @@ export const SkillsSection = () => {
                 onMouseLeave={() => setHoveredSkill(null)}
               >
                 <button
-                  className={`group px-4 py-2 rounded-lg border transition-all duration-300 ${
+                  className={`group px-4 py-2.5 rounded-xl border transition-all duration-300 ${
                     getCategoryColor(skill.category)
-                  } ${isHovered ? 'scale-110 shadow-lg' : 'scale-100'}`}
+                  } ${isHovered ? 'scale-105 shadow-lg' : 'scale-100'}`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium">{skill.name}</span>
-                    {/* Proficiency dots */}
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className={`w-1 h-1 rounded-full ${
-                            i < skill.proficiency ? 'bg-current' : 'bg-current opacity-20'
-                          }`}
-                        />
-                      ))}
-                    </div>
+                    <span className="text-sm font-semibold">{skill.name}</span>
+                    {skill.proficiency === 5 && (
+                      <Sparkles className="w-3 h-3" />
+                    )}
                   </div>
                 </button>
 
                 {/* Tooltip */}
                 {isHovered && projectNames.length > 0 && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200">
-                    <LiquidGlass className="px-3 py-2 !bg-white border border-zinc-200 shadow-2xl whitespace-nowrap">
-                      <div className="text-xs text-zinc-700">
+                    <div className="px-3 py-2 bg-card border border-border rounded-lg shadow-2xl whitespace-nowrap">
+                      <div className="text-xs text-foreground">
                         <div className="font-semibold mb-1">Used in:</div>
                         {projectNames.map((name, i) => (
-                          <div key={i} className="text-zinc-600">• {name}</div>
+                          <div key={i} className="text-muted-foreground">• {name}</div>
                         ))}
                       </div>
-                    </LiquidGlass>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 border-r border-b border-zinc-200" />
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-card rotate-45 border-r border-b border-border -mt-1" />
                   </div>
                 )}
               </div>
@@ -143,33 +124,12 @@ export const SkillsSection = () => {
           })}
         </div>
 
-        {/* Proficiency Legend */}
-        <div className="text-center">
-          <LiquidGlass className="inline-block px-6 py-3 rounded-xl !bg-white border border-zinc-200 shadow-lg">
-            <div className="flex items-center gap-6 text-xs text-zinc-700">
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-                  ))}
-                </div>
-                <span>Expert</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`w-1.5 h-1.5 rounded-full ${
-                        i < 3 ? 'bg-zinc-700' : 'bg-zinc-700 opacity-20'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span>Proficient</span>
-              </div>
-            </div>
-          </LiquidGlass>
+        {/* Legend */}
+        <div className="mt-12 p-6 rounded-2xl bg-card border border-border">
+          <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
+            <Sparkles className="w-4 h-4 text-brand-primary" />
+            <span className="font-semibold text-foreground">Sparkle icon = Expert level proficiency</span>
+          </div>
         </div>
       </div>
     </section>

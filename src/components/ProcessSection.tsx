@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "./liquid-glass"
-import { Search, Code, Rocket, TrendingUp } from "lucide-react"
+import { Search, Code, Rocket, TrendingUp, ArrowRight, CheckCircle } from "lucide-react"
 
 interface ProcessStep {
   id: number
@@ -19,15 +18,15 @@ export const ProcessSection = () => {
   const steps: ProcessStep[] = [
     {
       id: 1,
-      icon: <Search className="w-6 h-6" strokeWidth={2} />,
+      icon: <Search className="w-6 h-6" />,
       title: "Discover",
-      description: "We define the right problem",
+      description: "Define the right problem",
       outcome: "Clear technical roadmap, architecture decisions, and realistic timeline. No guessing.",
-      technologies: ["System Design", "Tech Stack Selection", "Risk Assessment"]
+      technologies: ["System Design", "Tech Stack", "Risk Assessment"]
     },
     {
       id: 2,
-      icon: <Code className="w-6 h-6" strokeWidth={2} />,
+      icon: <Code className="w-6 h-6" />,
       title: "Build",
       description: "Clean code, tested features",
       outcome: "Production-ready code with tests, documentation, and monitoring from day one.",
@@ -35,7 +34,7 @@ export const ProcessSection = () => {
     },
     {
       id: 3,
-      icon: <Rocket className="w-6 h-6" strokeWidth={2} />,
+      icon: <Rocket className="w-6 h-6" />,
       title: "Ship",
       description: "Deploy with confidence",
       outcome: "Automated CI/CD pipelines, zero-downtime deployments, and instant rollback capability.",
@@ -43,200 +42,124 @@ export const ProcessSection = () => {
     },
     {
       id: 4,
-      icon: <TrendingUp className="w-6 h-6" strokeWidth={2} />,
+      icon: <TrendingUp className="w-6 h-6" />,
       title: "Scale",
       description: "Grow without breaking",
       outcome: "Performance optimization, cost reduction, and systems that handle 10x growth.",
-      technologies: ["Load Balancing", "Caching", "Database Optimization"]
+      technologies: ["Load Balancing", "Caching", "Optimization"]
     }
   ]
 
   const currentStep = steps.find(s => s.id === activeStep)!
 
   return (
-    <section className="px-4 py-16 md:py-24 bg-[#1A1A1A] relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg mb-6">
-            <div className="flex items-center gap-2">
-              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              <span className="text-xs font-medium text-white uppercase tracking-wider">
-                Process
-              </span>
-            </div>
-          </LiquidGlass>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            How I Work
+    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
+      <div className="max-w-5xl mx-auto">
+        {/* Minimalist Header */}
+        <div className="mb-16 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-semibold uppercase tracking-wider">
+            <CheckCircle className="w-3 h-3" />
+            Process
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
+            From idea to production
           </h2>
-          <p className="text-zinc-400 text-base max-w-2xl mx-auto">
-            A proven 4-step process that takes your idea from concept to production. No surprises, just results.
+          
+          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            A proven 4-step process that takes projects from concept to scale. Predictable, transparent, results-driven.
           </p>
         </div>
 
-        {/* Desktop: Horizontal Stepper */}
-        <div className="hidden md:block">
-          {/* Step Pills */}
-          <div className="flex items-center justify-center mb-12">
+        {/* Process Steps - Horizontal */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between gap-2">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center">
+              <div key={step.id} className="flex-1 flex items-center">
                 <button
                   onClick={() => setActiveStep(step.id)}
-                  className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${activeStep === step.id
-                    ? 'bg-white text-zinc-900 scale-110 shadow-xl'
-                    : 'bg-zinc-900/40 text-zinc-300 hover:bg-zinc-900/60 border border-zinc-800/50'
-                    }`}
+                  className={`w-full p-4 rounded-xl transition-all duration-300 ${
+                    activeStep === step.id
+                      ? 'bg-foreground text-background'
+                      : 'bg-card text-muted-foreground hover:bg-accent border border-border'
+                  }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
-                      }`}>
-                      <div className={activeStep === step.id ? 'text-zinc-900' : 'text-zinc-300'}>
-                        {step.icon}
-                      </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <div className={`p-2 rounded-lg ${
+                      activeStep === step.id ? 'bg-background/20' : 'bg-muted'
+                    }`}>
+                      {step.icon}
                     </div>
-                    <div className="text-left">
-                      <div className="text-xs opacity-60 mb-0.5">Step {step.id}</div>
-                      <div className="font-semibold">{step.title}</div>
-                    </div>
+                    <div className="text-sm font-semibold">{step.title}</div>
                   </div>
                 </button>
-
-                {/* Connector Line */}
                 {index < steps.length - 1 && (
-                  <div className={`w-12 h-0.5 mx-2 transition-colors ${activeStep > step.id ? 'bg-white' : 'bg-zinc-700'
-                    }`} />
+                  <ArrowRight className={`flex-shrink-0 mx-2 w-4 h-4 ${
+                    activeStep > step.id ? 'text-foreground' : 'text-border'
+                  }`} />
                 )}
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Step Content */}
-          <LiquidGlass className="p-8 rounded-2xl !bg-zinc-900/60 border border-zinc-800/50 shadow-lg">
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {currentStep.title}
-                </h3>
-                <p className="text-base text-zinc-300 mb-6">
-                  {currentStep.description}
-                </p>
-
-                <div className="bg-blue-500/10 border-l-4 border-blue-500 p-4 rounded-r-lg mb-6">
-                  <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">
-                    What You Get
-                  </div>
-                  <p className="text-sm text-blue-300 leading-relaxed">
-                    {currentStep.outcome}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                    Example Technologies
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {currentStep.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-zinc-800/60 text-zinc-300 rounded-md text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center">
-                <div className="relative w-64 h-64 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl flex items-center justify-center border border-zinc-700/30">
-                  <div className="text-8xl opacity-20 text-white">
+        {/* Step Details */}
+        <div className="p-8 rounded-2xl bg-card border border-border">
+          <div className="space-y-6">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-3 rounded-xl bg-brand-primary/10">
+                  <div className="text-brand-primary">
                     {currentStep.icon}
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-center text-sm font-semibold text-zinc-400">
-                    Step {currentStep.id} of {steps.length}
-                  </div>
                 </div>
+                <div>
+                  <div className="text-sm text-muted-foreground">Step {currentStep.id}</div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    {currentStep.title}
+                  </h3>
+                </div>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                {currentStep.description}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 border-l-4 border-brand-primary">
+              <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider mb-2">
+                What You Get
+              </div>
+              <p className="text-sm text-foreground leading-relaxed">
+                {currentStep.outcome}
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                Technologies & Practices
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {currentStep.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 bg-muted text-foreground rounded-lg text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          </LiquidGlass>
+          </div>
         </div>
 
-        {/* Mobile: Vertical Stepper */}
-        <div className="md:hidden space-y-4">
-          {steps.map((step) => (
-            <LiquidGlass
-              key={step.id}
-              className={`p-5 rounded-xl transition-all ${activeStep === step.id
-                ? '!bg-white text-zinc-900 scale-105'
-                : '!bg-zinc-900/40 text-zinc-300 border border-zinc-800/50'
-                }`}
-              onClick={() => setActiveStep(step.id)}
-            >
-              <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-lg flex-shrink-0 ${activeStep === step.id ? 'bg-zinc-900/10' : 'bg-zinc-800/40'
-                  }`}>
-                  <div className={activeStep === step.id ? 'text-zinc-900' : 'text-zinc-300'}>
-                    {step.icon}
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-xs font-semibold ${activeStep === step.id ? 'text-zinc-600' : 'text-zinc-500'
-                      }`}>
-                      Step {step.id}
-                    </span>
-                    <span className="font-bold text-lg">{step.title}</span>
-                  </div>
-                  <p className={`text-sm mb-3 ${activeStep === step.id ? 'text-zinc-700' : 'text-zinc-400'
-                    }`}>
-                    {step.description}
-                  </p>
-
-                  {activeStep === step.id && (
-                    <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                      <div className={`p-3 rounded-lg ${activeStep === step.id ? 'bg-blue-50' : 'bg-white/10'
-                        }`}>
-                        <p className="text-sm leading-relaxed text-blue-900">
-                          {step.outcome}
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {step.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className={`px-2 py-1 rounded-md text-xs font-medium ${activeStep === step.id
-                              ? 'bg-zinc-100 text-zinc-700'
-                              : 'bg-zinc-800/60 text-zinc-300'
-                              }`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </LiquidGlass>
-          ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-sm text-zinc-400 mb-4">
-            Ready to start your project?
-          </p>
+        {/* CTA */}
+        <div className="mt-12 text-center">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:scale-105 transition-transform"
           >
-            Let&apos;s Talk
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            Start Your Project
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>
