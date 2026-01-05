@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { LiquidGlass } from "@/components/liquid-glass"
+import { BetaBadge } from "@/components/BetaBadge"
 import { ExternalLink, ArrowRight, Filter, Search } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 import projectsData from "@/data/projects.json"
@@ -18,11 +19,13 @@ interface Project {
   technologies: string[]
   liveUrl: string
   featured: boolean
+  beta?: boolean
   imageUrl: string
   metrics?: {
     label: string
     value: string
   }
+  _disabled?: boolean
 }
 
 export default function ProjectsPage() {
@@ -32,7 +35,10 @@ export default function ProjectsPage() {
 
   const categories = ["all", "SaaS", "Fintech", "E-commerce", "Social", "Community"]
 
-  const filteredProjects = projectsData.projects.filter((project: Project) => {
+  // Filter out disabled projects
+  const activeProjects = projectsData.projects.filter((p: Project) => !p._disabled)
+
+  const filteredProjects = activeProjects.filter((project: Project) => {
     const matchesCategory = activeCategory === "all" || project.category === activeCategory
     const matchesSearch = searchTerm === "" ||
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,8 +110,8 @@ export default function ProjectsPage() {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { label: "Total Projects", value: projectsData.projects.length },
-              { label: "Active Projects", value: projectsData.projects.filter((p: Project) => p.featured).length },
+              { label: "Total Projects", value: activeProjects.length },
+              { label: "Active Projects", value: activeProjects.filter((p: Project) => p.featured).length },
               { label: "Technologies", value: "10+" },
               { label: "In Production", value: "99.9% Uptime" }
             ].map((stat, index) => (
@@ -185,6 +191,9 @@ export default function ProjectsPage() {
                           <span className="px-2 py-1 text-xs font-medium bg-yellow-500/20 backdrop-blur-sm text-yellow-400 rounded-md border border-yellow-500/30">
                             ⭐ Featured
                           </span>
+                        )}
+                        {project.beta && (
+                          <BetaBadge />
                         )}
                       </div>
 

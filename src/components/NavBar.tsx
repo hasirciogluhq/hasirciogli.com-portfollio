@@ -1278,7 +1278,7 @@ export const NavbarComponentByClaude2 = () => {
                 </div>
             </nav>
 
-            {/* Enhanced Mobile Menu with staggered animations */}
+            {/* Enhanced Mobile Menu with left-to-right slide animation */}
             {isMobileMenuOpen && (
                 <div className="fixed inset-0 z-40 lg:hidden">
                     {/* Backdrop with enhanced blur */}
@@ -1288,47 +1288,54 @@ export const NavbarComponentByClaude2 = () => {
                         aria-hidden="true"
                     />
 
-                        {/* Menu Content with slide animation */}
-                        <div className="relative z-50 bg-[#1A1A1A]/98 backdrop-blur-xl border-b border-white/10 animate-in slide-in-from-top duration-300">
-                            <div className="px-6 py-8 space-y-2">
-                                {navItems.map((item, index) => (
-                                    <Link
-                                        key={item.id}
-                                        href={item.href}
-                                        className={`block px-4 py-3 rounded-xl transition-all duration-300 font-medium text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${isActive(item.href)
-                                                ? 'text-white bg-white/10 border border-white/20 font-semibold'
-                                                : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                                            }`}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        aria-current={isActive(item.href) ? "page" : undefined}
-                                        style={{
-                                            animationDelay: `${index * 100}ms`,
-                                            animation: 'fadeInUp 0.3s ease-out forwards'
-                                        }}
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <span>{item.label}</span>
-                                            {isActive(item.href) && (
-                                                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                                            )}
-                                        </div>
-                                    </Link>
-                                ))}
+                    {/* Menu Content with left-to-right slide animation */}
+                    <div className="absolute left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-[#1A1A1A]/98 backdrop-blur-xl border-r border-white/10 animate-in slide-in-from-left duration-300 shadow-2xl">
+                        <div className="px-6 py-8 space-y-2 h-full overflow-y-auto">
+                            {/* Logo in mobile menu */}
+                            <div className="mb-6 pb-6 border-b border-white/10">
+                                <h2 className="text-lg font-playfair font-bold text-white">
+                                    Mustafa Hasırcıoğlu
+                                </h2>
+                            </div>
 
-                                {/* Mobile CTA with enhanced styling */}
-                                <div className="pt-6 border-t border-white/10">
-                                    <Link
-                                        href="mailto:mustafa@hasirciogluhq.com"
-                                        className="block"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                        <LiquidGlass className="px-6 py-4 rounded-xl text-center font-medium transition-all duration-300 hover:scale-105">
-                                            <span className="text-zinc-300">Let&apos;s Talk</span>
-                                        </LiquidGlass>
-                                    </Link>
-                                </div>
+                            {navItems.map((item, index) => (
+                                <Link
+                                    key={item.id}
+                                    href={item.href}
+                                    className={`block px-4 py-3 rounded-xl transition-all duration-300 font-medium text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${isActive(item.href)
+                                            ? 'text-white bg-white/10 border border-white/20 font-semibold'
+                                            : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    aria-current={isActive(item.href) ? "page" : undefined}
+                                    style={{
+                                        animationDelay: `${index * 100}ms`,
+                                        animation: 'fadeInUp 0.3s ease-out forwards'
+                                    }}
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <span>{item.label}</span>
+                                        {isActive(item.href) && (
+                                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                                        )}
+                                    </div>
+                                </Link>
+                            ))}
+
+                            {/* Mobile CTA with enhanced styling */}
+                            <div className="pt-6 border-t border-white/10">
+                                <Link
+                                    href="mailto:mustafa@hasirciogluhq.com"
+                                    className="block"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    <LiquidGlass className="px-6 py-4 rounded-xl text-center font-medium transition-all duration-300 hover:scale-105">
+                                        <span className="text-zinc-300">Let&apos;s Talk</span>
+                                    </LiquidGlass>
+                                </Link>
                             </div>
                         </div>
+                    </div>
                 </div>
             )}
 

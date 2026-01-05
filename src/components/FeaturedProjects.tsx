@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { LiquidGlass } from "./liquid-glass"
+import { BetaBadge } from "./BetaBadge"
 import { ExternalLink, ArrowRight } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 import projectsData from "@/data/projects.json"
@@ -18,17 +19,20 @@ interface Project {
   technologies: string[]
   liveUrl: string
   featured: boolean
+  beta?: boolean
   imageUrl: string
   metrics?: {
     label: string
     value: string
   }
+  _disabled?: boolean
 }
 
 export const FeaturedProjects = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
 
-  const featuredProjects = projectsData.projects.filter((p: Project) => p.featured)
+  // Filter out disabled projects and only show featured ones
+  const featuredProjects = projectsData.projects.filter((p: Project) => p.featured && !p._disabled)
 
   const handleProjectClick = (projectSlug: string) => {
     sendGAEvent('event', 'project_card_click', {
@@ -91,10 +95,13 @@ export const FeaturedProjects = () => {
                   </div>
 
                   {/* Category Badge */}
-                  <div className="absolute top-3 left-3">
+                  <div className="absolute top-3 left-3 flex items-center gap-2">
                     <span className="px-2 py-1 text-xs font-medium bg-black/60 backdrop-blur-sm text-white rounded-md">
                       {project.category}
                     </span>
+                    {project.beta && (
+                      <BetaBadge />
+                    )}
                   </div>
 
                   {/* Metrics Badge */}
