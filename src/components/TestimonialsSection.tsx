@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "./liquid-glass"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
 
 interface Testimonial {
   quote: string
@@ -53,144 +52,101 @@ export const TestimonialsSection = () => {
 
   const currentTestimonial = testimonials[currentIndex]
 
-  // Company logos (placeholder - replace with real logos)
-  const companies = [
-    { name: "Deweloper Cloud", logo: "DC" },
-    { name: "HsrcPay", logo: "HP" },
-    { name: "Ficksa", logo: "FK" },
-    { name: "AnonimSor", logo: "AS" }
-  ]
-
   return (
-    <section className="px-4 py-16 md:py-24 bg-zinc-50 relative overflow-hidden">
-      {/* Background decorative */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white border border-zinc-200 mb-6">
-            <div className="flex items-center justify-center gap-2">
-              <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              <span className="text-xs font-medium text-zinc-900 uppercase tracking-wider">
-                Testimonials
-              </span>
-            </div>
-          </LiquidGlass>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
-            Trusted by Founders & Teams
+    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
+      <div className="max-w-5xl mx-auto">
+        {/* Minimalist Header */}
+        <div className="mb-16 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-warning/10 text-brand-warning text-xs font-semibold uppercase tracking-wider">
+            <Quote className="w-3 h-3" />
+            Testimonials
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
+            Trusted by builders and teams
           </h2>
-          <p className="text-zinc-600 text-base max-w-2xl mx-auto">
-            Real results from real projects. Here&apos;s what clients say about working with me.
-          </p>
         </div>
 
-        {/* Company Logos Strip */}
-        <div className="mb-12">
-          <p className="text-center text-xs text-zinc-500 uppercase tracking-wider mb-6">
-            Projects I&apos;ve Built
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {companies.map((company) => (
-              <LiquidGlass
-                key={company.name}
-                className="px-6 py-3 rounded-lg !bg-white border border-zinc-200 hover:border-zinc-300 transition-all"
-              >
-                <div className="text-zinc-700 font-semibold text-sm">
-                  {company.logo}
-                </div>
-              </LiquidGlass>
+        {/* Main Testimonial */}
+        <div className="relative p-8 md:p-12 rounded-2xl bg-card border border-border mb-12">
+          {/* Stars */}
+          <div className="flex items-center gap-1 mb-6">
+            {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
+              <Star key={i} className="w-5 h-5 fill-brand-warning text-brand-warning" />
             ))}
           </div>
-        </div>
 
-        {/* Main Testimonial Card */}
-        <div className="max-w-4xl mx-auto">
-          <LiquidGlass className="p-8 md:p-12 rounded-2xl !bg-white border border-zinc-200">
-            {/* Stars */}
-            <div className="flex items-center justify-center gap-1 mb-6">
-              {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+          {/* Quote */}
+          <blockquote className="mb-8">
+            <p className="text-xl md:text-2xl text-foreground leading-relaxed">
+              {currentTestimonial.quote}
+            </p>
+          </blockquote>
+
+          {/* Author */}
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center">
+              <span className="text-sm font-bold text-white">
+                {currentTestimonial.avatar}
+              </span>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">{currentTestimonial.author}</p>
+              <p className="text-sm text-muted-foreground">
+                {currentTestimonial.title} · {currentTestimonial.company}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-between">
+            <button
+              onClick={prevTestimonial}
+              className="p-2 rounded-lg bg-muted hover:bg-accent text-muted-foreground hover:text-foreground transition-all"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex
+                      ? 'bg-foreground w-8'
+                      : 'bg-border w-2 hover:bg-muted-foreground'
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
               ))}
             </div>
 
-            {/* Quote */}
-            <blockquote className="text-center mb-8">
-              <p className="text-lg md:text-xl text-zinc-700 leading-relaxed italic">
-                &ldquo;{currentTestimonial.quote}&rdquo;
-              </p>
-            </blockquote>
-
-            {/* Author */}
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-sm font-bold text-white">
-                  {currentTestimonial.avatar}
-                </span>
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-zinc-900">{currentTestimonial.author}</p>
-                <p className="text-sm text-zinc-600">
-                  {currentTestimonial.title} · {currentTestimonial.company}
-                </p>
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-center gap-4">
-              <button
-                onClick={prevTestimonial}
-                className="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900 transition-all focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              {/* Dots */}
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                        ? 'bg-zinc-900 w-6'
-                        : 'bg-zinc-300 hover:bg-zinc-400'
-                      }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextTestimonial}
-                className="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900 transition-all focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </LiquidGlass>
+            <button
+              onClick={nextTestimonial}
+              className="p-2 rounded-lg bg-muted hover:bg-accent text-muted-foreground hover:text-foreground transition-all"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Trust Metrics */}
-        <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
+        <div className="grid grid-cols-3 gap-6 p-8 rounded-2xl bg-gradient-to-br from-brand-primary/10 to-brand-accent/10 border border-brand-primary/20">
           <div className="text-center">
-            <div className="text-3xl font-bold text-zinc-900 mb-1">10+</div>
-            <div className="text-sm text-zinc-600">Projects Shipped</div>
+            <div className="text-4xl font-bold text-foreground mb-2">10+</div>
+            <div className="text-sm text-muted-foreground">Projects Shipped</div>
           </div>
-          <div className="text-center border-x border-zinc-300">
-            <div className="text-3xl font-bold text-zinc-900 mb-1">99.9%</div>
-            <div className="text-sm text-zinc-600">Uptime Agreements</div>
+          <div className="text-center border-x border-border">
+            <div className="text-4xl font-bold text-foreground mb-2">99.9%</div>
+            <div className="text-sm text-muted-foreground">Uptime</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-zinc-900 mb-1">100%</div>
-            <div className="text-sm text-zinc-600">Client Satisfaction</div>
+            <div className="text-4xl font-bold text-foreground mb-2">100%</div>
+            <div className="text-sm text-muted-foreground">Satisfaction</div>
           </div>
         </div>
       </div>
