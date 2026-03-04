@@ -87,6 +87,7 @@
       "liveUrl": "https://ficksa.com",
       "featured": true,
       "beta": true,
+      "_disabled": true,
       "imageUrl": "/projects/ficksa.jpg",
       "metrics": {
         "label": "Orders/month",
