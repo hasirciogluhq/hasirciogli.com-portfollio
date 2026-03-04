@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { BetaBadge } from "@/components/BetaBadge"
 import { ExternalLink, ArrowRight, Filter, Search } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
               <div className="flex items-center gap-2">
                 <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                   Portfolio
                 </span>
               </div>
-            </LiquidGlass>
+            </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Projects I&apos;ve Built
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto">
-              <LiquidGlass className="!bg-zinc-900/60 border-zinc-800/50 p-0">
+              <div className="!bg-zinc-900/60 border-zinc-800/50 p-0">
                 <div className="flex items-center gap-3 px-4 py-3">
                   <Search className="w-5 h-5 text-zinc-500" />
                   <input
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
                     className="flex-1 bg-transparent text-white placeholder:text-zinc-600 outline-none"
                   />
                 </div>
-              </LiquidGlass>
+              </div>
             </div>
           </div>
 
@@ -115,10 +115,10 @@ export default function ProjectsPage() {
               { label: "Technologies", value: "10+" },
               { label: "In Production", value: "99.9% Uptime" }
             ].map((stat, index) => (
-              <LiquidGlass key={index} className="p-4 text-center !bg-zinc-900/40 border-zinc-800/50">
+              <div key={index} className="p-4 text-center !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
                 <div className="text-xs text-zinc-500">{stat.label}</div>
-              </LiquidGlass>
+              </div>
             ))}
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function ProjectsPage() {
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <LiquidGlass
+                  <div
                     className={`h-full p-0 rounded-2xl overflow-hidden !bg-zinc-900/40 border border-zinc-800/50 transition-all duration-300 ${hoveredProject === project.id
                         ? 'scale-105 !border-zinc-700 shadow-2xl'
                         : 'scale-100'
@@ -200,10 +200,10 @@ export default function ProjectsPage() {
                       {/* Metrics Badge */}
                       {project.metrics && (
                         <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <LiquidGlass className="px-2 py-1 !bg-black/80 backdrop-blur-sm">
+                          <div className="px-2 py-1 !bg-black/80 backdrop-blur-sm">
                             <span className="text-xs text-white font-medium">{project.metrics.value}</span>
                             <span className="text-xs text-zinc-400 ml-1">{project.metrics.label}</span>
-                          </LiquidGlass>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -263,13 +263,13 @@ export default function ProjectsPage() {
                         </button>
                       </div>
                     </div>
-                  </LiquidGlass>
+                  </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="text-center py-20">
-              <LiquidGlass className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-6xl">🔍</div>
                 <h3 className="text-xl font-semibold text-white">No results found</h3>
                 <p className="text-zinc-400 max-w-md">
@@ -284,7 +284,7 @@ export default function ProjectsPage() {
                 >
                   Reset Filters
                 </button>
-              </LiquidGlass>
+              </div>
             </div>
           )}
         </div>
@@ -293,7 +293,7 @@ export default function ProjectsPage() {
       {/* CTA Section */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
-          <LiquidGlass className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
             <h2 className="text-3xl font-bold text-white mb-4">
               Your Next Project Could Be Here
             </h2>
@@ -316,7 +316,7 @@ export default function ProjectsPage() {
                 <span>Learn More About Me</span>
               </a>
             </div>
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { TagPill } from "./TagPill"
 import { formatDate } from "@/lib/blog-utils"
 import type { BlogPostMeta } from "@/lib/blog"
@@ -35,7 +35,7 @@ function BlogCardGrid({ post, priority, className }: Omit<BlogCardProps, 'varian
       href={`/blog/${post.slug}`}
       className={cn("group block h-full", className)}
     >
-      <LiquidGlass className="h-full !bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+      <div className="h-full !bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
         {/* Image */}
         <div className="relative aspect-[16/9] overflow-hidden">
           <Image
@@ -115,7 +115,7 @@ function BlogCardGrid({ post, priority, className }: Omit<BlogCardProps, 'varian
             <span className="text-xs text-zinc-400">{post.author.title || 'Anonymous'}</span>
           </div>
         </div>
-      </LiquidGlass>
+      </div>
     </Link>
   )
 }
@@ -127,7 +127,7 @@ function BlogCardList({ post, priority, className }: Omit<BlogCardProps, 'varian
       href={`/blog/${post.slug}`}
       className={cn("group block", className)}
     >
-      <LiquidGlass className="!bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:shadow-2xl">
+      <div className="!bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:shadow-2xl">
         <div className="flex flex-col md:flex-row">
           {/* Image */}
           <div className="relative w-full md:w-80 aspect-[16/9] md:aspect-[4/3] flex-shrink-0 overflow-hidden">
@@ -192,7 +192,7 @@ function BlogCardList({ post, priority, className }: Omit<BlogCardProps, 'varian
             </div>
           </div>
         </div>
-      </LiquidGlass>
+      </div>
     </Link>
   )
 }
@@ -204,7 +204,7 @@ function BlogCardSpotlight({ post, priority, className }: Omit<BlogCardProps, 'v
       href={`/blog/${post.slug}`}
       className={cn("group block", className)}
     >
-      <LiquidGlass className="!bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:shadow-2xl">
+      <div className="!bg-zinc-900/60 border-zinc-800/50 hover:border-zinc-700 overflow-hidden p-0 transition-all duration-300 hover:shadow-2xl">
         {/* Image */}
         <div className="relative aspect-[21/9] overflow-hidden">
           <Image
@@ -267,7 +267,7 @@ function BlogCardSpotlight({ post, priority, className }: Omit<BlogCardProps, 'v
             </div>
           </div>
         </div>
-      </LiquidGlass>
+      </div>
     </Link>
   )
 }

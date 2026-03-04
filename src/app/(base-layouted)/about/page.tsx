@@ -1,6 +1,6 @@
 "use client"
 
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { Code, Database, Server, GitBranch, Award, Target, Heart, Zap, Users, TrendingUp } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 import Image from "next/image"
@@ -90,7 +90,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
             <div>
-              <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+              <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
                 <div className="flex items-center gap-2">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -99,7 +99,7 @@ export default function AboutPage() {
                     About Me
                   </span>
                 </div>
-              </LiquidGlass>
+              </div>
 
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
                 Entrepreneurial Developer,
@@ -110,13 +110,13 @@ export default function AboutPage() {
 
               <div className="space-y-4 mb-8">
                 <p className="text-lg text-zinc-300 leading-relaxed">
-                  I&apos;m Mustafa. Software engineer, founder, and production systems enthusiast. 
+                  I&apos;m Mustafa. Software engineer, founder, and production systems enthusiast.
                   I&apos;ve been building software for 7+ years, and creating my own products for the past 4 years.
                 </p>
 
                 <p className="text-base text-zinc-400 leading-relaxed">
-                  I specialize in cloud infrastructure, distributed systems, and payment systems. 
-                  I love working with Go, Kubernetes, and PostgreSQL. I always aim to build production-grade, 
+                  I specialize in cloud infrastructure, distributed systems, and payment systems.
+                  I love working with Go, Kubernetes, and PostgreSQL. I always aim to build production-grade,
                   scalable systems.
                 </p>
               </div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
               {/* Tech Stack Pills */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {techStack.map((tech) => (
-                  <LiquidGlass
+                  <div
                     key={tech.name}
                     className="px-4 py-3 rounded-xl !bg-zinc-900/40 border-zinc-800/50 hover:border-zinc-700 hover:!bg-zinc-900/60 transition-all hover:scale-105"
                   >
@@ -139,7 +139,7 @@ export default function AboutPage() {
                         <p className="text-xs text-zinc-500">{tech.years} experience</p>
                       </div>
                     </div>
-                  </LiquidGlass>
+                  </div>
                 ))}
               </div>
 
@@ -159,12 +159,12 @@ export default function AboutPage() {
             {/* Right - Professional Card */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative w-full max-w-md">
-                <LiquidGlass className="p-8 rounded-2xl !bg-zinc-900/60 border-zinc-800/50 shadow-2xl">
+                <div className="p-8 rounded-2xl !bg-zinc-900/60 border-zinc-800/50 shadow-2xl">
                   {/* Profile Header */}
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg">
                       {!imageError ? (
-                        <Image 
+                        <Image
                           src="/mustafa-hasircioglu.webp"
                           alt="Mustafa Hasırcıoğlu"
                           width={80}
@@ -222,18 +222,18 @@ export default function AboutPage() {
                       ))}
                     </div>
                   </div>
-                </LiquidGlass>
+                </div>
 
                 {/* Floating Badges */}
                 <div className="absolute -top-4 -right-4">
-                  <LiquidGlass className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
+                  <div className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
                     <div className="text-xs font-semibold text-white">🚀 Active Builder</div>
-                  </LiquidGlass>
+                  </div>
                 </div>
                 <div className="absolute -bottom-4 -left-4">
-                  <LiquidGlass className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
+                  <div className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
                     <div className="text-xs font-semibold text-white">⚡ 99.9% Uptime</div>
-                  </LiquidGlass>
+                  </div>
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
       <section className="px-4 py-16 md:py-24 border-t border-zinc-800/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
               <div className="flex items-center gap-2">
                 <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -254,7 +254,7 @@ export default function AboutPage() {
                   My Values
                 </span>
               </div>
-            </LiquidGlass>
+            </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               My Values & Principles
@@ -266,7 +266,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((value, index) => (
-              <LiquidGlass
+              <div
                 key={index}
                 className="p-6 rounded-2xl !bg-zinc-900/40 border-zinc-800/50 hover:!bg-zinc-900/60 hover:border-zinc-700 transition-all duration-300 hover:scale-105"
               >
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
                 <p className="text-zinc-400 leading-relaxed">{value.description}</p>
-              </LiquidGlass>
+              </div>
             ))}
           </div>
         </div>
@@ -287,7 +287,7 @@ export default function AboutPage() {
       <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#0F0F0F] to-[#1A1A1A] border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
               <div className="flex items-center gap-2">
                 <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -296,7 +296,7 @@ export default function AboutPage() {
                   My Journey
                 </span>
               </div>
-            </LiquidGlass>
+            </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               My Journey
@@ -320,7 +320,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Content */}
-                <LiquidGlass className="flex-1 p-6 rounded-xl !bg-zinc-900/40 border-zinc-800/50 group-hover:!bg-zinc-900/60 group-hover:border-zinc-700 transition-all">
+                <div className="flex-1 p-6 rounded-xl !bg-zinc-900/40 border-zinc-800/50 group-hover:!bg-zinc-900/60 group-hover:border-zinc-700 transition-all">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-lg text-sm font-semibold">
                       {item.year}
@@ -328,7 +328,7 @@ export default function AboutPage() {
                     <h3 className="text-lg font-bold text-white">{item.title}</h3>
                   </div>
                   <p className="text-zinc-400 leading-relaxed">{item.description}</p>
-                </LiquidGlass>
+                </div>
               </div>
             ))}
           </div>
@@ -338,13 +338,13 @@ export default function AboutPage() {
       {/* Quote Section */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto">
-          <LiquidGlass className="p-12 text-center !bg-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 text-center !bg-zinc-900/40 border-zinc-800/50">
             <blockquote className="text-2xl md:text-3xl font-serif text-white leading-relaxed mb-6 italic">
-              &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on the 22nd. 
+              &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on the 22nd.
               How will you beat me?&rdquo;
             </blockquote>
             <p className="text-zinc-500 text-sm">— Mustafa Hasırcıoğlu</p>
-          </LiquidGlass>
+          </div>
         </div>
       </section>
 
@@ -355,7 +355,7 @@ export default function AboutPage() {
             Ready for your project?
           </h2>
           <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-            From MVP to production, from idea to scalable system. 
+            From MVP to production, from idea to scalable system.
             Let&apos;s build something amazing together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,6 +1,6 @@
 import { TagPill } from "@/components/blog/TagPill"
 import { getAllTags } from "@/lib/blog"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import Link from "next/link"
 import { ArrowLeft, Tag } from "lucide-react"
 
@@ -62,7 +62,7 @@ export default async function TagsPage() {
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
             </div>
             
-            <LiquidGlass className="!bg-zinc-900/40 border-zinc-800/50 p-8">
+            <div className="!bg-zinc-900/40 border-zinc-800/50 p-8">
               <div className="flex flex-wrap gap-3">
                 {popularTags.map((tag) => (
                   <TagPill
@@ -73,7 +73,7 @@ export default async function TagsPage() {
                   />
                 ))}
               </div>
-            </LiquidGlass>
+            </div>
           </div>
         </section>
       )}
@@ -96,7 +96,7 @@ export default async function TagsPage() {
                 href={`/blog/tag/${tag.slug}`}
                 className="group"
               >
-                <LiquidGlass className="!bg-zinc-900/40 border-zinc-800/50 p-6 hover:!bg-zinc-900/60 transition-all duration-300 hover:border-zinc-700/50 h-full">
+                <div className="!bg-zinc-900/40 border-zinc-800/50 p-6 hover:!bg-zinc-900/60 transition-all duration-300 hover:border-zinc-700/50 h-full">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
@@ -123,20 +123,20 @@ export default async function TagsPage() {
                       aria-hidden="true"
                     />
                   </div>
-                </LiquidGlass>
+                </div>
               </Link>
             ))}
           </div>
 
           {tags.length === 0 && (
             <div className="text-center py-20">
-              <LiquidGlass className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-6xl">🏷️</div>
                 <h3 className="text-xl font-semibold text-white">No tags yet</h3>
                 <p className="text-zinc-400 max-w-md">
                   Tags will appear here as articles are published.
                 </p>
-              </LiquidGlass>
+              </div>
             </div>
           )}
         </div>
@@ -145,7 +145,7 @@ export default async function TagsPage() {
       {/* Stats Section */}
       <section className="px-4 py-12 border-t border-zinc-800/50">
         <div className="max-w-6xl mx-auto">
-          <LiquidGlass className="!bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50 p-8">
+          <div className="!bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50 p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-white mb-2">
@@ -166,7 +166,7 @@ export default async function TagsPage() {
                 <div className="text-zinc-400 text-sm">Total Articles</div>
               </div>
             </div>
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>

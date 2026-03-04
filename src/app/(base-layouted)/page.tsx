@@ -11,45 +11,17 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { BlogHighlights } from "@/components/BlogHighlights";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
-import { NavbarComponent, NavbarComponentByClaude, NavbarComponentByClaude2, NavbarComponentByClaudeSonnet, NavbarComponentByGemini } from "@/components/NavBar";
+import { NavbarComponent } from "@/components/NavBar";
 import { FloatingQuickContact } from "@/components/FloatingQuickContact";
 
 export default function Home() {
   return (
     <>
       {/* <NavbarComponentByClaude2 /> */}
-      <main className="min-h-screen bg-[#1A1A1A] text-white pt-20">
+      <main className="min-h-screen bg-background pt-20">
 
         {/* Hero Section */}
         <HeroSection />
-
-        {/* About Hero Section */}
-        <AboutHero />
-
-        {/* Featured Projects */}
-        <FeaturedProjects />
-
-        {/* Problems Section */}
-        <ProblemsSection />
-
-        {/* Benefits Section */}
-        <BenefitsSection />
-
-        {/* Skills & Technologies */}
-        <SkillsSection />
-
-        {/* Process / How I Work */}
-        <ProcessSection />
-
-        {/* Testimonials Section */}
-        <TestimonialsSection />
-
-        {/* Blog Highlights */}
-        <BlogHighlights />
-
-        {/* CTA Section */}
-        <CTASection />
-
       </main>
     </>
   );

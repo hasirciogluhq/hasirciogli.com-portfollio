@@ -1,7 +1,6 @@
 "use client"
 
 import { ArrowDownIcon } from "lucide-react"
-import { LiquidGlass } from "./liquid-glass"
 import { useEffect, useRef, useState } from "react"
 import { sendGAEvent } from '@next/third-parties/google'
 import Image from "next/image"
@@ -37,7 +36,7 @@ export const HeroSection = () => {
             {/* Metin Grubu */}
             <div className="flex flex-col items-start">
               {/* Kategori Badge */}
-              <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+              <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
                 <div className="flex items-center gap-2">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -46,7 +45,7 @@ export const HeroSection = () => {
                     Craft Developer
                   </span>
                 </div>
-              </LiquidGlass>
+              </div>
 
               {/* Ana Başlık */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-[1.1] relative mb-6">
@@ -75,16 +74,16 @@ export const HeroSection = () => {
                 onClick={handleCTAClick}
                 className="group relative text-zinc-300 hover:text-white text-xs font-medium transition-all duration-300 flex items-center cursor-pointer hover:cursor-pointer"
               >
-                <LiquidGlass className="pl-4 pr-2 py-2 rounded-xl flex items-center gap-2 !bg-zinc-800/60 !border-zinc-700/50 group-hover:!bg-zinc-700/60 transition-colors">
+                <div className="pl-4 pr-2 py-2 rounded-xl flex items-center gap-2 !bg-zinc-800/60 !border-zinc-700/50 group-hover:!bg-zinc-700/60 transition-colors">
                   <span className="tracking-wide">Discover My Philosophy</span>
                   <div className="relative">
-                    <LiquidGlass className="w-6 h-6 p-0 rounded-lg flex items-center justify-center !bg-zinc-700/40 group-hover:scale-110 transition-transform">
+                    <div className="w-6 h-6 p-0 rounded-lg flex items-center justify-center !bg-zinc-700/40 group-hover:scale-110 transition-transform">
                       <svg className="w-2 h-2 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </LiquidGlass>
+                    </div>
                   </div>
-                </LiquidGlass>
+                </div>
               </a>
             </div>
           </div>
@@ -94,7 +93,7 @@ export const HeroSection = () => {
             <div className="relative w-80 h-80 group">
 
               {/* Main Professional Card */}
-              <LiquidGlass className="absolute inset-0 rounded-3xl overflow-hidden !bg-zinc-900/60 border border-zinc-800/50 shadow-2xl">
+              <div className="absolute inset-0 rounded-3xl overflow-hidden !bg-zinc-900/60 border border-zinc-800/50 shadow-2xl">
                 <div className="w-full h-full flex flex-col items-center justify-center p-8 relative">
                   {/* Animated Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-50" />
@@ -143,36 +142,36 @@ export const HeroSection = () => {
                     </div>
                   </div>
                 </div>
-              </LiquidGlass>
+              </div>
 
               {/* Floating Tech Badges */}
-              <LiquidGlass className="absolute -top-4 -right-4 rounded-xl p-3 !bg-blue-500/10 border border-blue-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+              <div className="absolute -top-4 -right-4 rounded-xl p-3 !bg-blue-500/10 border border-blue-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
                 <div className="text-blue-400 text-xs font-bold">7+ Years</div>
                 <div className="text-blue-300/70 text-[10px]">Experience</div>
-              </LiquidGlass>
+              </div>
 
-              <LiquidGlass className="absolute top-8 -left-8 rounded-xl p-2 !bg-purple-500/10 border border-purple-500/20 group-hover:-translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+              <div className="absolute top-8 -left-8 rounded-xl p-2 !bg-purple-500/10 border border-purple-500/20 group-hover:-translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
                 <div className="text-purple-400 text-xs font-bold">10+</div>
                 <div className="text-purple-300/70 text-[10px]">Projects</div>
-              </LiquidGlass>
+              </div>
 
-              <LiquidGlass className="absolute -bottom-6 -left-4 rounded-xl p-3 !bg-green-500/10 border border-green-500/20 group-hover:-translate-x-1 group-hover:-translate-y-2 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+              <div className="absolute -bottom-6 -left-4 rounded-xl p-3 !bg-green-500/10 border border-green-500/20 group-hover:-translate-x-1 group-hover:-translate-y-2 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                   <span className="text-green-400 text-xs font-bold">Available</span>
                 </div>
                 <div className="text-green-300/70 text-[10px]">for Projects</div>
-              </LiquidGlass>
+              </div>
 
-              <LiquidGlass className="absolute bottom-4 -right-6 rounded-xl p-2 !bg-pink-500/10 border border-pink-500/20 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+              <div className="absolute bottom-4 -right-6 rounded-xl p-2 !bg-pink-500/10 border border-pink-500/20 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
                 <div className="text-pink-400 text-xs font-bold">99.9%</div>
                 <div className="text-pink-300/70 text-[10px]">Uptime</div>
-              </LiquidGlass>
+              </div>
 
-              <LiquidGlass className="absolute top-1/2 -right-12 rounded-xl p-2 !bg-cyan-500/10 border border-cyan-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
+              <div className="absolute top-1/2 -right-12 rounded-xl p-2 !bg-cyan-500/10 border border-cyan-500/20 group-hover:translate-x-2 group-hover:translate-y-1 transition-all duration-300 hover:shadow-lg backdrop-blur-xl">
                 <div className="text-cyan-400 text-xs font-bold">Cloud</div>
                 <div className="text-cyan-300/70 text-[10px]">Native</div>
-              </LiquidGlass>
+              </div>
 
               {/* Animated Dots */}
               <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-500 rounded-full opacity-60 animate-pulse shadow-lg shadow-blue-500/50"></div>
@@ -192,9 +191,9 @@ export const HeroSection = () => {
           className="animate-bounce cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] rounded-full transition-all hover:scale-110"
           aria-label="Scroll to next section"
         >
-          <LiquidGlass className="w-8 h-8 rounded-full flex items-center justify-center hover:!bg-white/10 transition-colors">
+          <div className="w-8 h-8 rounded-full flex items-center justify-center hover:!bg-white/10 transition-colors">
             <ArrowDownIcon className="w-4 h-4 text-zinc-300" />
-          </LiquidGlass>
+          </div>
         </button>
       </div>
     </section>

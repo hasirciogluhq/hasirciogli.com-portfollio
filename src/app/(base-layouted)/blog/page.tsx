@@ -1,7 +1,7 @@
 import { BlogCard } from "@/components/blog/BlogCard"
 import { TagPill } from "@/components/blog/TagPill"
 import { getAllPosts, getAllTags } from "@/lib/blog"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { NewsletterForm } from "@/components/NewsletterForm"
 import { Search } from "lucide-react"
 
@@ -30,7 +30,7 @@ export default async function BlogPage() {
           
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
-            <LiquidGlass className="!bg-zinc-900/60 border-zinc-800/50 p-0">
+            <div className="!bg-zinc-900/60 border-zinc-800/50 p-0">
               <div className="flex items-center gap-3 px-4 py-3">
                 <Search className="w-5 h-5 text-zinc-500" />
                 <input
@@ -40,7 +40,7 @@ export default async function BlogPage() {
                 />
                 <kbd className="px-2 py-1 text-xs text-zinc-500 bg-zinc-800 rounded">⌘K</kbd>
               </div>
-            </LiquidGlass>
+            </div>
           </div>
         </div>
       </section>
@@ -109,13 +109,13 @@ export default async function BlogPage() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <LiquidGlass className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-6xl">📝</div>
                 <h3 className="text-xl font-semibold text-white">No posts yet</h3>
                 <p className="text-zinc-400 max-w-md">
                   Check back soon for technical articles and insights.
                 </p>
-              </LiquidGlass>
+              </div>
             </div>
           )}
         </div>
@@ -124,7 +124,7 @@ export default async function BlogPage() {
       {/* Newsletter CTA */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
-          <LiquidGlass className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
             <h2 className="text-3xl font-bold text-white mb-4">
               Stay Updated
             </h2>
@@ -132,7 +132,7 @@ export default async function BlogPage() {
               Get notified when I publish new articles about software engineering, infrastructure, and system design.
             </p>
             <NewsletterForm source="blog" />
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>

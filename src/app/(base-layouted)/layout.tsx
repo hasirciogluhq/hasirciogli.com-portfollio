@@ -1,6 +1,6 @@
 import { FloatingQuickContact } from "@/components/FloatingQuickContact";
 import { Footer } from "@/components/Footer";
-import { NavbarComponentByClaude2 } from "@/components/NavBar";
+import { NavbarComponent, NavbarComponentByClaude2 } from "@/components/NavBar";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function BlogLayout({
 }>) {
   return (
     <>
-      <NavbarComponentByClaude2 />
+      <NavbarComponent />
       {children}
 
       {/* Footer */}

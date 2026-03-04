@@ -1,6 +1,5 @@
 "use client"
 
-import { LiquidGlass } from "./liquid-glass"
 import { Calendar, ArrowRight, Clock } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 
@@ -59,7 +58,7 @@ export const BlogHighlights = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg mb-6">
+          <div className="inline-block px-3 py-1.5 rounded-lg mb-6">
             <div className="flex items-center gap-2">
               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -68,7 +67,7 @@ export const BlogHighlights = () => {
                 Blog
               </span>
             </div>
-          </LiquidGlass>
+          </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Thoughts & Technical Deep Dives
@@ -87,7 +86,7 @@ export const BlogHighlights = () => {
               onClick={() => handlePostClick(posts[0].slug)}
               className="group block h-full"
             >
-              <LiquidGlass className="h-full p-8 rounded-2xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-xl transition-all duration-300">
+              <div className="h-full p-8 rounded-2xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-xl transition-all duration-300">
                 {/* Category Badge */}
                 <div className="inline-block px-3 py-1 bg-white text-zinc-900 text-xs font-medium rounded-md mb-4">
                   Featured
@@ -120,7 +119,7 @@ export const BlogHighlights = () => {
                   <span>Read Full Article</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </LiquidGlass>
+              </div>
             </a>
           </div>
 
@@ -133,7 +132,7 @@ export const BlogHighlights = () => {
                 onClick={() => handlePostClick(post.slug)}
                 className="group block"
               >
-                <LiquidGlass className="p-6 rounded-xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="p-6 rounded-xl !bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700 hover:shadow-lg transition-all duration-300 h-full">
                   {/* Category */}
                   <div className="inline-block px-2 py-0.5 bg-zinc-800/60 text-zinc-300 text-xs font-medium rounded mb-3">
                     {post.category}
@@ -160,7 +159,7 @@ export const BlogHighlights = () => {
                       <span>{post.readTime}</span>
                     </div>
                   </div>
-                </LiquidGlass>
+                </div>
               </a>
             ))}
           </div>

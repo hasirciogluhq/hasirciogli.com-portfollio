@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { LiquidGlass } from "./liquid-glass";
 import { MessageCircle, X, Mail, Calendar, Phone } from "lucide-react";
 import { sendGAEvent } from '@next/third-parties/google';
 
@@ -93,9 +92,9 @@ export const FloatingQuickContact = () => {
                     className="group relative focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] rounded-full transition-all duration-300 hover:scale-110"
                     aria-label="Open quick contact"
                 >
-                    <LiquidGlass className="w-12 h-12 rounded-full flex items-center justify-center !bg-zinc-800/80 hover:!bg-zinc-700/80 transition-all">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center !bg-zinc-800/80 hover:!bg-zinc-700/80 transition-all">
                         <MessageCircle className="w-5 h-5 text-zinc-300 group-hover:text-white transition-colors" strokeWidth={2} />
-                    </LiquidGlass>
+                    </div>
                     
                     {/* Hover Label - Desktop Only */}
                     {isHovered && (
@@ -228,9 +227,9 @@ export const FloatingQuickContact = () => {
                                         });
                                     }}
                                 >
-                                    <LiquidGlass className="w-full px-4 py-2.5 rounded-lg text-center !bg-zinc-800/60 hover:!bg-zinc-700/60 transition-colors">
+                                    <div className="w-full px-4 py-2.5 rounded-lg text-center !bg-zinc-800/60 hover:!bg-zinc-700/60 transition-colors">
                                         <span className="text-white text-sm font-medium">Send Message</span>
-                                    </LiquidGlass>
+                                    </div>
                                 </button>
                             </form>
                         </div>

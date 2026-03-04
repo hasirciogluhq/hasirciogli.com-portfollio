@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { Mail, Calendar, MapPin, Send, Github, Linkedin, Twitter, Phone } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 
@@ -112,7 +112,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#1A1A1A] to-[#0F0F0F]">
         <div className="max-w-6xl mx-auto text-center">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+          <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
             <div className="flex items-center gap-2">
               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -121,7 +121,7 @@ export default function ContactPage() {
                 Contact
               </span>
             </div>
-          </LiquidGlass>
+          </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Let&apos;s Build Something
@@ -155,7 +155,7 @@ export default function ContactPage() {
                   })
                 }}
               >
-                <LiquidGlass className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 hover:!bg-zinc-900/60 transition-all duration-300 hover:scale-105 h-full">
+                <div className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 hover:!bg-zinc-900/60 transition-all duration-300 hover:scale-105 h-full">
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <div className="text-white">
                       {method.icon}
@@ -167,7 +167,7 @@ export default function ContactPage() {
                   <p className="text-zinc-400 text-sm">
                     {method.value}
                   </p>
-                </LiquidGlass>
+                </div>
               </a>
             ))}
           </div>
@@ -176,7 +176,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <LiquidGlass className="p-8 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
+              <div className="p-8 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
                 <h2 className="text-2xl font-bold text-white mb-6">
                   Send a Message
                 </h2>
@@ -284,13 +284,13 @@ export default function ContactPage() {
                     )}
                   </button>
                 </form>
-              </LiquidGlass>
+              </div>
             </div>
 
             {/* Sidebar Info */}
             <div className="lg:col-span-2 space-y-6">
               {/* Availability Card */}
-              <LiquidGlass className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
+              <div className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                   <h3 className="text-lg font-semibold text-white">
@@ -310,10 +310,10 @@ export default function ContactPage() {
                     <span className="text-white font-medium">09:00 - 18:00 GMT+3</span>
                   </div>
                 </div>
-              </LiquidGlass>
+              </div>
 
               {/* Social Links */}
-              <LiquidGlass className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
+              <div className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
                 <h3 className="text-lg font-semibold text-white mb-4">
                   Social Media
                 </h3>
@@ -345,10 +345,10 @@ export default function ContactPage() {
                     </a>
                   ))}
                 </div>
-              </LiquidGlass>
+              </div>
 
               {/* FAQ Quick Links */}
-              <LiquidGlass className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
+              <div className="p-6 rounded-2xl !bg-zinc-900/40 border border-zinc-800/50">
                 <h3 className="text-lg font-semibold text-white mb-4">
                   FAQ
                 </h3>
@@ -387,7 +387,7 @@ export default function ContactPage() {
                     </p>
                   </details>
                 </div>
-              </LiquidGlass>
+              </div>
             </div>
           </div>
         </div>

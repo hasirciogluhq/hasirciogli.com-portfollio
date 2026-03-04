@@ -1,6 +1,6 @@
 "use client"
 
-import { LiquidGlass } from "./liquid-glass"
+
 import Image from "next/image"
 import { sendGAEvent } from '@next/third-parties/google'
 import { Code, Database, Server, GitBranch } from "lucide-react"
@@ -30,7 +30,7 @@ export const AboutHero = () => {
           <div className="flex-1">
             {/* Badge */}
             <div className="inline-block mb-8">
-              <LiquidGlass className="px-3 py-1.5 rounded-lg !bg-white border border-zinc-200">
+              <div className="px-3 py-1.5 rounded-lg !bg-white border border-zinc-200">
                 <div className="flex items-center justify-center gap-2">
                   <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -39,7 +39,7 @@ export const AboutHero = () => {
                     About Me
                   </span>
                 </div>
-              </LiquidGlass>
+              </div>
             </div>
 
             {/* Main Title */}
@@ -66,7 +66,7 @@ export const AboutHero = () => {
             {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-3 mb-8">
               {techStack.map((tech) => (
-                <LiquidGlass
+                <div
                   key={tech.name}
                   className="px-3 py-2 rounded-lg !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md transition-all hover:scale-105"
                 >
@@ -76,7 +76,7 @@ export const AboutHero = () => {
                     </div>
                     <span className="text-sm font-medium text-zinc-700">{tech.name}</span>
                   </div>
-                </LiquidGlass>
+                </div>
               ))}
             </div>
 
@@ -121,7 +121,7 @@ export const AboutHero = () => {
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md">
               {/* Main Card */}
-              <LiquidGlass className="p-8 rounded-2xl !bg-white border border-zinc-200 shadow-xl overflow-hidden">
+              <div className="p-8 rounded-2xl !bg-white border border-zinc-200 shadow-xl overflow-hidden">
                 {/* Profile Header */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg">
@@ -174,18 +174,18 @@ export const AboutHero = () => {
                     ))}
                   </div>
                 </div>
-              </LiquidGlass>
+              </div>
 
               {/* Floating Stats */}
               <div className="absolute -top-4 -right-4">
-                <LiquidGlass className="px-4 py-2 !bg-white shadow-xl">
+                <div className="px-4 py-2 !bg-white shadow-xl">
                   <div className="text-xs font-semibold text-zinc-900">🚀 Active Builder</div>
-                </LiquidGlass>
+                </div>
               </div>
               <div className="absolute -bottom-4 -left-4">
-                <LiquidGlass className="px-4 py-2 !bg-white shadow-xl">
+                <div className="px-4 py-2 !bg-white shadow-xl">
                   <div className="text-xs font-semibold text-zinc-900">⚡ 99.9% Uptime</div>
-                </LiquidGlass>
+                </div>
               </div>
             </div>
           </div>

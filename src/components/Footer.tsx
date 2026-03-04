@@ -1,6 +1,5 @@
 "use client"
 
-import { LiquidGlass } from "./liquid-glass"
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
 
@@ -110,14 +109,14 @@ export const Footer = () => {
                     className="group"
                     aria-label={social.name}
                   >
-                    <LiquidGlass className="px-3 py-2 rounded-lg !bg-zinc-900/60 hover:!bg-zinc-800/60 transition-all flex items-center gap-2">
+                    <div className="px-3 py-2 rounded-lg !bg-zinc-900/60 hover:!bg-zinc-800/60 transition-all flex items-center gap-2">
                       <div className="text-zinc-400 group-hover:text-white transition-colors">
                         {social.icon}
                       </div>
                       <span className="text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
                         {social.name}
                       </span>
-                    </LiquidGlass>
+                    </div>
                   </a>
                 ))}
               </div>

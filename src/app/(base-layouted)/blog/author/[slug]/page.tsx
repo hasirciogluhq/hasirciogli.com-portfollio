@@ -4,7 +4,7 @@ import Link from "next/link"
 import { MapPin, Link2, Github, Linkedin, Twitter } from "lucide-react"
 import { getAuthorBySlug, getAllPosts } from "@/lib/blog"
 import { BlogCard } from "@/components/blog/BlogCard"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -64,9 +64,9 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                 />
                 {author.featured && (
                   <div className="absolute -bottom-3 -right-3">
-                    <LiquidGlass className="px-3 py-1.5 !bg-white">
+                    <div className="px-3 py-1.5 !bg-white">
                       <span className="text-xs font-bold text-zinc-900">✨ Featured Author</span>
-                    </LiquidGlass>
+                    </div>
                   </div>
                 )}
               </div>
@@ -138,33 +138,33 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-            <LiquidGlass className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
+            <div className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
               <div className="text-3xl font-bold text-white mb-1">
                 {allPosts.length}
               </div>
               <div className="text-sm text-zinc-500">Articles</div>
-            </LiquidGlass>
+            </div>
 
-            <LiquidGlass className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
+            <div className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
               <div className="text-3xl font-bold text-white mb-1">
                 {allPosts.reduce((acc, post) => acc + post.readingTime, 0)}
               </div>
               <div className="text-sm text-zinc-500">Total Minutes</div>
-            </LiquidGlass>
+            </div>
 
-            <LiquidGlass className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
+            <div className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
               <div className="text-3xl font-bold text-white mb-1">
                 {allPosts.filter(p => p.featured).length}
               </div>
               <div className="text-sm text-zinc-500">Featured</div>
-            </LiquidGlass>
+            </div>
 
-            <LiquidGlass className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
+            <div className="p-6 text-center !bg-zinc-900/40 border-zinc-800/50">
               <div className="text-3xl font-bold text-white mb-1">
                 {new Set(allPosts.flatMap(p => p.tags.map(t => t.slug))).size}
               </div>
               <div className="text-sm text-zinc-500">Topics</div>
-            </LiquidGlass>
+            </div>
           </div>
         </div>
       </section>
@@ -189,13 +189,13 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
             </div>
           ) : (
             <div className="text-center py-20">
-              <LiquidGlass className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-6xl">✍️</div>
                 <h3 className="text-xl font-semibold text-white">No articles yet</h3>
                 <p className="text-zinc-400 max-w-md">
                   {author.title} hasn't published any articles yet. Check back soon!
                 </p>
-              </LiquidGlass>
+              </div>
             </div>
           )}
         </div>
@@ -204,7 +204,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
       {/* CTA Section */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
-          <LiquidGlass className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
             <h2 className="text-3xl font-bold text-white mb-4">
               Want to Collaborate?
             </h2>
@@ -225,7 +225,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                 Browse All Articles
               </Link>
             </div>
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>

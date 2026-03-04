@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "./liquid-glass"
 import { Target, Zap, Briefcase, Code, ArrowRight, Check } from "lucide-react"
 
 type Persona = "founders" | "infra-teams" | "developers" | "indie-makers"

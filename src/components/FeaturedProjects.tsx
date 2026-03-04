@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { LiquidGlass } from "./liquid-glass"
 import { BetaBadge } from "./BetaBadge"
 import { ExternalLink, ArrowRight } from "lucide-react"
 import { sendGAEvent } from '@next/third-parties/google'
@@ -52,7 +51,7 @@ export const FeaturedProjects = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <LiquidGlass className="inline-block px-3 py-1.5 rounded-lg mb-6">
+          <div className="inline-block px-3 py-1.5 rounded-lg mb-6">
             <div className="flex items-center gap-2">
               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -61,7 +60,7 @@ export const FeaturedProjects = () => {
                 Portfolio
               </span>
             </div>
-          </LiquidGlass>
+          </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Selected Work
@@ -80,7 +79,7 @@ export const FeaturedProjects = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <LiquidGlass
+              <div
                 className={`h-full p-0 rounded-2xl overflow-hidden !bg-zinc-900/40 border border-zinc-800/50 transition-all duration-300 ${hoveredProject === project.id
                     ? 'scale-105 !border-zinc-700 shadow-2xl'
                     : 'scale-100'
@@ -107,10 +106,10 @@ export const FeaturedProjects = () => {
                   {/* Metrics Badge */}
                   {project.metrics && (
                     <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <LiquidGlass className="px-2 py-1 !bg-black/80 backdrop-blur-sm">
+                      <div className="px-2 py-1 !bg-black/80 backdrop-blur-sm">
                         <span className="text-xs text-white font-medium">{project.metrics.value}</span>
                         <span className="text-xs text-zinc-400 ml-1">{project.metrics.label}</span>
-                      </LiquidGlass>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -165,7 +164,7 @@ export const FeaturedProjects = () => {
                     </button>
                   </div>
                 </div>
-              </LiquidGlass>
+              </div>
             </div>
           ))}
         </div>

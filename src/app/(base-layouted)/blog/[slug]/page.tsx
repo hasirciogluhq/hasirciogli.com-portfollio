@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
 import { getPostBySlug, getAllPosts, getRelatedPosts } from "@/lib/blog"
 import { formatDate } from "@/lib/blog-utils"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { TagPill } from "@/components/blog/TagPill"
 import { BlogCard } from "@/components/blog/BlogCard"
 import { ShareButton } from "@/components/blog/ShareButton"
@@ -238,7 +238,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Author Bio */}
           <div className="mt-12">
-            <LiquidGlass className="p-8 !bg-zinc-900/60 border-zinc-800/50">
+            <div className="p-8 !bg-zinc-900/60 border-zinc-800/50">
               <div className="flex items-start gap-6">
                 {post.author.avatar ? (
                   <Image
@@ -292,7 +292,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </div>
                 </div>
               </div>
-            </LiquidGlass>
+            </div>
           </div>
         </div>
       </article>
@@ -314,7 +314,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {/* CTA */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
-          <LiquidGlass className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
             <h2 className="text-3xl font-bold text-white mb-4">
               Enjoyed this article?
             </h2>
@@ -335,7 +335,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 Read More Articles
               </Link>
             </div>
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>

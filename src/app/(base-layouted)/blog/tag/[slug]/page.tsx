@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Tag } from "lucide-react"
 import { getAllPosts, getTagBySlug, getAllTags } from "@/lib/blog"
-import { LiquidGlass } from "@/components/liquid-glass"
+
 import { BlogCard } from "@/components/blog/BlogCard"
 import { TagPill } from "@/components/blog/TagPill"
 import { NewsletterForm } from "@/components/NewsletterForm"
@@ -112,11 +112,11 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
 
           {/* Tag Description Card */}
           {tag.description && (
-            <LiquidGlass className="!bg-zinc-900/40 border-zinc-800/50 p-6 mt-8">
+            <div className="!bg-zinc-900/40 border-zinc-800/50 p-6 mt-8">
               <p className="text-zinc-300 leading-relaxed">
                 {tag.description}
               </p>
-            </LiquidGlass>
+            </div>
           )}
         </div>
       </section>
@@ -146,7 +146,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
             </div>
           ) : (
             <div className="text-center py-20">
-              <LiquidGlass className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
                 <div className="text-6xl">📝</div>
                 <h3 className="text-xl font-semibold text-white">No articles yet</h3>
                 <p className="text-zinc-400 max-w-md">
@@ -158,7 +158,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
                 >
                   Browse All Articles
                 </Link>
-              </LiquidGlass>
+              </div>
             </div>
           )}
         </div>
@@ -176,7 +176,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
             </div>
             
-            <LiquidGlass className="!bg-zinc-900/40 border-zinc-800/50 p-8">
+            <div className="!bg-zinc-900/40 border-zinc-800/50 p-8">
               <div className="flex flex-wrap gap-3 justify-center">
                 {relatedTags.map((relatedTag) => (
                   <TagPill
@@ -195,7 +195,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
                   View all tags →
                 </Link>
               </div>
-            </LiquidGlass>
+            </div>
           </div>
         </section>
       )}
@@ -203,7 +203,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
       {/* CTA Section */}
       <section className="px-4 py-16 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
-          <LiquidGlass className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
+          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
             <h2 className="text-3xl font-bold text-white mb-4">
               Want More {tag.title} Content?
             </h2>
@@ -211,7 +211,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
               Subscribe to get notified when I publish new articles about {tag.title.toLowerCase()} and other topics.
             </p>
             <NewsletterForm source={`tag_${tag.slug}`} />
-          </LiquidGlass>
+          </div>
         </div>
       </section>
     </div>
