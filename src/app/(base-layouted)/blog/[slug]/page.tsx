@@ -277,7 +277,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="surface-card p-8">
             <h2 className="ui-heading-2 mb-2">Enjoyed this?</h2>
             <p className="mb-6 text-sm text-muted-foreground">
-              Reach out or read more — new posts land here first.
+              Reach out or read more. New posts land here first.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
               <Link

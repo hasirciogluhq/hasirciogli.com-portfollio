@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://hasirciogli.com',
+    url: 'https://hasirciogluhq.com',
     title: 'Mustafa Hasırcıoğlu - Software Engineer & Founder',
     description: 'Building production-ready systems. Specializing in Go, Kubernetes, and distributed systems.',
     siteName: 'Mustafa Hasırcıoğlu',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mustafa Hasırcıoğlu - Software Engineer & Founder',
     description: 'Building production-ready systems. Specializing in Go, Kubernetes, and distributed systems.',
-    creator: '@hasirciogli',
+    creator: '@hasirciogluhq',
   },
 }
 

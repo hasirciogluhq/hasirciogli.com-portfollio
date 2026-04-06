@@ -69,7 +69,7 @@ export default async function TagsPage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {tags.map((tag) => (
               <Link key={tag.slug} href={`/blog/tag/${tag.slug}`} className="group block">
-                <div className="surface-card h-full p-6 transition-all duration-200 hover:shadow-md">
+                <div className="surface-card h-full p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <h3 className="ui-heading-3 mb-2 transition-colors duration-200 group-hover:text-primary">

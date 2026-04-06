@@ -56,7 +56,7 @@ export default function CaseStudiesPage() {
             </div>
 
             <h1 className="ui-heading-1 mb-6">
-              Zero to production — <span className="text-primary">real impact</span>
+              Zero to production: <span className="text-primary">real impact</span>
             </h1>
 
             <p className="ui-body mx-auto max-w-3xl leading-relaxed">
@@ -114,7 +114,7 @@ export default function CaseStudiesPage() {
               {(filteredProjects as Project[]).map((project, index) => (
                 <div
                   key={project.id}
-                  className="p-0 rounded-2xl overflow-hidden bg-card border border-border hover:border-border hover:shadow-2xl transition-all duration-300 group"
+                  className="rounded-2xl border border-border bg-card p-0"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
                     {/* Image/Visual Side */}
@@ -148,7 +148,7 @@ export default function CaseStudiesPage() {
                     <div className="lg:col-span-3 p-8">
                       {/* Header */}
                       <div className="mb-4">
-                        <h3 className="mb-2 text-2xl font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="mb-2 text-2xl font-semibold text-foreground">
                           {project.title}
                         </h3>
                         <p className="text-sm text-muted-foreground font-medium">{project.role}</p>
@@ -221,7 +221,7 @@ export default function CaseStudiesPage() {
           <div className="surface-card p-10">
             <h2 className="ui-heading-2 mb-3 md:text-2xl">Want your own case study?</h2>
             <p className="mx-auto mb-8 max-w-2xl text-sm text-muted-foreground md:text-base">
-              From idea to production — systems that scale.
+              From idea to production: systems that scale.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a

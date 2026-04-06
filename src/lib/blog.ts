@@ -76,7 +76,7 @@ const defaultAuthor: AuthorData = {
   avatar: "/star-logo.jpg",
   role: "Software Engineer & Founder",
   bio: "Full-stack developer specializing in cloud infrastructure, payment systems, and scalable architectures.",
-  website: "https://hasirciogli.com",
+  website: "https://hasirciogluhq.com",
   github: "hasirciogluhq",
   linkedin: "hasircioglu",
   twitter: "hasirciogluhq",

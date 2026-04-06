@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
 
             <h1 className="ui-heading-1 mb-6">
-              Entrepreneurial developer — <span className="text-primary">production &amp; scale</span>
+              Entrepreneurial developer: <span className="text-primary">production &amp; scale</span>
             </h1>
 
             <div className="mb-8 space-y-4">
@@ -121,7 +121,7 @@ export default function AboutPage() {
 
             <div className="mb-8 flex flex-wrap gap-3">
               {techStack.map((tech) => (
-                <div key={tech.name} className="surface-card rounded-lg px-4 py-3 transition-shadow duration-200 hover:shadow-md">
+                <div key={tech.name} className="surface-card rounded-lg px-4 py-3">
                   <div className="flex items-center gap-3">
                     <div className="rounded-md bg-primary/10 p-2 text-primary">{tech.icon}</div>
                     <div>
@@ -239,7 +239,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {values.map((value, index) => (
-            <div key={index} className="surface-card p-6 transition-shadow duration-200 hover:shadow-md">
+            <div key={index} className="surface-card p-6">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
                 {value.icon}
               </div>
@@ -266,14 +266,14 @@ export default function AboutPage() {
 
         <div className="mx-auto max-w-4xl space-y-6">
           {journey.map((item, index) => (
-            <div key={index} className="group flex gap-6">
+            <div key={index} className="flex gap-6">
               <div className="flex flex-col items-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl transition-transform duration-200 group-hover:scale-[1.02]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl">
                   {item.icon}
                 </div>
                 {index < journey.length - 1 && <div className="mt-2 h-full w-px grow bg-border" />}
               </div>
-              <div className="surface-card flex-1 p-6 transition-shadow duration-200 group-hover:shadow-sm">
+              <div className="surface-card flex-1 p-6">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
                   <span className="rounded-md bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                     {item.year}
@@ -290,10 +290,10 @@ export default function AboutPage() {
       <SectionBlock>
         <div className="surface-card mx-auto max-w-4xl p-10 text-center">
           <blockquote className="ui-heading-2 mb-6 italic leading-relaxed text-foreground md:text-2xl">
-            &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on
+            &ldquo;I failed 20 times but didn&apos;t give up. Now I&apos;m on my 21st attempt and I know I&apos;ll win on
             the 22nd. How will you beat me?&rdquo;
           </blockquote>
-          <p className="text-sm text-muted-foreground">— Mustafa Hasırcıoğlu</p>
+          <p className="text-sm text-muted-foreground">Mustafa Hasırcıoğlu</p>
         </div>
       </SectionBlock>
 

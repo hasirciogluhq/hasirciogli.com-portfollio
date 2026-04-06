@@ -124,7 +124,7 @@ export default function ContactPage() {
                 href={method.href}
                 target={method.href.startsWith("http") ? "_blank" : undefined}
                 rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group"
+                className="block"
                 onClick={() => {
                   sendGAEvent("event", "contact_method_click", {
                     category: "engagement",
@@ -132,11 +132,11 @@ export default function ContactPage() {
                   })
                 }}
               >
-                <div className="surface-card h-full rounded-xl p-6 transition-all duration-200 hover:shadow-md">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-200 group-hover:scale-[1.02]">
+                <div className="surface-card h-full rounded-xl p-6">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     {method.icon}
                   </div>
-                  <h3 className="ui-heading-3 mb-2 transition-colors duration-200 group-hover:text-primary">
+                  <h3 className="ui-heading-3 mb-2">
                     {method.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">{method.value}</p>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
+                    className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
                   >
                     {isSubmitting ? (
                       <>
@@ -248,7 +248,7 @@ export default function ContactPage() {
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <Send className="h-5 w-5" aria-hidden />
                         <span>Send Message</span>
                       </>
                     )}
@@ -291,7 +291,7 @@ export default function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted transition-all"
+                      className="flex items-center gap-3 rounded-lg bg-muted p-3"
                       onClick={() => {
                         sendGAEvent('event', 'social_link_click', {
                           category: 'engagement',
@@ -299,14 +299,14 @@ export default function ContactPage() {
                         })
                       }}
                     >
-                      <div className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      <div className="text-muted-foreground">
                         {social.icon}
                       </div>
                       <div className="flex-1">
                         <p className="text-sm font-medium text-foreground">{social.name}</p>
                         <p className="text-xs text-muted-foreground">{social.username}</p>
                       </div>
-                      <svg className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </a>

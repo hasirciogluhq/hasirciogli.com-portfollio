@@ -31,8 +31,6 @@ interface Project {
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all")
   const [searchTerm, setSearchTerm] = useState("")
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
-
   const categories = ["all", "SaaS", "Fintech", "E-commerce", "Social", "Community"]
 
   // Filter out disabled projects
@@ -70,10 +68,10 @@ export default function ProjectsPage() {
             </div>
 
             <h1 className="ui-heading-1 mb-4">
-              Projects I&apos;ve built — <span className="text-primary">from idea to scale</span>
+              Projects I&apos;ve built: <span className="text-primary">from idea to scale</span>
             </h1>
 
-            <p className="ui-body mx-auto mb-8 max-w-3xl text-base">
+            <p className="ui-body mx-auto mb-8 max-w-3xl">
               Real products solving real problems. Each project represents months of engineering, architectural
               decisions, and production battles won.
             </p>
@@ -140,115 +138,80 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="layout-section py-12">
-        <div className="layout-container">
+      {/* Projects list (compact) */}
+      <section className="layout-section py-8">
+        <div className="layout-container max-w-4xl">
           {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ul className="divide-y divide-border rounded-xl border border-border bg-card">
               {filteredProjects.map((project: Project) => (
-                <div
-                  key={project.id}
-                  className="group relative"
-                  onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                >
+                <li key={project.id} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-start sm:gap-6">
                   <div
-                    className={`h-full p-0 rounded-2xl overflow-hidden bg-card border border-border transition-all duration-300 ${hoveredProject === project.id
-                        ? 'scale-105 !border-border shadow-2xl'
-                        : 'scale-100'
-                      }`}
+                    className="relative flex h-16 w-full shrink-0 items-center justify-center rounded-md border border-border bg-muted sm:h-20 sm:w-28"
+                    aria-hidden
                   >
-                    {/* Project Image */}
-                    <div className="relative h-48 overflow-hidden bg-muted">
-                      <div className="absolute inset-0 bg-primary/5" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-5xl opacity-25">🚀</span>
-                      </div>
+                    <span className="text-2xl opacity-40 sm:text-3xl">🚀</span>
+                  </div>
 
-                      <div className="absolute top-3 left-3 flex items-center gap-2">
-                        <span className="rounded-md border border-border bg-card/95 px-2 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
-                          {project.category}
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                      <span className="ui-caption rounded border border-border bg-background px-1.5 py-0.5 font-medium text-foreground">
+                        {project.category}
+                      </span>
+                      {project.featured && (
+                        <span className="ui-caption rounded border border-yellow-500/35 bg-yellow-500/10 px-1.5 py-0.5 font-medium text-yellow-700 dark:text-yellow-400">
+                          Featured
                         </span>
-                        {project.featured && (
-                          <span className="px-2 py-1 text-xs font-medium bg-yellow-500/20 backdrop-blur-sm text-yellow-400 rounded-md border border-yellow-500/30">
-                            ⭐ Featured
-                          </span>
-                        )}
-                        {project.beta && (
-                          <BetaBadge />
-                        )}
-                      </div>
-
-                      {/* Metrics Badge */}
+                      )}
+                      {project.beta && <BetaBadge />}
                       {project.metrics && (
-                        <div className="absolute top-3 right-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                          <div className="rounded-md border border-border bg-card px-2 py-1 backdrop-blur-sm">
-                            <span className="text-xs font-medium text-foreground">{project.metrics.value}</span>
-                            <span className="ml-1 text-xs text-muted-foreground">{project.metrics.label}</span>
-                          </div>
-                        </div>
+                        <span className="ui-caption text-muted-foreground">
+                          {project.metrics.value}{" "}
+                          <span className="text-muted-foreground/90">{project.metrics.label}</span>
+                        </span>
                       )}
                     </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      {/* Title & Role */}
-                      <div className="mb-3">
-                        <h3 className="mb-1 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-                          {project.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground font-medium">{project.role}</p>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      {/* Tech Pills - Animated like homepage */}
-                      <div className={`flex flex-wrap gap-1.5 mb-4 transition-all duration-300 ${hoveredProject === project.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                        }`}>
-                        {project.technologies.slice(0, 4).map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-md"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-md">
-                            +{project.technologies.length - 4}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Actions */}
-                      <div className="flex items-center gap-3 pt-3 border-t border-border">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => handleProjectClick(project.slug, 'visit')}
-                          className="group/link flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                    <h3 className="ui-heading-3 mb-0.5">{project.title}</h3>
+                    <p className="ui-caption mb-2 font-medium text-muted-foreground">{project.role}</p>
+                    <p className="ui-body mb-3 line-clamp-2">{project.description}</p>
+                    <div className="mb-4 flex flex-wrap gap-1">
+                      {project.technologies.slice(0, 6).map((tech) => (
+                        <span
+                          key={tech}
+                          className="ui-caption rounded border border-border bg-muted/60 px-1.5 py-0.5 text-muted-foreground"
                         >
-                          <span>Visit</span>
-                          <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                        </a>
-
-                        <button
-                          className="flex items-center gap-1 px-4 py-2 bg-muted text-muted-foreground rounded-lg text-xs font-medium hover:bg-muted hover:text-foreground transition-all"
-                          onClick={() => handleProjectClick(project.slug, 'case_study')}
-                        >
-                          <span>Details</span>
-                          <ArrowRight className="w-3 h-3" />
-                        </button>
-                      </div>
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 6 && (
+                        <span className="ui-caption text-muted-foreground">
+                          +{project.technologies.length - 6}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => handleProjectClick(project.slug, "visit")}
+                        className="ui-nav inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 font-semibold text-primary-foreground"
+                      >
+                        <span>Visit</span>
+                        <ExternalLink className="h-3 w-3" aria-hidden />
+                      </a>
+                      <a
+                        href="/case-studies"
+                        onClick={() => handleProjectClick(project.slug, "case_study")}
+                        className="ui-nav inline-flex items-center gap-1 rounded-md border border-border bg-muted px-3 py-1.5 font-medium text-foreground"
+                      >
+                        Case studies
+                        <ArrowRight className="h-3 w-3" aria-hidden />
+                      </a>
                     </div>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           ) : (
             <div className="text-center py-20">
               <div className="surface-card inline-flex flex-col items-center gap-4 p-12">
@@ -291,7 +254,7 @@ export default function ProjectsPage() {
               </a>
               <a
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-muted text-foreground rounded-xl font-semibold hover:bg-muted transition-all border border-border"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-muted px-8 py-4 font-semibold text-foreground"
               >
                 <span>Learn More About Me</span>
               </a>

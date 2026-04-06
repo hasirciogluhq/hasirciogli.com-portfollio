@@ -52,7 +52,7 @@
   --page-max-width: 56rem;
   --page-gutter: 1rem;
 
-  /* Ana sayfa: iç dikey ritim (home’da main gap yok; divide-y ile ayrım — tek bg) */
+  /* Ana sayfa: iç dikey ritim (home’da main gap yok; divide-y ile ayrım, tek bg) */
   --home-section-y: 3rem;
   --home-navbar-offset: 3rem;
   --home-first-section-pt: calc(var(--home-navbar-offset) + var(--home-section-y));
@@ -301,13 +301,61 @@
   .surface-card {
     @apply rounded-lg border border-border bg-card text-card-foreground shadow-sm;
   }
+  /**
+   * Inverse CTA band: sabit zinc tonları (bg-foreground + ui-* sınıflarında dark modda
+   * text-foreground çakışması yüzünden metin kaybolmasın diye).
+   */
+  .surface-cta {
+    @apply rounded-2xl border border-zinc-800/90 bg-zinc-950 px-6 py-10 text-center text-zinc-50 shadow-sm sm:px-10 dark:border-zinc-300/70 dark:bg-zinc-100 dark:text-zinc-950;
+  }
+  .surface-cta-title {
+    @apply mb-3 font-sans text-3xl font-semibold leading-[1.15] tracking-tight text-inherit md:text-4xl;
+  }
+  .surface-cta-body {
+    @apply mx-auto mb-8 max-w-2xl font-sans text-[13px] font-normal leading-relaxed text-zinc-300 dark:text-zinc-700;
+  }
+  .surface-cta-note {
+    @apply font-sans text-[11px] leading-normal text-zinc-400 dark:text-zinc-600;
+  }
+  .surface-cta-button {
+    @apply mb-4 inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-3.5 font-sans text-sm font-semibold text-zinc-950 shadow-sm dark:bg-zinc-900 dark:text-zinc-50;
+  }
+  .surface-cta-band {
+    @apply rounded-2xl border border-zinc-800/90 bg-zinc-950 p-6 text-zinc-50 shadow-sm sm:p-8 dark:border-zinc-300/70 dark:bg-zinc-100 dark:text-zinc-950;
+  }
+  .surface-cta-band-title {
+    @apply mb-2 font-sans text-xl font-semibold tracking-tight text-inherit;
+  }
+  .surface-cta-band-body {
+    @apply font-sans text-[13px] font-normal leading-relaxed text-zinc-300 dark:text-zinc-700;
+  }
+  .surface-cta-band-button {
+    @apply inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-white px-6 py-3 font-sans text-sm font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-zinc-50;
+  }
   .page-gradient {
     @apply bg-muted/25;
   }
 
-  /* Site geneli: Hero ile aynı tipografi (serif yok, tek sans ölçeği) */
+  /*
+   * Tipografi = NavBar ile aynı ölçek (Inter / font-sans):
+   * - Marka satırı: text-sm font-semibold (header logo)
+   * - UI / nav / gövde: 13px (header linkleri)
+   * - Etiket / meta: 11px
+   */
+  .ui-brand {
+    @apply font-sans text-sm font-semibold tracking-tight text-foreground;
+  }
+  .ui-nav {
+    @apply font-sans text-[13px] font-medium leading-snug;
+  }
   .ui-kicker {
-    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
+    @apply font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
+  }
+  .ui-caption {
+    @apply font-sans text-[11px] leading-normal text-muted-foreground;
+  }
+  .ui-eyebrow {
+    @apply font-sans text-[11px] font-semibold uppercase tracking-wider text-muted-foreground;
   }
   .ui-heading-1 {
     @apply font-sans text-3xl font-semibold leading-[1.15] tracking-tight text-foreground md:text-4xl;
@@ -316,10 +364,25 @@
     @apply font-sans text-xl font-semibold tracking-tight text-foreground;
   }
   .ui-heading-3 {
-    @apply font-sans text-lg font-semibold tracking-tight text-foreground;
+    @apply font-sans text-base font-semibold tracking-tight text-foreground;
+  }
+  .ui-quote {
+    @apply font-sans text-xl font-semibold leading-relaxed text-foreground md:text-2xl;
   }
   .ui-body {
-    @apply text-[15px] leading-relaxed text-muted-foreground;
+    @apply font-sans text-[13px] font-normal leading-relaxed text-muted-foreground;
+  }
+  .ui-lead {
+    @apply font-sans text-[13px] font-medium leading-relaxed text-foreground;
+  }
+  .ui-body-inverse {
+    @apply font-sans text-[13px] font-normal leading-relaxed text-background/85;
+  }
+  .ui-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-3.5 py-2 font-sans text-sm font-medium text-primary-foreground transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  .ui-link-muted {
+    @apply font-sans text-[13px] font-medium text-muted-foreground underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline;
   }
   .ui-enter {
     animation: ui-enter var(--motion-duration) var(--motion-ease) both;

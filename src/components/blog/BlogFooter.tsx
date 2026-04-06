@@ -112,8 +112,7 @@ function MetallicSocialLink({ href, icon, label }: { href: string; icon: React.R
                  border border-white/[0.12] hover:border-white/[0.25]
                  backdrop-blur-sm transition-all duration-400
                  shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_2px_4px_rgba(0,0,0,0.1)]
-                 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),0_6px_16px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.1)]
-                 hover:scale-115 active:scale-95 transform-gpu"
+                 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),0_6px_16px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.1)]"
       title={label}
     >
       <span className="text-zinc-400 group-hover:text-white transition-all duration-400 group-hover:drop-shadow-sm">

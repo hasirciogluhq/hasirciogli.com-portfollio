@@ -34,7 +34,8 @@ export const TestimonialsSection = () => {
       rating: 5
     },
     {
-      quote: "Working with Mustafa felt like having a technical co-founder. He didn't just code—he challenged our assumptions and helped us build the right product. Launched in 6 weeks.",
+      quote:
+        "Working with Mustafa felt like having a technical co-founder. He didn't just code: he challenged our assumptions and helped us build the right product. Launched in 6 weeks.",
       author: "Mehmet D.",
       title: "Founder",
       company: "E-commerce",
@@ -58,7 +59,7 @@ export const TestimonialsSection = () => {
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-amber-700 uppercase">
+          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-1 text-amber-800 dark:text-amber-300">
             <Quote className="h-3 w-3" />
             Testimonials
           </div>
@@ -77,7 +78,7 @@ export const TestimonialsSection = () => {
 
           {/* Quote */}
           <blockquote className="mb-8">
-            <p className="text-xl md:text-2xl text-foreground leading-relaxed">
+            <p className="ui-quote">
               {currentTestimonial.quote}
             </p>
           </blockquote>
@@ -85,13 +86,13 @@ export const TestimonialsSection = () => {
           {/* Author */}
           <div className="flex items-center gap-4 mb-8">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
-              <span className="text-sm font-bold text-primary-foreground">
+              <span className="ui-nav font-bold text-primary-foreground">
                 {currentTestimonial.avatar}
               </span>
             </div>
             <div>
-              <p className="font-semibold text-foreground">{currentTestimonial.author}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="ui-nav font-semibold text-foreground">{currentTestimonial.author}</p>
+              <p className="ui-body">
                 {currentTestimonial.title} · {currentTestimonial.company}
               </p>
             </div>
@@ -136,16 +137,16 @@ export const TestimonialsSection = () => {
         {/* Trust Metrics */}
         <div className="grid grid-cols-3 gap-6 rounded-2xl border border-border bg-muted/30 p-8">
           <div className="text-center">
-            <div className="text-4xl font-bold text-foreground mb-2">10+</div>
-            <div className="text-sm text-muted-foreground">Projects Shipped</div>
+            <div className="mb-2 font-sans text-3xl font-bold tabular-nums text-foreground">10+</div>
+            <div className="ui-caption text-muted-foreground">Projects Shipped</div>
           </div>
-          <div className="text-center border-x border-border">
-            <div className="text-4xl font-bold text-foreground mb-2">99.9%</div>
-            <div className="text-sm text-muted-foreground">Uptime</div>
+          <div className="border-x border-border text-center">
+            <div className="mb-2 font-sans text-3xl font-bold tabular-nums text-foreground">99.9%</div>
+            <div className="ui-caption text-muted-foreground">Uptime</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-foreground mb-2">100%</div>
-            <div className="text-sm text-muted-foreground">Satisfaction</div>
+            <div className="mb-2 font-sans text-3xl font-bold tabular-nums text-foreground">100%</div>
+            <div className="ui-caption text-muted-foreground">Satisfaction</div>
           </div>
         </div>
       </div>

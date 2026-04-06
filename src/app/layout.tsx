@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mustafa Hasırcıoğlu - Software Developer & Designer',
     description: 'Explore the portfolio of Mustafa Hasırcıoğlu, showcasing various projects, skills, and goals in the field of software development and design.',
-    url: 'https://www.hasirciogli.com',
+    url: 'https://hasirciogluhq.com',
     images: [
       {
         url: '/mustafa-hasircioglu.webp', // Görsel yolunu buraya ekleyin
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@hasirciogli',
+    creator: '@hasirciogluhq',
     title: 'Mustafa Hasırcıoğlu - Software Developer & Designer',
     description: 'Explore the portfolio of Mustafa Hasırcıoğlu, showcasing various projects, skills, and goals in the field of software development and design.',
     images: ['/mustafa-hasircioglu.webp'], // Görsel yolunu buraya ekleyin

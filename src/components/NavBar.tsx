@@ -22,10 +22,7 @@ export const NavbarComponent = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
         <div className="layout-container flex h-12 items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
-          >
+          <Link href="/" className="ui-brand transition-colors hover:text-primary">
             Mustafa Hasırcıoğlu
           </Link>
 
@@ -37,7 +34,7 @@ export const NavbarComponent = () => {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-md px-2.5 py-1 text-[13px] font-medium transition-colors",
+                    "ui-nav rounded-md px-2.5 py-1 transition-colors",
                     active
                       ? "bg-muted text-foreground"
                       : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
@@ -79,7 +76,7 @@ export const NavbarComponent = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
+                  className="ui-nav rounded-md px-3 py-2 text-foreground hover:bg-muted"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

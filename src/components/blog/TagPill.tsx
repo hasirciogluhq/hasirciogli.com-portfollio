@@ -15,7 +15,7 @@ interface TagPillProps {
   className?: string
 }
 
-/** Renk anahtarları — stiller globals.css içindeki .pill-surface--* + CSS değişkenleri */
+/** Renk anahtarları; stiller globals.css içindeki .pill-surface--* + CSS değişkenleri */
 const pillSurfaceClass: Record<string, string> = {
   blue: "pill-surface--blue",
   green: "pill-surface--green",

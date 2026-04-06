@@ -68,7 +68,7 @@ export const AboutHero = () => {
               {techStack.map((tech) => (
                 <div
                   key={tech.name}
-                  className="px-3 py-2 rounded-lg !bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md transition-all hover:scale-105"
+                  className="rounded-lg border border-zinc-200 bg-white px-3 py-2"
                 >
                   <div className="flex items-center gap-2">
                     <div className={`bg-gradient-to-r ${tech.color} p-1 rounded text-white`}>
@@ -83,7 +83,7 @@ export const AboutHero = () => {
             {/* Quote */}
             <blockquote className="border-l-4 border-blue-500 pl-6 mb-8">
               <p className="text-base text-zinc-600 italic leading-relaxed">
-                &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on the 22nd.
+                &ldquo;I failed 20 times but didn&apos;t give up. Now I&apos;m on my 21st attempt and I know I&apos;ll win on the 22nd.
                 How will you beat me?&rdquo;
               </p>
             </blockquote>
@@ -108,10 +108,10 @@ export const AboutHero = () => {
             <a
               href="/about"
               onClick={() => sendGAEvent('event', 'about_cta_click', { category: 'engagement', label: 'Continue My Story' })}
-              className="group inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white rounded-xl font-semibold hover:bg-zinc-800 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 font-semibold text-white"
             >
               <span>Continue My Story</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>

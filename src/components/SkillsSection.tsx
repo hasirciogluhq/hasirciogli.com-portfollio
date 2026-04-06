@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import skillsData from "@/data/skills.json"
 import projectsData from "@/data/projects.json"
 import { Code2, Sparkles } from "lucide-react"
@@ -15,123 +15,117 @@ interface Skill {
 
 type CategoryFilter = "all" | "Languages" | "Frontend" | "Backend" | "DevOps" | "Cloud" | "Tools" | "Architecture"
 
+const CATEGORY_BORDER: Record<string, string> = {
+  Languages: "border-l-[3px] border-l-primary",
+  Frontend: "border-l-[3px] border-l-violet-500",
+  Backend: "border-l-[3px] border-l-emerald-600",
+  DevOps: "border-l-[3px] border-l-amber-600",
+  Cloud: "border-l-[3px] border-l-sky-600",
+  Tools: "border-l-[3px] border-l-destructive",
+  Architecture: "border-l-[3px] border-l-primary",
+}
+
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all")
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
-  const categories: CategoryFilter[] = ["all", "Languages", "Frontend", "Backend", "DevOps", "Cloud", "Tools", "Architecture"]
+  const categories: CategoryFilter[] = [
+    "all",
+    "Languages",
+    "Frontend",
+    "Backend",
+    "DevOps",
+    "Cloud",
+    "Tools",
+    "Architecture",
+  ]
 
-  const filteredSkills = activeCategory === "all" 
-    ? skillsData.skills 
-    : skillsData.skills.filter((skill: Skill) => skill.category === activeCategory)
-
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
-      Languages: "border-primary/20 bg-primary/10 text-primary",
-      Frontend: "border-violet-500/20 bg-violet-500/10 text-violet-700",
-      Backend: "border-emerald-500/20 bg-emerald-500/10 text-emerald-800",
-      DevOps: "border-amber-500/20 bg-amber-500/10 text-amber-800",
-      Cloud: "border-sky-500/20 bg-sky-500/10 text-sky-800",
-      Tools: "border-destructive/25 bg-destructive/10 text-destructive",
-      Architecture: "border-primary/20 bg-primary/10 text-primary",
-    }
-    return colors[category] || "border-border bg-muted text-muted-foreground"
-  }
+  const filteredSkills = useMemo(() => {
+    return activeCategory === "all"
+      ? skillsData.skills
+      : skillsData.skills.filter((skill: Skill) => skill.category === activeCategory)
+  }, [activeCategory])
 
   const getProjectNames = (projectSlugs: string[]) => {
     return projectSlugs
-      .map(slug => projectsData.projects.find((p: { slug: string; _disabled?: boolean }) => p.slug === slug && !p._disabled)?.title)
-      .filter(Boolean)
+      .map(
+        (slug) =>
+          projectsData.projects.find(
+            (p: { slug: string; _disabled?: boolean }) => p.slug === slug && !p._disabled
+          )?.title
+      )
+      .filter(Boolean) as string[]
   }
 
   return (
     <HomeSection>
       <div className="mx-auto max-w-5xl">
-        {/* Minimalist Header */}
-        <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wider text-accent-foreground uppercase">
-            <Code2 className="h-3 w-3" />
-            Tech Stack
+        <header className="mb-8 space-y-3">
+          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-md border border-border bg-muted/50 px-2.5 py-1 text-muted-foreground">
+            <Code2 className="h-3 w-3" aria-hidden />
+            Tech stack
           </div>
-          
           <h2 className="ui-heading-1 max-w-2xl">Technologies &amp; Expertise</h2>
-          
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Specializing in Go, Kubernetes, distributed systems, and payment infrastructure.
+          <p className="ui-body max-w-2xl">
+            Go, Kubernetes, distributed systems, and payment infrastructure. Filter by area or scan the grid.
           </p>
-        </div>
+        </header>
 
-        {/* Minimal Category Pills */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-foreground text-background'
-                  : 'bg-card text-muted-foreground hover:bg-accent hover:text-accent-foreground border border-border'
-              }`}
-            >
-              {category === "all" ? "All Skills" : category}
-            </button>
-          ))}
-        </div>
-
-        {/* Clean Tag Cloud */}
-        <div className="flex flex-wrap gap-3">
-          {filteredSkills.map((skill: Skill) => {
-            const projectNames = getProjectNames(skill.projects)
-            const isHovered = hoveredSkill === skill.name
-
+        <div className="mb-6 flex flex-wrap gap-1.5" aria-label="Skill categories">
+          {categories.map((category) => {
+            const active = activeCategory === category
             return (
-              <div
-                key={skill.name}
-                className="relative"
-                onMouseEnter={() => setHoveredSkill(skill.name)}
-                onMouseLeave={() => setHoveredSkill(null)}
+              <button
+                key={category}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setActiveCategory(category)}
+                className={`ui-nav rounded-md border px-2.5 py-1.5 ${
+                  active
+                    ? "border-foreground/20 bg-foreground text-background"
+                    : "border-border bg-card text-muted-foreground"
+                }`}
               >
-                <button
-                  className={`group px-4 py-2.5 rounded-xl border transition-all duration-300 ${
-                    getCategoryColor(skill.category)
-                  } ${isHovered ? 'scale-105 shadow-lg' : 'scale-100'}`}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold">{skill.name}</span>
-                    {skill.proficiency === 5 && (
-                      <Sparkles className="w-3 h-3" />
-                    )}
-                  </div>
-                </button>
-
-                {/* Tooltip */}
-                {isHovered && projectNames.length > 0 && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200">
-                    <div className="px-3 py-2 bg-card border border-border rounded-lg shadow-2xl whitespace-nowrap">
-                      <div className="text-xs text-foreground">
-                        <div className="font-semibold mb-1">Used in:</div>
-                        {projectNames.map((name, i) => (
-                          <div key={i} className="text-muted-foreground">• {name}</div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-card rotate-45 border-r border-b border-border -mt-1" />
-                  </div>
-                )}
-              </div>
+                {category === "all" ? "All" : category}
+              </button>
             )
           })}
         </div>
 
-        {/* Legend */}
-        <div className="mt-12 p-6 rounded-2xl bg-card border border-border">
-          <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="font-semibold text-foreground">Sparkle icon = Expert level proficiency</span>
-          </div>
-        </div>
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+          {filteredSkills.map((skill: Skill) => {
+            const projectNames = getProjectNames(skill.projects)
+            const borderAccent =
+              CATEGORY_BORDER[skill.category] ?? "border-l-[3px] border-l-muted-foreground/40"
+            const aria =
+              projectNames.length > 0
+                ? `${skill.name}, used in ${projectNames.join(", ")}`
+                : skill.name
+
+            return (
+              <li key={skill.name}>
+                <span
+                  aria-label={aria}
+                  className={`flex w-full items-center justify-between gap-2 rounded-md border border-border bg-card px-2.5 py-2 text-left ${borderAccent}`}
+                >
+                  <span className="ui-nav min-w-0 truncate font-semibold text-foreground">
+                    {skill.name}
+                  </span>
+                  {skill.proficiency === 5 && (
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
+                  )}
+                </span>
+              </li>
+            )
+          })}
+        </ul>
+
+        <p className="ui-caption mt-6 flex items-center justify-center gap-2 border-t border-border pt-6 text-center text-muted-foreground">
+          <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
+          <span>
+            <span className="font-medium text-foreground">Sparkle</span> = expert-level proficiency.
+          </span>
+        </p>
       </div>
     </HomeSection>
   )
 }
-

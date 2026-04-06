@@ -25,7 +25,7 @@ export default async function BlogPage() {
             Technical <span className="text-primary">insights</span>
           </h1>
           <p className="ui-body mx-auto mb-8 max-w-xl">
-            Software engineering, infrastructure, and system design — notes from production.
+            Software engineering, infrastructure, and system design. Notes from production.
           </p>
 
           <div className="mx-auto max-w-lg">
@@ -120,7 +120,7 @@ export default async function BlogPage() {
           <div className="surface-card p-8">
             <h2 className="ui-heading-2 mb-2">Newsletter</h2>
             <p className="mb-6 text-sm text-muted-foreground">
-              New articles — infrastructure, Go, and systems.
+              New articles: infrastructure, Go, and systems.
             </p>
             <NewsletterForm source="blog" />
           </div>

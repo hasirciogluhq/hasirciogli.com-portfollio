@@ -51,7 +51,7 @@ export const Footer = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Mustafa Hasırcıoğlu",
-            url: "https://hasirciogli.com",
+            url: "https://hasirciogluhq.com",
             jobTitle: "Software Engineer & Technical Founder",
             description:
               "Full-stack developer specializing in Go, Kubernetes, and distributed systems.",
@@ -69,17 +69,17 @@ export const Footer = () => {
         <div className="layout-container flex flex-col gap-6 py-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground">Mustafa Hasırcıoğlu</p>
-              <p className="mt-0.5 max-w-xs text-xs leading-relaxed text-muted-foreground">
-                Go, Kubernetes, distributed systems — production-focused engineering.
+              <p className="ui-brand">Mustafa Hasırcıoğlu</p>
+              <p className="ui-body mt-0.5 max-w-xs">
+                Go, Kubernetes, distributed systems. Production-focused engineering.
               </p>
             </div>
-            <nav className="flex flex-wrap gap-x-4 gap-y-1 text-xs" aria-label="Footer">
+            <nav className="flex flex-wrap gap-x-4 gap-y-1" aria-label="Footer">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="text-muted-foreground transition-colors hover:text-foreground"
+                  className="ui-nav text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {l.label}
                 </Link>
@@ -103,9 +103,7 @@ export const Footer = () => {
                 </a>
               ))}
             </div>
-            <p className="text-[11px] text-muted-foreground">
-              © {new Date().getFullYear()} Mustafa Hasırcıoğlu
-            </p>
+            <p className="ui-caption">© {new Date().getFullYear()} Mustafa Hasırcıoğlu</p>
           </div>
         </div>
       </footer>

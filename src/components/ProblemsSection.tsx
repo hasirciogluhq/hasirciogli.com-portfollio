@@ -33,7 +33,8 @@ export const ProblemsSection = () => {
         },
         {
           title: "You need someone who thinks like a co-founder",
-          description: "Not just code execution — you need strategic technical decisions and ownership mentality.",
+          description:
+            "Not just code execution: you need strategic technical decisions and ownership mentality.",
         }
       ],
       outcome: "Ship faster, scale confidently, and build a technical foundation that grows with your business.",
@@ -99,7 +100,7 @@ export const ProblemsSection = () => {
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wider text-primary uppercase">
+          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
             <Target className="h-3 w-3" />
             Who I Help
           </div>
@@ -113,7 +114,7 @@ export const ProblemsSection = () => {
             <button
               key={persona.id}
               onClick={() => setActivePersona(persona.id)}
-              className={`group relative px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+              className={`ui-nav relative rounded-xl px-6 py-3 ${
                 activePersona === persona.id
                   ? 'bg-foreground text-background'
                   : 'bg-card text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -133,19 +134,16 @@ export const ProblemsSection = () => {
         {/* Clean Problems Display */}
         <div className="space-y-4 mb-10">
           {currentPersona.problems.map((problem, index) => (
-            <div
-              key={index}
-              className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/40"
-            >
+            <div key={index} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 transition-transform group-hover:scale-110">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                  <h3 className="ui-heading-3 mb-2">
                     {problem.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="ui-body">
                     {problem.description}
                   </p>
                 </div>
@@ -156,12 +154,12 @@ export const ProblemsSection = () => {
 
         {/* Outcome Statement */}
         <div className="rounded-2xl border border-border bg-muted/30 p-8">
-          <p className="text-lg text-foreground leading-relaxed mb-6">
+          <p className="ui-lead mb-6">
             {currentPersona.outcome}
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 rounded-xl bg-foreground px-6 py-3 font-sans text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
             {currentPersona.cta}
             <ArrowRight className="w-4 h-4" />

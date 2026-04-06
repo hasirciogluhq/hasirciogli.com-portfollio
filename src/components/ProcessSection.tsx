@@ -58,14 +58,14 @@ export const ProcessSection = () => {
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wider text-primary uppercase">
+          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
             <CheckCircle className="h-3 w-3" />
             Process
           </div>
           
           <h2 className="ui-heading-1 max-w-2xl">From idea to production</h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="ui-body max-w-2xl">
             A proven 4-step process that takes projects from concept to scale. Predictable, transparent, results-driven.
           </p>
         </div>
@@ -80,7 +80,7 @@ export const ProcessSection = () => {
                   className={`w-full p-4 rounded-xl transition-all duration-300 ${
                     activeStep === step.id
                       ? 'bg-foreground text-background'
-                      : 'bg-card text-muted-foreground hover:bg-accent border border-border'
+                      : 'border border-border bg-card text-muted-foreground hover:bg-accent'
                   }`}
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -89,7 +89,7 @@ export const ProcessSection = () => {
                     }`}>
                       {step.icon}
                     </div>
-                    <div className="text-sm font-semibold">{step.title}</div>
+                    <div className="ui-nav font-semibold">{step.title}</div>
                   </div>
                 </button>
                 {index < steps.length - 1 && (
@@ -111,35 +111,35 @@ export const ProcessSection = () => {
                   <div className="text-primary">{currentStep.icon}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Step {currentStep.id}</div>
-                  <h3 className="text-2xl font-bold text-foreground">
+                  <div className="ui-caption text-muted-foreground">Step {currentStep.id}</div>
+                  <h3 className="ui-heading-2">
                     {currentStep.title}
                   </h3>
                 </div>
               </div>
-              <p className="text-lg text-muted-foreground">
+              <p className="ui-body">
                 {currentStep.description}
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-4 pl-5 border-l-4 border-l-primary">
-              <div className="mb-2 text-xs font-semibold tracking-wider text-primary uppercase">
+              <div className="ui-caption mb-2 font-semibold text-primary">
                 What You Get
               </div>
-              <p className="text-sm text-foreground leading-relaxed">
+              <p className="ui-body text-foreground">
                 {currentStep.outcome}
               </p>
             </div>
 
             <div>
-              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+              <div className="ui-caption mb-3 font-semibold text-muted-foreground">
                 Technologies & Practices
               </div>
               <div className="flex flex-wrap gap-2">
                 {currentStep.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 bg-muted text-foreground rounded-lg text-sm font-medium"
+                    className="ui-nav rounded-lg bg-muted px-3 py-1.5 text-foreground"
                   >
                     {tech}
                   </span>
@@ -153,7 +153,7 @@ export const ProcessSection = () => {
         <div className="mt-12 text-center">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 rounded-xl bg-foreground px-6 py-3 font-sans text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
             Start Your Project
             <ArrowRight className="w-4 h-4" />

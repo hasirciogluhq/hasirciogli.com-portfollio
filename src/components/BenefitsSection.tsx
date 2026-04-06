@@ -40,14 +40,14 @@ export const BenefitsSection = () => {
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-emerald-700 uppercase">
+          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-emerald-800 dark:text-emerald-300">
             <TrendingUp className="h-3 w-3" />
             What You Get
           </div>
           
           <h2 className="ui-heading-1 max-w-3xl">Systems that work while you sleep</h2>
           
-          <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="ui-body max-w-2xl">
             More than code. You get reliable systems that scale, perform, and require minimal maintenance.
           </p>
         </div>
@@ -57,55 +57,48 @@ export const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/25"
+              className="relative rounded-2xl border border-border bg-card p-8"
             >
               {/* Icon with gradient background */}
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-transform duration-200 group-hover:scale-[1.02]">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
                 <div className="text-primary">{benefit.icon}</div>
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="ui-heading-2 mb-2">
                 {benefit.title}
               </h3>
               
-              <p className="mb-3 text-sm font-semibold text-primary">
+              <p className="ui-nav mb-3 font-semibold text-primary">
                 {benefit.outcome}
               </p>
               
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              <p className="ui-body mb-4">
                 {benefit.description}
               </p>
 
               {/* Metric Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-xs font-semibold text-foreground">
+              <div className="ui-caption inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 font-semibold text-foreground">
                 <ArrowRight className="w-3 h-3" />
                 {benefit.metric}
               </div>
 
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 -z-10 rounded-2xl bg-muted/0 opacity-0 transition-opacity duration-200 group-hover:bg-muted/40 group-hover:opacity-100" />
             </div>
           ))}
         </div>
 
         {/* CTA Box */}
-        <div className="rounded-2xl border border-border bg-foreground p-8 text-background">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="surface-cta-band">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-2">
-                Ready to build something great?
-              </h3>
-              <p className="text-background/80">
-                Let's discuss your project and see how I can help you succeed.
+              <h3 className="surface-cta-band-title">Ready to build something great?</h3>
+              <p className="surface-cta-band-body">
+                Let&apos;s discuss your project and see how I can help you succeed.
               </p>
             </div>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-background text-foreground rounded-xl text-sm font-semibold hover:scale-105 transition-transform whitespace-nowrap"
-            >
+            <a href="/contact" className="surface-cta-band-button">
               Get Started
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </div>

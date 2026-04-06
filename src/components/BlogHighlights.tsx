@@ -61,14 +61,14 @@ export const BlogHighlights = () => {
   return (
     <HomeSection>
       <div className="mb-10 text-center">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        <div className="ui-eyebrow mb-4 inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5">
           <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
           Blog
         </div>
         <h2 className="ui-heading-1 mb-3">Thoughts & technical deep dives</h2>
-        <p className="mx-auto max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+        <p className="ui-body mx-auto max-w-2xl">
           Systems design, production lessons, and the craft of software engineering.
         </p>
       </div>
@@ -78,17 +78,17 @@ export const BlogHighlights = () => {
           <Link
             href={posts[0].slug}
             onClick={() => handlePostClick(posts[0].slug)}
-            className="group block h-full"
+            className="block h-full"
           >
-            <div className="surface-card h-full rounded-xl p-8 transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-primary/20">
-              <div className="mb-4 inline-block rounded-md border border-border bg-muted px-3 py-1 text-xs font-medium text-foreground">
+            <div className="surface-card h-full rounded-xl p-8">
+              <div className="ui-nav mb-4 inline-block rounded-md border border-border bg-muted px-3 py-1 text-foreground">
                 Featured
               </div>
-              <h3 className="mb-3 text-2xl font-semibold leading-tight text-foreground transition-colors group-hover:text-primary">
+              <h3 className="ui-heading-2 mb-3">
                 {posts[0].title}
               </h3>
-              <p className="mb-6 text-base leading-relaxed text-muted-foreground">{posts[0].excerpt}</p>
-              <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <p className="ui-body mb-6">{posts[0].excerpt}</p>
+              <div className="ui-nav mb-6 flex flex-wrap items-center gap-4 text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
                   {new Date(posts[0].date).toLocaleDateString("en-US", {
@@ -102,9 +102,9 @@ export const BlogHighlights = () => {
                   {posts[0].readTime} read
                 </span>
               </div>
-              <div className="inline-flex items-center gap-2 font-semibold text-foreground transition-all group-hover:gap-3">
+              <div className="ui-brand inline-flex items-center gap-2">
                 <span>Read full article</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4" aria-hidden />
               </div>
             </div>
           </Link>
@@ -116,17 +116,17 @@ export const BlogHighlights = () => {
               key={post.id}
               href={post.slug}
               onClick={() => handlePostClick(post.slug)}
-              className="group block"
+              className="block"
             >
-              <div className="surface-card h-full rounded-xl p-6 transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-primary/20">
-                <div className="mb-3 inline-block rounded-md border border-border bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+              <div className="surface-card h-full rounded-xl p-6">
+                <div className="ui-caption mb-3 inline-block rounded-md border border-border bg-muted px-2 py-0.5 font-medium">
                   {post.category}
                 </div>
-                <h3 className="mb-2 text-base font-semibold leading-tight text-foreground transition-colors group-hover:text-primary">
+                <h3 className="ui-heading-3 mb-2">
                   {post.title}
                 </h3>
-                <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <p className="ui-body mb-4 line-clamp-2">{post.excerpt}</p>
+                <div className="ui-caption flex flex-wrap items-center gap-3">
                   <span className="inline-flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
                     {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
@@ -145,7 +145,7 @@ export const BlogHighlights = () => {
       <div className="mt-10 text-center">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-sans text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
         >
           View all articles
           <ArrowRight className="h-4 w-4" />

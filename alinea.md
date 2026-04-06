@@ -218,7 +218,7 @@ Sen blog yazılarını AI ile üreteceksin; Alinea ile bu süreci nasıl integre
 
 ---
 
-İstersen, hemen senin site (hasirciogli.com’un kod yapısı) ile Alinea’yı entegre eden **örnek kod şablonu + dosya yapısı (folder layout)** çıkarayım. Ayrıca, 3–5 blog fikri + başlık + AI draft’ı da üretebilirim. Hangisiyle devam edeyim?
+İstersen, hemen senin site (hasirciogluhq.com’un kod yapısı) ile Alinea’yı entegre eden **örnek kod şablonu + dosya yapısı (folder layout)** çıkarayım. Ayrıca, 3–5 blog fikri + başlık + AI draft’ı da üretebilirim. Hangisiyle devam edeyim?
 
 [1]: https://jamstack.org/headless-cms/alinea/?utm_source=chatgpt.com "Alinea"
 [2]: https://github.com/alineacms/alinea?utm_source=chatgpt.com "alineacms/alinea: Content management, streamlined"
