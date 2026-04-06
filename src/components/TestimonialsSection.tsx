@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
+import { HomeSection } from "@/components/home/HomeSection"
 
 interface Testimonial {
   quote: string
@@ -53,18 +54,16 @@ export const TestimonialsSection = () => {
   const currentTestimonial = testimonials[currentIndex]
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-warning/10 text-brand-warning text-xs font-semibold uppercase tracking-wider">
-            <Quote className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-amber-700 uppercase">
+            <Quote className="h-3 w-3" />
             Testimonials
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
-            Trusted by builders and teams
-          </h2>
+          <h2 className="ui-heading-1 max-w-2xl">Trusted by builders and teams</h2>
         </div>
 
         {/* Main Testimonial */}
@@ -72,7 +71,7 @@ export const TestimonialsSection = () => {
           {/* Stars */}
           <div className="flex items-center gap-1 mb-6">
             {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-brand-warning text-brand-warning" />
+              <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
             ))}
           </div>
 
@@ -85,8 +84,8 @@ export const TestimonialsSection = () => {
 
           {/* Author */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center">
-              <span className="text-sm font-bold text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
+              <span className="text-sm font-bold text-primary-foreground">
                 {currentTestimonial.avatar}
               </span>
             </div>
@@ -135,7 +134,7 @@ export const TestimonialsSection = () => {
         </div>
 
         {/* Trust Metrics */}
-        <div className="grid grid-cols-3 gap-6 p-8 rounded-2xl bg-gradient-to-br from-brand-primary/10 to-brand-accent/10 border border-brand-primary/20">
+        <div className="grid grid-cols-3 gap-6 rounded-2xl border border-border bg-muted/30 p-8">
           <div className="text-center">
             <div className="text-4xl font-bold text-foreground mb-2">10+</div>
             <div className="text-sm text-muted-foreground">Projects Shipped</div>
@@ -150,6 +149,6 @@ export const TestimonialsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }

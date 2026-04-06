@@ -1,45 +1,58 @@
 "use client"
 
-
-import { Code, Database, Server, GitBranch, Award, Target, Heart, Zap, Users, TrendingUp } from "lucide-react"
-import { sendGAEvent } from '@next/third-parties/google'
+import {
+  Code,
+  Database,
+  Server,
+  GitBranch,
+  Award,
+  Target,
+  Heart,
+  Users,
+  TrendingUp,
+  Zap,
+} from "lucide-react"
+import { sendGAEvent } from "@next/third-parties/google"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
+import { SectionBlock } from "@/components/layout/SectionBlock"
 
 export default function AboutPage() {
   const [imageError, setImageError] = useState(false)
+
   const techStack = [
-    { name: "Go", icon: <Code className="w-4 h-4" />, color: "from-blue-500 to-cyan-500", years: "5+" },
-    { name: "Kubernetes", icon: <Server className="w-4 h-4" />, color: "from-blue-500 to-indigo-500", years: "4+" },
-    { name: "PostgreSQL", icon: <Database className="w-4 h-4" />, color: "from-blue-400 to-blue-600", years: "6+" },
-    { name: "Next.js", icon: <GitBranch className="w-4 h-4" />, color: "from-zinc-400 to-zinc-600", years: "3+" }
+    { name: "Go", icon: <Code className="h-4 w-4" />, years: "5+" },
+    { name: "Kubernetes", icon: <Server className="h-4 w-4" />, years: "4+" },
+    { name: "PostgreSQL", icon: <Database className="h-4 w-4" />, years: "6+" },
+    { name: "Next.js", icon: <GitBranch className="h-4 w-4" />, years: "3+" },
   ]
 
   const values = [
     {
-      icon: <Award className="w-6 h-6" />,
+      icon: <Award className="h-6 w-6" />,
       title: "Craft Over Speed",
-      description: "Writing code is a craft. I build the right solutions, not fast ones. Every line should be maintainable even five years from now.",
-      color: "from-blue-500 to-cyan-500"
+      description:
+        "Writing code is a craft. I build the right solutions, not fast ones. Every line should be maintainable even five years from now.",
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="h-6 w-6" />,
       title: "Production First",
-      description: "Not demos, but real systems. 99.9% uptime, monitoring, and incident response from day one.",
-      color: "from-purple-500 to-pink-500"
+      description:
+        "Not demos, but real systems. 99.9% uptime, monitoring, and incident response from day one.",
     },
     {
-      icon: <Heart className="w-6 h-6" />,
+      icon: <Heart className="h-6 w-6" />,
       title: "Ownership Mindset",
-      description: "I don't just write code, I think about the product. With a founder mentality, I take ownership of all aspects of the work.",
-      color: "from-red-500 to-orange-500"
+      description:
+        "I don't just write code, I think about the product. With a founder mentality, I take ownership of all aspects of the work.",
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="h-6 w-6" />,
       title: "Clear Communication",
-      description: "No technical jargon. I translate complex systems into simple words. Transparency and trust are the foundation of everything.",
-      color: "from-green-500 to-emerald-500"
-    }
+      description:
+        "No technical jargon. I translate complex systems into simple words. Transparency and trust are the foundation of everything.",
+    },
   ]
 
   const journey = [
@@ -47,193 +60,160 @@ export default function AboutPage() {
       year: "2018",
       title: "The Beginning",
       description: "My first line of code. Started with PHP and web technologies.",
-      icon: "🎯"
+      icon: "🎯",
     },
     {
       year: "2023",
       title: "Professional Life & Cloud",
-      description: "First professional projects. Started working in e-commerce and fintech. Focused on Kubernetes and distributed systems.",
-      icon: "💼"
+      description:
+        "First professional projects. Started working in e-commerce and fintech. Focused on Kubernetes and distributed systems.",
+      icon: "💼",
     },
     {
       year: "2024",
       title: "Founder Journey",
       description: "Started building my own products. HsrcPay and other projects came to life.",
-      icon: "🚀"
+      icon: "🚀",
     },
     {
       year: "2025",
       title: "Scale & Impact",
       description: "10+ projects, hundreds of thousands of users. Now solving bigger problems.",
-      icon: "🌟"
-    }
+      icon: "🌟",
+    },
   ]
 
   const stats = [
-    { label: "Years Experience", value: "7+", icon: <Zap className="w-5 h-5" /> },
-    { label: "Completed Projects", value: "10+", icon: <Target className="w-5 h-5" /> },
-    { label: "In Production", value: "10+", icon: <Server className="w-5 h-5" /> },
-    { label: "Lines of Code", value: "5M+", icon: <Code className="w-5 h-5" /> }
+    { label: "Years Experience", value: "7+", icon: <Zap className="h-5 w-5" /> },
+    { label: "Completed Projects", value: "10+", icon: <Target className="h-5 w-5" /> },
+    { label: "In Production", value: "10+", icon: <Server className="h-5 w-5" /> },
+    { label: "Lines of Code", value: "5M+", icon: <Code className="h-5 w-5" /> },
   ]
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] pt-20">
-      {/* Hero Section */}
-      <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#1A1A1A] to-[#0F0F0F] relative overflow-hidden">
-        {/* Background decorative */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Content */}
-            <div>
-              <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
-                <div className="flex items-center gap-2">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <span className="text-xs font-medium text-white uppercase tracking-wider">
-                    About Me
-                  </span>
-                </div>
-              </div>
-
-              <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-                Entrepreneurial Developer,
-                <span className="block mt-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Production & Scaling Focused
-                </span>
-              </h1>
-
-              <div className="space-y-4 mb-8">
-                <p className="text-lg text-zinc-300 leading-relaxed">
-                  I&apos;m Mustafa. Software engineer, founder, and production systems enthusiast.
-                  I&apos;ve been building software for 7+ years, and creating my own products for the past 4 years.
-                </p>
-
-                <p className="text-base text-zinc-400 leading-relaxed">
-                  I specialize in cloud infrastructure, distributed systems, and payment systems.
-                  I love working with Go, Kubernetes, and PostgreSQL. I always aim to build production-grade,
-                  scalable systems.
-                </p>
-              </div>
-
-              {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                {techStack.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="px-4 py-3 rounded-xl !bg-zinc-900/40 border-zinc-800/50 hover:border-zinc-700 hover:!bg-zinc-900/60 transition-all hover:scale-105"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`bg-gradient-to-r ${tech.color} p-2 rounded-lg`}>
-                        <div className="text-white">
-                          {tech.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-white">{tech.name}</p>
-                        <p className="text-xs text-zinc-500">{tech.years} experience</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <a
-                href="/contact"
-                onClick={() => sendGAEvent('event', 'about_cta_click', { category: 'engagement', label: 'Lets Work Together' })}
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-all shadow-lg hover:shadow-xl hover:scale-105"
-              >
-                <span>Let&apos;s Work Together</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+    <div className="min-h-screen bg-background">
+      <section className="layout-section border-b border-border/60">
+        <div className="layout-container ui-enter grid grid-cols-1 items-center gap-12 pb-16 pt-[var(--page-content-pt)] lg:grid-cols-2">
+          <div>
+            <div className="mb-6 inline-block rounded-md border border-border bg-muted px-3 py-1.5">
+              <div className="flex items-center gap-2">
+                <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
-              </a>
+                <span className="ui-kicker">About me</span>
+              </div>
             </div>
 
-            {/* Right - Professional Card */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-md">
-                <div className="p-8 rounded-2xl !bg-zinc-900/60 border-zinc-800/50 shadow-2xl">
-                  {/* Profile Header */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg">
-                      {!imageError ? (
-                        <Image
-                          src="/mustafa-hasircioglu.webp"
-                          alt="Mustafa Hasırcıoğlu"
-                          width={80}
-                          height={80}
-                          className="object-cover w-full h-full"
-                          onError={() => setImageError(true)}
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-3xl font-bold text-white">
-                          MH
-                        </div>
-                      )}
-                    </div>
+            <h1 className="ui-heading-1 mb-6">
+              Entrepreneurial developer — <span className="text-primary">production &amp; scale</span>
+            </h1>
+
+            <div className="mb-8 space-y-4">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                I&apos;m Mustafa. Software engineer, founder, and production systems enthusiast. I&apos;ve been
+                building software for 7+ years, and creating my own products for the past 4 years.
+              </p>
+              <p className="ui-body">
+                I specialize in cloud infrastructure, distributed systems, and payment systems. I love working with
+                Go, Kubernetes, and PostgreSQL. I always aim to build production-grade, scalable systems.
+              </p>
+            </div>
+
+            <div className="mb-8 flex flex-wrap gap-3">
+              {techStack.map((tech) => (
+                <div key={tech.name} className="surface-card rounded-lg px-4 py-3 transition-shadow duration-200 hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-md bg-primary/10 p-2 text-primary">{tech.icon}</div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Mustafa Hasırcıoğlu</h3>
-                      <p className="text-sm text-zinc-400">Software Engineer · Founder</p>
+                      <p className="text-sm font-semibold text-foreground">{tech.name}</p>
+                      <p className="text-xs text-muted-foreground">{tech.years} experience</p>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
 
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {stats.map((stat) => (
-                      <div key={stat.label} className="p-3 rounded-xl bg-zinc-800/40 backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-1">
-                          <div className="text-blue-400">{stat.icon}</div>
-                          <div className="text-lg font-bold text-white">{stat.value}</div>
+            <Link
+              href="/contact"
+              onClick={() =>
+                sendGAEvent("event", "about_cta_click", { category: "engagement", label: "Lets Work Together" })
+              }
+              className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity duration-200 hover:opacity-90"
+            >
+              <span>Let&apos;s Work Together</span>
+              <svg className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md">
+              <div className="surface-card rounded-xl p-8 shadow-sm">
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="h-20 w-20 overflow-hidden rounded-2xl">
+                    {!imageError ? (
+                      <Image
+                        src="/mustafa-hasircioglu.webp"
+                        alt="Mustafa Hasırcıoğlu"
+                        width={80}
+                        height={80}
+                        className="h-full w-full object-cover"
+                        onError={() => setImageError(true)}
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-muted text-2xl font-semibold text-muted-foreground">
+                        MH
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="ui-heading-3">Mustafa Hasırcıoğlu</h3>
+                    <p className="text-sm text-muted-foreground">Software Engineer · Founder</p>
+                  </div>
+                </div>
+
+                <div className="mb-6 grid grid-cols-2 gap-3">
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="rounded-xl bg-muted p-3">
+                      <div className="mb-1 flex items-center gap-2">
+                        <div className="text-primary">{stat.icon}</div>
+                        <div className="text-lg font-bold text-foreground">{stat.value}</div>
+                      </div>
+                      <div className="text-xs text-muted-foreground">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mb-6 space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Expertise</p>
+                  <div className="space-y-2">
+                    {["Cloud Infrastructure & K8s", "Payment Systems", "Distributed Systems", "Full-Stack Development"].map(
+                      (skill) => (
+                        <div key={skill} className="flex items-center gap-2">
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                          <span className="text-sm text-muted-foreground">{skill}</span>
                         </div>
-                        <div className="text-xs text-zinc-500">{stat.label}</div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <div className="border-t border-border pt-6">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Featured Projects
+                  </p>
+                  <div className="space-y-2">
+                    {["deweloper.cloud", "hsrcpay.com", "ficksa.com"].map((project) => (
+                      <div
+                        key={project}
+                        className="flex items-center justify-between rounded-lg bg-muted p-2 transition-colors duration-200 hover:bg-muted/80"
+                      >
+                        <span className="text-sm font-medium text-muted-foreground">{project}</span>
+                        <div className="h-2 w-2 rounded-full bg-emerald-500/80" />
                       </div>
                     ))}
                   </div>
-
-                  {/* Expertise */}
-                  <div className="space-y-3 mb-6">
-                    <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Expertise</p>
-                    <div className="space-y-2">
-                      {['Cloud Infrastructure & K8s', 'Payment Systems', 'Distributed Systems', 'Full-Stack Development'].map((skill) => (
-                        <div key={skill} className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-                          <span className="text-sm text-zinc-300">{skill}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Featured Projects */}
-                  <div className="pt-6 border-t border-zinc-800">
-                    <p className="text-xs text-zinc-500 uppercase tracking-wider mb-3 font-semibold">Featured Projects</p>
-                    <div className="space-y-2">
-                      {['deweloper.cloud', 'hsrcpay.com', 'ficksa.com'].map((project) => (
-                        <div key={project} className="flex items-center justify-between p-2 rounded-lg bg-zinc-800/40 hover:bg-zinc-800/60 transition-colors">
-                          <span className="text-sm text-zinc-300 font-medium">{project}</span>
-                          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Badges */}
-                <div className="absolute -top-4 -right-4">
-                  <div className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
-                    <div className="text-xs font-semibold text-white">🚀 Active Builder</div>
-                  </div>
-                </div>
-                <div className="absolute -bottom-4 -left-4">
-                  <div className="px-4 py-2 !bg-zinc-900/80 backdrop-blur-xl shadow-xl border-zinc-800">
-                    <div className="text-xs font-semibold text-white">⚡ 99.9% Uptime</div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -241,140 +221,105 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="px-4 py-16 md:py-24 border-t border-zinc-800/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
-              <div className="flex items-center gap-2">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <span className="text-xs font-medium text-white uppercase tracking-wider">
-                  My Values
-                </span>
-              </div>
+      <SectionBlock>
+        <div className="mb-12 text-center">
+          <div className="mb-6 inline-block rounded-md border border-border bg-muted px-3 py-1.5">
+            <div className="flex items-center gap-2">
+              <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span className="ui-kicker">Values</span>
             </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              My Values & Principles
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
-              Coding isn&apos;t just a job. These values guide me in every project.
-            </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-2xl !bg-zinc-900/40 border-zinc-800/50 hover:!bg-zinc-900/60 hover:border-zinc-700 transition-all duration-300 hover:scale-105"
-              >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-4`}>
-                  <div className="text-white">
-                    {value.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                <p className="text-zinc-400 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Journey Timeline */}
-      <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#0F0F0F] to-[#1A1A1A] border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
-              <div className="flex items-center gap-2">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-xs font-medium text-white uppercase tracking-wider">
-                  My Journey
-                </span>
-              </div>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              My Journey
-            </h2>
-            <p className="text-zinc-400">
-              From first line of code to today, a 7-year adventure.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {journey.map((item, index) => (
-              <div key={index} className="flex gap-6 group">
-                {/* Timeline */}
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  {index < journey.length - 1 && (
-                    <div className="w-0.5 h-full bg-gradient-to-b from-zinc-700 to-transparent mt-2" />
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 p-6 rounded-xl !bg-zinc-900/40 border-zinc-800/50 group-hover:!bg-zinc-900/60 group-hover:border-zinc-700 transition-all">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-lg text-sm font-semibold">
-                      {item.year}
-                    </span>
-                    <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                  </div>
-                  <p className="text-zinc-400 leading-relaxed">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quote Section */}
-      <section className="px-4 py-16 border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="p-12 text-center !bg-zinc-900/40 border-zinc-800/50">
-            <blockquote className="text-2xl md:text-3xl font-serif text-white leading-relaxed mb-6 italic">
-              &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on the 22nd.
-              How will you beat me?&rdquo;
-            </blockquote>
-            <p className="text-zinc-500 text-sm">— Mustafa Hasırcıoğlu</p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-4 py-16 border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready for your project?
-          </h2>
-          <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-            From MVP to production, from idea to scalable system.
-            Let&apos;s build something amazing together.
+          <h2 className="ui-heading-1 mb-4">My Values &amp; Principles</h2>
+          <p className="ui-body mx-auto max-w-2xl">
+            Coding isn&apos;t just a job. These values guide me in every project.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {values.map((value, index) => (
+            <div key={index} className="surface-card p-6 transition-shadow duration-200 hover:shadow-md">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
+                {value.icon}
+              </div>
+              <h3 className="ui-heading-3 mb-3">{value.title}</h3>
+              <p className="ui-body">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      <SectionBlock className="bg-muted/20">
+        <div className="mx-auto mb-12 max-w-4xl text-center">
+          <div className="mb-6 inline-block rounded-md border border-border bg-background px-3 py-1.5">
+            <div className="flex items-center gap-2">
+              <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="ui-kicker">Journey</span>
+            </div>
+          </div>
+          <h2 className="ui-heading-1 mb-4">My Journey</h2>
+          <p className="ui-body">From first line of code to today, a 7-year adventure.</p>
+        </div>
+
+        <div className="mx-auto max-w-4xl space-y-6">
+          {journey.map((item, index) => (
+            <div key={index} className="group flex gap-6">
+              <div className="flex flex-col items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl transition-transform duration-200 group-hover:scale-[1.02]">
+                  {item.icon}
+                </div>
+                {index < journey.length - 1 && <div className="mt-2 h-full w-px grow bg-border" />}
+              </div>
+              <div className="surface-card flex-1 p-6 transition-shadow duration-200 group-hover:shadow-sm">
+                <div className="mb-2 flex flex-wrap items-center gap-3">
+                  <span className="rounded-md bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                    {item.year}
+                  </span>
+                  <h3 className="ui-heading-3">{item.title}</h3>
+                </div>
+                <p className="ui-body">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      <SectionBlock>
+        <div className="surface-card mx-auto max-w-4xl p-10 text-center">
+          <blockquote className="ui-heading-2 mb-6 italic leading-relaxed text-foreground md:text-2xl">
+            &ldquo;I failed 20 times but didn&apos;t give up — now I&apos;m on my 21st attempt and I know I&apos;ll win on
+            the 22nd. How will you beat me?&rdquo;
+          </blockquote>
+          <p className="text-sm text-muted-foreground">— Mustafa Hasırcıoğlu</p>
+        </div>
+      </SectionBlock>
+
+      <SectionBlock>
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="ui-heading-1 mb-4">Ready for your project?</h2>
+          <p className="ui-body mx-auto mb-8 max-w-2xl">
+            From MVP to production, from idea to scalable system. Let&apos;s build something amazing together.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity duration-200 hover:opacity-90"
             >
-              <span>Get In Touch</span>
-              <TrendingUp className="w-5 h-5" />
-            </a>
-            <a
+              <span>Get in touch</span>
+              <TrendingUp className="h-4 w-4" strokeWidth={1.5} />
+            </Link>
+            <Link
               href="/projects"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-zinc-900/60 text-white rounded-xl font-semibold hover:bg-zinc-900 transition-all border border-zinc-800"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted"
             >
-              <span>View My Projects</span>
-            </a>
+              <span>Projects</span>
+            </Link>
           </div>
         </div>
-      </section>
+      </SectionBlock>
     </div>
   )
 }

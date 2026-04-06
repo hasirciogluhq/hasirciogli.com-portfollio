@@ -56,68 +56,52 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] pt-20">
-      {/* Hero Section */}
-      <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#1A1A1A] to-[#0F0F0F] relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-block px-3 py-1.5 rounded-lg !bg-white/5 mb-6">
+    <div className="min-h-screen bg-background">
+      <section className="layout-section border-b border-border/60">
+        <div className="layout-container ui-enter py-16 pb-12 pt-[var(--page-content-pt)]">
+          <div className="mb-12 text-center">
+            <div className="mb-6 inline-block rounded-md border border-border bg-muted px-3 py-1.5">
               <div className="flex items-center gap-2">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                 </svg>
-                <span className="text-xs font-medium text-white uppercase tracking-wider">
-                  Portfolio
-                </span>
+                <span className="ui-kicker">Portfolio</span>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Projects I&apos;ve Built
-              <span className="block mt-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                From Idea to Scale
-              </span>
+            <h1 className="ui-heading-1 mb-4">
+              Projects I&apos;ve built — <span className="text-primary">from idea to scale</span>
             </h1>
 
-            <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Real products solving real problems. Each project represents months of engineering,
-              architectural decisions, and production battles won.
+            <p className="ui-body mx-auto mb-8 max-w-3xl text-base">
+              Real products solving real problems. Each project represents months of engineering, architectural
+              decisions, and production battles won.
             </p>
 
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto">
-              <div className="!bg-zinc-900/60 border-zinc-800/50 p-0">
-                <div className="flex items-center gap-3 px-4 py-3">
-                  <Search className="w-5 h-5 text-zinc-500" />
-                  <input
-                    type="search"
-                    placeholder="Search projects... (technology, category, name)"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="flex-1 bg-transparent text-white placeholder:text-zinc-600 outline-none"
-                  />
-                </div>
+            <div className="mx-auto max-w-2xl">
+              <div className="surface-card flex items-center gap-3 px-4 py-3">
+                <Search className="h-5 w-5 shrink-0 text-muted-foreground" strokeWidth={1.5} />
+                <input
+                  type="search"
+                  placeholder="Search projects… (technology, category, name)"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none"
+                />
               </div>
             </div>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
             {[
               { label: "Total Projects", value: activeProjects.length },
               { label: "Active Projects", value: activeProjects.filter((p: Project) => p.featured).length },
               { label: "Technologies", value: "10+" },
-              { label: "In Production", value: "99.9% Uptime" }
+              { label: "In Production", value: "99.9% Uptime" },
             ].map((stat, index) => (
-              <div key={index} className="p-4 text-center !bg-zinc-900/40 border-zinc-800/50">
-                <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-xs text-zinc-500">{stat.label}</div>
+              <div key={index} className="surface-card p-4 text-center">
+                <div className="mb-1 text-2xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -125,10 +109,10 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="px-4 py-8 border-b border-zinc-800/50 sticky top-20 bg-[#0F0F0F]/95 backdrop-blur-md z-40">
-        <div className="max-w-6xl mx-auto">
+      <section className="layout-section sticky top-12 z-40 border-b border-border bg-background/95 py-6 backdrop-blur-md">
+        <div className="layout-container">
           <div className="flex items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-2 text-zinc-400">
+            <div className="flex items-center gap-2 text-muted-foreground">
               <Filter className="w-4 h-4" />
               <span className="text-sm font-medium">Filter:</span>
             </div>
@@ -136,9 +120,9 @@ export default function ProjectsPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${activeCategory === category
-                    ? 'bg-white text-zinc-900 shadow-lg'
-                    : 'bg-zinc-900/40 text-zinc-400 hover:text-white hover:bg-zinc-900/60 border border-zinc-800/50'
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${activeCategory === category
+                    ? "bg-primary text-primary-foreground"
+                    : "border border-border bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
               >
                 {category === "all" ? "All" : category}
@@ -147,7 +131,7 @@ export default function ProjectsPage() {
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm("")}
-                className="ml-auto text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+                className="ml-auto text-xs text-muted-foreground hover:text-muted-foreground transition-colors"
               >
                 Clear Filters ✕
               </button>
@@ -157,8 +141,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="px-4 py-12">
-        <div className="max-w-6xl mx-auto">
+      <section className="layout-section py-12">
+        <div className="layout-container">
           {filteredProjects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project: Project) => (
@@ -169,22 +153,20 @@ export default function ProjectsPage() {
                   onMouseLeave={() => setHoveredProject(null)}
                 >
                   <div
-                    className={`h-full p-0 rounded-2xl overflow-hidden !bg-zinc-900/40 border border-zinc-800/50 transition-all duration-300 ${hoveredProject === project.id
-                        ? 'scale-105 !border-zinc-700 shadow-2xl'
+                    className={`h-full p-0 rounded-2xl overflow-hidden bg-card border border-border transition-all duration-300 ${hoveredProject === project.id
+                        ? 'scale-105 !border-border shadow-2xl'
                         : 'scale-100'
                       }`}
                   >
                     {/* Project Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 overflow-hidden">
-                      {/* Placeholder gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20" />
+                    <div className="relative h-48 overflow-hidden bg-muted">
+                      <div className="absolute inset-0 bg-primary/5" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-5xl opacity-20">🚀</span>
+                        <span className="text-5xl opacity-25">🚀</span>
                       </div>
 
-                      {/* Category & Featured Badge */}
                       <div className="absolute top-3 left-3 flex items-center gap-2">
-                        <span className="px-2 py-1 text-xs font-medium bg-black/60 backdrop-blur-sm text-white rounded-md">
+                        <span className="rounded-md border border-border bg-card/95 px-2 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                           {project.category}
                         </span>
                         {project.featured && (
@@ -199,10 +181,10 @@ export default function ProjectsPage() {
 
                       {/* Metrics Badge */}
                       {project.metrics && (
-                        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <div className="px-2 py-1 !bg-black/80 backdrop-blur-sm">
-                            <span className="text-xs text-white font-medium">{project.metrics.value}</span>
-                            <span className="text-xs text-zinc-400 ml-1">{project.metrics.label}</span>
+                        <div className="absolute top-3 right-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                          <div className="rounded-md border border-border bg-card px-2 py-1 backdrop-blur-sm">
+                            <span className="text-xs font-medium text-foreground">{project.metrics.value}</span>
+                            <span className="ml-1 text-xs text-muted-foreground">{project.metrics.label}</span>
                           </div>
                         </div>
                       )}
@@ -212,14 +194,14 @@ export default function ProjectsPage() {
                     <div className="p-5">
                       {/* Title & Role */}
                       <div className="mb-3">
-                        <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                        <h3 className="mb-1 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                           {project.title}
                         </h3>
-                        <p className="text-xs text-zinc-500 font-medium">{project.role}</p>
+                        <p className="text-xs text-muted-foreground font-medium">{project.role}</p>
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
                         {project.description}
                       </p>
 
@@ -229,33 +211,33 @@ export default function ProjectsPage() {
                         {project.technologies.slice(0, 4).map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 py-0.5 text-xs bg-zinc-800/60 text-zinc-300 rounded-md"
+                            className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-md"
                           >
                             {tech}
                           </span>
                         ))}
                         {project.technologies.length > 4 && (
-                          <span className="px-2 py-0.5 text-xs bg-zinc-800/60 text-zinc-500 rounded-md">
+                          <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-md">
                             +{project.technologies.length - 4}
                           </span>
                         )}
                       </div>
 
                       {/* Actions */}
-                      <div className="flex items-center gap-3 pt-3 border-t border-zinc-800">
+                      <div className="flex items-center gap-3 pt-3 border-t border-border">
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => handleProjectClick(project.slug, 'visit')}
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white text-zinc-900 rounded-lg text-xs font-semibold hover:bg-zinc-100 transition-all group/link"
+                          className="group/link flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
                         >
                           <span>Visit</span>
                           <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                         </a>
 
                         <button
-                          className="flex items-center gap-1 px-4 py-2 bg-zinc-800/60 text-zinc-300 rounded-lg text-xs font-medium hover:bg-zinc-800 hover:text-white transition-all"
+                          className="flex items-center gap-1 px-4 py-2 bg-muted text-muted-foreground rounded-lg text-xs font-medium hover:bg-muted hover:text-foreground transition-all"
                           onClick={() => handleProjectClick(project.slug, 'case_study')}
                         >
                           <span>Details</span>
@@ -269,10 +251,10 @@ export default function ProjectsPage() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
+              <div className="surface-card inline-flex flex-col items-center gap-4 p-12">
                 <div className="text-6xl">🔍</div>
-                <h3 className="text-xl font-semibold text-white">No results found</h3>
-                <p className="text-zinc-400 max-w-md">
+                <h3 className="text-xl font-semibold text-foreground">No results found</h3>
+                <p className="text-muted-foreground max-w-md">
                   No projects match your search criteria. Please try changing the filters.
                 </p>
                 <button
@@ -280,7 +262,7 @@ export default function ProjectsPage() {
                     setSearchTerm("")
                     setActiveCategory("all")
                   }}
-                  className="mt-4 px-4 py-2 bg-white text-zinc-900 rounded-lg font-semibold hover:bg-zinc-100 transition-colors"
+                  className="mt-4 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
                 >
                   Reset Filters
                 </button>
@@ -291,27 +273,25 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 py-16 border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Your Next Project Could Be Here
-            </h2>
-            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
+      <section className="layout-section border-t border-border py-16">
+        <div className="layout-container text-center">
+          <div className="surface-card border p-10">
+            <h2 className="ui-heading-1 mb-4">Your next project could be here</h2>
+            <p className="ui-body mx-auto mb-8 max-w-2xl">
               From MVP to production, from idea to scalable system.
               Let&apos;s build something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-zinc-800/60 text-white rounded-xl font-semibold hover:bg-zinc-800 transition-all border border-zinc-700/50"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-muted text-foreground rounded-xl font-semibold hover:bg-muted transition-all border border-border"
               >
                 <span>Learn More About Me</span>
               </a>

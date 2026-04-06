@@ -4,6 +4,7 @@ import { useState } from "react"
 import skillsData from "@/data/skills.json"
 import projectsData from "@/data/projects.json"
 import { Code2, Sparkles } from "lucide-react"
+import { HomeSection } from "@/components/home/HomeSection"
 
 interface Skill {
   name: string
@@ -26,15 +27,15 @@ export const SkillsSection = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      Languages: "bg-brand-primary/10 text-brand-primary border-brand-primary/20",
-      Frontend: "bg-brand-secondary/10 text-brand-secondary border-brand-secondary/20",
-      Backend: "bg-brand-success/10 text-brand-success border-brand-success/20",
-      DevOps: "bg-brand-warning/10 text-brand-warning border-brand-warning/20",
-      Cloud: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
-      Tools: "bg-brand-error/10 text-brand-error border-brand-error/20",
-      Architecture: "bg-brand-primary/10 text-brand-primary border-brand-primary/20"
+      Languages: "border-primary/20 bg-primary/10 text-primary",
+      Frontend: "border-violet-500/20 bg-violet-500/10 text-violet-700",
+      Backend: "border-emerald-500/20 bg-emerald-500/10 text-emerald-800",
+      DevOps: "border-amber-500/20 bg-amber-500/10 text-amber-800",
+      Cloud: "border-sky-500/20 bg-sky-500/10 text-sky-800",
+      Tools: "border-destructive/25 bg-destructive/10 text-destructive",
+      Architecture: "border-primary/20 bg-primary/10 text-primary",
     }
-    return colors[category] || "bg-muted text-muted-foreground border-border"
+    return colors[category] || "border-border bg-muted text-muted-foreground"
   }
 
   const getProjectNames = (projectSlugs: string[]) => {
@@ -44,18 +45,16 @@ export const SkillsSection = () => {
   }
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-semibold uppercase tracking-wider">
-            <Code2 className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wider text-accent-foreground uppercase">
+            <Code2 className="h-3 w-3" />
             Tech Stack
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
-            Technologies & Expertise
-          </h2>
+          <h2 className="ui-heading-1 max-w-2xl">Technologies &amp; Expertise</h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Specializing in Go, Kubernetes, distributed systems, and payment infrastructure.
@@ -127,12 +126,12 @@ export const SkillsSection = () => {
         {/* Legend */}
         <div className="mt-12 p-6 rounded-2xl bg-card border border-border">
           <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
-            <Sparkles className="w-4 h-4 text-brand-primary" />
+            <Sparkles className="h-4 w-4 text-primary" />
             <span className="font-semibold text-foreground">Sparkle icon = Expert level proficiency</span>
           </div>
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }
 

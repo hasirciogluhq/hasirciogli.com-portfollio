@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Target, Zap, Briefcase, Code, ArrowRight, Check } from "lucide-react"
+import { HomeSection } from "@/components/home/HomeSection"
 
 type Persona = "founders" | "infra-teams" | "developers" | "indie-makers"
 
@@ -94,18 +95,16 @@ export const ProblemsSection = () => {
   const currentPersona = personas.find(p => p.id === activePersona)!
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-semibold uppercase tracking-wider">
-            <Target className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wider text-primary uppercase">
+            <Target className="h-3 w-3" />
             Who I Help
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
-            Built for builders, optimized for results
-          </h2>
+          <h2 className="ui-heading-1 max-w-2xl">Built for builders, optimized for results</h2>
         </div>
 
         {/* Minimal Persona Selector */}
@@ -125,7 +124,7 @@ export const ProblemsSection = () => {
                 {persona.label}
               </span>
               {activePersona === persona.id && (
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-brand-primary/20 to-brand-accent/20 -z-10 blur-xl" />
+                <div className="absolute inset-0 -z-10 rounded-xl bg-primary/5" />
               )}
             </button>
           ))}
@@ -136,11 +135,11 @@ export const ProblemsSection = () => {
           {currentPersona.problems.map((problem, index) => (
             <div
               key={index}
-              className="group p-6 rounded-2xl bg-card border border-border hover:border-brand-primary/50 transition-all duration-300"
+              className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/40"
             >
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Check className="w-4 h-4 text-brand-primary" />
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 transition-transform group-hover:scale-110">
+                  <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -156,7 +155,7 @@ export const ProblemsSection = () => {
         </div>
 
         {/* Outcome Statement */}
-        <div className="p-8 rounded-2xl bg-gradient-to-br from-brand-primary/10 via-brand-secondary/10 to-brand-accent/10 border border-brand-primary/20">
+        <div className="rounded-2xl border border-border bg-muted/30 p-8">
           <p className="text-lg text-foreground leading-relaxed mb-6">
             {currentPersona.outcome}
           </p>
@@ -169,6 +168,6 @@ export const ProblemsSection = () => {
           </a>
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }

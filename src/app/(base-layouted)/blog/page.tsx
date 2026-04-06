@@ -7,64 +7,60 @@ import { Search } from "lucide-react"
 
 export const metadata = {
   title: "Blog - Mustafa Hasırcıoğlu",
-  description: "Technical articles, insights, and deep dives into software engineering, infrastructure, and system design.",
+  description:
+    "Technical articles, insights, and deep dives into software engineering, infrastructure, and system design.",
 }
 
 export default async function BlogPage() {
   const posts = await getAllPosts({ limit: 20 })
   const tags = await getAllTags()
-  const featuredPosts = posts.filter(p => p.featured).slice(0, 1)
-  const regularPosts = posts.filter(p => !p.featured)
+  const featuredPosts = posts.filter((p) => p.featured).slice(0, 1)
+  const regularPosts = posts.filter((p) => !p.featured)
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F]">
-      {/* Hero Section */}
-      <section className="px-4 py-16 md:py-24 bg-gradient-to-b from-[#1A1A1A] to-[#0F0F0F] pt-40 md:pt-40">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Technical <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Insights</span>
+    <div className="min-h-screen bg-background">
+      <section className="layout-section border-b border-border/60 bg-muted/25">
+        <div className="layout-container pb-12 pt-[var(--page-content-pt)] text-center">
+          <h1 className="ui-heading-1 ui-enter mb-4">
+            Technical <span className="text-primary">insights</span>
           </h1>
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
-            Deep dives into software engineering, cloud infrastructure, system design, and lessons learned from building production systems.
+          <p className="ui-body mx-auto mb-8 max-w-xl">
+            Software engineering, infrastructure, and system design — notes from production.
           </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="!bg-zinc-900/60 border-zinc-800/50 p-0">
-              <div className="flex items-center gap-3 px-4 py-3">
-                <Search className="w-5 h-5 text-zinc-500" />
-                <input
-                  type="search"
-                  placeholder="Search articles..."
-                  className="flex-1 bg-transparent text-white placeholder:text-zinc-600 outline-none"
-                />
-                <kbd className="px-2 py-1 text-xs text-zinc-500 bg-zinc-800 rounded">⌘K</kbd>
-              </div>
+
+          <div className="mx-auto max-w-lg">
+            <div className="surface-card flex items-center gap-3 px-4 py-2.5">
+              <Search className="h-4 w-4 shrink-0 text-muted-foreground" strokeWidth={1.5} />
+              <input
+                type="search"
+                placeholder="Search articles…"
+                className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none"
+              />
+              <kbd className="hidden rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground sm:inline">
+                ⌘K
+              </kbd>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Tags */}
       {tags.length > 0 && (
-        <section className="px-4 py-8 border-b border-zinc-800/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm text-zinc-500 font-medium">Popular Topics:</span>
-              {tags.filter(t => t.featured).slice(0, 8).map((tag) => (
-                <TagPill
-                  key={tag.slug}
-                  {...tag}
-                  size="md"
-                  showCount={true}
-                />
-              ))}
+        <section className="layout-section border-b border-border py-6">
+          <div className="layout-container">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-medium text-muted-foreground">Topics</span>
+              {tags
+                .filter((t) => t.featured)
+                .slice(0, 8)
+                .map((tag) => (
+                  <TagPill key={tag.slug} {...tag} size="md" showCount={true} />
+                ))}
               {tags.length > 8 && (
                 <a
                   href="/blog/tags"
-                  className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                  className="text-xs font-medium text-primary transition-opacity hover:opacity-80"
                 >
-                  View all →
+                  All tags →
                 </a>
               )}
             </div>
@@ -72,70 +68,65 @@ export default async function BlogPage() {
         </section>
       )}
 
-      {/* Featured Post (Spotlight) */}
       {featuredPosts.length > 0 && (
-        <section className="px-4 py-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
-              <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Featured</h2>
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
+        <section className="layout-section py-10">
+          <div className="layout-container">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-px flex-1 bg-border" />
+              <h2 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Featured
+              </h2>
+              <div className="h-px flex-1 bg-border" />
             </div>
             <BlogCard post={featuredPosts[0]} variant="spotlight" priority />
           </div>
         </section>
       )}
 
-      {/* Latest Posts Grid */}
-      <section className="px-4 py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-white">Latest Articles</h2>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-zinc-500">Sort by:</span>
-              <select className="bg-zinc-900/60 border border-zinc-800/50 text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-zinc-700">
+      <section className="layout-section py-10">
+        <div className="layout-container">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="ui-heading-2">Latest</h2>
+            <div className="flex items-center gap-2 text-xs">
+              <span className="text-muted-foreground">Sort</span>
+              <select className="rounded-md border border-border bg-background px-2.5 py-1.5 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <option value="latest">Latest</option>
-                <option value="popular">Most Popular</option>
-                <option value="reading-time">Reading Time</option>
+                <option value="popular">Popular</option>
+                <option value="reading-time">Reading time</option>
               </select>
             </div>
           </div>
 
           {regularPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
               {regularPosts.map((post) => (
                 <BlogCard key={post.id} post={post} variant="grid" />
               ))}
             </div>
           ) : (
-            <div className="text-center py-20">
-              <div className="inline-flex flex-col items-center gap-4 p-12 !bg-zinc-900/40 border-zinc-800/50">
-                <div className="text-6xl">📝</div>
-                <h3 className="text-xl font-semibold text-white">No posts yet</h3>
-                <p className="text-zinc-400 max-w-md">
-                  Check back soon for technical articles and insights.
-                </p>
+            <div className="py-16 text-center">
+              <div className="surface-card mx-auto inline-flex max-w-sm flex-col gap-2 p-8">
+                <p className="text-sm font-medium text-foreground">No posts yet</p>
+                <p className="text-xs text-muted-foreground">Check back soon.</p>
               </div>
             </div>
           )}
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="px-4 py-16 border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="p-12 !bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border-zinc-800/50">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Stay Updated
-            </h2>
-            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-              Get notified when I publish new articles about software engineering, infrastructure, and system design.
+      <section className="layout-section border-t border-border py-12">
+        <div className="layout-container flex justify-center">
+          <div className="w-full max-w-md text-center">
+          <div className="surface-card p-8">
+            <h2 className="ui-heading-2 mb-2">Newsletter</h2>
+            <p className="mb-6 text-sm text-muted-foreground">
+              New articles — infrastructure, Go, and systems.
             </p>
             <NewsletterForm source="blog" />
+          </div>
           </div>
         </div>
       </section>
     </div>
   )
 }
-

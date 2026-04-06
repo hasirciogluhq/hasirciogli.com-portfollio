@@ -1,13 +1,14 @@
 "use client"
 
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
-import { sendGAEvent } from '@next/third-parties/google'
+import Link from "next/link"
+import { sendGAEvent } from "@next/third-parties/google"
 
 export const Footer = () => {
   const handleSocialClick = (platform: string) => {
-    sendGAEvent('event', 'social_link_click', {
-      category: 'engagement',
-      label: platform
+    sendGAEvent("event", "social_link_click", {
+      category: "engagement",
+      label: platform,
     })
   }
 
@@ -15,192 +16,96 @@ export const Footer = () => {
     {
       name: "GitHub",
       href: "https://github.com/hasirciogluhq",
-      icon: <Github className="w-5 h-5" />,
-      username: "@hasirciogluhq"
+      icon: <Github className="h-4 w-4" strokeWidth={1.5} />,
     },
     {
       name: "LinkedIn",
       href: "https://linkedin.com/in/hasircioglu",
-      icon: <Linkedin className="w-5 h-5" />,
-      username: "Mustafa Hasırcıoğlu"
+      icon: <Linkedin className="h-4 w-4" strokeWidth={1.5} />,
     },
     {
       name: "Twitter",
       href: "https://twitter.com/hasirciogluhq",
-      icon: <Twitter className="w-5 h-5" />,
-      username: "@hasirciogluhq"
+      icon: <Twitter className="h-4 w-4" strokeWidth={1.5} />,
     },
     {
       name: "Email",
       href: "mailto:mustafa@hasirciogluhq.com",
-      icon: <Mail className="w-5 h-5" />,
-      username: "mustafa@hasirciogluhq.com"
-    }
+      icon: <Mail className="h-4 w-4" strokeWidth={1.5} />,
+    },
   ]
 
-  const navigation = {
-    product: [
-      { name: "Projects", href: "/projects" },
-      { name: "Case Studies", href: "/case-studies" },
-      { name: "Blog", href: "/blog" }
-    ],
-    company: [
-      { name: "About", href: "/about" },
-      { name: "Philosophy", href: "/blog/developer-philosophy" },
-      { name: "Contact", href: "/contact" }
-    ],
-    legal: [
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" }
-    ]
-  }
-
-  const recentPosts = [
-    { title: "Developer Philosophy: Craft Over Speed", slug: "/blog/developer-philosophy" },
-    { title: "Kubernetes Production Lessons", slug: "/blog/kubernetes-production-lessons" },
-    { title: "Building a Payment Gateway", slug: "/blog/building-payment-gateway" }
+  const links = [
+    { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ]
 
   return (
     <>
-      {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Mustafa Hasırcıoğlu",
-            "url": "https://hasirciogli.com",
-            "jobTitle": "Software Engineer & Technical Founder",
-            "description": "Full-stack developer specializing in Go, Kubernetes, and distributed systems. Building scalable products from 0 to 1.",
-            "sameAs": [
+            name: "Mustafa Hasırcıoğlu",
+            url: "https://hasirciogli.com",
+            jobTitle: "Software Engineer & Technical Founder",
+            description:
+              "Full-stack developer specializing in Go, Kubernetes, and distributed systems.",
+            sameAs: [
               "https://github.com/hasirciogluhq",
               "https://linkedin.com/in/hasircioglu",
-              "https://twitter.com/hasirciogluhq"
+              "https://twitter.com/hasirciogluhq",
             ],
-            "email": "mustafa@hasirciogluhq.com"
-          })
+            email: "mustafa@hasirciogluhq.com",
+          }),
         }}
       />
 
-      <footer className="bg-[#1A1A1A] border-t border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-            {/* Brand Column */}
-            <div className="lg:col-span-2">
-              <h3 className="text-xl font-bold text-white mb-3">
-                Mustafa Hasırcıoğlu
-              </h3>
-              <p className="text-sm text-zinc-400 leading-relaxed mb-4 max-w-sm">
-                Software engineer building production-ready systems. Specializing in Go, Kubernetes, and distributed architectures. From MVP to scale.
+      <footer className="border-t border-border bg-muted/30">
+        <div className="layout-container flex flex-col gap-6 py-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-medium text-foreground">Mustafa Hasırcıoğlu</p>
+              <p className="mt-0.5 max-w-xs text-xs leading-relaxed text-muted-foreground">
+                Go, Kubernetes, distributed systems — production-focused engineering.
               </p>
-              
-              {/* Social Links */}
-              <div className="flex flex-wrap gap-2">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleSocialClick(social.name.toLowerCase())}
-                    className="group"
-                    aria-label={social.name}
-                  >
-                    <div className="px-3 py-2 rounded-lg !bg-zinc-900/60 hover:!bg-zinc-800/60 transition-all flex items-center gap-2">
-                      <div className="text-zinc-400 group-hover:text-white transition-colors">
-                        {social.icon}
-                      </div>
-                      <span className="text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
-                        {social.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
             </div>
-
-            {/* Navigation: Product */}
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-                Product
-              </h4>
-              <ul className="space-y-3">
-                {navigation.product.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-zinc-400 hover:text-white transition-colors"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Navigation: Company */}
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-                Company
-              </h4>
-              <ul className="space-y-3">
-                {navigation.company.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-zinc-400 hover:text-white transition-colors"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Recent Posts */}
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-                Recent Posts
-              </h4>
-              <ul className="space-y-3">
-                {recentPosts.map((post) => (
-                  <li key={post.slug}>
-                    <a
-                      href={post.slug}
-                      className="text-sm text-zinc-400 hover:text-white transition-colors line-clamp-2 leading-tight"
-                    >
-                      {post.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <nav className="flex flex-wrap gap-x-4 gap-y-1 text-xs" aria-label="Footer">
+              {links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-zinc-800">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              {/* Copyright */}
-              <div className="text-sm text-zinc-500">
-                © {new Date().getFullYear()} Mustafa Hasırcıoğlu. All rights reserved.
-              </div>
-
-              {/* Legal Links */}
-              <div className="flex items-center gap-6 text-sm">
-                {navigation.legal.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-zinc-500 hover:text-zinc-300 transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/80 pt-5">
+            <div className="flex flex-wrap gap-1">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleSocialClick(s.name.toLowerCase())}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  aria-label={s.name}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
+            <p className="text-[11px] text-muted-foreground">
+              © {new Date().getFullYear()} Mustafa Hasırcıoğlu
+            </p>
           </div>
         </div>
       </footer>

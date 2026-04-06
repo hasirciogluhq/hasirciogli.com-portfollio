@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,14 +59,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
-        {children}
-        <Analytics />
-        <GoogleAnalytics gaId="G-LSSWDGXJ9V" />
-        <GoogleTagManager gtmId="G-LSSWDGXJ9V" />
+        <ThemeProvider>
+          {children}
+          <Analytics />
+          <GoogleAnalytics gaId="G-LSSWDGXJ9V" />
+          <GoogleTagManager gtmId="G-LSSWDGXJ9V" />
+        </ThemeProvider>
       </body>
     </html>
   );

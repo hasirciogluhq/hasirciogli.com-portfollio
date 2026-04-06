@@ -1,241 +1,195 @@
 "use client"
 
-import { useState, useEffect } from "react";
-import { MessageCircle, X, Mail, Calendar, Phone } from "lucide-react";
-import { sendGAEvent } from '@next/third-parties/google';
+import { useState, useEffect } from "react"
+import { MessageCircle, X, Mail, Calendar } from "lucide-react"
+import { sendGAEvent } from "@next/third-parties/google"
 
 export const FloatingQuickContact = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: ""
-    });
+  const [isOpen, setIsOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
 
-    // Close on escape key
-    useEffect(() => {
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                setIsOpen(false);
-            }
-        };
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape)
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape)
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
-        if (isOpen) {
-            document.addEventListener('keydown', handleEscape);
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    sendGAEvent("event", "quick_contact_submit", {
+      category: "engagement",
+      label: "floating_contact",
+    })
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          projectType: "other",
+          company: "",
+        }),
+      })
+      const data = await response.json()
+      if (response.ok && data.success) {
+        alert(data.message || "Message sent.")
+        setFormData({ name: "", email: "", message: "" })
+        setIsOpen(false)
+      } else {
+        alert(data.error || "Something went wrong.")
+      }
+    } catch {
+      alert("Network error. Try email instead.")
+    }
+  }
 
-        return () => {
-            document.removeEventListener('keydown', handleEscape);
-            document.body.style.overflow = 'unset';
-        };
-    }, [isOpen]);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        
-        // Analytics event
-        sendGAEvent('event', 'quick_contact_submit', {
-            category: 'engagement',
-            label: 'floating_contact'
-        });
+  return (
+    <>
+      <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-md transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          aria-label="Quick contact"
+        >
+          <MessageCircle className="h-5 w-5" strokeWidth={1.5} />
+        </button>
+      </div>
 
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    message: formData.message,
-                    projectType: 'other',
-                    company: ''
-                })
-            });
-
-            const data = await response.json();
-
-            if (response.ok && data.success) {
-                alert(data.message || 'Your message has been received successfully!');
-                // Reset form and close
-                setFormData({ name: "", email: "", message: "" });
-                setIsOpen(false);
-            } else {
-                alert(data.error || 'An error occurred. Please try again.');
-            }
-        } catch (error) {
-            console.error('Quick contact form submission error:', error);
-            alert('An error occurred. Please try again later or send an email directly.');
-        }
-    };
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    };
-
-    return (
-        <>
-            {/* Floating Button */}
-            <div className="fixed bottom-6 right-6 z-50">
-                <button
-                    onClick={() => setIsOpen(true)}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className="group relative focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] rounded-full transition-all duration-300 hover:scale-110"
-                    aria-label="Open quick contact"
-                >
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center !bg-zinc-800/80 hover:!bg-zinc-700/80 transition-all">
-                        <MessageCircle className="w-5 h-5 text-zinc-300 group-hover:text-white transition-colors" strokeWidth={2} />
-                    </div>
-                    
-                    {/* Hover Label - Desktop Only */}
-                    {isHovered && (
-                        <div className="hidden md:block absolute right-14 top-1/2 -translate-y-1/2 animate-in slide-in-from-right-2 fade-in duration-200">
-                            <div className="bg-zinc-800/95 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg border border-zinc-700/50">
-                                Quick Contact
-                            </div>
-                            <div className="absolute right-0 top-1/2 translate-x-[6px] -translate-y-1/2 w-1.5 h-1.5 bg-zinc-800/95 rotate-45 border-r border-b border-zinc-700/50"></div>
-                        </div>
-                    )}
-                </button>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4">
+          <button
+            type="button"
+            className="absolute inset-0 bg-background/70 backdrop-blur-[2px]"
+            aria-label="Close"
+            onClick={() => setIsOpen(false)}
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="quick-contact-title"
+            className="relative w-full max-w-sm rounded-t-lg border border-border bg-card text-card-foreground shadow-lg sm:rounded-lg"
+          >
+            <div className="flex items-center justify-between border-b border-border px-4 py-3">
+              <h2 id="quick-contact-title" className="text-sm font-semibold">
+                Quick contact
+              </h2>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                aria-label="Close"
+              >
+                <X className="h-4 w-4" strokeWidth={1.5} />
+              </button>
             </div>
 
-            {/* Quick Contact Sheet */}
-            {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-end md:items-center md:justify-center">
-                    {/* Backdrop */}
-                    <div 
-                        className="absolute inset-0 bg-black/60 backdrop-blur-md"
-                        onClick={() => setIsOpen(false)}
-                        aria-hidden="true"
-                    />
-                    
-                    {/* Sheet Content */}
-                    <div className="relative bg-[#1A1A1A]/95 backdrop-blur-xl border border-zinc-800/50 rounded-t-2xl md:rounded-2xl w-full max-w-sm mx-0 md:mx-4 animate-in slide-in-from-bottom md:zoom-in-95 duration-300 shadow-2xl">
-                        {/* Header */}
-                        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800/80">
-                            <h3 className="text-sm font-semibold text-white tracking-tight">Quick Contact</h3>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="p-1.5 hover:bg-zinc-800/60 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-600"
-                                aria-label="Close contact form"
-                            >
-                                <X className="w-4 h-4 text-zinc-400 hover:text-white transition-colors" />
-                            </button>
-                        </div>
+            <div className="space-y-4 p-4">
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="mailto:mustafa@hasirciogluhq.com"
+                  className="surface-card flex flex-col items-center gap-1.5 px-3 py-3 text-center text-xs font-medium transition-colors hover:bg-muted/80"
+                  onClick={() =>
+                    sendGAEvent("event", "quick_contact_email", {
+                      category: "engagement",
+                      label: "floating_contact",
+                    })
+                  }
+                >
+                  <Mail className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                  Email
+                </a>
+                <a
+                  href="https://calendly.com/hasircioglu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="surface-card flex flex-col items-center gap-1.5 px-3 py-3 text-center text-xs font-medium transition-colors hover:bg-muted/80"
+                  onClick={() =>
+                    sendGAEvent("event", "quick_contact_calendar", {
+                      category: "engagement",
+                      label: "floating_contact",
+                    })
+                  }
+                >
+                  <Calendar className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                  Book call
+                </a>
+              </div>
 
-                        {/* Content */}
-                        <div className="p-5 space-y-4">
-                            {/* Quick Actions */}
-                            <div className="grid grid-cols-2 gap-2">
-                                <a
-                                    href="mailto:mustafa@hasirciogluhq.com"
-                                    className="flex flex-col items-center gap-2 p-3 bg-zinc-800/40 rounded-lg hover:bg-zinc-700/50 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-zinc-600 group"
-                                    onClick={() => {
-                                        sendGAEvent('event', 'quick_contact_email', {
-                                            category: 'engagement',
-                                            label: 'floating_contact'
-                                        });
-                                    }}
-                                >
-                                    <Mail className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" strokeWidth={2} />
-                                    <span className="text-xs text-zinc-300 font-medium">Email</span>
-                                </a>
-                                
-                                <a
-                                    href="https://calendly.com/hasircioglu"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex flex-col items-center gap-2 p-3 bg-zinc-800/40 rounded-lg hover:bg-zinc-700/50 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-zinc-600 group"
-                                    onClick={() => {
-                                        sendGAEvent('event', 'quick_contact_calendar', {
-                                            category: 'engagement',
-                                            label: 'floating_contact'
-                                        });
-                                    }}
-                                >
-                                    <Calendar className="w-4 h-4 text-green-400 group-hover:text-green-300 transition-colors" strokeWidth={2} />
-                                    <span className="text-xs text-zinc-300 font-medium">Book Call</span>
-                                </a>
-                            </div>
-
-                            {/* Quick Form */}
-                            <form onSubmit={handleSubmit} className="space-y-3">
-                                <div>
-                                    <label htmlFor="quick-name" className="block text-xs font-medium text-zinc-400 mb-1.5">
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="quick-name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        className="w-full px-3 py-2 text-sm bg-zinc-800/40 border border-zinc-700/50 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent transition-all"
-                                        placeholder="Your name"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="quick-email" className="block text-xs font-medium text-zinc-400 mb-1.5">
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="quick-email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        className="w-full px-3 py-2 text-sm bg-zinc-800/40 border border-zinc-700/50 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent transition-all"
-                                        placeholder="your@email.com"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="quick-message" className="block text-xs font-medium text-zinc-400 mb-1.5">
-                                        Message
-                                    </label>
-                                    <textarea
-                                        id="quick-message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        rows={3}
-                                        className="w-full px-3 py-2 text-sm bg-zinc-800/40 border border-zinc-700/50 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent resize-none transition-all"
-                                        placeholder="Tell me about your project..."
-                                        required
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="w-full group"
-                                    onClick={() => {
-                                        sendGAEvent('event', 'quick_contact_open', {
-                                            category: 'engagement',
-                                            label: 'floating_contact'
-                                        });
-                                    }}
-                                >
-                                    <div className="w-full px-4 py-2.5 rounded-lg text-center !bg-zinc-800/60 hover:!bg-zinc-700/60 transition-colors">
-                                        <span className="text-white text-sm font-medium">Send Message</span>
-                                    </div>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div>
+                  <label htmlFor="quick-name" className="mb-1 block text-[11px] font-medium text-muted-foreground">
+                    Name
+                  </label>
+                  <input
+                    id="quick-name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    placeholder="Your name"
+                  />
                 </div>
-            )}
-        </>
-    );
-};
+                <div>
+                  <label htmlFor="quick-email" className="mb-1 block text-[11px] font-medium text-muted-foreground">
+                    Email
+                  </label>
+                  <input
+                    id="quick-email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    placeholder="you@domain.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quick-message" className="mb-1 block text-[11px] font-medium text-muted-foreground">
+                    Message
+                  </label>
+                  <textarea
+                    id="quick-message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={3}
+                    className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    placeholder="Brief project context…"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-md bg-primary py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}

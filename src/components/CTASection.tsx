@@ -1,7 +1,8 @@
 "use client"
 
 import { Calendar, FileText, Mail, ArrowRight } from "lucide-react"
-import { sendGAEvent } from '@next/third-parties/google'
+import { sendGAEvent } from "@next/third-parties/google"
+import { HomeSection } from "@/components/home/HomeSection"
 
 export const CTASection = () => {
   const handleCTAClick = (type: string) => {
@@ -12,15 +13,15 @@ export const CTASection = () => {
   }
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Main CTA */}
-        <div className="p-12 rounded-2xl bg-gradient-to-br from-foreground to-foreground/90 text-background text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+        <div className="mb-8 rounded-2xl border border-border bg-foreground p-12 text-center text-background">
+          <h2 className="mb-4 font-sans text-3xl font-semibold tracking-tight text-background md:text-4xl">
             Ready to build something great?
           </h2>
 
-          <p className="text-xl text-background/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-background/80">
             From MVP to scale, let's turn your vision into production-ready systems.
           </p>
 
@@ -28,7 +29,7 @@ export const CTASection = () => {
           <a
             href="/contact"
             onClick={() => handleCTAClick('primary_strategy_call')}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-background text-foreground rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg mb-4"
+            className="mb-4 inline-flex items-center gap-3 rounded-xl bg-background px-8 py-4 font-semibold text-foreground shadow-sm transition-opacity duration-200 hover:opacity-90"
           >
             <Calendar className="w-5 h-5" />
             <span>Book a Strategy Call</span>
@@ -46,20 +47,20 @@ export const CTASection = () => {
           <a
             href="mailto:mustafa@hasirciogluhq.com"
             onClick={() => handleCTAClick('email_direct')}
-            className="group p-6 rounded-xl bg-card border border-border hover:border-brand-primary/50 transition-all hover:scale-105"
+            className="group rounded-xl border border-border bg-card p-6 transition-all hover:scale-[1.02] hover:border-primary/40"
           >
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-brand-primary/10 rounded-lg">
-                <Mail className="w-5 h-5 text-brand-primary" />
+              <div className="rounded-lg bg-primary/10 p-3">
+                <Mail className="h-5 w-5 text-primary" />
               </div>
-              <div className="text-left flex-1">
-                <h3 className="font-semibold text-foreground mb-1 group-hover:text-brand-primary transition-colors">
+              <div className="flex-1 text-left">
+                <h3 className="mb-1 font-semibold text-foreground transition-colors group-hover:text-primary">
                   Email Me
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="mb-2 text-sm text-muted-foreground">
                   Quick questions? Drop a line.
                 </p>
-                <p className="text-xs text-brand-primary font-medium">
+                <p className="text-xs font-medium text-primary">
                   mustafa@hasirciogluhq.com →
                 </p>
               </div>
@@ -70,20 +71,20 @@ export const CTASection = () => {
           <a
             href="/contact"
             onClick={() => handleCTAClick('case_study_request')}
-            className="group p-6 rounded-xl bg-card border border-border hover:border-brand-success/50 transition-all hover:scale-105"
+            className="group rounded-xl border border-border bg-card p-6 transition-all hover:scale-[1.02] hover:border-emerald-500/40"
           >
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-brand-success/10 rounded-lg">
-                <FileText className="w-5 h-5 text-brand-success" />
+              <div className="rounded-lg bg-emerald-500/10 p-3">
+                <FileText className="h-5 w-5 text-emerald-700" />
               </div>
-              <div className="text-left flex-1">
-                <h3 className="font-semibold text-foreground mb-1 group-hover:text-brand-success transition-colors">
+              <div className="flex-1 text-left">
+                <h3 className="mb-1 font-semibold text-foreground transition-colors group-hover:text-emerald-700">
                   Case Studies
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="mb-2 text-sm text-muted-foreground">
                   See detailed project breakdowns.
                 </p>
-                <p className="text-xs text-brand-success font-medium">
+                <p className="text-xs font-medium text-emerald-700">
                   Request case studies →
                 </p>
               </div>
@@ -96,20 +97,20 @@ export const CTASection = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => handleCTAClick('calendar_booking')}
-            className="group p-6 rounded-xl bg-card border border-border hover:border-brand-secondary/50 transition-all hover:scale-105"
+            className="group rounded-xl border border-border bg-card p-6 transition-all hover:scale-[1.02] hover:border-violet-500/40"
           >
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-brand-secondary/10 rounded-lg">
-                <Calendar className="w-5 h-5 text-brand-secondary" />
+              <div className="rounded-lg bg-violet-500/10 p-3">
+                <Calendar className="h-5 w-5 text-violet-700" />
               </div>
-              <div className="text-left flex-1">
-                <h3 className="font-semibold text-foreground mb-1 group-hover:text-brand-secondary transition-colors">
+              <div className="flex-1 text-left">
+                <h3 className="mb-1 font-semibold text-foreground transition-colors group-hover:text-violet-700">
                   Schedule Call
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="mb-2 text-sm text-muted-foreground">
                   Pick a time that works for you.
                 </p>
-                <p className="text-xs text-brand-secondary font-medium">
+                <p className="text-xs font-medium text-violet-700">
                   View calendar →
                 </p>
               </div>
@@ -124,6 +125,6 @@ export const CTASection = () => {
           <span className="font-semibold text-foreground"> 7+ years</span> building at scale
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }

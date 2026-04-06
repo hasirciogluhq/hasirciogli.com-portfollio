@@ -1,6 +1,7 @@
 "use client"
 
 import { Zap, Shield, Rocket, TrendingUp, ArrowRight } from "lucide-react"
+import { HomeSection } from "@/components/home/HomeSection"
 
 export const BenefitsSection = () => {
   const benefits = [
@@ -35,18 +36,16 @@ export const BenefitsSection = () => {
   ]
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-success/10 text-brand-success text-xs font-semibold uppercase tracking-wider">
-            <TrendingUp className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-emerald-700 uppercase">
+            <TrendingUp className="h-3 w-3" />
             What You Get
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-3xl leading-tight">
-            Systems that work while you sleep
-          </h2>
+          <h2 className="ui-heading-1 max-w-3xl">Systems that work while you sleep</h2>
           
           <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
             More than code. You get reliable systems that scale, perform, and require minimal maintenance.
@@ -58,13 +57,11 @@ export const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-2xl bg-card border border-border hover:border-brand-primary/30 transition-all duration-300"
+              className="group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/25"
             >
               {/* Icon with gradient background */}
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <div className="text-brand-primary">
-                  {benefit.icon}
-                </div>
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-transform duration-200 group-hover:scale-[1.02]">
+                <div className="text-primary">{benefit.icon}</div>
               </div>
 
               {/* Content */}
@@ -72,7 +69,7 @@ export const BenefitsSection = () => {
                 {benefit.title}
               </h3>
               
-              <p className="text-sm font-semibold text-brand-primary mb-3">
+              <p className="mb-3 text-sm font-semibold text-primary">
                 {benefit.outcome}
               </p>
               
@@ -87,13 +84,13 @@ export const BenefitsSection = () => {
               </div>
 
               {/* Hover glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-primary/5 to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity -z-10 blur-xl" />
+              <div className="absolute inset-0 -z-10 rounded-2xl bg-muted/0 opacity-0 transition-opacity duration-200 group-hover:bg-muted/40 group-hover:opacity-100" />
             </div>
           ))}
         </div>
 
         {/* CTA Box */}
-        <div className="p-8 rounded-2xl bg-gradient-to-br from-foreground to-foreground/90 text-background">
+        <div className="rounded-2xl border border-border bg-foreground p-8 text-background">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex-1">
               <h3 className="text-2xl font-bold mb-2">
@@ -113,6 +110,6 @@ export const BenefitsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }

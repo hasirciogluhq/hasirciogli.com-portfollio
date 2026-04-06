@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Search, Code, Rocket, TrendingUp, ArrowRight, CheckCircle } from "lucide-react"
+import { HomeSection } from "@/components/home/HomeSection"
 
 interface ProcessStep {
   id: number
@@ -53,18 +54,16 @@ export const ProcessSection = () => {
   const currentStep = steps.find(s => s.id === activeStep)!
 
   return (
-    <section className="px-4 py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
-      <div className="max-w-5xl mx-auto">
+    <HomeSection>
+      <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-semibold uppercase tracking-wider">
-            <CheckCircle className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wider text-primary uppercase">
+            <CheckCircle className="h-3 w-3" />
             Process
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-2xl leading-tight">
-            From idea to production
-          </h2>
+          <h2 className="ui-heading-1 max-w-2xl">From idea to production</h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             A proven 4-step process that takes projects from concept to scale. Predictable, transparent, results-driven.
@@ -104,14 +103,12 @@ export const ProcessSection = () => {
         </div>
 
         {/* Step Details */}
-        <div className="p-8 rounded-2xl bg-card border border-border">
+        <div className="rounded-2xl border border-border bg-card p-8">
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 rounded-xl bg-brand-primary/10">
-                  <div className="text-brand-primary">
-                    {currentStep.icon}
-                  </div>
+              <div className="mb-3 flex items-center gap-3">
+                <div className="rounded-xl bg-primary/10 p-3">
+                  <div className="text-primary">{currentStep.icon}</div>
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Step {currentStep.id}</div>
@@ -125,8 +122,8 @@ export const ProcessSection = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 border-l-4 border-brand-primary">
-              <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider mb-2">
+            <div className="rounded-xl border border-border bg-muted/30 p-4 pl-5 border-l-4 border-l-primary">
+              <div className="mb-2 text-xs font-semibold tracking-wider text-primary uppercase">
                 What You Get
               </div>
               <p className="text-sm text-foreground leading-relaxed">
@@ -163,7 +160,7 @@ export const ProcessSection = () => {
           </a>
         </div>
       </div>
-    </section>
+    </HomeSection>
   )
 }
 
