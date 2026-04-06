@@ -1,13 +1,13 @@
-Harika — çok net. Sana **hasirciogli.com**’u tarayıp (kök + “Who is” + Developer Philosophy sayfalarından) elde ettiğim içerikle, **HeroSection** ve **AboutHero**’yi koruyarak yeni anasayfa için aşırı detaylı, tasarımcı & geliştirici perspektifinden hazırlanmış bir rapor hazırladım. Rapor: her bölüm için _ne_ koyulmalı, _neden_, _nasıl_ (layout, tipografi, varyantlar), _mikro-etkileşimler / gestures_, arkaplan/scroll-behaviour önerileri ve geliştirici notları içeriyor. Uzun oldu — çünkü “kısacık yapma” demiştin. Okumayı iki aşamada yap: önce Özet + Önemli bulgular, sonra bölüm bölüm detay.
+Harika — çok net. Sana **hasirciogluhq.com**’u tarayıp (kök + “Who is” + Developer Philosophy sayfalarından) elde ettiğim içerikle, **HeroSection** ve **AboutHero**’yi koruyarak yeni anasayfa için aşırı detaylı, tasarımcı & geliştirici perspektifinden hazırlanmış bir rapor hazırladım. Rapor: her bölüm için _ne_ koyulmalı, _neden_, _nasıl_ (layout, tipografi, varyantlar), _mikro-etkileşimler / gestures_, arkaplan/scroll-behaviour önerileri ve geliştirici notları içeriyor. Uzun oldu — çünkü “kısacık yapma” demiştin. Okumayı iki aşamada yap: önce Özet + Önemli bulgular, sonra bölüm bölüm detay.
 
 ---
 
 # Hızlı Özet — bulgular (kaynaklar)
 
-- Site ana sayfası ve “Who is” sayfası, **Featured Projects** (deweloper.cloud, hsrcpay.com, anonimsor.com, fightland, ficksa.com) ve açık bir **Skills & Technologies** listesi içeriyor. ([hasirciogli.com][1])
-- “Who is” sayfası aynı zamanda müzik/kişisel bağlantılarına (Spotify / Apple Music / YouTube) işaret ediyor — kişisel marka + içerik karışımı var. ([hasirciogli.com][2])
-- “Developer Philosophy” (Geliştirici Felsefem) içeriği mevcut; site kişisel manifesto/tonu koruyor. ([hasirciogli.com][3])
-- Sitede LinkedIn / GitHub / Email bağlantıları açıkça yer alıyor; bu, anasayfanın “convert” (iletişim) odağını güçlendirir. ([hasirciogli.com][1])
+- Site ana sayfası ve “Who is” sayfası, **Featured Projects** (deweloper.cloud, hsrcpay.com, anonimsor.com, fightland, ficksa.com) ve açık bir **Skills & Technologies** listesi içeriyor. ([hasirciogluhq.com][1])
+- “Who is” sayfası aynı zamanda müzik/kişisel bağlantılarına (Spotify / Apple Music / YouTube) işaret ediyor — kişisel marka + içerik karışımı var. ([hasirciogluhq.com][2])
+- “Developer Philosophy” (Geliştirici Felsefem) içeriği mevcut; site kişisel manifesto/tonu koruyor. ([hasirciogluhq.com][3])
+- Sitede LinkedIn / GitHub / Email bağlantıları açıkça yer alıyor; bu, anasayfanın “convert” (iletişim) odağını güçlendirir. ([hasirciogluhq.com][1])
 
 (Bu 4 madde, sayfanın _ana içerik kaynaklarını_ gösterir — rapordaki çağrışımların çoğu buradan türetildi.)
 
@@ -58,7 +58,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 # 1) Navbar — (küçük ama önemli)
 
 **Amacı:** Hızlı erişim, marka, ana CTA (Let's Talk).
-**Mevcut:** fixed, blur, isScrolled border toggling — iyi. ([hasirciogli.com][1])
+**Mevcut:** fixed, blur, isScrolled border toggling — iyi. ([hasirciogluhq.com][1])
 
 **Geliştirme önerileri (detay):**
 
@@ -98,9 +98,9 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 4) Featured Projects — (BÜYÜK VURGU)
 
-**Neden:** Sitede zaten listelenmiş projeler var; ana amacın “portfolyo gösterimi” olduğu için bu bölüm ön planda olmalı. (Kaynak: root featured projects.) ([hasirciogli.com][1])
+**Neden:** Sitede zaten listelenmiş projeler var; ana amacın “portfolyo gösterimi” olduğu için bu bölüm ön planda olmalı. (Kaynak: root featured projects.) ([hasirciogluhq.com][1])
 
-**İçerik kaynakları:** root sayfadaki proje isimleri + her proje için kısa açıklama + canlı bağlantı. ([hasirciogli.com][1])
+**İçerik kaynakları:** root sayfadaki proje isimleri + her proje için kısa açıklama + canlı bağlantı. ([hasirciogluhq.com][1])
 
 **Önerilen içerik öğeleri (her kart):**
 
@@ -165,7 +165,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 7) What I Deliver / Benefits (BenefitsSection — revize)
 
-**Mevcut benefits array** var. İyi başlangıç. Fakat bu bölüm sonuç odaklı (outcome-focused) olmalı: “Ne veririm?” yerine “Sen ne kazanırsın?” vurgu. (Mevcut benefits textleri güncellenebilir.) ([hasirciogli.com][1])
+**Mevcut benefits array** var. İyi başlangıç. Fakat bu bölüm sonuç odaklı (outcome-focused) olmalı: “Ne veririm?” yerine “Sen ne kazanırsın?” vurgu. (Mevcut benefits textleri güncellenebilir.) ([hasirciogluhq.com][1])
 
 **Layout:** left: image, right: 2x2 benefit cards (desktop). Her card: Icon, Title, 1-liner benefit, micro-CTA (learn more).
 **Variants:** condensed bullets / expanded accordion.
@@ -176,7 +176,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 8) Skills & Technologies (Yeni — interactive)
 
-**Neden:** Mevcut sitede uzun bir skills listesi var; düz liste yerine _interactive map_ daha hızlı okunur ve işe yarar. (Kaynak: root skills list.) ([hasirciogli.com][1])
+**Neden:** Mevcut sitede uzun bir skills listesi var; düz liste yerine _interactive map_ daha hızlı okunur ve işe yarar. (Kaynak: root skills list.) ([hasirciogluhq.com][1])
 
 **Öneri UI:**
 
@@ -201,7 +201,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 10) Testimonials — revize
 
-**Mevcut:** statik alıntılar var. İyi başlangıç. (TestimonialsSection mevcut.) ([hasirciogli.com][1])
+**Mevcut:** statik alıntılar var. İyi başlangıç. (TestimonialsSection mevcut.) ([hasirciogluhq.com][1])
 
 **Geliştirme:**
 
@@ -214,7 +214,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 11) Blog Highlights (Developer Philosophy + 2–3 latest)
 
-**Kaynak:** Developer Philosophy sayfası mevcut. Bir highlight bölümü ile anasayfada 1–3 gönderi göster. ([hasirciogli.com][3])
+**Kaynak:** Developer Philosophy sayfası mevcut. Bir highlight bölümü ile anasayfada 1–3 gönderi göster. ([hasirciogluhq.com][3])
 
 **Layout:** 3-card mini-blog (image, title, excerpt, read link).
 **Varyant:** featured long read + 2 shorts.
@@ -234,7 +234,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 # 13) Footer — geliştirme
 
-**Mevcut footer** iyi; ama eklemeler öneriyorum: sitemap, recent posts, compact contact form, structured data (Organization schema). ([hasirciogli.com][1])
+**Mevcut footer** iyi; ama eklemeler öneriyorum: sitemap, recent posts, compact contact form, structured data (Organization schema). ([hasirciogluhq.com][1])
 
 **Accessibility:** kontrast kontrolleri, link focus states.
 **SEO:** footer’da plain-text e-mail yerine contact page link, ama schema.org/Person ve `sameAs` social links ekle.
@@ -277,7 +277,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 ## Skills & Technologies — Detay
 
 **UI:** grouped chips, proficiency bar, tooltips: “Used in: [ficksa.com, hsrcpay.com]”.
-**Copy:** “Specialties: Go, Kubernetes, Distributed Storage, Payments.” (kısa). ([hasirciogli.com][1])
+**Copy:** “Specialties: Go, Kubernetes, Distributed Storage, Payments.” (kısa). ([hasirciogluhq.com][1])
 **Dev:** JSON schema: `{ name, category, proficiency(1-5), projects[] }`.
 **UX:** clicking a chip filters projects; show animation when filter applied (fade others down).
 
@@ -301,7 +301,7 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 ## Blog Highlights — Detay
 
-**Fetch:** latest 3 posts (title, excerpt, date, author). Developer Philosophy post included. ([hasirciogli.com][3])
+**Fetch:** latest 3 posts (title, excerpt, date, author). Developer Philosophy post included. ([hasirciogluhq.com][3])
 **Layout:** horizontally scrollable cards on mobile.
 
 ---
@@ -346,10 +346,10 @@ Aşağıda her bölüm için çok detaylı tasarım + içerik + geliştirme notu
 
 - **HeroSection:** mevcut dosya (korunacak). (code gönderildi).
 - **AboutHero:** mevcut dosya (korunacak).
-- **Featured Projects:** `hasirciogli.com` root — projeler listesi: deweloper.cloud, hsrcpay.com, anonimsor.com, fightland, ficksa.com. ([hasirciogli.com][1])
-- **Skills & Technologies:** sitedeki Skills listesi (Languages, Frontend, Backend, DevOps etc.). ([hasirciogli.com][1])
-- **Blog Highlights:** Developer Philosophy (Geliştirici Felsefem) mevcut. ([hasirciogli.com][3])
-- **Who is / About:** detaylar ve müzik linkleri `who-is` sayfasından. ([hasirciogli.com][2])
+- **Featured Projects:** `hasirciogluhq.com` root — projeler listesi: deweloper.cloud, hsrcpay.com, anonimsor.com, fightland, ficksa.com. ([hasirciogluhq.com][1])
+- **Skills & Technologies:** sitedeki Skills listesi (Languages, Frontend, Backend, DevOps etc.). ([hasirciogluhq.com][1])
+- **Blog Highlights:** Developer Philosophy (Geliştirici Felsefem) mevcut. ([hasirciogluhq.com][3])
+- **Who is / About:** detaylar ve müzik linkleri `who-is` sayfasından. ([hasirciogluhq.com][2])
 
 Bu mapping, başka bir yapay zekaya doğrudan içeriği çekip component'lara doldurtacağın zaman işini kolaylaştırır.
 
@@ -374,8 +374,8 @@ Bu mapping, başka bir yapay zekaya doğrudan içeriği çekip component'lara do
 
 # Riskler / Eleştiri (Açıkça, dürüstçe)
 
-- Mevcut içerik **çok “liste”** tarzında; ziyaretçinin dikkatini anında çekmek için _daha az metin, daha güçlü outcome_ sunmalısın (örneğin “I helped X increase revenue by Y%” tarzı somut sonuçlar). (Ben bunu doğrudan ekledim: Case-study ve metric slotları önerdim.) ([hasirciogli.com][1])
-- Fotoğraf/kimlik: eğer profil fotoğrafını gerçek, yüksek kaliteli koymazsan “trust” kaybedilebilir — özellikle founder/consultant görünümünde fotoğraf çok önemli. (who-is sayfasında müzik ve kişisel içerik var — marka karışıklığı olabilir; profesyonel portföy ve kişisel içerik net ayrılmalı). ([hasirciogli.com][2])
+- Mevcut içerik **çok “liste”** tarzında; ziyaretçinin dikkatini anında çekmek için _daha az metin, daha güçlü outcome_ sunmalısın (örneğin “I helped X increase revenue by Y%” tarzı somut sonuçlar). (Ben bunu doğrudan ekledim: Case-study ve metric slotları önerdim.) ([hasirciogluhq.com][1])
+- Fotoğraf/kimlik: eğer profil fotoğrafını gerçek, yüksek kaliteli koymazsan “trust” kaybedilebilir — özellikle founder/consultant görünümünde fotoğraf çok önemli. (who-is sayfasında müzik ve kişisel içerik var — marka karışıklığı olabilir; profesyonel portföy ve kişisel içerik net ayrılmalı). ([hasirciogluhq.com][2])
 
 Eğer bu eleştiriler mantıksız geliyorsa söyle; ama bence ziyaretçi dönüşümü ve marka netliği için bu noktalar çok önemli.
 
@@ -390,9 +390,9 @@ Eğer bu eleştiriler mantıksız geliyorsa söyle; ama bence ziyaretçi dönü�
 
 # Kaynakça (en kritik internet referansları kullanıldı)
 
-- Ana sayfa — Featured Projects, Skills & Links. ([hasirciogli.com][1])
-- Who-is sayfas — kişisel tanıtım + müzik linkleri. ([hasirciogli.com][2])
-- Developer Philosophy (Blog redirect / içerik başlığı). ([hasirciogli.com][3])
+- Ana sayfa — Featured Projects, Skills & Links. ([hasirciogluhq.com][1])
+- Who-is sayfas — kişisel tanıtım + müzik linkleri. ([hasirciogluhq.com][2])
+- Developer Philosophy (Blog redirect / içerik başlığı). ([hasirciogluhq.com][3])
 
 ---
 
@@ -404,6 +404,6 @@ Eğer bu eleştiriler mantıksız geliyorsa söyle; ama bence ziyaretçi dönü�
 
 Hangisini istiyorsun? (Ben seçimini beklemeden otomatik başlamam — çünkü senin onayını bekleyen işler risk yaratabilir. Ama eğer doğrudan devam etmemi istersen, hemen JSON üretirim.)
 
-[1]: https://hasirciogli.com/ "Mustafa Hasırcıoğlu - Software Developer & Designer"
-[2]: https://hasirciogli.com/who-is-mustafa-hasircioglu "Mustafa Hasırcıoğlu | Software Developer, Designer, and Musician"
-[3]: https://hasirciogli.com/blogs/developer-philosophy "Geliştirici Felsefem - Developer Philosophy | Mustafa Hasırcıoğlu"
+[1]: https://hasirciogluhq.com/ "Mustafa Hasırcıoğlu - Software Developer & Designer"
+[2]: https://hasirciogluhq.com/who-is-mustafa-hasircioglu "Mustafa Hasırcıoğlu | Software Developer, Designer, and Musician"
+[3]: https://hasirciogluhq.com/blogs/developer-philosophy "Geliştirici Felsefem - Developer Philosophy | Mustafa Hasırcıoğlu"
