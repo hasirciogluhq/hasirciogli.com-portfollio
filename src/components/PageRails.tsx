@@ -1,7 +1,4 @@
-"use client"
-
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
 const serif = { fontFamily: "var(--font-newsreader), Georgia, serif" }
 
@@ -14,22 +11,15 @@ const sections = [
   ["Note", "/#note"],
 ]
 
-const pages = [
-  ["Home", "/"],
-  ["About", "/about"],
-  ["Projects", "/projects"],
-  ["Blog", "/blog"],
-  ["Contact", "/contact"],
+const elsewhere = [
+  { label: "GitHub", href: "https://github.com/hasirciogluhq", external: true },
+  { label: "LinkedIn", href: "https://linkedin.com/in/hasircioglu", external: true },
+  { label: "Twitter", href: "https://twitter.com/hasirciogluhq", external: true },
+  { label: "Mail", href: "mailto:mustafa@hasirciogluhq.com", external: false },
+  { label: "Calendar", href: "https://calendly.com/hasircioglu", external: true },
 ]
 
-function isCurrent(pathname: string, href: string) {
-  if (href === "/") return pathname === "/"
-  return pathname === href || pathname.startsWith(`${href}/`)
-}
-
 export const PageRails = () => {
-  const pathname = usePathname()
-
   return (
     <nav aria-label="Pages" className="home-grid-rails">
       <p
@@ -46,19 +36,17 @@ export const PageRails = () => {
         className="flex h-9 items-center justify-between gap-x-6 overflow-x-auto border-b border-[var(--border-color)] px-[var(--pad)] text-[11px] font-medium uppercase leading-none tracking-[0.18em] text-[var(--text-secondary)]"
         style={serif}
       >
-        {pages.map(([label, href]) => {
-          const current = isCurrent(pathname, href)
-          return (
-            <Link
-              key={href}
-              href={href}
-              aria-current={current ? "page" : undefined}
-              className={`relative top-px shrink-0 hover:text-foreground ${current ? "text-foreground" : ""}`}
-            >
-              {label}
-            </Link>
-          )
-        })}
+        {elsewhere.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
+            className="relative top-px shrink-0 hover:text-foreground"
+          >
+            {item.label}
+          </a>
+        ))}
       </p>
     </nav>
   )

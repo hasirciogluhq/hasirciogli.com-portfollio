@@ -1,42 +1,20 @@
 "use client"
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
 
+const serif = { fontFamily: "var(--font-newsreader), Georgia, serif" }
+const display = { fontFamily: "var(--font-fraunces), Georgia, serif" }
+
+const socialLinks = [
+  { name: "GitHub", href: "https://github.com/hasirciogluhq" },
+  { name: "LinkedIn", href: "https://linkedin.com/in/hasircioglu" },
+  { name: "Twitter", href: "https://twitter.com/hasirciogluhq" },
+  { name: "Mail", href: "mailto:mustafa@hasirciogluhq.com" },
+]
+
 export const Footer = () => {
-  const handleSocialClick = (platform: string) => {
-    sendGAEvent("event", "social_link_click", {
-      category: "engagement",
-      label: platform,
-    })
-  }
-
-  const socialLinks = [
-    {
-      name: "GitHub",
-      href: "https://github.com/hasirciogluhq",
-      icon: <Github className="h-4 w-4" strokeWidth={1.5} />,
-    },
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/hasircioglu",
-      icon: <Linkedin className="h-4 w-4" strokeWidth={1.5} />,
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com/hasirciogluhq",
-      icon: <Twitter className="h-4 w-4" strokeWidth={1.5} />,
-    },
-    {
-      name: "Email",
-      href: "mailto:mustafa@hasirciogluhq.com",
-      icon: <Mail className="h-4 w-4" strokeWidth={1.5} />,
-    },
-  ]
-
   return (
-      <footer className="home-grid-footer">
-      <div className="flex w-full flex-col gap-6">
+    <footer className="home-grid-footer">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -57,32 +35,43 @@ export const Footer = () => {
           }),
         }}
       />
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
-          <div className="grid grid-cols-2 gap-1" aria-label="Social">
+      <div className="flex w-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]" style={serif}>
+            Colophon
+          </p>
+          <p className="mt-2 text-[1.7rem] font-light leading-none text-foreground" style={display}>
+            Mustafa Hasırcıoğlu
+          </p>
+          <p className="mt-3 max-w-sm text-[16px] italic leading-relaxed text-[var(--text-secondary)]" style={serif}>
+            Go, Kubernetes, distributed systems. Production-focused engineering.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 sm:items-end">
+          <p className="flex flex-wrap gap-x-5 gap-y-1">
             {socialLinks.map((s) => (
               <a
                 key={s.name}
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                onClick={() => handleSocialClick(s.name.toLowerCase())}
-                className="inline-flex h-7 w-7 items-center justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground"
-                aria-label={s.name}
+                onClick={() =>
+                  sendGAEvent("event", "social_link_click", {
+                    category: "engagement",
+                    label: s.name.toLowerCase(),
+                  })
+                }
+                className="text-[12px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)] transition-colors duration-200 hover:text-foreground"
+                style={serif}
               >
-                {s.icon}
+                {s.name}
               </a>
             ))}
-          </div>
-          <div>
-            <p className="ui-brand">Mustafa Hasırcıoğlu</p>
-            <p className="ui-body mt-0.5 max-w-xs">
-              Go, Kubernetes, distributed systems. Production-focused engineering.
-            </p>
-          </div>
+          </p>
+          <p className="text-[13px] text-[var(--text-secondary)]" style={serif}>
+            © {new Date().getFullYear()} Mustafa Hasırcıoğlu
+          </p>
         </div>
-        <p className="ui-caption">© {new Date().getFullYear()} Mustafa Hasırcıoğlu</p>
-      </div>
       </div>
     </footer>
   )
