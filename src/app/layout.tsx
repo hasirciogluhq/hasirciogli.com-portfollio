@@ -9,6 +9,7 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
 const newsreader = Newsreader({

@@ -1,4 +1,3 @@
-import { FloatingQuickContact } from "@/components/FloatingQuickContact";
 import { FootBar } from "@/components/Foot-Bar";
 import { Footer } from "@/components/Footer";
 import { PageRails } from "@/components/PageRails";
@@ -42,10 +41,6 @@ export default function BlogLayout({
         <Footer />
       </div>
 
-      {/* Floating Quick Contact */}
-      <FloatingQuickContact />
-
-      {/* Foot Bar */}
       <FootBar />
     </>
   );

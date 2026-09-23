@@ -19,7 +19,14 @@ export const HeroSection = () => {
       <div className="ui-enter flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
         <div className="min-w-0 flex-1 space-y-5">
           <p className="ui-kicker">Software engineer · Founder</p>
-          <h1 className="ui-heading-1">
+          <h1
+            className="max-w-[16ch] text-[2.65rem] leading-[0.98] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
+            style={{
+              fontFamily: "var(--font-fraunces), Georgia, serif",
+              fontWeight: 320,
+              fontVariationSettings: '"SOFT" 0, "WONK" 0, "opsz" 144',
+            }}
+          >
             Production systems, clear craft, long term thinking.
           </h1>
           <p className="ui-body max-w-md">
