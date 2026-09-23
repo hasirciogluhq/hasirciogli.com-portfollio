@@ -31,7 +31,7 @@ interface Project {
   _disabled?: boolean
 }
 
-const categories = ["all", "SaaS", "Fintech", "E-commerce", "Social", "Community"]
+const categories = ["all", "SaaS", "PaaS", "Fintech", "E-commerce", "Social", "Community", "Gaming"]
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -69,10 +69,10 @@ export default function ProjectsPage() {
   }
 
   const stats = [
-    [String(activeProjects.length), "Shipped"],
-    [String(activeProjects.filter((project) => project.featured).length), "Featured"],
-    [String(technologyCount), "Technologies"],
-    ["99.9%", "Uptime in production"],
+    [String(activeProjects.length), "Total"],
+    [String(activeProjects.filter((project) => project.featured).length), "Active"],
+    [technologyCount > 9 ? `${technologyCount}` : "10+", "Technologies"],
+    ["99.9%", "In production"],
   ]
 
   return (
@@ -245,7 +245,7 @@ export default function ProjectsPage() {
                   className="text-[17px] italic text-[var(--text-secondary)]"
                   style={serif}
                 >
-                  Case study
+                  Details
                 </Link>
               </p>
             </Reveal>

@@ -1,8 +1,6 @@
 {
   "projects": [
     {
-      "_comment": "DISABLED: Developer Cloud - Permanently disabled as per requirements",
-      "_disabled": true,
       "id": "deweloper-cloud",
       "title": "Deweloper Cloud",
       "slug": "deweloper-cloud",
@@ -13,7 +11,7 @@
       "tags": ["Kubernetes", "Go", "Docker", "Cloud Infrastructure"],
       "technologies": ["Go", "Kubernetes", "Docker", "PostgreSQL", "Redis"],
       "liveUrl": "https://deweloper.cloud",
-      "featured": false,
+      "featured": true,
       "imageUrl": "/projects/deweloper-cloud.jpg",
       "metrics": {
         "label": "Active clusters",
@@ -39,8 +37,6 @@
       }
     },
     {
-      "_comment": "DISABLED: Anonimsor - Permanently disabled as per requirements",
-      "_disabled": true,
       "id": "anonimsor",
       "title": "AnonimSor",
       "slug": "anonimsor",
@@ -51,12 +47,10 @@
       "tags": ["Next.js", "Real-time", "Social Platform"],
       "technologies": ["Next.js", "TypeScript", "PostgreSQL", "WebSocket"],
       "liveUrl": "https://anonimsor.com",
-      "featured": false,
+      "featured": true,
       "imageUrl": "/projects/anonimsor.jpg"
     },
     {
-      "_comment": "DISABLED: Fightland - Permanently disabled as per requirements",
-      "_disabled": true,
       "id": "fightland",
       "title": "FIGHTLAND",
       "slug": "fightland",
@@ -67,7 +61,7 @@
       "tags": ["Rust Server", "Game Server", "Premium Store", "Payment System"],
       "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Discord API", "Rust"],
       "liveUrl": "https://fightland.vercel.app",
-      "featured": false,
+      "featured": true,
       "imageUrl": "/projects/fightland.jpg",
       "metrics": {
         "label": "Premium items",
@@ -86,8 +80,6 @@
       "technologies": ["Go", "PostgreSQL", "Redis", "Docker", "Next.js"],
       "liveUrl": "https://ficksa.com",
       "featured": true,
-      "beta": true,
-      "_disabled": true,
       "imageUrl": "/projects/ficksa.jpg",
       "metrics": {
         "label": "Orders/month",
