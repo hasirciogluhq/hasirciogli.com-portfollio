@@ -1,166 +1,155 @@
 "use client"
 
-import { useState } from "react"
-import { Search, Code, Rocket, TrendingUp, ArrowRight, CheckCircle } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import gsap from "gsap"
+import { motion, AnimatePresence } from "framer-motion"
 import { HomeSection } from "@/components/home/HomeSection"
 
-interface ProcessStep {
-  id: number
-  icon: React.ReactNode
-  title: string
-  description: string
-  outcome: string
-  technologies: string[]
-}
+const steps = [
+  {
+    id: "01",
+    title: "Discover",
+    line: "Name the problem before the stack.",
+    detail: "Roadmap, architecture calls, and a timeline you can actually keep.",
+    marks: ["System design", "Stack", "Risk"],
+  },
+  {
+    id: "02",
+    title: "Build",
+    line: "Code that is already watched.",
+    detail: "Tests, docs, and monitoring land with the first feature, not after launch.",
+    marks: ["Go", "TypeScript", "Postgres"],
+  },
+  {
+    id: "03",
+    title: "Ship",
+    line: "Deploy without a ceremony.",
+    detail: "CI, zero-downtime releases, and a rollback that is one command.",
+    marks: ["Kubernetes", "Docker", "Terraform"],
+  },
+  {
+    id: "04",
+    title: "Scale",
+    line: "Growth that does not rewrite the core.",
+    detail: "Load, cache, and cost stay calm when traffic jumps.",
+    marks: ["Balancing", "Cache", "Cost"],
+  },
+]
 
 export const ProcessSection = () => {
-  const [activeStep, setActiveStep] = useState<number>(1)
+  const [open, setOpen] = useState("01")
+  const rootRef = useRef<HTMLDivElement>(null)
 
-  const steps: ProcessStep[] = [
-    {
-      id: 1,
-      icon: <Search className="w-6 h-6" />,
-      title: "Discover",
-      description: "Define the right problem",
-      outcome: "Clear technical roadmap, architecture decisions, and realistic timeline. No guessing.",
-      technologies: ["System Design", "Tech Stack", "Risk Assessment"]
-    },
-    {
-      id: 2,
-      icon: <Code className="w-6 h-6" />,
-      title: "Build",
-      description: "Clean code, tested features",
-      outcome: "Production-ready code with tests, documentation, and monitoring from day one.",
-      technologies: ["Go", "TypeScript", "PostgreSQL", "Redis"]
-    },
-    {
-      id: 3,
-      icon: <Rocket className="w-6 h-6" />,
-      title: "Ship",
-      description: "Deploy with confidence",
-      outcome: "Automated CI/CD pipelines, zero-downtime deployments, and instant rollback capability.",
-      technologies: ["Kubernetes", "Docker", "Terraform", "CI/CD"]
-    },
-    {
-      id: 4,
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Scale",
-      description: "Grow without breaking",
-      outcome: "Performance optimization, cost reduction, and systems that handle 10x growth.",
-      technologies: ["Load Balancing", "Caching", "Optimization"]
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const rules = root.querySelectorAll<HTMLElement>("[data-rule]")
+    if (reduce) {
+      rules.forEach((rule) => {
+        rule.style.transform = "scaleX(1)"
+      })
+      return
     }
-  ]
-
-  const currentStep = steps.find(s => s.id === activeStep)!
+    const tween = gsap.fromTo(
+      rules,
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.9, stagger: 0.12, ease: "power2.out" },
+    )
+    return () => {
+      tween.kill()
+    }
+  }, [])
 
   return (
-    <HomeSection embedded sectionClassName="home-grid-process">
-      <div className="mx-auto max-w-5xl">
-        {/* Minimalist Header */}
-        <div className="mb-16 space-y-6">
-          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
-            <CheckCircle className="h-3 w-3" />
-            Process
-          </div>
-          
-          <h2 className="ui-heading-1 max-w-2xl">From idea to production</h2>
-          
-          <p className="ui-body max-w-2xl">
-            A proven 4-step process that takes projects from concept to scale. Predictable, transparent, results-driven.
-          </p>
-        </div>
+    <HomeSection embedded measure={false} id="movements" sectionClassName="home-grid-process">
+      <div ref={rootRef} className="w-full">
+        <p
+          className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+        >
+          Four movements
+        </p>
+        <h2
+          className="mt-3 max-w-xl text-[2.15rem] font-light leading-[1.05] tracking-tight text-foreground sm:text-[2.6rem]"
+          style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+        >
+          Idea, then a system that stays up.
+        </h2>
 
-        {/* Process Steps - Horizontal */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between gap-2">
-            {steps.map((step, index) => (
-              <div key={step.id} className="flex-1 flex items-center">
+        <ol className="mt-8">
+          {steps.map((step) => {
+            const active = open === step.id
+            return (
+              <li key={step.id}>
+                <div
+                  data-rule
+                  className="h-px origin-left bg-[var(--border-color)]"
+                />
                 <button
-                  onClick={() => setActiveStep(step.id)}
-                  className={`w-full p-4 rounded-xl transition-all duration-300 ${
-                    activeStep === step.id
-                      ? 'bg-foreground text-background'
-                      : 'border border-border bg-card text-muted-foreground hover:bg-accent'
-                  }`}
+                  type="button"
+                  onClick={() => setOpen(step.id)}
+                  className="flex w-full items-baseline gap-4 py-4 text-left sm:gap-8"
+                  aria-expanded={active}
                 >
-                  <div className="flex flex-col items-center gap-2">
-                    <div className={`p-2 rounded-lg ${
-                      activeStep === step.id ? 'bg-background/20' : 'bg-muted'
-                    }`}>
-                      {step.icon}
-                    </div>
-                    <div className="ui-nav font-semibold">{step.title}</div>
-                  </div>
-                </button>
-                {index < steps.length - 1 && (
-                  <ArrowRight className={`flex-shrink-0 mx-2 w-4 h-4 ${
-                    activeStep > step.id ? 'text-foreground' : 'text-border'
-                  }`} />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Step Details */}
-        <div className="rounded-2xl border border-border bg-card p-8">
-          <div className="space-y-6">
-            <div>
-              <div className="mb-3 flex items-center gap-3">
-                <div className="rounded-xl bg-primary/10 p-3">
-                  <div className="text-primary">{currentStep.icon}</div>
-                </div>
-                <div>
-                  <div className="ui-caption text-muted-foreground">Step {currentStep.id}</div>
-                  <h3 className="ui-heading-2">
-                    {currentStep.title}
-                  </h3>
-                </div>
-              </div>
-              <p className="ui-body">
-                {currentStep.description}
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-border bg-muted/30 p-4 pl-5 border-l-4 border-l-primary">
-              <div className="ui-caption mb-2 font-semibold text-primary">
-                What You Get
-              </div>
-              <p className="ui-body text-foreground">
-                {currentStep.outcome}
-              </p>
-            </div>
-
-            <div>
-              <div className="ui-caption mb-3 font-semibold text-muted-foreground">
-                Technologies & Practices
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {currentStep.technologies.map((tech) => (
                   <span
-                    key={tech}
-                    className="ui-nav rounded-lg bg-muted px-3 py-1.5 text-foreground"
+                    className="w-12 shrink-0 text-[1.65rem] font-light tabular-nums text-[var(--text-secondary)] sm:text-[2rem]"
+                    style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
                   >
-                    {tech}
+                    {step.id}
                   </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-foreground px-6 py-3 font-sans text-sm font-semibold text-background transition-opacity hover:opacity-90"
-          >
-            Start Your Project
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
+                  <span className="min-w-0 flex-1">
+                    <span
+                      className="block text-[1.35rem] font-semibold leading-none text-foreground sm:text-[1.6rem]"
+                      style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+                    >
+                      {step.title}
+                    </span>
+                    <span
+                      className="mt-1.5 block text-[15px] font-normal italic text-[var(--text-secondary)]"
+                      style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                    >
+                      {step.line}
+                    </span>
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {active ? (
+                    <motion.div
+                      key={step.id}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mb-4 ml-16 border-l border-[var(--link-primary)] pl-4 sm:ml-20">
+                        <p
+                          className="max-w-md text-[17px] font-medium leading-snug text-foreground"
+                          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                        >
+                          {step.detail}
+                        </p>
+                        <p className="mt-3 flex flex-wrap items-center gap-x-3 text-[12px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)]">
+                          {step.marks.map((mark, index) => (
+                            <span key={mark} className="inline-flex items-center gap-3">
+                              {index > 0 ? (
+                                <span className="inline-block h-2 w-px bg-[var(--border-color)]" />
+                              ) : null}
+                              {mark}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </li>
+            )
+          })}
+          <div data-rule className="h-px origin-left bg-[var(--border-color)]" />
+        </ol>
       </div>
     </HomeSection>
   )
 }
-

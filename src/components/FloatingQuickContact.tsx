@@ -1,16 +1,25 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { MessageCircle, X, Mail, Calendar } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { X } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
+
+const field =
+  "w-full border-b border-[var(--border-color)] bg-transparent py-2 text-[16px] text-foreground outline-none placeholder:text-[var(--text-secondary)] focus:border-[var(--link-primary)]"
+
+const serif = { fontFamily: "var(--font-newsreader), Georgia, serif" }
+const display = { fontFamily: "var(--font-fraunces), Georgia, serif" }
 
 export const FloatingQuickContact = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   })
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const nameRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -19,6 +28,7 @@ export const FloatingQuickContact = () => {
     if (isOpen) {
       document.addEventListener("keydown", handleEscape)
       document.body.style.overflow = "hidden"
+      nameRef.current?.focus()
     } else {
       document.body.style.overflow = ""
     }
@@ -28,8 +38,14 @@ export const FloatingQuickContact = () => {
     }
   }, [isOpen])
 
+  const close = () => {
+    setIsOpen(false)
+    triggerRef.current?.focus()
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     sendGAEvent("event", "quick_contact_submit", {
       category: "engagement",
       label: "floating_contact",
@@ -46,14 +62,16 @@ export const FloatingQuickContact = () => {
       })
       const data = await response.json()
       if (response.ok && data.success) {
-        alert(data.message || "Message sent.")
+        alert(data.message || "Your message has been received. I will write back soon.")
         setFormData({ name: "", email: "", message: "" })
-        setIsOpen(false)
+        close()
       } else {
         alert(data.error || "Something went wrong.")
       }
     } catch {
-      alert("Network error. Try email instead.")
+      alert("Something went wrong. Write to mustafa@hasirciogluhq.com.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -63,50 +81,66 @@ export const FloatingQuickContact = () => {
 
   return (
     <>
-      <div className="fixed right-4 z-50 bottom-[calc(var(--footbar-height)+1rem)] sm:right-6">
+      <div className="fixed right-4 z-40 bottom-[calc(var(--footbar-height)+1rem)] sm:right-6">
         <button
+          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(true)}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-md transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="text-[13px] italic text-[var(--text-secondary)] transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
+          style={serif}
+          aria-haspopup="dialog"
+          aria-expanded={isOpen}
           aria-label="Quick contact"
         >
-          <MessageCircle className="h-5 w-5" strokeWidth={1.5} />
+          Write
         </button>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6">
           <button
             type="button"
-            className="absolute inset-0 bg-background/70 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-[var(--background)]/70"
             aria-label="Close"
-            onClick={() => setIsOpen(false)}
+            onClick={close}
           />
           <div
             role="dialog"
             aria-modal="true"
             aria-labelledby="quick-contact-title"
-            className="relative w-full max-w-sm rounded-t-lg border border-border bg-card text-card-foreground shadow-lg sm:rounded-lg"
+            className="relative w-full max-w-md border border-[var(--border-color)] bg-[var(--background)] px-6 py-6 sm:px-8"
           >
-            <div className="flex items-center justify-between border-b border-border px-4 py-3">
-              <h2 id="quick-contact-title" className="text-sm font-semibold">
-                Quick contact
-              </h2>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p
+                  className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+                  style={serif}
+                >
+                  Note
+                </p>
+                <h2
+                  id="quick-contact-title"
+                  className="mt-2 text-[1.7rem] font-light leading-[1.05] text-foreground"
+                  style={display}
+                >
+                  A short note is enough.
+                </h2>
+              </div>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
-                className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                onClick={close}
+                className="mt-1 text-[var(--text-secondary)] transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" strokeWidth={1.5} />
               </button>
             </div>
 
-            <div className="space-y-4 p-4">
-              <div className="grid grid-cols-2 gap-2">
+            <ul className="mt-6">
+              <li className="border-t border-[var(--border-color)]">
                 <a
                   href="mailto:mustafa@hasirciogluhq.com"
-                  className="surface-card flex flex-col items-center gap-1.5 px-3 py-3 text-center text-xs font-medium transition-colors hover:bg-muted/80"
+                  className="flex items-baseline justify-between gap-6 py-3"
                   onClick={() =>
                     sendGAEvent("event", "quick_contact_email", {
                       category: "engagement",
@@ -114,14 +148,20 @@ export const FloatingQuickContact = () => {
                     })
                   }
                 >
-                  <Mail className="h-4 w-4 text-primary" strokeWidth={1.5} />
-                  Email
+                  <span className="text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)]" style={serif}>
+                    Mail
+                  </span>
+                  <span className="text-[15px] font-medium text-foreground" style={display}>
+                    mustafa@hasirciogluhq.com
+                  </span>
                 </a>
+              </li>
+              <li className="border-t border-[var(--border-color)]">
                 <a
                   href="https://calendly.com/hasircioglu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="surface-card flex flex-col items-center gap-1.5 px-3 py-3 text-center text-xs font-medium transition-colors hover:bg-muted/80"
+                  className="flex items-baseline justify-between gap-6 py-3"
                   onClick={() =>
                     sendGAEvent("event", "quick_contact_calendar", {
                       category: "engagement",
@@ -129,64 +169,63 @@ export const FloatingQuickContact = () => {
                     })
                   }
                 >
-                  <Calendar className="h-4 w-4 text-primary" strokeWidth={1.5} />
-                  Book call
+                  <span className="text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)]" style={serif}>
+                    Time
+                  </span>
+                  <span className="text-[15px] font-medium text-foreground" style={display}>
+                    Pick a half hour
+                  </span>
                 </a>
-              </div>
+              </li>
+            </ul>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <div>
-                  <label htmlFor="quick-name" className="mb-1 block text-[11px] font-medium text-muted-foreground">
-                    Name
-                  </label>
-                  <input
-                    id="quick-name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="quick-email" className="mb-1 block text-[11px] font-medium text-muted-foreground">
-                    Email
-                  </label>
-                  <input
-                    id="quick-email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    placeholder="you@domain.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="quick-message" className="mb-1 block text-[11px] font-medium text-muted-foreground">
-                    Message
-                  </label>
-                  <textarea
-                    id="quick-message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={3}
-                    className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    placeholder="Brief project context…"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full rounded-md bg-primary py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  Send
-                </button>
-              </form>
-            </div>
+            <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
+              <label className="block">
+                <span className="text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)]" style={serif}>
+                  Name
+                </span>
+                <input
+                  ref={nameRef}
+                  id="quick-name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className={field}
+                />
+              </label>
+              <label className="block">
+                <span className="text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)]" style={serif}>
+                  Email
+                </span>
+                <input
+                  id="quick-email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className={field}
+                />
+              </label>
+              <label className="block">
+                <span className="text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)]" style={serif}>
+                  Note
+                </span>
+                <textarea
+                  id="quick-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={4}
+                  className={`${field} resize-y`}
+                />
+              </label>
+              <button type="submit" disabled={isSubmitting} className="ui-btn-primary w-fit disabled:opacity-50">
+                {isSubmitting ? "Sending" : "Write"}
+              </button>
+            </form>
           </div>
         </div>
       )}

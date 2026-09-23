@@ -1,155 +1,184 @@
 "use client"
 
 import Link from "next/link"
-import { Calendar, ArrowRight, Clock } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
 import { HomeSection } from "@/components/home/HomeSection"
 
-interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-  readTime: string
-  slug: string
-  category: string
-  featured?: boolean
-}
+import { useState } from "react"
 
-export const BlogHighlights = () => {
-  const posts: BlogPost[] = [
+
+const pages = [
+  [
     {
       id: "developer-philosophy",
       title: "Developer Philosophy: Craft Over Speed",
-      excerpt:
-        "Why I reject the 'just make it work' mentality and how building elegant systems pays off in the long run. Code is not disposable.",
-      date: "2024-10-01",
-      readTime: "8 min",
       slug: "/blog/developer-philosophy",
-      category: "Philosophy",
-      featured: true,
+      date: "1 Oct 2024",
+      read: "8 min",
+      author: "Mustafa Hasırcıoğlu",
     },
     {
       id: "kubernetes-production-lessons",
       title: "5 Kubernetes Lessons I Learned the Hard Way",
-      excerpt:
-        "Production incidents taught me more than any tutorial. Here are the critical Kubernetes lessons that will save you from midnight debugging sessions.",
-      date: "2025-01-10",
-      readTime: "5 min",
       slug: "/blog/kubernetes-production-lessons",
-      category: "Infrastructure",
+      date: "10 Jan 2025",
+      read: "5 min",
+      author: "Mustafa Hasırcıoğlu",
     },
     {
       id: "building-payment-gateway",
       title: "Building a Payment Gateway: Technical Deep Dive",
-      excerpt:
-        "How we built a secure, scalable payment processing system handling thousands of transactions daily. Architecture, security, and lessons learned.",
-      date: "2025-01-05",
-      readTime: "8 min",
       slug: "/blog/building-payment-gateway",
-      category: "Technology",
+      date: "5 Jan 2025",
+      read: "8 min",
+      author: "Mustafa Hasırcıoğlu",
     },
-  ]
+  ],
+  [
+    {
+      id: "silent-disruption",
+      title: "Silent Disruption: Stealth Mode Payment Revolution",
+      slug: "/blog/silent-disruption",
+      date: "20 Jun 2025",
+      read: "6 min",
+      author: "Mustafa Hasırcıoğlu",
+    },
+    {
+      id: "five-years-later",
+      title: "Five Years Later, I'm Still Building the Same Thing",
+      slug: "/blog/five-years-later-still-building-the-same-thing",
+      date: "5 Nov 2025",
+      read: "12 min",
+      author: "Mustafa Hasırcıoğlu",
+    },
+    {
+      id: "no-cap",
+      title: "No Cap: Why I Built My Own Framework at 16",
+      slug: "/blog/no-cap-building-my-own-framework",
+      date: "1 Nov 2025",
+      read: "9 min",
+      author: "Mustafa Hasırcıoğlu",
+    },
+  ],
+  [
+    {
+      id: "hsrcpay-api",
+      title: "Designing the Future of Payments: Hsrcpay API Architecture",
+      slug: "/blog/designing-future-payments-hsrcpay-api-architecture",
+      date: "25 Sep 2025",
+      read: "11 min",
+      author: "Mustafa Hasırcıoğlu",
+    },
+    {
+      id: "welcome",
+      title: "Welcome to My Blog",
+      slug: "/blog/welcome-to-my-blog",
+      date: "15 Jan 2024",
+      read: "4 min",
+      author: "Mustafa Hasırcıoğlu",
+    },
+  ],
+]
 
-  const handlePostClick = (slug: string) => {
-    sendGAEvent("event", "blog_post_click", {
-      category: "engagement",
-      label: slug,
-    })
-  }
+const cols =
+  "grid grid-cols-[minmax(0,1fr)_auto_1.25rem] items-center gap-x-4 md:grid-cols-[minmax(0,1.6fr)_7.5rem_4.5rem_minmax(8rem,0.7fr)_1.25rem]"
 
+export const BlogHighlights = () => {
+  const [page, setPage] = useState(0)
+  const posts = pages[page]
   return (
-    <HomeSection>
-      <div className="mb-10 text-center">
-        <div className="ui-eyebrow mb-4 inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5">
-          <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-            <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-          </svg>
-          Blog
-        </div>
-        <h2 className="ui-heading-1 mb-3">Thoughts & technical deep dives</h2>
-        <p className="ui-body mx-auto max-w-2xl">
-          Systems design, production lessons, and the craft of software engineering.
-        </p>
-      </div>
+    <HomeSection embedded card={false} measure={false} id="writing" sectionClassName="home-grid-posts">
+      <p
+        className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+      >
+        Writing
+      </p>
+      <h2
+        className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
+        style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+      >
+        Thoughts & technical deep dives
+      </h2>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <Link
-            href={posts[0].slug}
-            onClick={() => handlePostClick(posts[0].slug)}
-            className="block h-full"
-          >
-            <div className="surface-card h-full rounded-xl p-8">
-              <div className="ui-nav mb-4 inline-block rounded-md border border-border bg-muted px-3 py-1 text-foreground">
-                Featured
-              </div>
-              <h3 className="ui-heading-2 mb-3">
-                {posts[0].title}
-              </h3>
-              <p className="ui-body mb-6">{posts[0].excerpt}</p>
-              <div className="ui-nav mb-6 flex flex-wrap items-center gap-4 text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5">
-                  <Calendar className="h-4 w-4" />
-                  {new Date(posts[0].date).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-4 w-4" />
-                  {posts[0].readTime} read
-                </span>
-              </div>
-              <div className="ui-brand inline-flex items-center gap-2">
-                <span>Read full article</span>
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          {posts.slice(1).map((post) => (
-            <Link
-              key={post.id}
-              href={post.slug}
-              onClick={() => handlePostClick(post.slug)}
-              className="block"
-            >
-              <div className="surface-card h-full rounded-xl p-6">
-                <div className="ui-caption mb-3 inline-block rounded-md border border-border bg-muted px-2 py-0.5 font-medium">
-                  {post.category}
-                </div>
-                <h3 className="ui-heading-3 mb-2">
-                  {post.title}
-                </h3>
-                <p className="ui-body mb-4 line-clamp-2">{post.excerpt}</p>
-                <div className="ui-caption flex flex-wrap items-center gap-3">
-                  <span className="inline-flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    {post.readTime}
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-10 text-center">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-sans text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+      <div className="mt-6">
+        <div
+          className={`${cols} pb-2 text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)]`}
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
         >
-          View all articles
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+          <span>Piece</span>
+          <span className="hidden md:inline">When</span>
+          <span>Read</span>
+          <span className="hidden md:inline">Author</span>
+          <span className="sr-only">Open</span>
+        </div>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id} className="border-t border-[var(--border-color)]">
+              <Link
+                href={post.slug}
+                onClick={() =>
+                  sendGAEvent("event", "blog_post_click", {
+                    category: "engagement",
+                    label: post.slug,
+                  })
+                }
+                className={`${cols} group py-3.5 text-foreground`}
+              >
+                <span
+                  className="min-w-0 text-[1.05rem] font-medium leading-snug"
+                  style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+                >
+                  {post.title}
+                </span>
+                <span
+                  className="hidden text-[14px] text-[var(--text-secondary)] md:inline"
+                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                >
+                  {post.date}
+                </span>
+                <span
+                  className="text-[14px] italic text-[var(--text-secondary)]"
+                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                >
+                  {post.read}
+                </span>
+                <span
+                  className="hidden truncate text-[14px] text-[var(--text-secondary)] md:inline"
+                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                >
+                  {post.author}
+                </span>
+                <ChevronRight
+                  className="h-4 w-4 justify-self-end text-[var(--link-primary)] opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4 flex items-center justify-center gap-1">
+          {pages.map((_, index) => {
+            const on = page === index
+            return (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Writing page ${index + 1}`}
+                aria-current={on ? "true" : undefined}
+                onClick={() => setPage(index)}
+                className={`px-3 py-2 text-[13px] tabular-nums leading-none ${
+                  on ? "font-semibold text-foreground" : "font-normal text-[var(--text-secondary)]"
+                }`}
+                style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </button>
+            )
+          })}
+        </div>
       </div>
     </HomeSection>
   )

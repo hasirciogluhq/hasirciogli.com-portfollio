@@ -35,7 +35,7 @@ export default function BlogLayout({
 }>) {
   return (
     <>
-      <div className="pb-[var(--footbar-height)]">
+      <div className="home-lead-grid pb-[var(--footbar-height)]">
         {children}
         <Footer />
       </div>

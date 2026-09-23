@@ -10,18 +10,14 @@ import { CTASection } from "@/components/CTASection"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-background">
-      <div className="home-lead-grid">
-        <HeroSection />
-        <BenefitsSection />
-        <SkillsSection />
-        <ProcessSection />
-      </div>
-      <div className="flex flex-col divide-y divide-border">
-        <BlogHighlights />
-        <TestimonialsSection />
-        <CTASection />
-      </div>
+    <main className="contents">
+      <HeroSection />
+      <BenefitsSection />
+      <SkillsSection />
+      <ProcessSection />
+      <BlogHighlights />
+      <TestimonialsSection />
+      <CTASection />
     </main>
   )
 }

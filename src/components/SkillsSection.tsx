@@ -2,129 +2,98 @@
 
 import { useMemo, useState } from "react"
 import skillsData from "@/data/skills.json"
-import projectsData from "@/data/projects.json"
-import { Code2, Sparkles } from "lucide-react"
 import { HomeSection } from "@/components/home/HomeSection"
 
 interface Skill {
   name: string
   category: string
   proficiency: number
-  projects: string[]
 }
 
-type CategoryFilter = "all" | "Languages" | "Frontend" | "Backend" | "DevOps" | "Cloud" | "Tools" | "Architecture"
-
-const CATEGORY_BORDER: Record<string, string> = {
-  Languages: "border-l-[3px] border-l-primary",
-  Frontend: "border-l-[3px] border-l-violet-500",
-  Backend: "border-l-[3px] border-l-emerald-600",
-  DevOps: "border-l-[3px] border-l-amber-600",
-  Cloud: "border-l-[3px] border-l-sky-600",
-  Tools: "border-l-[3px] border-l-destructive",
-  Architecture: "border-l-[3px] border-l-primary",
-}
+const categories = [
+  "Languages",
+  "Frontend",
+  "Backend",
+  "DevOps",
+  "Cloud",
+  "Tools",
+  "Architecture",
+] as const
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all")
+  const [active, setActive] = useState<(typeof categories)[number] | "All">("All")
 
-  const categories: CategoryFilter[] = [
-    "all",
-    "Languages",
-    "Frontend",
-    "Backend",
-    "DevOps",
-    "Cloud",
-    "Tools",
-    "Architecture",
-  ]
-
-  const filteredSkills = useMemo(() => {
-    return activeCategory === "all"
-      ? skillsData.skills
-      : skillsData.skills.filter((skill: Skill) => skill.category === activeCategory)
-  }, [activeCategory])
-
-  const getProjectNames = (projectSlugs: string[]) => {
-    return projectSlugs
-      .map(
-        (slug) =>
-          projectsData.projects.find(
-            (p: { slug: string; _disabled?: boolean }) => p.slug === slug && !p._disabled
-          )?.title
-      )
-      .filter(Boolean) as string[]
-  }
+  const columns = useMemo(() => {
+    const skills = skillsData.skills as Skill[]
+    const names = active === "All" ? categories : [active]
+    const rows = names.flatMap((category) =>
+      skills
+        .filter((skill) => skill.category === category)
+        .map((skill) => ({ category, name: skill.name })),
+    )
+    const mid = Math.ceil(rows.length / 2)
+    return [rows.slice(0, mid), rows.slice(mid)]
+  }, [active])
 
   return (
-    <HomeSection embedded sectionClassName="home-grid-skills">
-      <div className="mx-auto max-w-5xl">
-        <header className="mb-8 space-y-3">
-          <div className="ui-eyebrow inline-flex items-center gap-2 rounded-md border border-border bg-muted/50 px-2.5 py-1 text-muted-foreground">
-            <Code2 className="h-3 w-3" aria-hidden />
-            Tech stack
-          </div>
-          <h2 className="ui-heading-1 max-w-2xl">Technologies &amp; Expertise</h2>
-          <p className="ui-body max-w-2xl">
-            Go, Kubernetes, distributed systems, and payment infrastructure. Filter by area or scan the grid.
-          </p>
-        </header>
+    <HomeSection embedded id="stack" sectionClassName="home-grid-skills">
+      <p
+        className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+      >
+        The stack
+      </p>
+      <h2
+        className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
+        style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+      >
+        Tools I actually ship with.
+      </h2>
 
-        <div className="mb-6 flex flex-wrap gap-1.5" aria-label="Skill categories">
-          {categories.map((category) => {
-            const active = activeCategory === category
-            return (
-              <button
-                key={category}
-                type="button"
-                aria-pressed={active}
-                onClick={() => setActiveCategory(category)}
-                className={`ui-nav rounded-md border px-2.5 py-1.5 ${
-                  active
-                    ? "border-foreground/20 bg-foreground text-background"
-                    : "border-border bg-card text-muted-foreground"
-                }`}
-              >
-                {category === "all" ? "All" : category}
-              </button>
-            )
-          })}
-        </div>
+      <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1" role="group" aria-label="Skill categories">
+        {(["All", ...categories] as const).map((category) => {
+          const on = active === category
+          return (
+            <button
+              key={category}
+              type="button"
+              aria-pressed={on}
+              onClick={() => setActive(category)}
+              className={`text-[13px] ${on ? "font-semibold text-foreground" : "font-normal text-[var(--text-secondary)]"}`}
+              style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+            >
+              {category}
+            </button>
+          )
+        })}
+      </div>
 
-        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-          {filteredSkills.map((skill: Skill) => {
-            const projectNames = getProjectNames(skill.projects)
-            const borderAccent =
-              CATEGORY_BORDER[skill.category] ?? "border-l-[3px] border-l-muted-foreground/40"
-            const aria =
-              projectNames.length > 0
-                ? `${skill.name}, used in ${projectNames.join(", ")}`
-                : skill.name
-
-            return (
-              <li key={skill.name}>
-                <span
-                  aria-label={aria}
-                  className={`flex w-full items-center justify-between gap-2 rounded-md border border-border bg-card px-2.5 py-2 text-left ${borderAccent}`}
-                >
-                  <span className="ui-nav min-w-0 truncate font-semibold text-foreground">
-                    {skill.name}
-                  </span>
-                  {skill.proficiency === 5 && (
-                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
-                  )}
-                </span>
-              </li>
-            )
-          })}
-        </ul>
-
-        <p className="ui-caption mt-6 flex items-center justify-center gap-2 border-t border-border pt-6 text-center text-muted-foreground">
-          <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
-          <span>
-            <span className="font-medium text-foreground">Sparkle</span> = expert-level proficiency.
-          </span>
-        </p>
+      <div className="mt-6 grid grid-cols-2 gap-x-8">
+        {columns.map((column, columnIndex) => (
+          <ul key={columnIndex} className="space-y-1.5">
+            {column.map((row, index) => {
+              const showLabel = index === 0 || column[index - 1].category !== row.category
+              return (
+                <li key={row.name}>
+                  {showLabel ? (
+                    <p
+                      className={`mb-1 text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)] ${index === 0 ? "" : "mt-3"}`}
+                      style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                    >
+                      {row.category}
+                    </p>
+                  ) : null}
+                  <p
+                    className="text-[1.02rem] font-medium leading-snug text-foreground"
+                    style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+                  >
+                    {row.name}
+                  </p>
+                </li>
+              )
+            })}
+          </ul>
+        ))}
       </div>
     </HomeSection>
   )

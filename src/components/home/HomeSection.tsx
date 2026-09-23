@@ -12,6 +12,10 @@ export type HomeSectionProps = {
   sectionClassName?: string
   /** Üst ızgara hücresi: kendi container ve padding’ini kullanmaz. */
   embedded?: boolean
+  /** İç kart. Hero gibi sade hücrelerde kapalı. */
+  card?: boolean
+  /** false: içerik section genişliğinde kalır. */
+  measure?: boolean
 }
 
 export function HomeSection({
@@ -22,6 +26,8 @@ export function HomeSection({
   padY,
   sectionClassName,
   embedded = false,
+  card = false,
+  measure = true,
 }: HomeSectionProps) {
   const padding =
     padY ??
@@ -32,7 +38,13 @@ export function HomeSection({
   if (embedded) {
     return (
       <section id={id} className={cn("home-grid-cell", sectionClassName, className)}>
-        {children}
+        {card ? (
+          <div className="theme-card home-measure" style={{ "--radius": "24px" } as React.CSSProperties}>
+            {children}
+          </div>
+        ) : (
+          <div className={measure ? "home-measure" : "w-full"}>{children}</div>
+        )}
       </section>
     )
   }

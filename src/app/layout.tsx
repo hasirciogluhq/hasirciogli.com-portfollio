@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Fraunces, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -61,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} min-h-screen bg-background font-sans antialiased`}
+        className={`${fraunces.variable} ${newsreader.variable} ${jetbrainsMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
         <ThemeProvider>
           {children}
