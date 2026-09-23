@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Link2, Github, Linkedin, Twitter } from "lucide-react"
 import { getAuthorBySlug, getAllPosts } from "@/lib/blog"
 import { BlogCard } from "@/components/blog/BlogCard"
+import { Reveal } from "@/components/motion/Reveal"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -32,6 +33,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
   const allPosts = await getAllPosts({ author: slug })
 
   return (
+    <Reveal variant="left">
     <div className="min-h-screen bg-background">
       <section className="layout-section border-b border-border/60 bg-muted/25">
         <div className="layout-container pb-12 pt-[var(--page-content-pt)]">
@@ -196,5 +198,6 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
     </div>
+    </Reveal>
   )
 }

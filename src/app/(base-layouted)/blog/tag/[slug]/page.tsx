@@ -6,6 +6,7 @@ import { getAllPosts, getTagBySlug, getAllTags } from "@/lib/blog"
 import { BlogCard } from "@/components/blog/BlogCard"
 import { TagPill } from "@/components/blog/TagPill"
 import { NewsletterForm } from "@/components/NewsletterForm"
+import { Reveal } from "@/components/motion/Reveal"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -43,6 +44,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
   const relatedTags = allTags.filter((t) => t.slug !== slug && t.featured).slice(0, 6)
 
   return (
+    <Reveal variant="rise">
     <div className="min-h-screen bg-background">
       <section className="layout-section border-b border-border/60 bg-muted/25">
         <div className="layout-container pb-12 pt-[var(--page-content-pt)]">
@@ -158,5 +160,6 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
         </div>
       </section>
     </div>
+    </Reveal>
   )
 }

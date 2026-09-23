@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
 import { getPostBySlug, getAllPosts, getRelatedPosts } from "@/lib/blog"
 import { formatDate } from "@/lib/blog-utils"
+import { Reveal } from "@/components/motion/Reveal"
 
 import { TagPill } from "@/components/blog/TagPill"
 import { BlogCard } from "@/components/blog/BlogCard"
@@ -116,187 +117,189 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="layout-section border-b border-border">
-        <div className="layout-container py-4 pt-[var(--page-content-pt)]">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-            Blog
-          </Link>
+    <Reveal variant="fade">
+      <div className="min-h-screen bg-background">
+        <div className="layout-section border-b border-border">
+          <div className="layout-container py-4 pt-[var(--page-content-pt)]">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+              Blog
+            </Link>
+          </div>
         </div>
-      </div>
 
-      <article className="layout-section py-10">
-        <div className="layout-container">
-          <div className="mb-6 flex flex-wrap gap-2">
-            {post.primaryTag && <TagPill {...post.primaryTag} variant="filled" size="md" />}
-            {post.tags.slice(0, 3).map((tag) => (
-              <TagPill key={tag.slug} {...tag} size="md" />
-            ))}
-          </div>
-
-          <h1 className="ui-heading-1 mb-4">
-            {post.title}
-          </h1>
-
-          <p className="mb-8 text-lg leading-relaxed text-muted-foreground">{post.excerpt}</p>
-
-          <div className="mb-8 flex flex-wrap items-center gap-6 border-b border-border pb-8">
-            <div className="flex items-center gap-3">
-              {post.author.avatar ? (
-                <Image
-                  src={post.author.avatar}
-                  alt={post.author.title}
-                  width={44}
-                  height={44}
-                  className="aspect-square rounded-full object-cover"
-                />
-              ) : (
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-muted text-base font-semibold text-muted-foreground">
-                  {post.author.title?.charAt(0) || "?"}
-                </div>
-              )}
-              <div>
-                <div className="font-medium text-foreground">{post.author.title}</div>
-                <div className="text-sm text-muted-foreground">{post.author.role}</div>
-              </div>
+        <article className="layout-section py-10">
+          <div className="layout-container">
+            <div className="mb-6 flex flex-wrap gap-2">
+              {post.primaryTag && <TagPill {...post.primaryTag} variant="filled" size="md" />}
+              {post.tags.slice(0, 3).map((tag) => (
+                <TagPill key={tag.slug} {...tag} size="md" />
+              ))}
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" strokeWidth={1.5} />
-                <span>{formatDate(post.publishedAt, "long")}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" strokeWidth={1.5} />
-                <span>{post.readingTime} min read</span>
-              </div>
-              <ShareButton title={post.title} excerpt={post.excerpt} />
-            </div>
-          </div>
+            <h1 className="ui-heading-1 mb-4">
+              {post.title}
+            </h1>
 
-          {post.coverImage && (
-            <div className="relative mb-10 aspect-[2/1] w-full overflow-hidden rounded-lg border border-border md:h-[min(420px,50vh)]">
-              <Image src={post.coverImage} alt={post.title} fill className="object-cover" priority />
-            </div>
-          )}
+            <p className="mb-8 text-lg leading-relaxed text-muted-foreground">{post.excerpt}</p>
 
-          <div className="max-w-none">
-            <MDXRemote
-              source={post.body}
-              components={mdxComponents}
-              options={{
-                mdxOptions: {
-                  rehypePlugins: [
-                    rehypeHighlight,
-                    rehypeSlug,
-                    [rehypeAutolinkHeadings, { behavior: "wrap" }],
-                  ],
-                },
-              }}
-            />
-          </div>
-
-          <div className="mt-12">
-            <div className="surface-card p-6">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+            <div className="mb-8 flex flex-wrap items-center gap-6 border-b border-border pb-8">
+              <div className="flex items-center gap-3">
                 {post.author.avatar ? (
                   <Image
                     src={post.author.avatar}
                     alt={post.author.title}
-                    width={72}
-                    height={72}
-                    className="shrink-0 rounded-lg object-cover"
+                    width={44}
+                    height={44}
+                    className="aspect-square rounded-full object-cover"
                   />
                 ) : (
-                  <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-lg bg-muted text-2xl font-semibold text-muted-foreground">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-muted text-base font-semibold text-muted-foreground">
                     {post.author.title?.charAt(0) || "?"}
                   </div>
                 )}
                 <div>
-                  <h3 className="mb-1 text-lg font-semibold text-foreground">Written by {post.author.title}</h3>
-                  <p className="mb-3 text-sm text-muted-foreground">{post.author.role}</p>
-                  <div className="flex flex-wrap gap-3 text-sm">
-                    {post.author.github && (
-                      <a
-                        href={`https://github.com/${post.author.github}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {post.author.linkedin && (
-                      <a
-                        href={`https://linkedin.com/in/${post.author.linkedin}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        LinkedIn
-                      </a>
-                    )}
-                    {post.author.twitter && (
-                      <a
-                        href={`https://twitter.com/${post.author.twitter}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        Twitter
-                      </a>
-                    )}
+                  <div className="font-medium text-foreground">{post.author.title}</div>
+                  <div className="text-sm text-muted-foreground">{post.author.role}</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" strokeWidth={1.5} />
+                  <span>{formatDate(post.publishedAt, "long")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" strokeWidth={1.5} />
+                  <span>{post.readingTime} min read</span>
+                </div>
+                <ShareButton title={post.title} excerpt={post.excerpt} />
+              </div>
+            </div>
+
+            {post.coverImage && (
+              <div className="relative mb-10 aspect-[2/1] w-full overflow-hidden rounded-lg border border-border md:h-[min(420px,50vh)]">
+                <Image src={post.coverImage} alt={post.title} fill className="object-cover" priority />
+              </div>
+            )}
+
+            <div className="max-w-none">
+              <MDXRemote
+                source={post.body}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    rehypePlugins: [
+                      rehypeHighlight,
+                      rehypeSlug,
+                      [rehypeAutolinkHeadings, { behavior: "wrap" }],
+                    ],
+                  },
+                }}
+              />
+            </div>
+
+            <div className="mt-12">
+              <div className="surface-card p-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+                  {post.author.avatar ? (
+                    <Image
+                      src={post.author.avatar}
+                      alt={post.author.title}
+                      width={72}
+                      height={72}
+                      className="shrink-0 rounded-lg object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-lg bg-muted text-2xl font-semibold text-muted-foreground">
+                      {post.author.title?.charAt(0) || "?"}
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="mb-1 text-lg font-semibold text-foreground">Written by {post.author.title}</h3>
+                    <p className="mb-3 text-sm text-muted-foreground">{post.author.role}</p>
+                    <div className="flex flex-wrap gap-3 text-sm">
+                      {post.author.github && (
+                        <a
+                          href={`https://github.com/${post.author.github}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                      {post.author.linkedin && (
+                        <a
+                          href={`https://linkedin.com/in/${post.author.linkedin}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          LinkedIn
+                        </a>
+                      )}
+                      {post.author.twitter && (
+                        <a
+                          href={`https://twitter.com/${post.author.twitter}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          Twitter
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      {relatedPosts.length > 0 && (
+        {relatedPosts.length > 0 && (
+          <section className="layout-section border-t border-border py-12">
+            <div className="layout-container">
+              <h2 className="ui-heading-2 mb-6">Related</h2>
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((relatedPost) => (
+                  <BlogCard key={relatedPost.slug} post={relatedPost} variant="grid" />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="layout-section border-t border-border py-12">
-          <div className="layout-container">
-            <h2 className="ui-heading-2 mb-6">Related</h2>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((relatedPost) => (
-                <BlogCard key={relatedPost.slug} post={relatedPost} variant="grid" />
-              ))}
+          <div className="layout-container flex justify-center">
+            <div className="w-full max-w-md text-center">
+              <div className="surface-card p-8">
+                <h2 className="ui-heading-2 mb-2">Enjoyed this?</h2>
+                <p className="mb-6 text-sm text-muted-foreground">
+                  Reach out or read more. New posts land here first.
+                </p>
+                <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center justify-center rounded-md border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                  >
+                    All posts
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-      )}
-
-      <section className="layout-section border-t border-border py-12">
-        <div className="layout-container flex justify-center">
-          <div className="w-full max-w-md text-center">
-          <div className="surface-card p-8">
-            <h2 className="ui-heading-2 mb-2">Enjoyed this?</h2>
-            <p className="mb-6 text-sm text-muted-foreground">
-              Reach out or read more. New posts land here first.
-            </p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center rounded-md border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-              >
-                All posts
-              </Link>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </Reveal>
   )
 }

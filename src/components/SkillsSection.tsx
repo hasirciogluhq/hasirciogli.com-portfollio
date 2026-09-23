@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react"
 import skillsData from "@/data/skills.json"
 import { HomeSection } from "@/components/home/HomeSection"
+import { Reveal } from "@/components/motion/Reveal"
 
 interface Skill {
   name: string
@@ -37,6 +38,7 @@ export const SkillsSection = () => {
 
   return (
     <HomeSection embedded id="stack" sectionClassName="home-grid-skills">
+      <Reveal variant="right">
       <p
         className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
         style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
@@ -67,7 +69,9 @@ export const SkillsSection = () => {
           )
         })}
       </div>
+      </Reveal>
 
+      <Reveal variant="settle" delay={0.05}>
       <div className="mt-6 grid grid-cols-2 gap-x-8">
         {columns.map((column, columnIndex) => (
           <ul key={columnIndex} className="space-y-1.5">
@@ -95,6 +99,7 @@ export const SkillsSection = () => {
           </ul>
         ))}
       </div>
+      </Reveal>
     </HomeSection>
   )
 }

@@ -1,4 +1,5 @@
 import { HomeSection } from "@/components/home/HomeSection"
+import { Reveal, revealDelay } from "@/components/motion/Reveal"
 
 const outcomes = [
   {
@@ -30,45 +31,49 @@ const outcomes = [
 export const BenefitsSection = () => {
   return (
     <HomeSection embedded id="keep" sectionClassName="home-grid-benefits">
-      <p
-        className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
-        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-      >
-        What you keep
-      </p>
-      <h2
-        className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
-        style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
-      >
-        Systems that work while you sleep.
-      </h2>
+      <Reveal variant="fade">
+        <p
+          className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+        >
+          What you keep
+        </p>
+        <h2
+          className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
+          style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+        >
+          Systems that work while you sleep.
+        </h2>
+      </Reveal>
       <ol className="mt-6">
-        {outcomes.map((item) => (
+        {outcomes.map((item, index) => (
           <li key={item.id} className="py-3">
-            <p
-              className="text-[13px] font-light tabular-nums text-[var(--text-secondary)]"
-              style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
-            >
-              {item.id}
-            </p>
-            <p
-              className="mt-1 text-[1.25rem] font-semibold leading-none text-foreground"
-              style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
-            >
-              {item.title}
-            </p>
-            <p
-              className="mt-1.5 text-[15px] italic text-[var(--text-secondary)]"
-              style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-            >
-              {item.line}
-            </p>
-            <p
-              className="mt-1 text-[15px] font-normal text-foreground"
-              style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-            >
-              {item.detail}
-            </p>
+            <Reveal variant="rise" delay={revealDelay(index)}>
+              <p
+                className="text-[13px] font-light tabular-nums text-[var(--text-secondary)]"
+                style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+              >
+                {item.id}
+              </p>
+              <p
+                className="mt-1 text-[1.25rem] font-semibold leading-none text-foreground"
+                style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+              >
+                {item.title}
+              </p>
+              <p
+                className="mt-1.5 text-[15px] italic text-[var(--text-secondary)]"
+                style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+              >
+                {item.line}
+              </p>
+              <p
+                className="mt-1 text-[15px] font-normal text-foreground"
+                style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+              >
+                {item.detail}
+              </p>
+            </Reveal>
           </li>
         ))}
       </ol>

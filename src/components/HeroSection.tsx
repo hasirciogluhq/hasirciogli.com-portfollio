@@ -5,6 +5,7 @@ import { sendGAEvent } from "@next/third-parties/google"
 import Link from "next/link"
 import { HomeSection } from "@/components/home/HomeSection"
 import { OrbitLogos } from "@/components/home/OrbitLogos"
+import { Reveal } from "@/components/motion/Reveal"
 
 export const HeroSection = () => {
   const handleCTAClick = () => {
@@ -16,8 +17,8 @@ export const HeroSection = () => {
 
   return (
     <HomeSection embedded card={false} measure={false} sectionClassName="home-grid-hero">
-      <div className="ui-enter flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
-        <div className="min-w-0 flex-1 space-y-5">
+      <div className="flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
+        <Reveal variant="left" className="min-w-0 flex-1 space-y-5">
           <p className="ui-kicker">Software engineer · Founder</p>
           <h1
             className="max-w-[16ch] text-[2.65rem] leading-[0.98] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
@@ -54,10 +55,10 @@ export const HeroSection = () => {
               Contact
             </Link>
           </div>
-        </div>
-        <div className="relative mx-auto h-[340px] w-full min-w-0 flex-1 overflow-visible md:mx-0 md:h-[420px]">
+        </Reveal>
+        <Reveal variant="fade" delay={0.06} className="relative mx-auto h-[340px] w-full min-w-0 flex-1 overflow-visible md:mx-0 md:h-[420px]">
           <OrbitLogos />
-        </div>
+        </Reveal>
       </div>
     </HomeSection>
   )

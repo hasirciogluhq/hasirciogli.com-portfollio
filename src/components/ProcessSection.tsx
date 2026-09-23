@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { motion, AnimatePresence } from "framer-motion"
 import { HomeSection } from "@/components/home/HomeSection"
+import { Reveal } from "@/components/motion/Reveal"
 
 const steps = [
   {
@@ -64,6 +65,7 @@ export const ProcessSection = () => {
   return (
     <HomeSection embedded measure={false} id="movements" sectionClassName="home-grid-process">
       <div ref={rootRef} className="w-full">
+        <Reveal variant="drop">
         <p
           className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
           style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
@@ -76,6 +78,7 @@ export const ProcessSection = () => {
         >
           Idea, then a system that stays up.
         </h2>
+        </Reveal>
 
         <ol className="mt-8">
           {steps.map((step) => {

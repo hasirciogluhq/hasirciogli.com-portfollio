@@ -3,6 +3,7 @@
 import { sendGAEvent } from "@next/third-parties/google"
 import Link from "next/link"
 import { HomeSection } from "@/components/home/HomeSection"
+import { Reveal } from "@/components/motion/Reveal"
 
 export const CTASection = () => {
   const track = (label: string) => {
@@ -12,7 +13,7 @@ export const CTASection = () => {
   return (
     <HomeSection embedded measure={false} id="note" sectionClassName="home-grid-cta">
       <div className="flex w-full flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div>
+        <Reveal variant="settle">
           <h2
             className="max-w-md text-[2rem] font-light leading-[1.05] text-foreground sm:text-[2.5rem]"
             style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
@@ -25,8 +26,8 @@ export const CTASection = () => {
           >
             Tell me the system you need. I reply with a straight read on scope.
           </p>
-        </div>
-        <div className="flex flex-col items-start gap-2 sm:items-end">
+        </Reveal>
+        <Reveal variant="fade" delay={0.06} className="flex flex-col items-start gap-2 sm:items-end">
           <Link
             href="/contact"
             onClick={() => track("contact")}
@@ -52,7 +53,7 @@ export const CTASection = () => {
           >
             Or pick a time
           </a>
-        </div>
+        </Reveal>
       </div>
     </HomeSection>
   )

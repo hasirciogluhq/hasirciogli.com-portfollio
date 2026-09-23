@@ -3,6 +3,7 @@ import { getAllTags } from "@/lib/blog"
 
 import Link from "next/link"
 import { ArrowLeft, Tag } from "lucide-react"
+import { Reveal } from "@/components/motion/Reveal"
 
 export const metadata = {
   title: "All Tags - Blog",
@@ -15,6 +16,7 @@ export default async function TagsPage() {
   const popularTags = tags.filter((t) => (t.postCount || 0) >= 2)
 
   return (
+    <Reveal variant="fade">
     <div className="min-h-screen bg-background">
       <section className="layout-section border-b border-border/60 bg-muted/25">
         <div className="layout-container pb-12 pt-[var(--page-content-pt)]">
@@ -129,5 +131,6 @@ export default async function TagsPage() {
         </div>
       </section>
     </div>
+    </Reveal>
   )
 }

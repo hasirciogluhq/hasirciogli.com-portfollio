@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
 import { HomeSection } from "@/components/home/HomeSection"
+import { Reveal, revealDelay } from "@/components/motion/Reveal"
 
 import { useState } from "react"
 
@@ -89,18 +90,20 @@ export const BlogHighlights = () => {
   const posts = pages[page]
   return (
     <HomeSection embedded card={false} measure={false} id="writing" sectionClassName="home-grid-posts">
-      <p
-        className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
-        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-      >
-        Writing
-      </p>
-      <h2
-        className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
-        style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
-      >
-        Thoughts & technical deep dives
-      </h2>
+      <Reveal variant="fade">
+        <p
+          className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]"
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+        >
+          Writing
+        </p>
+        <h2
+          className="mt-3 text-[1.85rem] font-light leading-[1.05] text-foreground"
+          style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+        >
+          Thoughts & technical deep dives
+        </h2>
+      </Reveal>
 
       <div className="mt-6">
         <div
@@ -114,48 +117,50 @@ export const BlogHighlights = () => {
           <span className="sr-only">Open</span>
         </div>
         <ul>
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <li key={post.id} className="border-t border-[var(--border-color)]">
-              <Link
-                href={post.slug}
-                onClick={() =>
-                  sendGAEvent("event", "blog_post_click", {
-                    category: "engagement",
-                    label: post.slug,
-                  })
-                }
-                className={`${cols} group py-3.5 text-foreground`}
-              >
-                <span
-                  className="min-w-0 text-[1.05rem] font-medium leading-snug"
-                  style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+              <Reveal variant="rise" delay={revealDelay(index)}>
+                <Link
+                  href={post.slug}
+                  onClick={() =>
+                    sendGAEvent("event", "blog_post_click", {
+                      category: "engagement",
+                      label: post.slug,
+                    })
+                  }
+                  className={`${cols} group py-3.5 text-foreground`}
                 >
-                  {post.title}
-                </span>
-                <span
-                  className="hidden text-[14px] text-[var(--text-secondary)] md:inline"
-                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-                >
-                  {post.date}
-                </span>
-                <span
-                  className="text-[14px] italic text-[var(--text-secondary)]"
-                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-                >
-                  {post.read}
-                </span>
-                <span
-                  className="hidden truncate text-[14px] text-[var(--text-secondary)] md:inline"
-                  style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-                >
-                  {post.author}
-                </span>
-                <ChevronRight
-                  className="h-4 w-4 justify-self-end text-[var(--link-primary)] opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100"
-                  strokeWidth={1.5}
-                  aria-hidden
-                />
-              </Link>
+                  <span
+                    className="min-w-0 text-[1.05rem] font-medium leading-snug"
+                    style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+                  >
+                    {post.title}
+                  </span>
+                  <span
+                    className="hidden text-[14px] text-[var(--text-secondary)] md:inline"
+                    style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                  >
+                    {post.date}
+                  </span>
+                  <span
+                    className="text-[14px] italic text-[var(--text-secondary)]"
+                    style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                  >
+                    {post.read}
+                  </span>
+                  <span
+                    className="hidden truncate text-[14px] text-[var(--text-secondary)] md:inline"
+                    style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
+                  >
+                    {post.author}
+                  </span>
+                  <ChevronRight
+                    className="h-4 w-4 justify-self-end text-[var(--link-primary)] opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+                    strokeWidth={1.5}
+                    aria-hidden
+                  />
+                </Link>
+              </Reveal>
             </li>
           ))}
         </ul>
@@ -169,9 +174,8 @@ export const BlogHighlights = () => {
                 aria-label={`Writing page ${index + 1}`}
                 aria-current={on ? "true" : undefined}
                 onClick={() => setPage(index)}
-                className={`px-3 py-2 text-[13px] tabular-nums leading-none ${
-                  on ? "font-semibold text-foreground" : "font-normal text-[var(--text-secondary)]"
-                }`}
+                className={`px-3 py-2 text-[13px] tabular-nums leading-none ${on ? "font-semibold text-foreground" : "font-normal text-[var(--text-secondary)]"
+                  }`}
                 style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
               >
                 {String(index + 1).padStart(2, "0")}

@@ -1,6 +1,7 @@
 "use client"
 
 import { sendGAEvent } from "@next/third-parties/google"
+import { Reveal } from "@/components/motion/Reveal"
 
 const serif = { fontFamily: "var(--font-newsreader), Georgia, serif" }
 const display = { fontFamily: "var(--font-fraunces), Georgia, serif" }
@@ -36,18 +37,20 @@ export const Footer = () => {
         }}
       />
       <div className="flex w-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]" style={serif}>
-            Colophon
-          </p>
-          <p className="mt-2 text-[1.7rem] font-light leading-none text-foreground" style={display}>
-            Mustafa Hasırcıoğlu
-          </p>
-          <p className="mt-3 max-w-sm text-[16px] italic leading-relaxed text-[var(--text-secondary)]" style={serif}>
-            Go, Kubernetes, distributed systems. Production-focused engineering.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 sm:items-end">
+        <Reveal variant="fade">
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--link-primary)]" style={serif}>
+              Colophon
+            </p>
+            <p className="mt-2 text-[1.7rem] font-light leading-none text-foreground" style={display}>
+              Mustafa Hasırcıoğlu
+            </p>
+            <p className="mt-3 max-w-sm text-[16px] italic leading-relaxed text-[var(--text-secondary)]" style={serif}>
+              Go, Kubernetes, distributed systems. Production-focused engineering.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal variant="rise" delay={0.06} className="flex flex-col gap-3 sm:items-end">
           <p className="flex flex-wrap gap-x-5 gap-y-1">
             {socialLinks.map((s) => (
               <a
@@ -71,7 +74,7 @@ export const Footer = () => {
           <p className="text-[13px] text-[var(--text-secondary)]" style={serif}>
             © {new Date().getFullYear()} Mustafa Hasırcıoğlu
           </p>
-        </div>
+        </Reveal>
       </div>
     </footer>
   )
