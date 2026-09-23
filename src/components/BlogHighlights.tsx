@@ -4,7 +4,8 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
 import { HomeSection } from "@/components/home/HomeSection"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 
 import { useState } from "react"
 

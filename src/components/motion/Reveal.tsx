@@ -22,10 +22,6 @@ const shown = {
   settle: { opacity: 1, scale: 1 },
 }
 
-export function revealDelay(index: number) {
-  return Math.min(index * 0.045, 0.18)
-}
-
 export function Reveal({
   children,
   variant = "rise",

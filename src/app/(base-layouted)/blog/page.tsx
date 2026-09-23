@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { getAllPosts } from "@/lib/blog"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 
 export const metadata = {
   title: "Blog - Mustafa Hasırcıoğlu",

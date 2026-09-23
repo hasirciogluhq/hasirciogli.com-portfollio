@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { sendGAEvent } from "@next/third-parties/google"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 
 const field =
   "w-full border-b border-[var(--border-color)] bg-transparent py-2 text-[16px] text-foreground outline-none placeholder:text-[var(--text-secondary)] focus:border-[var(--link-primary)]"

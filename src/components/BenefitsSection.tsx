@@ -1,5 +1,6 @@
 import { HomeSection } from "@/components/home/HomeSection"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 
 const outcomes = [
   {

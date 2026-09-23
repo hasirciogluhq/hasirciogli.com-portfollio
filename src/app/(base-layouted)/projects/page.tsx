@@ -3,7 +3,8 @@
 import { useState } from "react"
 
 import { BetaBadge } from "@/components/BetaBadge"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 import { sendGAEvent } from '@next/third-parties/google'
 import projectsData from "@/data/projects.json"
 

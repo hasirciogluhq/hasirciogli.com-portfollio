@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Reveal, revealDelay } from "@/components/motion/Reveal"
+import { Reveal } from "@/components/motion/Reveal"
+import { revealDelay } from "@/components/motion/reveal-delay"
 
 const serif = { fontFamily: "var(--font-newsreader), Georgia, serif" }
 const display = { fontFamily: "var(--font-fraunces), Georgia, serif" }
