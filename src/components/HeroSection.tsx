@@ -16,39 +16,6 @@ export const HeroSection = () => {
 
   return (
     <HomeSection embedded card={false} measure={false} sectionClassName="home-grid-hero">
-      <div className="-mx-[var(--pad)] -mt-[var(--pad)] mb-6">
-        <p
-          className="flex h-6 items-center justify-between gap-x-4 border-b border-[var(--border-color)] px-[var(--pad)] text-[10px] font-medium uppercase leading-none tracking-[0.2em] text-[var(--text-secondary)]"
-          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-        >
-          {[
-            ["Keep", "#keep"],
-            ["Stack", "#stack"],
-            ["Movements", "#movements"],
-            ["Writing", "#writing"],
-            ["Voices", "#voices"],
-            ["Note", "#note"],
-          ].map(([label, href]) => (
-            <a key={label} href={href} className="relative top-px hover:text-foreground">
-              {label}
-            </a>
-          ))}
-        </p>
-        <p
-          className="flex h-9 items-center justify-between gap-x-6 border-b border-[var(--border-color)] px-[var(--pad)] text-[11px] font-medium uppercase leading-none tracking-[0.18em] text-[var(--text-secondary)]"
-          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-        >
-          <Link href="/about" className="relative top-px hover:text-foreground">
-            İzmir · Remote
-          </Link>
-          <Link href="/projects" className="relative top-px hover:text-foreground">
-            Go · Kubernetes · Payments
-          </Link>
-          <Link href="/contact" className="relative top-px hover:text-foreground">
-            MVP to production
-          </Link>
-        </p>
-      </div>
       <div className="ui-enter flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
         <div className="min-w-0 flex-1 space-y-5">
           <p className="ui-kicker">Software engineer · Founder</p>

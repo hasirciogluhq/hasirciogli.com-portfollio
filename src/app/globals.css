@@ -765,6 +765,10 @@
     padding: var(--pad);
   }
 
+  .home-grid-rails {
+    padding: 0;
+  }
+
   .home-grid-hero,
   .home-grid-process,
   .home-grid-posts,
@@ -781,6 +785,10 @@
 
     .home-grid-benefits,
     .home-grid-skills {
+      grid-column: auto;
+    }
+
+    .home-lead-grid > .home-grid-split {
       grid-column: auto;
     }
   }

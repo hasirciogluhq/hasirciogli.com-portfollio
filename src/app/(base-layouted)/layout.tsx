@@ -1,6 +1,7 @@
 import { FloatingQuickContact } from "@/components/FloatingQuickContact";
 import { FootBar } from "@/components/Foot-Bar";
 import { Footer } from "@/components/Footer";
+import { PageRails } from "@/components/PageRails";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function BlogLayout({
   return (
     <>
       <div className="home-lead-grid pb-[var(--footbar-height)]">
+        <PageRails />
         {children}
         <Footer />
       </div>
