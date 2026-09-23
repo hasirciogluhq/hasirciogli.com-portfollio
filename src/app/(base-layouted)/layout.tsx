@@ -1,6 +1,6 @@
 import { FloatingQuickContact } from "@/components/FloatingQuickContact";
+import { FootBar } from "@/components/Foot-Bar";
 import { Footer } from "@/components/Footer";
-import { NavbarComponent } from "@/components/NavBar";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -35,14 +35,16 @@ export default function BlogLayout({
 }>) {
   return (
     <>
-      <NavbarComponent />
-      {children}
-
-      {/* Footer */}
-      <Footer />
+      <div className="pb-[var(--footbar-height)]">
+        {children}
+        <Footer />
+      </div>
 
       {/* Floating Quick Contact */}
       <FloatingQuickContact />
+
+      {/* Foot Bar */}
+      <FootBar />
     </>
   );
 }

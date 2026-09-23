@@ -57,7 +57,7 @@ export const SkillsSection = () => {
   }
 
   return (
-    <HomeSection>
+    <HomeSection embedded sectionClassName="home-grid-skills">
       <div className="mx-auto max-w-5xl">
         <header className="mb-8 space-y-3">
           <div className="ui-eyebrow inline-flex items-center gap-2 rounded-md border border-border bg-muted/50 px-2.5 py-1 text-muted-foreground">

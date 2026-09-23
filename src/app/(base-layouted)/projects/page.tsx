@@ -107,7 +107,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="layout-section sticky top-12 z-40 border-b border-border bg-background/95 py-6 backdrop-blur-md">
+      <section className="layout-section sticky top-0 z-30 border-b border-border bg-background/95 py-6 backdrop-blur-md">
         <div className="layout-container">
           <div className="flex items-center gap-3 flex-wrap">
             <div className="flex items-center gap-2 text-muted-foreground">

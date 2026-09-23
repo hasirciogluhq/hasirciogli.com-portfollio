@@ -63,7 +63,7 @@ export const FloatingQuickContact = () => {
 
   return (
     <>
-      <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
+      <div className="fixed right-4 z-50 bottom-[calc(var(--footbar-height)+1rem)] sm:right-6">
         <button
           type="button"
           onClick={() => setIsOpen(true)}

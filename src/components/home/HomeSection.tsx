@@ -4,12 +4,14 @@ export type HomeSectionProps = {
   children: React.ReactNode
   id?: string
   className?: string
-  /** İlk blok: sabit navbar altında üst boşluk */
+  /** İlk blok: sayfa üst boşluğu */
   first?: boolean
   /** Dikey padding (Tailwind). Verilmezse `first` / varsayılan `py` uygulanır. */
   padY?: string
   /** Section kökü: arka plan, border vb. */
   sectionClassName?: string
+  /** Üst ızgara hücresi: kendi container ve padding’ini kullanmaz. */
+  embedded?: boolean
 }
 
 export function HomeSection({
@@ -19,12 +21,21 @@ export function HomeSection({
   first = false,
   padY,
   sectionClassName,
+  embedded = false,
 }: HomeSectionProps) {
   const padding =
     padY ??
     (first
       ? "pb-[var(--home-section-y)] pt-[var(--home-first-section-pt)]"
       : "py-[var(--home-section-y)]")
+
+  if (embedded) {
+    return (
+      <section id={id} className={cn("home-grid-cell", sectionClassName, className)}>
+        {children}
+      </section>
+    )
+  }
 
   return (
     <section id={id} className={cn("layout-section", sectionClassName)}>

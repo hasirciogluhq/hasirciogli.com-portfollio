@@ -18,7 +18,7 @@ export const HeroSection = () => {
   }
 
   return (
-    <HomeSection first>
+    <HomeSection embedded sectionClassName="home-grid-hero">
       <div className="ui-enter flex flex-col gap-10 md:flex-row md:items-center md:gap-12">
         <div className="min-w-0 flex-1 space-y-5">
           <p className="ui-kicker">Software engineer · Founder</p>

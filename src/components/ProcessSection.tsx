@@ -54,7 +54,7 @@ export const ProcessSection = () => {
   const currentStep = steps.find(s => s.id === activeStep)!
 
   return (
-    <HomeSection>
+    <HomeSection embedded sectionClassName="home-grid-process">
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">

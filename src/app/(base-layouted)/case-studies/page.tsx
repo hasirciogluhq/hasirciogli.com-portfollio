@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="sticky top-12 z-40 border-b border-border bg-background/95 py-6 backdrop-blur-sm">
+      <section className="sticky top-0 z-30 border-b border-border bg-background/95 py-6 backdrop-blur-sm">
         <div className="layout-container">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <h2 className="ui-heading-3">Case Studies ({filteredProjects.length})</h2>

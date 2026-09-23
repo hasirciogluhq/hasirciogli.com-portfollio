@@ -36,7 +36,7 @@ export const BenefitsSection = () => {
   ]
 
   return (
-    <HomeSection>
+    <HomeSection embedded sectionClassName="home-grid-benefits">
       <div className="mx-auto max-w-5xl">
         {/* Minimalist Header */}
         <div className="mb-16 space-y-6">
